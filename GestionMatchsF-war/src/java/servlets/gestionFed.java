@@ -20,30 +20,35 @@ import session.gestionFederationLocal;
  *
  * @author katia
  */
-@WebServlet(name = "gestionFederation", urlPatterns = {"/gestionFederation"})
-public class gestionFederation extends HttpServlet {
+@WebServlet(name = "gestionFed", urlPatterns = {"/gestionFed"})
+public class gestionFed extends HttpServlet {
 
     @EJB
     private gestionFederationLocal gestionFederation;
 
-    protected void creerEq(HttpServletRequest request, HttpServletResponse response)
+     protected void creerEq(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException           
     {
         String nomEquipe = request.getParameter("nomEquipe");
-               
+        
+        System.out.println("1");
+        
         String message = "";
         if (nomEquipe.trim().isEmpty())
         {
-            message = "Erreur, vous n'avez pas rempli tous les champs" + "<br><a href=\"CreerA.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'un arbitre";
+            message = "Erreur, vous n'avez pas rempli tous les champs pour accéder au formulaire de création d'un arbitre";
+        System.out.println("2");
         }
         else {
-            
+            System.out.println("3");
             gestionFederation.CreerEquipe(nomEquipe);
             message = "Equipe créée";          
+            
         }
         request.setAttribute("message", message);
         
     }
+     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -55,13 +60,14 @@ public class gestionFederation extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-                String message="";
+        response.setContentType("text/html;charset=UTF-8");
+        String message="";
         response.setContentType("text/html;charset=UTF-8");
         String jspClient = null;
         RequestDispatcher Rd;
         
         String act = request.getParameter("action");
+        act =null;
         if(act==null)
         {
              jspClient = "/Auth.jsp";
@@ -69,24 +75,20 @@ public class gestionFederation extends HttpServlet {
         }
         else if (act.equals("CreerEquipe") ) /* auth de fédé*/
         {
-            jspClient = "Federation/MenuFederation.jsp";
+            jspClient = "/Federation/MenuFederation.jsp";
             creerEq(request,response);
-        }
             
-
+        }
         
-        
-        Rd = getServletContext().getRequestDispatcher(jspClient);
-        Rd.forward(request, response);
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet gestionFederation</title>");            
+            out.println("<title>Servlet gestionFed</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet gestionFederation at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet gestionFed at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
