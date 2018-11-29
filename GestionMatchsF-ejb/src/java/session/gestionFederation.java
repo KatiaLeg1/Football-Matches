@@ -5,6 +5,13 @@
  */
 package session;
 
+import facade.ArbitreFacadeLocal;
+import facade.EntraineurFacadeLocal;
+import facade.EquipesFacadeLocal;
+import facade.FautesFacadeLocal;
+import facade.HistoriqueEntraineurFacadeLocal;
+import facade.MatchFacadeLocal;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -14,6 +21,30 @@ import javax.ejb.Stateless;
 @Stateless
 public class gestionFederation implements gestionFederationLocal {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    @EJB
+    private HistoriqueEntraineurFacadeLocal historiqueEntraineurFacade;
+
+    @EJB
+    private MatchFacadeLocal matchFacade;
+
+    @EJB
+    private FautesFacadeLocal fautesFacade;
+
+    @EJB
+    private EquipesFacadeLocal equipesFacade;
+
+    @EJB
+    private EntraineurFacadeLocal entraineurFacade;
+
+    @EJB
+    private ArbitreFacadeLocal arbitreFacade;
+
+    @Override
+    public void CreerEquipe(String nomE) {
+        equipesFacade.CreerEquipe(nomE);
+    }
+
+    
+
+    
 }

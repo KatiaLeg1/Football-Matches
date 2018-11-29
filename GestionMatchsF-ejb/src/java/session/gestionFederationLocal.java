@@ -13,5 +13,8 @@ import javax.ejb.Local;
  */
 @Local
 public interface gestionFederationLocal {
+
+    void CreerEquipe(String nomE);
+
     
 }
