@@ -16,5 +16,11 @@ public interface gestionFederationLocal {
 
     void CreerEquipe(String nomE);
 
+    void CreerArbitre(String nom, String prenom, String login, String mdp);
+
+    void CreerEntraineur(String nom, String prenom, String login, String mdp);
+
+    void CreerJoueur(String nom, String prenom);
+
     
 }

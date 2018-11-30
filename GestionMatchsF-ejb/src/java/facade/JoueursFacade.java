@@ -6,12 +6,16 @@
 package facade;
 
 import entites.Equipe;
+import entites.Faute;
 import entites.Joueur;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.Date;
+
 
 /**
  *
@@ -44,8 +48,14 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
     @Override
     public void CreerJoueur(String nomJ, String prenomJ) {
         Joueur j = new Joueur();
+        Date dateInterdiction =null;
+        List historiqueJoueurs = new ArrayList<Joueur>();
+        List fautesListe = new ArrayList<Faute>();        
         j.setNomPersonne(nomJ);
         j.setPrenomPersonne(prenomJ);
+        j.setHistoriqueJoueurs(historiqueJoueurs);
+        j.setFautes(fautesListe);
+        j.setDateInterdiction(dateInterdiction);
         em.persist(j);
 
     }

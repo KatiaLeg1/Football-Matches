@@ -6,6 +6,8 @@
 package facade;
 
 import entites.Arbitre;
+import entites.Match;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -33,11 +35,13 @@ public class ArbitreFacade extends AbstractFacade<Arbitre> implements ArbitreFac
 
     @Override
     public void CreerArbitre(String nom, String prenom, String login, String mdp) {
+        List matchsArbitreListe = new ArrayList<Match>();
         Arbitre a = new Arbitre();
         a.setNomPersonne(nom);
         a.setPrenomPersonne(prenom);
         a.setLogin(login);
         a.setMdp(mdp);
+        a.setMatchsArbitre(matchsArbitreListe);
         em.persist(a);
     }
 

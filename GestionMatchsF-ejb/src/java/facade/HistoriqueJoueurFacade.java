@@ -5,7 +5,10 @@
  */
 package facade;
 
+import entites.Equipe;
 import entites.HistoriqueJoueur;
+import entites.Joueur;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +31,20 @@ public class HistoriqueJoueurFacade extends AbstractFacade<HistoriqueJoueur> imp
     public HistoriqueJoueurFacade() {
         super(HistoriqueJoueur.class);
     }
+
+    
+    
+
+    @Override
+    public void creerHJoueur(Date dateDebutHJ, Date dateFinHJ, Joueur joueur, Equipe equipe) {
+       HistoriqueJoueur hj = new  HistoriqueJoueur();
+       hj.setDateDebutEq(dateDebutHJ);
+       hj.setDateFinEq(dateFinHJ);
+       hj.setJoueur(joueur);
+       hj.setEquipeJoueur(equipe);
+       em.persist(hj);
+    }
+    
+    
     
 }

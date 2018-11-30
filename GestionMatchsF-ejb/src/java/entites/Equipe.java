@@ -27,6 +27,23 @@ public class Equipe extends Personne implements Serializable {
     @OneToMany(mappedBy = "equipeEntraineur")
     private List<HistoriqueEntraineur> historiqueEntraineurs;
 
+    public List<HistoriqueJoueur> getHistoriqueJoueurs() {
+        return historiqueJoueurs;
+    }
+
+    public void setHistoriqueJoueurs(List<HistoriqueJoueur> historiqueJoueurs) {
+        this.historiqueJoueurs = historiqueJoueurs;
+    }
+
+    public List<HistoriqueEntraineur> getHistoriqueEntraineurs() {
+        return historiqueEntraineurs;
+    }
+
+    public void setHistoriqueEntraineurs(List<HistoriqueEntraineur> historiqueEntraineurs) {
+        this.historiqueEntraineurs = historiqueEntraineurs;
+    }
+    
+
     @OneToMany(mappedBy = "EquipeDeux")
     private List<Match> matchs2;
 

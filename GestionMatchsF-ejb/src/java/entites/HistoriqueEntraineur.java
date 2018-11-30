@@ -81,24 +81,24 @@ public class HistoriqueEntraineur implements Serializable {
     }
 
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateFinEq;
+    private Date dateFinEnt;
 
     /**
-     * Get the value of dateFinEq
+     * Get the value of dateFinEnt
      *
-     * @return the value of dateFinEq
+     * @return the value of dateFinEnt
      */
-    public Date getDateFinEq() {
-        return dateFinEq;
+    public Date getDateFinEnt() {
+        return dateFinEnt;
     }
 
     /**
-     * Set the value of dateFinEq
+     * Set the value of dateFinEnt
      *
-     * @param dateFinEq new value of dateFinEq
+     * @param dateFinEnt new value of dateFinEnt
      */
-    public void setDateFinEq(Date dateFinEq) {
-        this.dateFinEq = dateFinEq;
+    public void setDateFinEnt(Date dateFinEnt) {
+        this.dateFinEnt = dateFinEnt;
     }
 
     @ManyToOne

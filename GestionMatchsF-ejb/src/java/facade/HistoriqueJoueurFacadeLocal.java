@@ -5,7 +5,10 @@
  */
 package facade;
 
+import entites.Equipe;
 import entites.HistoriqueJoueur;
+import entites.Joueur;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +32,8 @@ public interface HistoriqueJoueurFacadeLocal {
     List<HistoriqueJoueur> findRange(int[] range);
 
     int count();
+
+
+    void creerHJoueur(Date dateDebutHJ, Date dateFinHJ, Joueur joueur, Equipe equipe);
     
 }

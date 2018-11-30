@@ -5,7 +5,10 @@
  */
 package facade;
 
+import entites.Entraineur;
+import entites.Equipe;
 import entites.HistoriqueEntraineur;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +32,7 @@ public interface HistoriqueEntraineurFacadeLocal {
     List<HistoriqueEntraineur> findRange(int[] range);
 
     int count();
+
+    void CreerHE(Date dateDebutHE, Date dateFinHE, Equipe equipe, Entraineur entraineur);
     
 }

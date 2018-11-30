@@ -28,6 +28,14 @@ public class Match implements Serializable {
     @OneToMany(mappedBy = "match")
     private List<Faute> fautes;
 
+    public List<Faute> getFautes() {
+        return fautes;
+    }
+
+    public void setFautes(List<Faute> fautes) {
+        this.fautes = fautes;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

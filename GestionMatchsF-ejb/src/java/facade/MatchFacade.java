@@ -7,7 +7,10 @@ package facade;
 
 import entites.Arbitre;
 import entites.Equipe;
+import entites.Faute;
+import entites.Joueur;
 import entites.Match;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -37,11 +40,22 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
     @Override
     public void CreerMatch(Date date, String heure, Equipe equipeUn, Equipe equipeDeux, Arbitre aribtre) {
         Match m = new Match();
+        int butUn = 0;
+        int butDeux = 0;
+        List Composition1 = new ArrayList<Joueur>();
+        List Composition2 = new ArrayList<Joueur>();
+        List fautes = new ArrayList<Faute>();
+
+        m.setButEquipeUn(butUn);
+        m.setButEquipeDeux(butDeux);
         m.setDateMatch(date);
         m.setHeure(heure);
         m.setEquipeUn(equipeUn);
         m.setEquipeDeux(equipeDeux);
         m.setArbitre(aribtre);
+        m.setComposition1(Composition1);
+        m.setComposition2(Composition2);
+        m.setFautes(fautes);
         em.persist(m);
 
     }

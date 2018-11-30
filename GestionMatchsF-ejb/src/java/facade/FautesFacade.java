@@ -37,12 +37,11 @@ public class FautesFacade extends AbstractFacade<Faute> implements FautesFacadeL
     }
 
     @Override
-    public void CreerFaute(carton type, Joueur joueur, Arbitre arbitre, Match match) {
+    public void CreerFaute(carton type, Joueur joueur,  Match match) {
         Faute f = new Faute();
         f.setTypeFaute(type);
         f.setJoueur(joueur);
-        //A rechercher l'arbitre
-        f.setArbitre(arbitre);
+        
         f.setMatch(match);
         em.persist(f);
     }

@@ -147,26 +147,7 @@ public class Faute implements Serializable {
         this.match = match;
     }
     
-    @ManyToOne
-    private Arbitre arbitre;
-
-    /**
-     * Get the value of arbitre
-     *
-     * @return the value of arbitre
-     */
-    public Arbitre getArbitre() {
-        return arbitre;
-    }
-
-    /**
-     * Set the value of arbitre
-     *
-     * @param arbitre new value of arbitre
-     */
-    public void setArbitre(Arbitre arbitre) {
-        this.arbitre = arbitre;
-    }
+   
 
 
 }

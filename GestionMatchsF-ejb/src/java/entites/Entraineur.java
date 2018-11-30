@@ -23,6 +23,14 @@ public class Entraineur extends Personne implements Serializable {
     @OneToMany(mappedBy = "entraineur")
     private List<HistoriqueEntraineur> historiqueEntraineurs;
 
+    public List<HistoriqueEntraineur> getHistoriqueEntraineurs() {
+        return historiqueEntraineurs;
+    }
+
+    public void setHistoriqueEntraineurs(List<HistoriqueEntraineur> historiqueEntraineurs) {
+        this.historiqueEntraineurs = historiqueEntraineurs;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

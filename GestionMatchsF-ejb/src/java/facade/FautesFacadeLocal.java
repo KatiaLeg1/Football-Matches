@@ -5,7 +5,6 @@
  */
 package facade;
 
-import entites.Arbitre;
 import entites.Faute;
 import entites.Joueur;
 import entites.Match;
@@ -35,7 +34,7 @@ public interface FautesFacadeLocal {
 
     int count();
 
-    void CreerFaute(carton type, Joueur joueur, Arbitre arbitre, Match match);
+    void CreerFaute(carton type, Joueur joueur,  Match match);
 
     List<Faute> AfficherFauteDate(Date dateMatch);
 

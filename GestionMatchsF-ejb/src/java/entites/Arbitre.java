@@ -20,8 +20,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class Arbitre extends Personne implements Serializable {
 
-    @OneToMany(mappedBy = "arbitre")
-    private List<Faute> fautes;
 
     @OneToMany(mappedBy = "arbitre")
     private List<Match> matchsArbitre;

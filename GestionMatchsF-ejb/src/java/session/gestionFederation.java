@@ -10,6 +10,7 @@ import facade.EntraineurFacadeLocal;
 import facade.EquipesFacadeLocal;
 import facade.FautesFacadeLocal;
 import facade.HistoriqueEntraineurFacadeLocal;
+import facade.JoueursFacadeLocal;
 import facade.MatchFacadeLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -20,6 +21,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class gestionFederation implements gestionFederationLocal {
+
+    @EJB
+    private JoueursFacadeLocal joueursFacade;
 
     @EJB
     private HistoriqueEntraineurFacadeLocal historiqueEntraineurFacade;
@@ -39,11 +43,32 @@ public class gestionFederation implements gestionFederationLocal {
     @EJB
     private ArbitreFacadeLocal arbitreFacade;
 
+    
     @Override
     public void CreerEquipe(String nomE) {
         equipesFacade.CreerEquipe(nomE);
     }
 
+    @Override
+    public void CreerArbitre(String nom, String prenom, String login, String mdp) {
+        arbitreFacade.CreerArbitre(nom, prenom, login, mdp);
+    }
+
+    @Override
+    public void CreerEntraineur(String nom, String prenom, String login, String mdp) {
+        entraineurFacade.CreerEntraineur(nom, prenom, login, mdp);
+    }
+
+    @Override
+    public void CreerJoueur(String nom, String prenom) {
+        joueursFacade.CreerJoueur(nom, prenom);
+    }
+    
+    
+    
+    
+
+    
     
 
     
