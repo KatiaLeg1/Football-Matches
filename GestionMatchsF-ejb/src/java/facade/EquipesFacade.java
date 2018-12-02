@@ -10,6 +10,7 @@ import entites.Equipe;
 import entites.Joueur;
 import entites.Match;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -47,5 +48,28 @@ public class EquipesFacade extends AbstractFacade<Equipe> implements EquipesFaca
         eq.setHistoriqueJoueurs(EntraineurHListe);
         em.persist(eq);
     }
+
+    @Override
+    public Collection<Equipe> ToutesLesEquipes() {
+        List<Equipe> e;
+        String text ="SELECT e FROM Fournisseur AS e";
+        Query req = getEntityManager().createQuery(text);
+        e = req.getResultList();
+        return e;
+    }
+
+    @Override
+    public Equipe RechercherEquipe(String nomequipe) {
+        Equipe eq;
+        String tx= "SELECT eq from Equipe as eq where e.nomequipe=:nomE";
+        Query req = getEntityManager().createQuery(tx);
+        req.setParameter("nomE", nomequipe);       
+        eq=(Equipe)req.getSingleResult();
+        if (!(eq==null)) {
+                return eq;
+        } else {
+            return null ;
+        }    }
+    
             
 }

@@ -33,8 +33,9 @@ public class HistoriqueEntraineurFacade extends AbstractFacade<HistoriqueEntrain
     }
 
     @Override
-    public void CreerHE(Date dateDebutHE, Date dateFinHE, Equipe equipe, Entraineur entraineur) {
+    public void CreerHE(Date dateDebutHE, Equipe equipe, Entraineur entraineur) {
        HistoriqueEntraineur he = new  HistoriqueEntraineur();
+       Date dateFinHE = null;
        he.setDateDebutEnt(dateDebutHE);
        he.setDateFinEnt(dateFinHE);
        he.setEntraineur(entraineur);

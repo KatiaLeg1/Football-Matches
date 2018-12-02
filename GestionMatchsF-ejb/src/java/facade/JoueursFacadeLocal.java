@@ -37,5 +37,5 @@ public interface JoueursFacadeLocal {
 
     List recupJoueur();    
 
-    Joueur RechercherJoueur(String nom);
+    Joueur RechercherJoueur(String nomPersonne, String prenomPersonne);
 }

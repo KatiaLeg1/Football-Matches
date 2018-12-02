@@ -5,7 +5,12 @@
  */
 package session;
 
+import entites.Arbitre;
+import entites.Equipe;
+import java.util.Date;
 import javax.ejb.Local;
+import java.util.Collection;
+
 
 /**
  *
@@ -21,6 +26,12 @@ public interface gestionFederationLocal {
     void CreerEntraineur(String nom, String prenom, String login, String mdp);
 
     void CreerJoueur(String nom, String prenom);
+
+    void CreerMAtch(Date dateMatch, String heure, String nomequipeUn, String nomequipeDeux, String nomarbitre,String prenomarbitre);
+
+    Collection<Equipe> LesEquipes();
+
+    Collection<Arbitre> LesArbitres();
 
     
 }

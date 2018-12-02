@@ -56,22 +56,22 @@ public class FautesFacade extends AbstractFacade<Faute> implements FautesFacadeL
     }
 
     @Override
-    public List<Faute> AfficherFauteArbitre(String nom, String prenom) {
-       String req = "SELECT f from Faute as f where f.match.arbitre.nom=:nom and f.match.arbitre.prenom=:prenom ";
+    public List<Faute> AfficherFauteArbitre(Arbitre arbitre) {
+        String req = "SELECT f from Faute as f where f.match.arbitre=:arbitre ";
         Query requete = em.createQuery(req);
-        requete.setParameter("nom",nom);
-        requete.setParameter("prenom",prenom);
+        requete.setParameter("arbitre",arbitre);
         List<Faute> liste = requete.getResultList();
         return liste;
     }
 
     @Override
-    public List<Faute> afficherFauteJoueur(String nom, String prenom) {
-String req = "SELECT f from Faute as f where f.joueur.nom=:nom and f.joueur.prenom=:prenom ";
+    public List<Faute> afficherFauteJoueur(Joueur joueur) {
+        String req = "SELECT f from Faute as f where f.joueur=:joueur ";
         Query requete = em.createQuery(req);
-        requete.setParameter("nom",nom);
-        requete.setParameter("prenom",prenom);
+        requete.setParameter("joueur",joueur);
         List<Faute> liste = requete.getResultList();
         return liste;    }
+    
+    
     
 }

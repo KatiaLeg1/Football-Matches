@@ -8,6 +8,8 @@ package facade;
 import entites.Arbitre;
 import entites.Match;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -46,24 +48,33 @@ public class ArbitreFacade extends AbstractFacade<Arbitre> implements ArbitreFac
     }
 
     @Override
-    public List<Arbitre> recupListArbitre() {
-        String req = "SELECT a from Arbitre as a";
-        Query requete = em.createQuery(req);
-        List<Arbitre> liste = requete.getResultList();
-        return liste;
+    public Collection<Arbitre> TouslesArbitres() {
+        List<Arbitre> a;
+        String tex = "SELECT a from Arbitre as a";
+        Query req = getEntityManager().createQuery(tex);
+        a = req.getResultList();
+        return a;
     }
 
     @Override
-    public Arbitre recupArbitre(String nomArbitre) {
-        String req = "SELECT a from Arbitre as a where a.nomArbitre=:n";      
+    public Arbitre RechercherArbitre(String nomPersonne, String prenomPersonne) {
+        String req = "SELECT a from Arbitre as a where a.nomPersonne=:n AND a.npreomPersonne=:p ";      
         Query requete = em.createQuery(req);
-        requete.setParameter("n", nomArbitre);
+        requete.setParameter("n", nomPersonne);
+        requete.setParameter("p", prenomPersonne);
         Arbitre a = (Arbitre) requete.getSingleResult();
-        return a;
-        
+        if (!(a==null)) {
+                return a;
+        } else {
+            return null ;
+        }        
     }
+
+   
+    }
+
     
     
     
     
-}
+    

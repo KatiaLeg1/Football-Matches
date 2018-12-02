@@ -6,6 +6,7 @@
 package facade;
 
 import entites.Equipe;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -31,5 +32,9 @@ public interface EquipesFacadeLocal {
     int count();
 
     void CreerEquipe(String nomEquipe);
+
+    Collection<Equipe> ToutesLesEquipes();
+
+    Equipe RechercherEquipe(String nomequipe);
     
 }

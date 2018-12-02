@@ -5,6 +5,8 @@
  */
 package session;
 
+import entites.Arbitre;
+import entites.Equipe;
 import facade.ArbitreFacadeLocal;
 import facade.EntraineurFacadeLocal;
 import facade.EquipesFacadeLocal;
@@ -12,6 +14,8 @@ import facade.FautesFacadeLocal;
 import facade.HistoriqueEntraineurFacadeLocal;
 import facade.JoueursFacadeLocal;
 import facade.MatchFacadeLocal;
+import java.util.Collection;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -63,13 +67,33 @@ public class gestionFederation implements gestionFederationLocal {
     public void CreerJoueur(String nom, String prenom) {
         joueursFacade.CreerJoueur(nom, prenom);
     }
-    
-    
-    
-    
 
-    
-    
+    @Override
+    public void CreerMAtch(Date dateMatch, String heure, String nomequipeUn, String nomequipeDeux, String nomarbitre,String prenomarbitre) {
+       
+        Equipe equipeUn = equipesFacade.RechercherEquipe(nomequipeUn);
+        Equipe equipeDeux = equipesFacade.RechercherEquipe(nomequipeDeux);
+        Arbitre arbitre = arbitreFacade.RechercherArbitre(nomarbitre, prenomarbitre);
+        
+        boolean a = matchFacade.ArbitreLibre(arbitre, dateMatch);
+        boolean b = matchFacade.EquipeLibre(equipeUn, dateMatch);
+        boolean c = matchFacade.EquipeLibre(equipeDeux, dateMatch);
+        if (a==true)
+        {
+            if(b==true|| c==true)
+            matchFacade.CreerMatch(dateMatch, heure, equipeUn, equipeDeux, arbitre);
+        }
+        
+    }
 
+    @Override
+    public Collection<Equipe> LesEquipes() {
+        return equipesFacade.ToutesLesEquipes();
+    }
+
+    @Override
+    public Collection<Arbitre> LesArbitres() {
+        return arbitreFacade.TouslesArbitres();
+    }
     
 }

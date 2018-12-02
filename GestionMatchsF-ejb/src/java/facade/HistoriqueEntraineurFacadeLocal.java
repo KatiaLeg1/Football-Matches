@@ -33,6 +33,6 @@ public interface HistoriqueEntraineurFacadeLocal {
 
     int count();
 
-    void CreerHE(Date dateDebutHE, Date dateFinHE, Equipe equipe, Entraineur entraineur);
+    void CreerHE(Date dateDebutHE, Equipe equipe, Entraineur entraineur);
     
 }

@@ -64,21 +64,63 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
     public void ModifierPoint(int butEquipeUn, int butEquipeDeux, long idMatch) {
          
         Match m  = null;
-        String txt = "SELECT m FROM Match AS m WHERE m.butEquipeUn=:butEquipeUn and m.butEquipeDeux=:butEquipeDeux";
+        String txt = "SELECT m FROM Match AS m WHERE m.idMatch=:idMatch";
         Query req = getEntityManager().createQuery(txt);
-        req = req.setParameter("butEquipeUn", butEquipeUn);
-        req = req.setParameter("butEquipeDeux", butEquipeDeux);
-        
-        List<Match> res = req.getResultList();
-        if (res.size() >= 1)
-        {
-              m = (Match) res.get(0);
-              m.setButEquipeUn(butEquipeUn);
-              m.setButEquipeDeux(butEquipeDeux);
-              em.merge(m);
-        }
+        req = req.setParameter("idMatch", idMatch);
+        m =(Match)req.getSingleResult();
+        m.setButEquipeUn(butEquipeUn);
+        m.setButEquipeDeux(butEquipeDeux);
+        em.merge(m);
     }
 
+    @Override
+    public List<Match> MatchsArbitre(Arbitre arbitre) {
+        Query requete = em.createQuery("SELECT m from Match as m where m.arbitre=:arb");
+        requete.setParameter("arb", arbitre);     
+        List<Match> liste =  requete.getResultList();
+        return liste;    
+    }
 
+    @Override
+    public boolean ArbitreLibre(Arbitre arbitre, Date dateMatch) {
+        boolean b=false;
+        Query requete = em.createQuery("SELECT m from Match as m where m.arbitre=:arb And m.dateMatch=:dateMatch");
+        requete.setParameter("arb", arbitre);     
+        requete.setParameter("dateMatch", dateMatch);  
+        List<Match> liste =  requete.getResultList();
+        if (liste.isEmpty())
+        {
+            b = true;
+        }
+        else
+        {
+            b=false;                   
+        }
+        return b;
+    }
+
+    @Override
+    public boolean EquipeLibre(Equipe equipe, Date dateMatch) {
+        boolean b=false;
+        Query requete = em.createQuery("SELECT m from Match as m where m.equipe=:equipe And m.dateMatch=:dateMatch");
+        requete.setParameter("equipe", equipe);     
+        requete.setParameter("dateMatch", dateMatch);  
+        List<Match> liste =  requete.getResultList();
+        if (liste.isEmpty())
+        {
+            b = true;
+        }
+        else
+        {
+            b=false;                   
+        }
+        return b;    
+    }
+
+    @Override
+    public void ModifierMatch(Date date, String heure) {
+    }
+
+    
     
     }

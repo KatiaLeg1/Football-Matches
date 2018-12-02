@@ -5,6 +5,7 @@
  */
 package facade;
 
+import entites.Arbitre;
 import entites.Faute;
 import entites.Joueur;
 import entites.Match;
@@ -38,8 +39,8 @@ public interface FautesFacadeLocal {
 
     List<Faute> AfficherFauteDate(Date dateMatch);
 
-    List<Faute> AfficherFauteArbitre(String nom, String prenom);
+    List<Faute> AfficherFauteArbitre(Arbitre arbitre);
 
-    List<Faute> afficherFauteJoueur(String nom, String prenom);
+    List<Faute> afficherFauteJoueur(Joueur joueur);
     
 }

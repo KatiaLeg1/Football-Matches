@@ -6,6 +6,8 @@
 package facade;
 
 import entites.Arbitre;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -32,9 +34,11 @@ public interface ArbitreFacadeLocal {
 
     void CreerArbitre(String nom, String prenom, String login, String mdp);
 
-    List<Arbitre> recupListArbitre();
+    Collection<Arbitre> TouslesArbitres();
 
-    Arbitre recupArbitre(String nomArbitre);
+    Arbitre RechercherArbitre(String nomPersonne, String prenomPersonne);
+
+
 
     
 }

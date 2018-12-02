@@ -13,14 +13,18 @@
     </head>
     <body>
         <h1>Créer une Equipe</h1>
-        <form method ="get" action="gestionFederation">
-                        
-                <label for="nomE">Nom de l'équipe<span class="requis">*</span></label> 
+        <form method ="get" action="gestionFed">
+            <fieldset>
+                <label for="nomEquipe">Nom de l'équipe<span class="requis"></span></label> 
                 <input type ="text" name="nomEquipe" value="" size="20" maxlength="20"/>
-                <input type ="hidden" name="action" value="CreerEquipe">
-        
+                    
+            <input type ="hidden" name="action" value="CreerEquipe">
+            </fieldset>
             <input type="submit" value="Valider"/>
-            <input type="reset" value="Reset"/>               
+            <input type="reset" value="Reset"/>  
+            </br>
+            <a href ="MenuFederation.jsp"> Retour Menu </a>
+            
         </form>
     </body>
 </html>

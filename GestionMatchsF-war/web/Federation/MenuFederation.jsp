@@ -13,21 +13,22 @@
     </head>
     <body>
         <h1>Menu Federation </h1>
-        <p> <%-- String attribut = (String)request.getAttribute("message");
+        <p> 
+        <% String attribut = (String)request.getAttribute("message");
         out.println(attribut);
-        // Vous êtes connectez en tant que la fédération
-        --%>
+        %>
+        
         <a href ="CreerEquipe.jsp"> Créer une équipe </a>
         <a href ="CreerArbitre.jsp"> Créer un Arbitre </a>
-        <%--<a href ="CreerEntraineur.jsp"> Créer un Entraineur </a>
+        <a href ="CreerEntraineur.jsp"> Créer un Entraineur </a>
         <a href ="CreerJoueur.jsp"> Créer un Joueur </a>
-        <a href ="CreerMatch.jsp"> Créer un Match </a>
-        <a href ="AffecterJoueur.jsp"> Affecter un entraineur a une équipe </a>
+        <a href ="gestionFed?action=CreerMatch.jsp"> Créer un Match </a>
+        <%--  <a href ="AffecterJoueur.jsp"> Affecter un entraineur a une équipe </a>
         <a href ="ModifierMatch.jsp"> Modifier un Match </a>
-        <a href ="AfficherFautesMatch.jsp"> Afficher les fautes commises pour un match </a>
+        <a href ="gestionFed?action=AfficherFautesMatch"> Afficher les fautes commises pour un match </a>
         <a href ="SanctionnerJoueur.jsp"> Sanctionner les joueurs </a>
-        <a href ="AfficherFauteArbitre.jsp"> Afficher les fautes commises par des joueurs lors des matchs arbitrés par un arbitre </a>
-        <a href ="AfficherFauteJoueur.jsp"> Afficher les faute d'un joueur </a>      
+        <a href ="gestionFed?action=AfficherFauteArbitre.jsp"> Afficher les fautes commises par des joueurs lors des matchs arbitrés par un arbitre </a>
+        <a href ="gestionFed?action=AfficherFauteJoueur.jsp"> Afficher les faute d'un joueur </a>      
       
         --%>
         

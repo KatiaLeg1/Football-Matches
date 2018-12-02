@@ -12,6 +12,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -42,6 +43,21 @@ public class EntraineurFacade extends AbstractFacade<Entraineur> implements Entr
         e.setMdp(mdp);
         e.setHistoriqueEntraineurs(entraineurEqListe);
         em.persist(e);
+    }
+
+    @Override
+    public Entraineur RechercherEntraineur(String nomPersonne, String prenomPersonne) {
+        Entraineur e;
+        String tx= "SELECT j from Entraineur as j where j.nomPersonne=:nom and j.prenomPersonne=:prenom";
+        Query req = getEntityManager().createQuery(tx);
+        req.setParameter("nom", nomPersonne);
+        req.setParameter("prenom", prenomPersonne);       
+        e=(Entraineur)req.getSingleResult();
+        if (!(e==null)) {
+                return e;
+        } else {
+            return null ;
+        }
     }
     
 }

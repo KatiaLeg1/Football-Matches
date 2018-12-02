@@ -36,14 +36,6 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
         super(Joueur.class);
     }
 
-//    @Override
-//    public Joueurs rechercherJoueur(String nomjoueur) {
-//        String req = "SELECT j from Joueurs as j where j.nom=:n";
-//        Query requete = em.createQuery(req);
-//        requete.setParameter("n", nomjoueur);
-//        Joueurs j = (Joueurs) requete.getSingleResult();
-//        return j;
-//    }
 
     @Override
     public void CreerJoueur(String nomJ, String prenomJ) {
@@ -83,18 +75,21 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
     }
 
     @Override
-    public Joueur RechercherJoueur(String nom) {
+    public Joueur RechercherJoueur(String nomPersonne, String prenomPersonne) {
         Joueur j = null;
-        String txt = "SELECT j FROM Joueur AS j WHERE ing.nomJ=:no";
+        String txt = "SELECT j FROM Joueur AS j WHERE j.nomPersonne=:no and j.prenomPersonne=:preno";
         Query req = getEntityManager().createQuery(txt);
-        req = req.setParameter("no", nom);
-        List<Joueur> res = req.getResultList();
-        if (res.size() >= 1)
+        req = req.setParameter("no", nomPersonne);
+        req = req.setParameter("preno", prenomPersonne);
+        j=(Joueur)req.getSingleResult();
+        if (!(j==null)) 
         {
-              j = (Joueur) res.get(0);
-        }
-        return j;
-    }
+                return j;
+        } else {
+            return null ;
+        }    
+}
+    
 
 
     

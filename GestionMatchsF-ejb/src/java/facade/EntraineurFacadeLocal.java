@@ -31,5 +31,9 @@ public interface EntraineurFacadeLocal {
     int count();
 
     void CreerEntraineur(String nomE, String prenomE, String login, String mdp);
+
+    Entraineur RechercherEntraineur(String nomPersonne, String prenomPersonne);
+
+    
     
 }
