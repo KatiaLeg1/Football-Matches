@@ -43,6 +43,8 @@ public interface MatchFacadeLocal {
 
     boolean EquipeLibre(Equipe equipe, Date dateMatch);
 
-    void ModifierMatch(Date date, String heure);
+    void ModifierMatch(Match m, Date date, String heure);
+
+    Match RechercherMatch(Equipe nomEq1, Equipe nomEq2, Date date);
     
 }

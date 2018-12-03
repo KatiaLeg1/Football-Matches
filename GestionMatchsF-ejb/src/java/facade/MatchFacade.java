@@ -118,7 +118,20 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
     }
 
     @Override
-    public void ModifierMatch(Date date, String heure) {
+    public void ModifierMatch(Match m, Date date, String heure) {
+        m.setDateMatch(date);
+        m.setHeure(heure);
+        em.merge(m);
+    }
+
+    @Override
+    public Match RechercherMatch(Equipe nomEq1, Equipe nomEq2, Date date) {
+        Match m =null;
+        Query req = getEntityManager().createQuery("select m from Match as m where m.equipeUn=:nomEq1 and m.EquipeDeux=:nomEq2 and m.dateMatch=:date");
+        req.setParameter("nomEq1", nomEq1);     
+        req.setParameter("nomEq2", nomEq2);     
+        req.setParameter("date", date);     
+        return m;
     }
 
     
