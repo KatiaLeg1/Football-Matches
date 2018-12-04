@@ -7,6 +7,8 @@ package facade;
 
 import entites.Equipe;
 import entites.Faute;
+import entites.HistoriqueEntraineur;
+import entites.HistoriqueJoueur;
 import entites.Joueur;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +91,24 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
             return null ;
         }    
 }
+    @Override
+    public void affecterJoueur(HistoriqueJoueur histo, Equipe eq, Date dateDebut) {
+        histo.setEquipeJoueur(eq);
+        histo.setDateDebutEq(dateDebut);
+        em.merge(histo);
+    }
+
+    @Override
+    public void transfererJoueur(HistoriqueJoueur histo, Equipe eq, Date dateDebut, Date dateFin) {
+        histo.setDateFinEq(dateFin);
+        em.merge(histo);
+        
+        affecterJoueur(histo, eq, dateDebut);
+    }
+    
+    
+    
+    
     
 
 
