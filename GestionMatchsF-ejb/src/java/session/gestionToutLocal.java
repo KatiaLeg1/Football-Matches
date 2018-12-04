@@ -5,6 +5,12 @@
  */
 package session;
 
+import entites.Equipe;
+import entites.Joueur;
+import facade.EquipesFacade;
+import facade.JoueursFacade;
+import java.util.Collection;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +19,6 @@ import javax.ejb.Local;
  */
 @Local
 public interface gestionToutLocal {
-    
+
+    List<Joueur> AfficherTousLesJoueurs();
 }

@@ -7,6 +7,7 @@ package facade;
 
 import entites.Equipe;
 import entites.Joueur;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -38,4 +39,6 @@ public interface JoueursFacadeLocal {
     List recupJoueur();    
 
     Joueur RechercherJoueur(String nomPersonne, String prenomPersonne);
+
+    List<Joueur> AfficherTousLesJoueurs();
 }

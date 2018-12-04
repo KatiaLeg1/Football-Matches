@@ -53,7 +53,7 @@ public class EquipesFacade extends AbstractFacade<Equipe> implements EquipesFaca
     @Override
     public Collection<Equipe> ToutesLesEquipes() {
         List<Equipe> e;
-        String text ="SELECT e FROM Fournisseur AS e";
+        String text ="SELECT e FROM Equipes AS e";
         Query req = getEntityManager().createQuery(text);
         e = req.getResultList();
         return e;

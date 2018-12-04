@@ -89,6 +89,15 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
             return null ;
         }    
 }
+
+    @Override
+    public List<Joueur> AfficherTousLesJoueurs() {
+        List<Joueur> j;
+        String text ="SELECT j FROM Joueurs AS j";
+        Query req = getEntityManager().createQuery(text);
+        j = req.getResultList();
+        return j;
+    }
     
 
 

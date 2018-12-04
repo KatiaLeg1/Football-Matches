@@ -23,10 +23,7 @@ import session.gestionToutLocal;
 public class GestionTous extends HttpServlet {
 
     @EJB
-    private gestionToutLocal gestionTout;
-
-    
-    
+    private gestionToutLocal gestionTout;    
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
