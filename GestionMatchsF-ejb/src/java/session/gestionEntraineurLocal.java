@@ -13,5 +13,7 @@ import javax.ejb.Local;
  */
 @Local
 public interface gestionEntraineurLocal {
+
+    void affectationJoueur(String nom, String prenom);
     
 }

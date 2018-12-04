@@ -5,7 +5,15 @@
  */
 package session;
 
+import entites.Equipe;
+import entites.HistoriqueJoueur;
+import entites.Joueur;
+import facade.HistoriqueJoueurFacadeLocal;
 import javax.ejb.Stateless;
+import facade.JoueursFacade;
+import facade.JoueursFacadeLocal;
+import java.util.Date;
+import javax.ejb.EJB;
 
 /**
  *
@@ -14,6 +22,41 @@ import javax.ejb.Stateless;
 @Stateless
 public class gestionEntraineur implements gestionEntraineurLocal {
 
+    @EJB
+    private HistoriqueJoueurFacadeLocal historiqueJoueurFacade;
+
+    @EJB
+    private JoueursFacadeLocal joueursFacade;
+
+    
+    
+    @Override
+    public void affectationJoueur(String nom, String prenom) {
+        Joueur j = null;
+        joueursFacade.RechercherJoueur(nom, prenom);
+    
+        if(j!=null){
+        HistoriqueJoueur h = null;
+        historiqueJoueurFacade.rechercherHistorique(j);
+        
+            if(h!=null){
+                Equipe eq;
+                eq = h.getEquipeJoueur();
+                Date dateDebut;
+                dateDebut = h.getDateDebutEq();
+                joueursFacade.affecterJoueur(h, eq, dateDebut);
+            
+        }
+        
+    }
+    
+    
+
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+    
+    
+    
+}
+    
 }
