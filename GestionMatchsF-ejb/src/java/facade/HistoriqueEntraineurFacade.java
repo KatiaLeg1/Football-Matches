@@ -55,7 +55,7 @@ public class HistoriqueEntraineurFacade extends AbstractFacade<HistoriqueEntrain
     @Override
     public Equipe EqActuelleEnt(Entraineur entraineur) {
         Equipe e ;
-        String text = "SELECT he FROM HistoriqueEntraineur AS he where he.entraineur=:entraineur and he.Datefin is null";
+        String text = "SELECT he FROM HistoriqueEntraineur AS he where he.entraineur=:entraineur and he.dateFinEnt IS NULL";
         Query requete = em.createQuery(text);
         requete.setParameter("entraineur", entraineur); 
         List<HistoriqueEntraineur> liste =  requete.getResultList();
@@ -72,7 +72,7 @@ public class HistoriqueEntraineurFacade extends AbstractFacade<HistoriqueEntrain
     @Override
     public HistoriqueEntraineur HistoActuel(Entraineur entraineur) {
         HistoriqueEntraineur he ;
-        String text = "SELECT he FROM HistoriqueEntraineur AS he where he.entraineur=:entraineur and he.Datefin=:''{0}'";
+        String text = "SELECT he FROM HistoriqueEntraineur AS he where he.entraineur=:entraineur and he.dateFinEnt IS NULL";
         Query requete = em.createQuery(text);
         requete.setParameter("entraineur", entraineur); 
         List<HistoriqueEntraineur> liste =  requete.getResultList();
