@@ -7,6 +7,7 @@ package session;
 
 import entites.Arbitre;
 import entites.Equipe;
+import entites.Joueur;
 import java.util.Date;
 import javax.ejb.Local;
 import java.util.Collection;
