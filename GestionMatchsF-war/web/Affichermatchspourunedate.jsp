@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Afficher les matchs à une date donnée</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Afficher les matchs à une date donnée</h1>
         <p>
             <a href ="MenuFederation.jsp"> Menu Fédération </a>
         </p>
