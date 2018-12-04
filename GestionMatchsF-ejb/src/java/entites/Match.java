@@ -74,7 +74,6 @@ public class Match implements Serializable {
         return "entites.Match[ id=" + id + " ]";
     }
     
-    @Column (nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateMatch;
 
@@ -158,7 +157,6 @@ public class Match implements Serializable {
         this.butEquipeDeux = butEquipeDeux;
     }
 
-   // @Column (nullable = false)
     @ManyToOne
     private Equipe equipeUn;
 
@@ -180,7 +178,6 @@ public class Match implements Serializable {
         this.equipeUn = equipeUn;
     }
     
-    //@Column (nullable = false)
     @ManyToOne
     private Equipe EquipeDeux;
 
@@ -202,7 +199,6 @@ public class Match implements Serializable {
         this.EquipeDeux = EquipeDeux;
     }
     
-    @Column (nullable = false)
     @ManyToOne
     private Arbitre arbitre;
 

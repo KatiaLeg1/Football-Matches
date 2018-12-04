@@ -25,7 +25,7 @@ import javax.persistence.Query;
 @Stateless
 public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLocal {
 
-    @PersistenceContext(unitName = "GestionMatchs-ejbPU")
+    @PersistenceContext(unitName = "GestionMatchsF-ejbPU")
     private EntityManager em;
 
     @Override

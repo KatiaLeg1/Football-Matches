@@ -21,7 +21,7 @@ import javax.persistence.Query;
 @Stateless
 public class EntraineurFacade extends AbstractFacade<Entraineur> implements EntraineurFacadeLocal {
 
-    @PersistenceContext(unitName = "GestionMatchs-ejbPU")
+    @PersistenceContext(unitName = "GestionMatchsF-ejbPU")
     private EntityManager em;
 
     @Override

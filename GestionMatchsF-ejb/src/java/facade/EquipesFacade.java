@@ -24,7 +24,7 @@ import javax.persistence.Query;
 @Stateless
 public class EquipesFacade extends AbstractFacade<Equipe> implements EquipesFacadeLocal {
 
-    @PersistenceContext(unitName = "GestionMatchs-ejbPU")
+    @PersistenceContext(unitName = "GestionMatchsF-ejbPU")
     private EntityManager em;
 
     @Override
@@ -40,12 +40,13 @@ public class EquipesFacade extends AbstractFacade<Equipe> implements EquipesFaca
     public void CreerEquipe(String nomEquipe) {
         Equipe eq = new Equipe();
         int point = 0 ;
-        List JoueurHListe = new ArrayList<Joueur>();
-        List EntraineurHListe = new ArrayList<Entraineur>();
+      //  List JoueurHListe = new ArrayList<Joueur>();
+        //List EntraineurHListe = new ArrayList<Entraineur>();
         eq.setNomequipe(nomEquipe);
         eq.setPointEquipe(point);
-        eq.setHistoriqueEntraineurs(EntraineurHListe);
-        eq.setHistoriqueJoueurs(EntraineurHListe);
+      //  eq.setHistoriqueEntraineurs(EntraineurHListe);
+       // eq.setHistoriqueJoueurs(EntraineurHListe);
+        System.out.println("ok facade");
         em.persist(eq);
     }
 

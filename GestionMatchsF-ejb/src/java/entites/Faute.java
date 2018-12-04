@@ -60,7 +60,6 @@ public class Faute implements Serializable {
         return "entites.Fautes[ id=" + id + " ]";
     }    
     
-    @Column (nullable = false)    
     @ManyToOne
     private Joueur joueur;
 
@@ -83,7 +82,6 @@ public class Faute implements Serializable {
     }
 
     @Temporal(javax.persistence.TemporalType.DATE)
-    @Column (nullable = false)
     private Date dateFaute;
 
     /**
@@ -125,7 +123,6 @@ public class Faute implements Serializable {
         this.typeFaute = typeFaute;
     }
     
-    @Column (nullable = false)
     @ManyToOne
     private Match match;
 

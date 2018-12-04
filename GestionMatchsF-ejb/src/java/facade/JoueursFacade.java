@@ -24,7 +24,7 @@ import java.util.Date;
 @Stateless
 public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFacadeLocal {
 
-    @PersistenceContext(unitName = "GestionMatchs-ejbPU")
+    @PersistenceContext(unitName = "GestionMatchsF-ejbPU")
     private EntityManager em;
 
     @Override

@@ -21,6 +21,9 @@ import javax.persistence.OneToMany;
 public class Entraineur extends Personne implements Serializable {
 
     @OneToMany(mappedBy = "entraineur")
+    private List<Equipe> equipes;
+
+    @OneToMany(mappedBy = "entraineur")
     private List<HistoriqueEntraineur> historiqueEntraineurs;
 
     public List<HistoriqueEntraineur> getHistoriqueEntraineurs() {

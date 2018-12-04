@@ -15,7 +15,7 @@
         <h1>Page d'authentification</h1>
         <p>
 
-            <a href ="Federation/MenuFederation.jsp"> Menu Fédération </a>
+            <a href ="MenuFederation.jsp"> Menu Fédération </a>
 
         </p>
     </body>

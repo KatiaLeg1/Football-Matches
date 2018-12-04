@@ -24,7 +24,7 @@ import javax.persistence.Query;
 @Stateless
 public class FautesFacade extends AbstractFacade<Faute> implements FautesFacadeLocal {
 
-    @PersistenceContext(unitName = "GestionMatchs-ejbPU")
+    @PersistenceContext(unitName = "GestionMatchsF-ejbPU")
     private EntityManager em;
 
     @Override

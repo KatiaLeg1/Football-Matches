@@ -33,7 +33,10 @@ public class gestionFed extends HttpServlet {
     protected void creerEq(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException           
     {
+                
+
         String nomEquipe = request.getParameter("nomEquipe");
+        System.out.println("nom equipe"+nomEquipe);
         
         String message = "";
         if (nomEquipe.trim().isEmpty())
@@ -42,6 +45,7 @@ public class gestionFed extends HttpServlet {
                     "</br> <a href=\"CreerEquipe.jsp\">cliquez ici </a>pour retourner au formulaire";
         }
         else {
+            System.out.println("nom equipe"+nomEquipe);
             gestionFederation.CreerEquipe(nomEquipe);
             message = "Equipe créée";          
         }
@@ -160,10 +164,10 @@ public class gestionFed extends HttpServlet {
         String jspClient = null;
                
         String act = request.getParameter("action");
-        act =null;
+        System.out.println("nom equipe"+ act);
         if(act==null)
         {
-            jspClient = "/Federation/MenuFederation.jsp";
+            jspClient = "/MenuFederation.jsp";
             request.setAttribute("message", "pas d'infos");
         }
         else if (act.equals("CreerEquipe") ) /* auth de fédé*/

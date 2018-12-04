@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -19,7 +20,7 @@ import javax.persistence.OneToMany;
  * @author domitille
  */
 @Entity
-public class Equipe extends Personne implements Serializable {
+public class Equipe implements Serializable {
 
     @OneToMany(mappedBy = "equipeJoueur")
     private List<HistoriqueJoueur> historiqueJoueurs;
@@ -150,6 +151,7 @@ public class Equipe extends Personne implements Serializable {
         this.pointEquipe = pointEquipe;
     }
 
+    @ManyToOne
         private Entraineur entraineur;
 
     /**
