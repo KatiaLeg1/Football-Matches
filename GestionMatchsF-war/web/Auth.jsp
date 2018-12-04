@@ -14,9 +14,7 @@
     <body>
         <h1>Page d'authentification</h1>
         <p>
-
             <a href ="MenuFederation.jsp"> Menu Fédération </a>
-
         </p>
     </body>
 </html>
