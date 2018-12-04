@@ -7,9 +7,11 @@ package session;
 
 import entites.Equipe;
 import entites.Joueur;
+import entites.Match;
 import facade.EquipesFacade;
 import facade.JoueursFacade;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -21,4 +23,12 @@ import javax.ejb.Local;
 public interface gestionToutLocal {
 
     List<Joueur> AfficherTousLesJoueurs();
+
+    Match AfficherJoueursMatch(Equipe nomEq1, Equipe nomEq2, Date date);
+
+     List<Match> AfficherTousLesMatchs();
+
+    Collection<Equipe> AfficherToutesLesEquipes();
+    
+            
 }

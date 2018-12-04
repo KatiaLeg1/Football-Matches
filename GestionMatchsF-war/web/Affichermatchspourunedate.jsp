@@ -14,7 +14,7 @@
     <body>
         <h1>Afficher les matchs à une date donnée</h1>
         <p>
-            <a href ="MenuFederation.jsp"> Menu Fédération </a>
+            <a href ="MenuTous.jsp">Menu tous</a>
         </p>
     </body>
 </html>

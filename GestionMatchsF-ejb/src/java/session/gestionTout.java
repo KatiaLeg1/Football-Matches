@@ -7,11 +7,14 @@ package session;
 
 import entites.Equipe;
 import entites.Joueur;
+import entites.Match;
 import facade.EquipesFacade;
 import facade.EquipesFacadeLocal;
 import facade.JoueursFacade;
 import facade.JoueursFacadeLocal;
+import facade.MatchFacadeLocal;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -22,6 +25,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class gestionTout implements gestionToutLocal {
+
+    @EJB
+    private MatchFacadeLocal matchFacade;
 
     @EJB
     private EquipesFacadeLocal equipesFacade;
@@ -39,8 +45,30 @@ public class gestionTout implements gestionToutLocal {
         return joueursFacade.AfficherTousLesJoueurs();
     }
 
- 
+    @Override
+    public Match AfficherJoueursMatch(Equipe nomEq1, Equipe nomEq2, Date date) {
+        Match m = null;
+        m = matchFacade.RechercherMatch(nomEq1, nomEq2, date);
+        return m;
+    }
+
+    @Override
+    public List<Match> AfficherTousLesMatchs() {
+        return matchFacade.RechercherTousLesMatchs();
+    }
+
+    @Override
+    public Collection<Equipe> AfficherToutesLesEquipes() {
+        return equipesFacade.ToutesLesEquipes();
+    }
+    
     
     
     
 }
+
+
+ 
+    
+    
+    

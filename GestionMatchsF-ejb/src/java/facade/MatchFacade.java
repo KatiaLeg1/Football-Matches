@@ -130,8 +130,16 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
         Query req = getEntityManager().createQuery("select m from Match as m where m.equipeUn=:nomEq1 and m.EquipeDeux=:nomEq2 and m.dateMatch=:date");
         req.setParameter("nomEq1", nomEq1);     
         req.setParameter("nomEq2", nomEq2);     
-        req.setParameter("date", date);     
-        return m;
+        req.setParameter("date", date);
+        List<Match> liste =  req.getResultList();
+        return liste.get(0);
+    }
+
+    @Override
+    public List<Match> RechercherTousLesMatchs() {
+        Query req = getEntityManager().createQuery("select m from Match as m"); //afficher tous les matchs select*
+        List<Match> liste =  req.getResultList();
+        return liste;
     }
 
     

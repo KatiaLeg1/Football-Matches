@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Afficher joueurs d'une équipe</title>
+        <title>Afficher les joueurs pour un match</title>
     </head>
     <body>
-        <h1>Afficher joueurs d'une équipe</h1
+        <h1>Afficher les joueurs pour un match</h1
         <table>
                 <tr>
                     <td>            
@@ -31,5 +31,8 @@
                     </td>
                 </tr>  
             </table>
+        <p>
+            <a href ="MenuTous.jsp">Menu tous</a>
+        </p>
     </body>
 </html>
