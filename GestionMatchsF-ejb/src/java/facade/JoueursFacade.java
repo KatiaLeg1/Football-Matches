@@ -105,16 +105,21 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
         
         affecterJoueur(histo, eq, dateDebut);
     }
-    
-    
-    
-    
-    
 
-
-    
-    
-    
-    
-    
+    @Override
+    public Joueur rechercherJoueurId(Long id) {
+        Joueur j = null;
+        String txt = "SELECT j FROM Joueur AS j WHERE j.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("id", id);
+        j=(Joueur)req.getSingleResult();
+        if (!(j==null)) 
+        {
+                return j;
+        }
+        
+        else {
+            return null;
+        }
+    }
 }

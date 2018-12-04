@@ -72,5 +72,17 @@ public class EquipesFacade extends AbstractFacade<Equipe> implements EquipesFaca
             return null ;
         }    }
     
+     @Override
+    public Equipe RechercherEquipeParEntraineur(String nom) {
+        Equipe eq;
+        String tx= "SELECT eq from Equipe as eq where eq.entraineur=:nom";
+        Query req = getEntityManager().createQuery(tx);
+        req.setParameter("entraineur", nom);       
+        eq=(Equipe)req.getSingleResult();
+        if (!(eq==null)) {
+                return eq;
+        } else {
+            return null ;
+        }    }
             
 }

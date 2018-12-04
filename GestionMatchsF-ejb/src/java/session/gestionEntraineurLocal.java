@@ -5,6 +5,11 @@
  */
 package session;
 
+import entites.Entraineur;
+import entites.Equipe;
+import entites.Joueur;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -14,6 +19,14 @@ import javax.ejb.Local;
 @Local
 public interface gestionEntraineurLocal {
 
-    void affectationJoueur(String nom, String prenom);
+    void affectationJoueur(String nom, String prenom, Entraineur en, String nome, Date dateDebutHJ);
+
+    void transfertJoueur(String nom, String prenom);
+
+    Joueur rechercherJoueurId(long id);
+
+    List<Joueur> affichageJoueurs();
+
+    Equipe rechercheEquipeParEntraineur(String nom);
     
 }

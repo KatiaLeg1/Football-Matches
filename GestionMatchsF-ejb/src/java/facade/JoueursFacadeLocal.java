@@ -45,4 +45,6 @@ public interface JoueursFacadeLocal {
     void affecterJoueur(HistoriqueJoueur histo, Equipe eq, Date dateDebut);
 
     void transfererJoueur(HistoriqueJoueur histo, Equipe eq, Date dateDebut, Date dateFin);
+
+    Joueur rechercherJoueurId(Long id);
 }
