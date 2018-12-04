@@ -59,12 +59,9 @@ public class GestionTous extends HttpServlet {
             request.setAttribute("listematch", lm);
             request.setAttribute("listeequipe", le);
             jspClient = "/Afficherdatesetequipes.jsp";
-            
-            
-            
+   
         }
-            creerEq(request,response);
-            jspClient = "/MenuFederation.jsp";
+         
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
