@@ -5,8 +5,12 @@
  */
 package servlets;
 
+import entites.Equipe;
+import entites.Match;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,6 +41,31 @@ public class GestionTous extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        String message="";
+        String jspClient = null;
+               
+        String act = request.getParameter("action");
+        System.out.println("nom equipe"+ act);
+        if(act==null)
+        {
+            jspClient = "/MenuTous.jsp";
+            request.setAttribute("message", "pas d'infos");
+        }
+        else if (act.equals("Afficherdateequipe") ) /* auth de fédé*/
+        {
+            List<Match> lm = gestionTout.AfficherTousLesMatchs();
+           Collection<Equipe> le = gestionTout.AfficherToutesLesEquipes();
+            request.setAttribute("listematch", lm);
+            request.setAttribute("listeequipe", le);
+            jspClient = "/Afficherdatesetequipes.jsp";
+            
+            
+            
+        }
+            creerEq(request,response);
+            jspClient = "/MenuFederation.jsp";
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
