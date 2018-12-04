@@ -5,9 +5,11 @@
  */
 package servlets;
 
+import entites.Entraineur;
 import entites.Joueur;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -52,16 +54,27 @@ public class gestionEntraineur extends HttpServlet {
         }
              else if(act.equals("rechercherJ"))
                     {  
+                        System.out.println("2");
                        List<Joueur> liste = gestionEntraineur.affichageJoueurs();
                        request.setAttribute("listejoueurs", liste);
                        jspClient="/AffecterJoueur.jsp";
-   
                     }
-            else if(act.equals("affecterJ"))
+             else if(act.equals("affecterJ"))
                     {                     
+                        System.out.println("1");
                         jspClient="/MenuEntraineur.jsp";
                         doActionAffecterJ(request, response);   
                     }
+             
+            else if(act.equals("afficherJ"))
+                    {
+                    jspClient="/AfficherJoueurs.jsp";
+                    List <Joueur> list = gestionEntraineur.affichageJoueurs();
+                    request.setAttribute("listejoueurs", list);
+                    request.setAttribute("message", "Liste des joueurs existants");
+                    } 
+            
+            
                     
             RequestDispatcher Rd;
             Rd = getServletContext().getRequestDispatcher(jspClient);
@@ -93,23 +106,34 @@ public class gestionEntraineur extends HttpServlet {
     
     protected void doActionAffecterJ(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("3");
+        String identifiant = request.getParameter("Joueurs");
+                System.out.println("3" + identifiant);
+
         String nom = request.getParameter("nome");
-        String date = request.getParameter("date");
-        String message;
-        if( nom.trim().isEmpty() || date.trim().isEmpty()){
-            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires."
+                System.out.println("3" + nom);
+        String prenom = request.getParameter("prenome");
+        String t = request.getParameter("dateDebutHJ");
+                System.out.println("3" + t);
                     
-            + "<br /><a href=\"CreerFournisseur.jsp\"> Cliquez ici </a> pour accéder au formulaire de création d'un fournisseur";            
-        } else { // convertir ty dans l'ENUM   
-            
-        /*gestionEntraineur.affectationJoueur(nom, nom, en, nom, dateDebutHJ);
-        message = "<h2>Fournisseur créé avec succès !<h2>"; 
-                    }
-        request.setAttribute("message", message); */
+        String message                 ;
+        if(identifiant.isEmpty() || t.isEmpty()  || nom.isEmpty()){
+                    System.out.println("4");
+
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires."
+                         + "<br /><a href=\"MenuEntraineur.jsp\"> Cliquez ici </a> pour revenir au menu";            
+        } 
+        else {
+                                System.out.println("5");
+
+        Date dateDHJ = Date.valueOf(t);
+        long id = Long.valueOf(identifiant);
+        gestionEntraineur.affectationJoueur(id, nom, prenom, dateDHJ);
+        message = "<h2>Joueur affecté à l'équipe !<h2>"; 
+        } 
+        request.setAttribute("message", message);
         
-    }
-    }
-    
+            }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -14,6 +14,7 @@
     <body>
         <h1>Menu Entraineur</h1>
         
-          <a href ="gestionEntraineur?action=rechercherJ"> Affecter un joueur à l'équipe </a>
+          <a href ="gestionEntraineur?action=rechercherJ"> Affecter un joueur à l'équipe </a><br/>
+          <a href ="gestionEntraineur?action=afficherJ"> Afficher tous les joueurs </a><br/>
     </body>
 </html>

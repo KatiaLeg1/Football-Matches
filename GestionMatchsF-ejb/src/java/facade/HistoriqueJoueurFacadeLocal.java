@@ -34,7 +34,7 @@ public interface HistoriqueJoueurFacadeLocal {
     int count();
 
 
-    void creerHJoueur(Date dateDebutHJ, Date dateFinHJ, Joueur joueur, Equipe equipe);
+    void creerHJoueur(Date dateDebutHJ, Joueur joueur, Equipe equipe);
     
     HistoriqueJoueur rechercherHistorique(Joueur joueur);
     

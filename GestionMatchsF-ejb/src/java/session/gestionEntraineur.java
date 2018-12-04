@@ -10,7 +10,9 @@ import entites.Equipe;
 import entites.HistoriqueEntraineur;
 import entites.HistoriqueJoueur;
 import entites.Joueur;
+import facade.EntraineurFacadeLocal;
 import facade.EquipesFacadeLocal;
+import facade.HistoriqueEntraineurFacadeLocal;
 import facade.HistoriqueJoueurFacadeLocal;
 import javax.ejb.Stateless;
 import facade.JoueursFacade;
@@ -27,6 +29,12 @@ import javax.ejb.EJB;
 public class gestionEntraineur implements gestionEntraineurLocal {
 
     @EJB
+    private HistoriqueEntraineurFacadeLocal historiqueEntraineurFacade;
+
+    @EJB
+    private EntraineurFacadeLocal entraineurFacade;
+
+    @EJB
     private EquipesFacadeLocal equipesFacade;
 
     @EJB
@@ -34,25 +42,19 @@ public class gestionEntraineur implements gestionEntraineurLocal {
 
     @EJB
     private JoueursFacadeLocal joueursFacade;
-
     
     
     @Override
-    public void affectationJoueur(String nom, String prenom, Entraineur en, String nome, Date dateDebutHJ) {
-        Joueur j = null;
-        joueursFacade.RechercherJoueur(nom, prenom);
-        Equipe e = null;
-        nome = en.getNomPersonne();
-        e = equipesFacade.RechercherEquipeParEntraineur(nome);
-   
+    public void affectationJoueur(long id, String nome, String prenome, Date dateDebutHJ) {
+        Joueur j = joueursFacade.rechercherJoueurId(id);
+        Entraineur en = entraineurFacade.RechercherEntraineur(nome, prenome);
+        HistoriqueEntraineur he = historiqueEntraineurFacade.rechercherHistorique(en);
+        Equipe e = equipesFacade.RechercherEquipeParEntraineur(nome);
+ 
         if(j!=null){
-        HistoriqueJoueur h = null;
-        h = historiqueJoueurFacade.rechercherHistorique(j);
-        
+        HistoriqueJoueur h = historiqueJoueurFacade.rechercherHistorique(j);
             if(h==null){
-                Date dateFinHJ = null;
-                historiqueJoueurFacade.creerHJoueur(dateDebutHJ, dateFinHJ, j, e);   
-                
+                historiqueJoueurFacade.creerHJoueur(dateDebutHJ, j, e);   
             }
         }
         

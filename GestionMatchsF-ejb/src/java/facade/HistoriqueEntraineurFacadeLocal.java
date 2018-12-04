@@ -35,4 +35,6 @@ public interface HistoriqueEntraineurFacadeLocal {
 
     void CreerHE(Date dateDebutHE, Equipe equipe, Entraineur entraineur);
     
+    HistoriqueEntraineur rechercherHistorique(Entraineur entraineur);
+    
 }

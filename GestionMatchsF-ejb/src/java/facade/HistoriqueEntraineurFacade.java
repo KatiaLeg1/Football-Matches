@@ -8,10 +8,13 @@ package facade;
 import entites.Entraineur;
 import entites.Equipe;
 import entites.HistoriqueEntraineur;
+import entites.HistoriqueJoueur;
+import entites.Joueur;
 import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -41,6 +44,22 @@ public class HistoriqueEntraineurFacade extends AbstractFacade<HistoriqueEntrain
        he.setEntraineur(entraineur);
        he.setEquipeEntraineur(equipe);
        em.persist(he);
+    }
+    
+     @Override
+    public HistoriqueEntraineur rechercherHistorique(Entraineur entraineur) {
+        HistoriqueEntraineur h = null;
+        String txt = "SELECT h FROM HistoriqueEntraineur AS h WHERE h.entraineur:=entraineur";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("entraineur", entraineur);
+        h = (HistoriqueEntraineur)req.getSingleResult();
+        if (!(h==null)) 
+        {
+                return h;
+        } else {
+            return null ;
+        }    
+    
     }
     
 }

@@ -27,9 +27,11 @@
         </select>   
         <br/>
         <label for="dateDebutHJ">Date de début du contrat : <span class="requis"></span></label> 
-        <input type ="date" name="datedDebutHJ" value="" size="20" maxlength="20"/><br/>
-        <label for="nome">Entraineur : <span class="requis"></span></label> 
+        <input type ="date" name="dateDebutHJ" value="" size="20" maxlength="20"/><br/>
+        <label for="nome">Nom entraineur : <span class="requis"></span></label> 
         <input type ="text" name="nome" value="" size="20" maxlength="20"/><br/>
+         <label for="prenome">Prenom entraineur : <span class="requis"></span></label> 
+        <input type ="text" name="prenome" value="" size="20" maxlength="20"/><br/>
            </fieldset>
         <br/>
          <input type="hidden" name ="action" value="affecterJ">

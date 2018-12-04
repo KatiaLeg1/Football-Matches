@@ -85,4 +85,6 @@ public class EquipesFacade extends AbstractFacade<Equipe> implements EquipesFaca
             return null ;
         }    }
             
+    
+    
 }

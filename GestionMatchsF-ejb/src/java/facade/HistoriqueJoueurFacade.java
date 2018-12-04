@@ -37,10 +37,9 @@ public class HistoriqueJoueurFacade extends AbstractFacade<HistoriqueJoueur> imp
     
 
     @Override
-    public void creerHJoueur(Date dateDebutHJ, Date dateFinHJ, Joueur joueur, Equipe equipe) {
+    public void creerHJoueur(Date dateDebutHJ, Joueur joueur, Equipe equipe) {
        HistoriqueJoueur hj = new  HistoriqueJoueur();
        hj.setDateDebutEq(dateDebutHJ);
-       hj.setDateFinEq(dateFinHJ);
        hj.setJoueur(joueur);
        hj.setEquipeJoueur(equipe);
        em.persist(hj);
