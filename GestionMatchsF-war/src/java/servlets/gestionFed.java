@@ -6,6 +6,7 @@
 package servlets;
 
 import entites.Arbitre;
+import entites.Entraineur;
 import entites.Equipe;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -160,7 +161,26 @@ public class gestionFed extends HttpServlet {
         }
         request.setAttribute("message", message);   
     }    
-    
+        protected void Affecter(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException           
+    {
+        String eq = request.getParameter("equipe");
+        String t = request.getParameter("dateDebut");
+        String ide = request.getParameter("ent");
+        String message = "";
+        
+        if (ide.isEmpty() || eq.isEmpty() || t.isEmpty() )
+        {
+            message = "Erreur, vous n'avez pas rempli tous les champs" + "<br><a href=\"CreerA.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'un arbitre";
+        }
+        else {
+            int id = Integer.valueOf(ide);
+            Date date = Date.valueOf(t); 
+            gestionFederation.AffecterHisoEntr(date, id, eq);
+            message = "entraineur affecté";
+        }
+        request.setAttribute("message", message);  
+    }    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -213,7 +233,6 @@ public class gestionFed extends HttpServlet {
             Collection <Arbitre> listea = gestionFederation.LesArbitres();
             request.setAttribute("listeEquipes", listee);
             request.setAttribute("listeEquipess", listees);
-
             request.setAttribute("listeArbitres", listea);
             jspClient="/CreerMatch.jsp";
         }
@@ -234,6 +253,19 @@ public class gestionFed extends HttpServlet {
         {
             jspClient = "/MenuFederation.jsp";
             ModifierMa(request,response);
+        }
+        else if (act.equals("AffecterE"))
+        {
+            Collection <Equipe> listee = gestionFederation.LesEquipes();
+            Collection <Entraineur> listeent = gestionFederation.TousLesEntraineurs();
+            request.setAttribute("listeEquipes", listee);
+            request.setAttribute("listeEquipent", listeent);
+            jspClient="/AffecterEntraineur.jsp";
+        }
+        else if (act.equals("AffEnt"))
+        {
+            jspClient = "/MenuFederation.jsp";
+            Affecter(request,response);
         }
 
         

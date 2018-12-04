@@ -20,7 +20,6 @@
     <body>
         <h1>Creer un Match</h1>
         <% List<Equipe> lesEqss = listeEquipess;%>
-
         <% List<Equipe> lesEqs = listeEquipes;%>
         <% List<Arbitre> LesArbs = listeArbitres;%>
         <form method ="get" action="gestionFed">  
@@ -47,7 +46,7 @@
                     <%}%>
                 </select> 
                <br>
-               <label for="idA">Arbitre<span class="requis">*</span></label>
+               <label for="idA">Arbitre<span class="requis"></span></label>
                <select name="idA">
                    <% for (Arbitre a : LesArbs){%>
                    <option value="<%=a.getId()%>"><%=a.getNomPersonne()%> <%=a.getPrenomPersonne()%></option>
@@ -58,7 +57,9 @@
                 <input type ="hidden" name="action" value="CreerMa">
         
             <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>               
+            <input type="reset" value="Remettre à 0"/>     <br>
+                        <a href ="MenuFederation.jsp"> Retour Menu </a>
+
         </form>
     </body>
 </html>

@@ -9,9 +9,11 @@ import entites.Entraineur;
 import entites.Equipe;
 import entites.HistoriqueEntraineur;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -34,13 +36,51 @@ public class HistoriqueEntraineurFacade extends AbstractFacade<HistoriqueEntrain
 
     @Override
     public void CreerHE(Date dateDebutHE, Equipe equipe, Entraineur entraineur) {
-       HistoriqueEntraineur he = new  HistoriqueEntraineur();
-       Date dateFinHE = null;
-       he.setDateDebutEnt(dateDebutHE);
-       he.setDateFinEnt(dateFinHE);
-       he.setEntraineur(entraineur);
-       he.setEquipeEntraineur(equipe);
-       em.persist(he);
+        HistoriqueEntraineur he = new HistoriqueEntraineur();
+        he.setDateDebutEnt(dateDebutHE);
+        he.setEntraineur(entraineur);
+        he.setEquipeEntraineur(equipe);
+        em.persist(he);
+    }
+
+    @Override
+    public List<HistoriqueEntraineur> ListeHistoEqEntraineur(Entraineur ent) {
+        List<HistoriqueEntraineur> he;
+        String text = "SELECT he FROM HistoriqueEntraineur AS he where he.entraineur=:ent";
+        Query req = getEntityManager().createQuery(text);
+        he = req.getResultList();
+        return he;
+    }
+
+    @Override
+    public Equipe EqActuelleEnt(Entraineur entraineur) {
+        Equipe e ;
+        String text = "SELECT he FROM HistoriqueEntraineur AS he where he.entraineur=:entraineur and he.Datefin is null";
+        Query requete = em.createQuery(text);
+        requete.setParameter("entraineur", entraineur); 
+        List<HistoriqueEntraineur> liste =  requete.getResultList();
+        if (!liste.isEmpty())
+            return e = liste.get(0).getEquipeEntraineur();
+        else return null;    }
+
+    @Override
+    public void ModifHistoEnt(HistoriqueEntraineur historiqueE, Date datefin) {
+        historiqueE.setDateFinEnt(datefin);
+        em.merge(historiqueE);
+    }
+
+    @Override
+    public HistoriqueEntraineur HistoActuel(Entraineur entraineur) {
+        HistoriqueEntraineur he ;
+        String text = "SELECT he FROM HistoriqueEntraineur AS he where he.entraineur=:entraineur and he.Datefin=:''{0}'";
+        Query requete = em.createQuery(text);
+        requete.setParameter("entraineur", entraineur); 
+        List<HistoriqueEntraineur> liste =  requete.getResultList();
+        if (!liste.isEmpty())
+            return he = liste.get(0);
+        else return null;      
     }
     
-}
+    
+    
+    }
