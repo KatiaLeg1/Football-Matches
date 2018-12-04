@@ -7,6 +7,7 @@ package servlets;
 
 import entites.Arbitre;
 import entites.Equipe;
+import entites.Joueur;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -194,6 +195,8 @@ public class gestionFed extends HttpServlet {
             request.setAttribute("listeArbitres", listea);
             jspClient="/CreerMatch.jsp";
         }
+       
+        
         
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
@@ -211,6 +214,9 @@ public class gestionFed extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

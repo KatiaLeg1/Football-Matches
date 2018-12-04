@@ -7,6 +7,7 @@ package session;
 
 import entites.Arbitre;
 import entites.Equipe;
+import entites.Joueur;
 import facade.ArbitreFacadeLocal;
 import facade.EntraineurFacadeLocal;
 import facade.EquipesFacadeLocal;
@@ -95,5 +96,8 @@ public class gestionFederation implements gestionFederationLocal {
     public Collection<Arbitre> LesArbitres() {
         return arbitreFacade.TouslesArbitres();
     }
+    
+    
+    
     
 }
