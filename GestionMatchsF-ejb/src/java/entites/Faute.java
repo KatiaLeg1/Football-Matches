@@ -61,7 +61,7 @@ public class Faute implements Serializable {
     }    
     
     @ManyToOne
-    private Joueur joueur;
+    private Joueur joueurF;
 
     /**
      * Get the value of joueur
@@ -69,7 +69,7 @@ public class Faute implements Serializable {
      * @return the value of joueur
      */
     public Joueur getJoueur() {
-        return joueur;
+        return joueurF;
     }
 
     /**
@@ -78,7 +78,7 @@ public class Faute implements Serializable {
      * @param joueur new value of joueur
      */
     public void setJoueur(Joueur joueur) {
-        this.joueur = joueur;
+        this.joueurF = joueur;
     }
 
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -124,14 +124,14 @@ public class Faute implements Serializable {
     }
     
     @ManyToOne
-    private Match match;
+    private Matchs match;
 
     /**
      * Get the value of match
      *
      * @return the value of match
      */
-    public Match getMatch() {
+    public Matchs getMatch() {
         return match;
     }
 
@@ -140,7 +140,7 @@ public class Faute implements Serializable {
      *
      * @param match new value of match
      */
-    public void setMatch(Match match) {
+    public void setMatch(Matchs match) {
         this.match = match;
     }
     

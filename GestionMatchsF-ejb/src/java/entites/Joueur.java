@@ -26,7 +26,7 @@ public class Joueur extends SuperPersonne implements Serializable {
     @OneToMany(mappedBy = "joueur")
     private List<HistoriqueJoueur> historiqueJoueurs;
 
-    @OneToMany(mappedBy = "joueur")
+    @OneToMany(mappedBy = "joueurF")
     private List<Faute> fautes;
 
     public List<HistoriqueJoueur> getHistoriqueJoueurs() {
@@ -46,26 +46,26 @@ public class Joueur extends SuperPersonne implements Serializable {
     }
 
     @ManyToMany(mappedBy = "composition2")
-    private List<Match> matchsJoueur2;
+    private List<Matchs> matchsJoueur2;
 
-    public List<Match> getMatchsJoueur2() {
+    public List<Matchs> getMatchsJoueur2() {
         return matchsJoueur2;
     }
 
-    public void setMatchsJoueur2(List<Match> matchsJoueur2) {
+    public void setMatchsJoueur2(List<Matchs> matchsJoueur2) {
         this.matchsJoueur2 = matchsJoueur2;
     }
 
-    public List<Match> getMatchsJoueur1() {
+    public List<Matchs> getMatchsJoueur1() {
         return matchsJoueur1;
     }
 
-    public void setMatchsJoueur1(List<Match> matchsJoueur1) {
+    public void setMatchsJoueur1(List<Matchs> matchsJoueur1) {
         this.matchsJoueur1 = matchsJoueur1;
     }
 
     @ManyToMany(mappedBy = "Composition1")
-    private List<Match> matchsJoueur1;
+    private List<Matchs> matchsJoueur1;
 
     private static final long serialVersionUID = 1L;
     @Id

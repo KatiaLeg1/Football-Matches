@@ -22,13 +22,13 @@ public class Arbitre extends Personne implements Serializable {
 
 
     @OneToMany(mappedBy = "arbitre")
-    private List<Match> matchsArbitre;
+    private List<Matchs> matchsArbitre;
 
-    public List<Match> getMatchsArbitre() {
+    public List<Matchs> getMatchsArbitre() {
         return matchsArbitre;
     }
 
-    public void setMatchsArbitre(List<Match> matchsArbitre) {
+    public void setMatchsArbitre(List<Matchs> matchsArbitre) {
         this.matchsArbitre = matchsArbitre;
     }
 

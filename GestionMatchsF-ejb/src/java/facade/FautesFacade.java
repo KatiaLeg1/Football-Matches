@@ -8,7 +8,7 @@ package facade;
 import entites.Arbitre;
 import entites.Faute;
 import entites.Joueur;
-import entites.Match;
+import entites.Matchs;
 import entites.carton;
 import java.util.Date;
 import java.util.List;
@@ -37,7 +37,7 @@ public class FautesFacade extends AbstractFacade<Faute> implements FautesFacadeL
     }
 
     @Override
-    public void CreerFaute(carton type, Joueur joueur,  Match match) {
+    public void CreerFaute(carton type, Joueur joueur,  Matchs match) {
         Faute f = new Faute();
         f.setTypeFaute(type);
         f.setJoueur(joueur);

@@ -23,7 +23,7 @@ import javax.persistence.Temporal;
  * @author katia
  */
 @Entity
-public class Match implements Serializable {
+public class Matchs implements Serializable {
 
     @OneToMany(mappedBy = "match")
     private List<Faute> fautes;
@@ -59,10 +59,10 @@ public class Match implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Match)) {
+        if (!(object instanceof Matchs)) {
             return false;
         }
-        Match other = (Match) object;
+        Matchs other = (Matchs) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

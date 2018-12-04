@@ -6,7 +6,7 @@
 package facade;
 
 import entites.Arbitre;
-import entites.Match;
+import entites.Matchs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -37,13 +37,11 @@ public class ArbitreFacade extends AbstractFacade<Arbitre> implements ArbitreFac
 
     @Override
     public void CreerArbitre(String nom, String prenom, String login, String mdp) {
-        List matchsArbitreListe = new ArrayList<Match>();
         Arbitre a = new Arbitre();
         a.setNomPersonne(nom);
         a.setPrenomPersonne(prenom);
         a.setLogin(login);
         a.setMdp(mdp);
-        a.setMatchsArbitre(matchsArbitreListe);
         em.persist(a);
     }
 
@@ -69,6 +67,20 @@ public class ArbitreFacade extends AbstractFacade<Arbitre> implements ArbitreFac
             return null ;
         }        
     }
+
+    @Override
+    public Arbitre rechercherArbitreId(int ida) {
+       String req = "SELECT a from Arbitre as a where a.id=:ida ";      
+        Query requete = em.createQuery(req);
+        requete.setParameter("ida", ida);
+        Arbitre a = (Arbitre) requete.getSingleResult();
+        if (!(a==null)) {
+                return a;
+        } else {
+            return null ;
+        }        
+    }
+    
 
    
     }

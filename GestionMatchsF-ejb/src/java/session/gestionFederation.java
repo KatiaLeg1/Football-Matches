@@ -7,6 +7,7 @@ package session;
 
 import entites.Arbitre;
 import entites.Equipe;
+import entites.Matchs;
 import facade.ArbitreFacadeLocal;
 import facade.EntraineurFacadeLocal;
 import facade.EquipesFacadeLocal;
@@ -69,21 +70,24 @@ public class gestionFederation implements gestionFederationLocal {
     }
 
     @Override
-    public void CreerMAtch(Date dateMatch, String heure, String nomequipeUn, String nomequipeDeux, String nomarbitre,String prenomarbitre) {
+    public void CreerMAtch(Date dateMatch, String heure, String nomequipeUn, String nomequipeDeux, int ida) {
        
         Equipe equipeUn = equipesFacade.RechercherEquipe(nomequipeUn);
         Equipe equipeDeux = equipesFacade.RechercherEquipe(nomequipeDeux);
-        Arbitre arbitre = arbitreFacade.RechercherArbitre(nomarbitre, prenomarbitre);
+        Arbitre arbitre = arbitreFacade.rechercherArbitreId(ida);
+        
+        System.out.println("eq1" + equipeUn);
+        System.out.println("eq2" + equipeDeux);
+        System.out.println("arb" + arbitre);
+        
         
         boolean a = matchFacade.ArbitreLibre(arbitre, dateMatch);
         boolean b = matchFacade.EquipeLibre(equipeUn, dateMatch);
         boolean c = matchFacade.EquipeLibre(equipeDeux, dateMatch);
-        if (a==true)
+        if (a==true || b==true|| c==true)
         {
-            if(b==true|| c==true)
             matchFacade.CreerMatch(dateMatch, heure, equipeUn, equipeDeux, arbitre);
         }
-        
     }
 
     @Override
@@ -94,6 +98,15 @@ public class gestionFederation implements gestionFederationLocal {
     @Override
     public Collection<Arbitre> LesArbitres() {
         return arbitreFacade.TouslesArbitres();
+    }
+
+    @Override
+    public void ModifierMatch(String nomEq1, String nomEq2, Date dateMatch, Date dateM1, String heure) {
+        Equipe equipeUn = equipesFacade.RechercherEquipe(nomEq1);
+        Equipe equipeDeux = equipesFacade.RechercherEquipe(nomEq2);
+        
+        Matchs m = matchFacade.RechercherMatch(equipeUn, equipeDeux, dateMatch);
+        matchFacade.ModifierMatch(m, dateM1, heure);
     }
     
 }

@@ -61,12 +61,17 @@ public class gestionFed extends HttpServlet {
         String loginE = request.getParameter("loginEntraineur");
         String mdpE = request.getParameter("mdpEntraineur");
         
+        System.out.println("nom entraineur"+ nomE +prenomE+ loginE + mdpE);
+
+        
         String message = "";
         if (nomE.trim().isEmpty()||prenomE.trim().isEmpty()||loginE.trim().isEmpty()||mdpE.trim().isEmpty())
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour creer un Entraineur";
         }
         else {
+                    System.out.println("nom 2"+ nomE +prenomE+ loginE + mdpE);
+
             gestionFederation.CreerEntraineur(nomE, prenomE, loginE, mdpE);
             message = "Entraineur créé";          
         }
@@ -113,39 +118,49 @@ public class gestionFed extends HttpServlet {
         request.setAttribute("message", message);
         
     }
-    protected void creerM(HttpServletRequest request, HttpServletResponse response)
+    protected void CreerMa(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException           
     {
-        //String h = request.getParameter(heure);
-        String E1 = request.getParameter("nomE1");
+        String h = request.getParameter("heure");
+        String E1 = request.getParameter("nomEquUn");
         String idA = request.getParameter("idA");
-        String E2 = request.getParameter("nomE2");
-        String date = request.getParameter("date");
-        Date d = Date.valueOf(date);
-        Date today = (Date) new java.util.Date();
-//        String heure = request.getParameter("heure");
-       
+        String E2 = request.getParameter("nomEquDeux");
+        String t = request.getParameter("dateMatch");
         String message = "";
-        if (E1.trim().isEmpty() || E2.isEmpty() || date.isEmpty() || idA.isEmpty())
+        if (E1.trim().isEmpty() || E2.isEmpty() || t.isEmpty() || idA.isEmpty())
         {
-           
             message = "Erreur, vous n'avez pas rempli tous les champs" + "<br><a href=\"CreerA.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'un arbitre";
         }
-        else if (d.before(today)){
-            message = "La date n'est pas supérieure à aujourd'hui";
-        }
         else {
-             long id = Long.valueOf(idA);
-          
-     
-            //gestionFederation.CreerArbitre(date, h, E2, date, idA);
+            int id = Integer.valueOf(idA);
+            Date date = Date.valueOf(t); 
+            gestionFederation.CreerMAtch(date, h, E1, E2, id);            
             message = "Match créé avec succès !";          
         }
-        request.setAttribute("message", message);
-        
-    
-        
+        request.setAttribute("message", message);   
     }
+    protected void ModifierMa(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException           
+    {
+        String E1 = request.getParameter("nomEquUn");
+        String E2 = request.getParameter("nomEquDeux");
+        String h = request.getParameter("heure");
+        String t = request.getParameter("dateMatch");
+        String t1 = request.getParameter("dateM1");
+        String message = "";
+        if (E1.trim().isEmpty() || E2.isEmpty() || t.isEmpty() )
+        {
+            message = "Erreur, vous n'avez pas rempli tous les champs" + "<br><a href=\"CreerA.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'un arbitre";
+        }
+        else {
+            Date date = Date.valueOf(t); 
+            Date date1 = Date.valueOf(t1);
+            gestionFederation.ModifierMatch(E1, E2, date, date1, h);
+            message = "Match modifié avec succès !";          
+        }
+        request.setAttribute("message", message);   
+    }    
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -186,14 +201,41 @@ public class gestionFed extends HttpServlet {
             jspClient = "/MenuFederation.jsp";
             creerJ(request,response);
         }
+        else if (act.equals("CreerArbitre") ) /* auth de fédé*/
+        {
+            jspClient = "/MenuFederation.jsp";
+            creerA(request,response);
+        }
         else if (act.equals("CreerM"))
         {
             Collection <Equipe> listee = gestionFederation.LesEquipes();
+            Collection <Equipe> listees = gestionFederation.LesEquipes();
             Collection <Arbitre> listea = gestionFederation.LesArbitres();
             request.setAttribute("listeEquipes", listee);
+            request.setAttribute("listeEquipess", listees);
+
             request.setAttribute("listeArbitres", listea);
             jspClient="/CreerMatch.jsp";
         }
+        else if (act.equals("CreerMa"))
+        {
+            jspClient = "/MenuFederation.jsp";
+            CreerMa(request,response);
+        }
+        else if (act.equals("ModifierM"))
+        {
+            Collection <Equipe> listee = gestionFederation.LesEquipes();
+            Collection <Equipe> listees = gestionFederation.LesEquipes();
+            request.setAttribute("listeEquipes", listee);
+            request.setAttribute("listeEquipess", listees);
+            jspClient="/ModifierMatch.jsp";
+        }
+        else if (act.equals("ModifierMa"))
+        {
+            jspClient = "/MenuFederation.jsp";
+            ModifierMa(request,response);
+        }
+
         
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
