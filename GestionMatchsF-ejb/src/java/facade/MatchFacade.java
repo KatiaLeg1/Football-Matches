@@ -9,7 +9,7 @@ import entites.Arbitre;
 import entites.Equipe;
 import entites.Faute;
 import entites.Joueur;
-import entites.Match;
+import entites.Matchs;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +23,7 @@ import javax.persistence.Query;
  * @author katia
  */
 @Stateless
-public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLocal {
+public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLocal {
 
     @PersistenceContext(unitName = "GestionMatchsF-ejbPU")
     private EntityManager em;
@@ -34,18 +34,15 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
     }
 
     public MatchFacade() {
-        super(Match.class);
+        super(Matchs.class);
     }
 
     @Override
     public void CreerMatch(Date date, String heure, Equipe equipeUn, Equipe equipeDeux, Arbitre aribtre) {
-        Match m = new Match();
+        Matchs m = new Matchs();
         int butUn = 0;
         int butDeux = 0;
-        List Composition1 = new ArrayList<Joueur>();
-        List Composition2 = new ArrayList<Joueur>();
-        List fautes = new ArrayList<Faute>();
-
+        
         m.setButEquipeUn(butUn);
         m.setButEquipeDeux(butDeux);
         m.setDateMatch(date);
@@ -53,9 +50,7 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
         m.setEquipeUn(equipeUn);
         m.setEquipeDeux(equipeDeux);
         m.setArbitre(aribtre);
-        m.setComposition1(Composition1);
-        m.setComposition2(Composition2);
-        m.setFautes(fautes);
+     
         em.persist(m);
 
     }
@@ -63,31 +58,31 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
     @Override
     public void ModifierPoint(int butEquipeUn, int butEquipeDeux, long idMatch) {
          
-        Match m  = null;
-        String txt = "SELECT m FROM Match AS m WHERE m.idMatch=:idMatch";
+        Matchs m  = null;
+        String txt = "SELECT m FROM Matchs AS m WHERE m.idMatch=:idMatch";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("idMatch", idMatch);
-        m =(Match)req.getSingleResult();
+        m =(Matchs)req.getSingleResult();
         m.setButEquipeUn(butEquipeUn);
         m.setButEquipeDeux(butEquipeDeux);
         em.merge(m);
     }
 
     @Override
-    public List<Match> MatchsArbitre(Arbitre arbitre) {
-        Query requete = em.createQuery("SELECT m from Match as m where m.arbitre=:arb");
+    public List<Matchs> MatchsArbitre(Arbitre arbitre) {
+        Query requete = em.createQuery("SELECT m from Matchs as m where m.arbitre=:arb");
         requete.setParameter("arb", arbitre);     
-        List<Match> liste =  requete.getResultList();
+        List<Matchs> liste =  requete.getResultList();
         return liste;    
     }
 
     @Override
     public boolean ArbitreLibre(Arbitre arbitre, Date dateMatch) {
         boolean b=false;
-        Query requete = em.createQuery("SELECT m from Match as m where m.arbitre=:arb And m.dateMatch=:dateMatch");
+        Query requete = em.createQuery("SELECT m from Matchs as m where m.arbitre=:arb And m.dateMatch=:dateMatch");
         requete.setParameter("arb", arbitre);     
         requete.setParameter("dateMatch", dateMatch);  
-        List<Match> liste =  requete.getResultList();
+        List<Matchs> liste =  requete.getResultList();
         if (liste.isEmpty())
         {
             b = true;
@@ -102,10 +97,11 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
     @Override
     public boolean EquipeLibre(Equipe equipe, Date dateMatch) {
         boolean b=false;
-        Query requete = em.createQuery("SELECT m from Match as m where m.equipe=:equipe And m.dateMatch=:dateMatch");
+        Query requete = em.createQuery("SELECT m from Matchs as m where m.equipeUn=:equipe And m.dateMatch=:dateMatch");
+                //+ "UNION SELECT m from Matchs as m where m.EquipeDeux=:equipe And m.dateMatch=:dateMatch");
         requete.setParameter("equipe", equipe);     
         requete.setParameter("dateMatch", dateMatch);  
-        List<Match> liste =  requete.getResultList();
+        List<Matchs> liste =  requete.getResultList();
         if (liste.isEmpty())
         {
             b = true;
@@ -114,23 +110,24 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
         {
             b=false;                   
         }
-        return b;    
+        return b;  
     }
 
     @Override
-    public void ModifierMatch(Match m, Date date, String heure) {
+    public void ModifierMatch(Matchs m, Date date, String heure) {
         m.setDateMatch(date);
         m.setHeure(heure);
         em.merge(m);
     }
 
     @Override
-    public Match RechercherMatch(Equipe nomEq1, Equipe nomEq2, Date date) {
-        Match m =null;
-        Query req = getEntityManager().createQuery("select m from Match as m where m.equipeUn=:nomEq1 and m.EquipeDeux=:nomEq2 and m.dateMatch=:date");
+    public Matchs RechercherMatch(Equipe nomEq1, Equipe nomEq2, Date date) {
+        Matchs m =null;
+        Query req = em.createQuery("select m from Matchs as m where m.equipeUn=:nomEq1 and m.EquipeDeux=:nomEq2 and m.dateMatch=:date");
         req.setParameter("nomEq1", nomEq1);     
         req.setParameter("nomEq2", nomEq2);     
-        req.setParameter("date", date);     
+        req.setParameter("date", date);   
+        m=(Matchs)req.getSingleResult();
         return m;
     }
 

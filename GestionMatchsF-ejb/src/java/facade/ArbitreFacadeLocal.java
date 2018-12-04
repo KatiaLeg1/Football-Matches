@@ -38,6 +38,8 @@ public interface ArbitreFacadeLocal {
 
     Arbitre RechercherArbitre(String nomPersonne, String prenomPersonne);
 
+    Arbitre rechercherArbitreId(int ida);
+
 
 
     
