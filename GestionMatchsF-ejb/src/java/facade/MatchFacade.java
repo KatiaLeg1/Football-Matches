@@ -116,7 +116,20 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
         }
         return b;    
     }
-
+ @Override
+    public Match MatchEquipedate(Long ident, Date dateMatch) {
+        Match m=null;
+        Query requete = em.createQuery("SELECT m from Match as m where (m.equipeUn.id=:equipe OR m.EquipeDeux.id=:equipe) And m.dateMatch=:dateMatch");
+        requete.setParameter("equipe", ident);     
+        requete.setParameter("dateMatch", dateMatch);  
+        List<Match> liste =  requete.getResultList();
+        if (!liste.isEmpty())
+        {
+           m=liste.get(0);
+        }
+        return m;    
+    }
+    
     @Override
     public void ModifierMatch(Match m, Date date, String heure) {
         m.setDateMatch(date);

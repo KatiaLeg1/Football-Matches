@@ -10,8 +10,10 @@ import entites.Match;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
+import java.sql.Date;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,6 +40,30 @@ public class GestionTous extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    protected void rechercheMatch(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    String ident = request.getParameter( "NomEquipe" );
+         String jdat = request.getParameter("datematch");
+         String message;
+        
+    if (ident.trim().isEmpty() || jdat.trim().isEmpty())
+        {
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires. ";
+                    
+        } else {
+     
+            message = "recherche en cours !";
+
+        Long id = Long.valueOf(ident);
+        Date dm = Date.valueOf(jdat);
+        Match m =gestionTout.AfficherJoueursMatch(id, dm);
+        request.setAttribute( "match", m );
+                }
+        
+        request.setAttribute( "message", message );
+
+}
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -47,22 +73,28 @@ public class GestionTous extends HttpServlet {
                
         String act = request.getParameter("action");
         System.out.println("nom equipe"+ act);
-        if(act==null)
+        if ((act==null) || (act.equals("retour")))
         {
             jspClient = "/MenuTous.jsp";
             request.setAttribute("message", "pas d'infos");
         }
         else if (act.equals("Afficherdateequipe") ) /* auth de fédé*/
         {
-            List<Match> lm = gestionTout.AfficherTousLesMatchs();
+          //  List<Match> lm = gestionTout.AfficherTousLesMatchs();
            Collection<Equipe> le = gestionTout.AfficherToutesLesEquipes();
-            request.setAttribute("listematch", lm);
+         //   request.setAttribute("listematch", lm);
             request.setAttribute("listeequipe", le);
-            jspClient = "/Afficherdatesetequipes.jsp";
-   
-        }
-         
+            jspClient = "/saisirEquipeDate.jsp";
         
+        }else if (act.equals("rechercherdateequip") ) /* auth de fédé*/
+        {
+            rechercheMatch(request, response);
+            jspClient="/AfficherFrais.jsp";
+        }
+        RequestDispatcher Rd;
+
+Rd = getServletContext().getRequestDispatcher(jspClient);
+Rd.forward(request, response);
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");

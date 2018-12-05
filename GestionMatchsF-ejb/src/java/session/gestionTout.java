@@ -51,7 +51,14 @@ public class gestionTout implements gestionToutLocal {
         m = matchFacade.RechercherMatch(nomEq1, nomEq2, date);
         return m;
     }
-
+    
+@Override
+    public Match AfficherJoueursMatch(Long ident, Date date) {
+        Match m = null;
+        m = matchFacade.MatchEquipedate(ident, date);
+        return m;
+    }
+    
     @Override
     public List<Match> AfficherTousLesMatchs() {
         return matchFacade.RechercherTousLesMatchs();

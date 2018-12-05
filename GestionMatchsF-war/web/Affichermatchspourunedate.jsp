@@ -9,6 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:useBean id="listeequipe" scope="request" class = "java.util.List"> </jsp:useBean>
+        <jsp:useBean id="listematch" scope="request" class = "java.util.List"> </jsp:useBean>
         <title>Afficher les matchs à une date donnée</title>
     </head>
     <body>

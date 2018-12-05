@@ -49,4 +49,6 @@ public interface MatchFacadeLocal {
 
     List<Match> RechercherTousLesMatchs();
     
+    Match MatchEquipedate(Long ident, Date dateMatch);
+    
 }

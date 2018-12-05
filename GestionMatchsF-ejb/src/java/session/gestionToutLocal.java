@@ -30,5 +30,5 @@ public interface gestionToutLocal {
 
     Collection<Equipe> AfficherToutesLesEquipes();
     
-            
+      Match AfficherJoueursMatch(Long ident, Date date);      
 }
