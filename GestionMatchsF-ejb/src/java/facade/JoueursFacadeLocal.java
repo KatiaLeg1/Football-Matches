@@ -6,7 +6,10 @@
 package facade;
 
 import entites.Equipe;
+import entites.HistoriqueEntraineur;
+import entites.HistoriqueJoueur;
 import entites.Joueur;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -38,4 +41,11 @@ public interface JoueursFacadeLocal {
     List recupJoueur();    
 
     Joueur RechercherJoueur(String nomPersonne, String prenomPersonne);
+    
+    void affecterJoueur(HistoriqueJoueur histo, Equipe eq, Date dateDebut);
+
+    void transfererJoueur(HistoriqueJoueur histo, Equipe eq, Date dateDebut, Date dateFin);
+
+    Joueur rechercherJoueurId(Long id);
+    List<Joueur> AfficherTousLesJoueurs();
 }

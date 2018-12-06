@@ -8,7 +8,7 @@ package facade;
 import entites.Entraineur;
 import entites.Equipe;
 import entites.Joueur;
-import entites.Match;
+import entites.Matchs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -62,9 +62,9 @@ public class EquipesFacade extends AbstractFacade<Equipe> implements EquipesFaca
     @Override
     public Equipe RechercherEquipe(String nomequipe) {
         Equipe eq;
-        String tx= "SELECT eq from Equipe as eq where e.nomequipe=:nomE";
+        String tx= "SELECT eq from Equipe as eq where eq.nomequipe=:nomequipe";
         Query req = getEntityManager().createQuery(tx);
-        req.setParameter("nomE", nomequipe);       
+        req.setParameter("nomequipe", nomequipe);       
         eq=(Equipe)req.getSingleResult();
         if (!(eq==null)) {
                 return eq;
@@ -72,5 +72,19 @@ public class EquipesFacade extends AbstractFacade<Equipe> implements EquipesFaca
             return null ;
         }    }
     
+     @Override
+    public Equipe RechercherEquipeParEntraineur(String nom) {
+        Equipe eq;
+        String tx= "SELECT eq from Equipe as eq where eq.entraineur=:nom";
+        Query req = getEntityManager().createQuery(tx);
+        req.setParameter("entraineur", nom);       
+        eq=(Equipe)req.getSingleResult();
+        if (!(eq==null)) {
+                return eq;
+        } else {
+            return null ;
+        }    }
             
+    
+    
 }

@@ -6,6 +6,7 @@
 package facade;
 
 import entites.Entraineur;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -33,6 +34,11 @@ public interface EntraineurFacadeLocal {
     void CreerEntraineur(String nomE, String prenomE, String login, String mdp);
 
     Entraineur RechercherEntraineur(String nomPersonne, String prenomPersonne);
+
+    Collection<Entraineur> TousLesEnt();
+   
+    Entraineur RechercherEntraineurId(int idE);
+
 
     
     

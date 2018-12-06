@@ -18,14 +18,15 @@
         out.println(attribut);
         %>
         
-        <a href ="CreerEquipe.jsp"> Créer une équipe </a>
-        <a href ="CreerArbitre.jsp"> Créer un Arbitre </a>
-        <a href ="CreerEntraineur.jsp"> Créer un Entraineur </a>
-        <a href ="CreerJoueur.jsp"> Créer un Joueur </a>
-        <a href ="gestionFed?action=CreerMatch.jsp"> Créer un Match </a>
-        <%--  <a href ="AffecterJoueur.jsp"> Affecter un entraineur a une équipe </a>
-        <a href ="ModifierMatch.jsp"> Modifier un Match </a>
-        <a href ="gestionFed?action=AfficherFautesMatch"> Afficher les fautes commises pour un match </a>
+        <a href ="CreerEquipe.jsp"> Créer une équipe </a> </br></br>
+        <a href ="CreerArbitre.jsp"> Créer un Arbitre </a></br></br>
+        <a href ="CreerEntraineur.jsp"> Créer un Entraineur </a></br></br>
+        <a href ="CreerJoueur.jsp"> Créer un Joueur </a></br></br>
+        <a href ="gestionFed?action=CreerM"> Créer un Match </a></br></br>
+        <a href ="gestionFed?action=ModifierM"> Modifier un Match </a></br></br>
+        <a href ="gestionFed?action=AffecterE"> Affecter un entraineur a une équipe </a>
+        
+        <%--<a href ="gestionFed?action=AfficherFautesMatch"> Afficher les fautes commises pour un match </a>
         <a href ="SanctionnerJoueur.jsp"> Sanctionner les joueurs </a>
         <a href ="gestionFed?action=AfficherFauteArbitre.jsp"> Afficher les fautes commises par des joueurs lors des matchs arbitrés par un arbitre </a>
         <a href ="gestionFed?action=AfficherFauteJoueur.jsp"> Afficher les faute d'un joueur </a>      

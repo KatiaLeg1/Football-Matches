@@ -13,11 +13,13 @@
    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listeEquipes" scope="request" class = "java.util.List"> </jsp:useBean>
+        <jsp:useBean id="listeEquipess" scope="request" class = "java.util.List"> </jsp:useBean>
         <jsp:useBean id="listeArbitres" scope="request" class = "java.util.List"> </jsp:useBean> 
         <title>Creer un Match</title>
     </head>
     <body>
         <h1>Creer un Match</h1>
+        <% List<Equipe> lesEqss = listeEquipess;%>
         <% List<Equipe> lesEqs = listeEquipes;%>
         <% List<Arbitre> LesArbs = listeArbitres;%>
         <form method ="get" action="gestionFed">  
@@ -39,12 +41,12 @@
             <br>
                <label for="nomEquDeux">Equipe Deux : <span class="requis"></span></label>
                 <select name="nomEquDeux">
-                    <% for (Equipe e : lesEqs ){%>
+                    <% for (Equipe e : lesEqss ){%>
                     <option value="<%=e.getNomequipe()%>"><%=e.getNomequipe()%> </option>
                     <%}%>
                 </select> 
                <br>
-               <label for="nomA">Equipe 1<span class="requis">*</span></label>
+               <label for="idA">Arbitre<span class="requis"></span></label>
                <select name="idA">
                    <% for (Arbitre a : LesArbs){%>
                    <option value="<%=a.getId()%>"><%=a.getNomPersonne()%> <%=a.getPrenomPersonne()%></option>
@@ -52,10 +54,12 @@
                </select> 
                <br>
             
-                <input type ="hidden" name="action" value="CreerM">
+                <input type ="hidden" name="action" value="CreerMa">
         
             <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>               
+            <input type="reset" value="Remettre à 0"/>     <br>
+                        <a href ="MenuFederation.jsp"> Retour Menu </a>
+
         </form>
     </body>
 </html>

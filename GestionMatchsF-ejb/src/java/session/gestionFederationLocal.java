@@ -6,7 +6,9 @@
 package session;
 
 import entites.Arbitre;
+import entites.Entraineur;
 import entites.Equipe;
+import entites.HistoriqueEntraineur;
 import java.util.Date;
 import javax.ejb.Local;
 import java.util.Collection;
@@ -27,11 +29,17 @@ public interface gestionFederationLocal {
 
     void CreerJoueur(String nom, String prenom);
 
-    void CreerMAtch(Date dateMatch, String heure, String nomequipeUn, String nomequipeDeux, String nomarbitre,String prenomarbitre);
+    void CreerMAtch(Date dateMatch, String heure, String nomequipeUn, String nomequipeDeux,int ida);
 
     Collection<Equipe> LesEquipes();
 
     Collection<Arbitre> LesArbitres();
+
+    void ModifierMatch(String nomEq1, String nomEq2, Date dateMatch,Date dateM1, String heure);
+
+    void AffecterHisoEntr(Date datehisto, int id, String nomEq);
+
+    Collection<Entraineur> TousLesEntraineurs();
 
     
 }

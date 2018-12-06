@@ -46,27 +46,28 @@ public class Equipe implements Serializable {
     
 
     @OneToMany(mappedBy = "EquipeDeux")
-    private List<Match> matchs2;
+    private List<Matchs> matchs2;
 
-    public List<Match> getMatchs2() {
+    public List<Matchs> getMatchs2() {
         return matchs2;
     }
 
-    public void setMatchs2(List<Match> matchs2) {
+    public void setMatchs2(List<Matchs> matchs2) {
         this.matchs2 = matchs2;
     }
 
-    public List<Match> getMatchs1() {
+
+
+    @OneToMany(mappedBy = "equipeUn")
+    private List<Matchs> matchs1;
+    
+    public List<Matchs> getMatchs1() {
         return matchs1;
     }
 
-    public void setMatchs1(List<Match> matchs1) {
+    public void setMatchs1(List<Matchs> matchs1) {
         this.matchs1 = matchs1;
     }
-
-    @OneToMany(mappedBy = "equipeUn")
-    private List<Match> matchs1;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

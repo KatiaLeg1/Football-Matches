@@ -12,6 +12,7 @@ import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -36,15 +37,28 @@ public class HistoriqueJoueurFacade extends AbstractFacade<HistoriqueJoueur> imp
     
 
     @Override
-    public void creerHJoueur(Date dateDebutHJ, Date dateFinHJ, Joueur joueur, Equipe equipe) {
+    public void creerHJoueur(Date dateDebutHJ, Joueur joueur, Equipe equipe) {
        HistoriqueJoueur hj = new  HistoriqueJoueur();
        hj.setDateDebutEq(dateDebutHJ);
-       hj.setDateFinEq(dateFinHJ);
        hj.setJoueur(joueur);
        hj.setEquipeJoueur(equipe);
        em.persist(hj);
     }
     
+    @Override
+    public HistoriqueJoueur rechercherHistorique(Joueur joueur) {
+        HistoriqueJoueur h = null;
+        String txt = "SELECT h FROM HistoriqueJoueur AS h WHERE h.joueur:=joueur ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("joueur", joueur);
+        h = (HistoriqueJoueur)req.getSingleResult();
+        if (!(h==null)) 
+        {
+                return h;
+        } else {
+            return null ;
+        }    
+}
     
     
 }

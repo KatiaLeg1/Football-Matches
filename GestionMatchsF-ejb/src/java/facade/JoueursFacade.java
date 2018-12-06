@@ -7,6 +7,8 @@ package facade;
 
 import entites.Equipe;
 import entites.Faute;
+import entites.HistoriqueEntraineur;
+import entites.HistoriqueJoueur;
 import entites.Joueur;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -42,12 +44,8 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
     public void CreerJoueur(String nomJ, String prenomJ) {
         Joueur j = new Joueur();
         Date dateInterdiction =null;
-        List historiqueJoueurs = new ArrayList<Joueur>();
-        List fautesListe = new ArrayList<Faute>();        
         j.setNomPersonne(nomJ);
         j.setPrenomPersonne(prenomJ);
-        j.setHistoriqueJoueurs(historiqueJoueurs);
-        j.setFautes(fautesListe);
         j.setDateInterdiction(dateInterdiction);
         em.persist(j);
 
@@ -93,12 +91,44 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
      
     
 }
-    
+    @Override
+    public void affecterJoueur(HistoriqueJoueur histo, Equipe eq, Date dateDebut) {
+        histo.setEquipeJoueur(eq);
+        histo.setDateDebutEq(dateDebut);
+        em.merge(histo);
+    }
 
+    @Override
+    public void transfererJoueur(HistoriqueJoueur histo, Equipe eq, Date dateDebut, Date dateFin) {
+        histo.setDateFinEq(dateFin);
+        em.merge(histo);
+        
+        affecterJoueur(histo, eq, dateDebut);
+    }
 
-    
-    
-    
-    
-    
+    @Override
+    public Joueur rechercherJoueurId(Long id) {
+        Joueur j = null;
+        String txt = "SELECT j FROM Joueur AS j WHERE j.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("id", id);
+        j=(Joueur)req.getSingleResult();
+        if (!(j==null)) 
+        {
+                return j;
+        }
+        
+        else {
+            return null;
+        }
+    }
+    @Override
+    public List<Joueur> AfficherTousLesJoueurs() {
+        List<Joueur> j;
+        String text ="SELECT j FROM Joueurs AS j";
+        Query req = getEntityManager().createQuery(text);
+        j = req.getResultList();
+        return j;
+    }
+
 }
