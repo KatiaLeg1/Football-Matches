@@ -6,7 +6,9 @@
 package session;
 
 import entites.Arbitre;
+import entites.Entraineur;
 import entites.Equipe;
+import entites.HistoriqueEntraineur;
 import entites.Matchs;
 import facade.ArbitreFacadeLocal;
 import facade.EntraineurFacadeLocal;
@@ -107,6 +109,29 @@ public class gestionFederation implements gestionFederationLocal {
         
         Matchs m = matchFacade.RechercherMatch(equipeUn, equipeDeux, dateMatch);
         matchFacade.ModifierMatch(m, dateM1, heure);
+    }
+
+    @Override
+    public void AffecterHisoEntr(Date datehisto, int id, String nomEq) {
+        Entraineur e = entraineurFacade.RechercherEntraineurId(id);
+        
+        HistoriqueEntraineur he = historiqueEntraineurFacade.HistoActuel(e);
+        if (he != null)
+        {
+            historiqueEntraineurFacade.ModifHistoEnt(he, datehisto);
+            Equipe eq = equipesFacade.RechercherEquipe(nomEq);
+            historiqueEntraineurFacade.CreerHE(datehisto, eq, e);
+        }
+        else
+        {
+            Equipe eq = equipesFacade.RechercherEquipe(nomEq);
+            historiqueEntraineurFacade.CreerHE(datehisto, eq, e);
+        }    
+    }
+
+    @Override
+    public Collection<Entraineur> TousLesEntraineurs() {
+        return entraineurFacade.TousLesEnt();
     }
     
 }

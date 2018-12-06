@@ -8,6 +8,7 @@ package facade;
 import entites.Entraineur;
 import entites.Equipe;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -59,5 +60,26 @@ public class EntraineurFacade extends AbstractFacade<Entraineur> implements Entr
             return null ;
         }
     }
-    
+
+    @Override
+        public Collection<Entraineur> TousLesEnt() {
+        List<Entraineur> e;
+        String text ="SELECT e FROM Entraineur AS e";
+        Query req = getEntityManager().createQuery(text);
+        e = req.getResultList();
+        return e;
+    }
+    @Override
+    public Entraineur RechercherEntraineurId(int idE) {
+        Entraineur e;
+        String tx= "SELECT e from Entraineur as e where e.id=:idE ";
+        Query req = getEntityManager().createQuery(tx);
+        req.setParameter("idE", idE);
+        e=(Entraineur)req.getSingleResult();
+        if (!(e==null)) {
+                return e;
+        } else {
+            return null ;
+        }
+    }
 }
