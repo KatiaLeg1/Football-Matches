@@ -46,8 +46,12 @@ public interface MatchFacadeLocal {
     void ModifierMatch(Matchs m, Date date, String heure);
 
     Matchs RechercherMatch(Equipe nomEq1, Equipe nomEq2, Date date);
+    
     Matchs MatchEquipedate(Long ident, Date dateMatch);
+    
     List<Matchs> RechercherTousLesMatchs();
+
+    Matchs rechercherMatchID(int id);
     
     
 }

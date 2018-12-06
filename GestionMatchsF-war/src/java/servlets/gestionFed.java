@@ -247,7 +247,7 @@ public class gestionFed extends HttpServlet {
             Collection <Equipe> listees = gestionFederation.LesEquipes();
             request.setAttribute("listeEquipes", listee);
             request.setAttribute("listeEquipess", listees);
-            jspClient="/ModifierMatch.jsp";
+            jspClient="/ModifierMatchDate.jsp";
         }
         else if (act.equals("ModifierMa"))
         {

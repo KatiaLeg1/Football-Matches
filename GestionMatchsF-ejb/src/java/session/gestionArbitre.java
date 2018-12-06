@@ -42,11 +42,21 @@ public class gestionArbitre implements gestionArbitreLocal {
     
 
     @Override
-    public void CreerFauteJoueur(carton type, String nomPersonne, String prenomPersonne, String nomEq1, String nomEq2, Date date) {
-    Joueur j = joueursFacade.RechercherJoueur(nomPersonne, prenomPersonne);
-    Equipe e1 = equipesFacade.RechercherEquipe(nomEq1);
-    Equipe e2 = equipesFacade.RechercherEquipe(nomEq2);
-    Matchs m = matchFacade.RechercherMatch(e1,e2,date);
+    public void CreerFauteJoueur(carton type, long id, int idM) {
+    Joueur j = joueursFacade.rechercherJoueurId(id);
+     
+    //Equipe e1 = equipesFacade.RechercherEquipe(nomEq1);
+    //Equipe e2 = equipesFacade.RechercherEquipe(nomEq2);
+    //Matchs m = matchFacade.RechercherMatch(e1,e2,date); --> celle la sert pour moi car elle est demandé précisemment
+    // Tu te compliques, il faut créer un fonction "rechercherMatch id", dans ton JSP comme ça tu as 1 liste déroulante ou tu récupère ID,
+    //et tu peux afficher par contre "Equipe 1 VS Equipe 2"
+    // Pareil pour joueur, quand tu fais une liste déroulante il est plus facile d'afficher nom / Prénom pour séléctionner mais de récuperer que l'id
+    //CreerFauteJoueur(carton type, String nomPersonne, String prenomPersonne, String nomEq1, String nomEq2, Date date)
+    // a changé en (voir dessus)
+    
+    // je t'ai créé rechercherMatchID dans matchFacade --> à voir
+    
+    Matchs m= matchFacade.rechercherMatchID(idM) ;
     fautesFacade.CreerFaute(type, j, m);
     
     
@@ -60,6 +70,7 @@ public class gestionArbitre implements gestionArbitreLocal {
     
     if (a!=null)
     {
+        // Pareil Ici --> Match selon ID
         Equipe e1 = equipesFacade.RechercherEquipe(nomEq1);
         Equipe e2 = equipesFacade.RechercherEquipe(nomEq2);
         Matchs m = matchFacade.RechercherMatch(e1, e2, date);

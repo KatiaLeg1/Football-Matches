@@ -22,7 +22,7 @@ public interface gestionArbitreLocal {
 
    
 
-    void CreerFauteJoueur(carton type, String nomPersonne, String prenomPersonne, String nomEq1, String nomEq2, Date date);
+    void CreerFauteJoueur(carton type, long id, int idM);
 
     boolean ModifierMatch(Date date, int butEqUn, int butEqDeux, String nomEq1, String nomEq2);
 

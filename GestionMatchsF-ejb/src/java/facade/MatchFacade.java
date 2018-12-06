@@ -133,7 +133,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
      public Matchs MatchEquipedate(Long ident, Date dateMatch) {
         Matchs m=null;
-        Query requete = em.createQuery("SELECT m from Match as m where (m.equipeUn.id=:equipe OR m.EquipeDeux.id=:equipe) And m.dateMatch=:dateMatch");
+        Query requete = em.createQuery("SELECT m from Matchs as m where (m.equipeUn.id=:equipe OR m.EquipeDeux.id=:equipe) And m.dateMatch=:dateMatch");
         requete.setParameter("equipe", ident);     
         requete.setParameter("dateMatch", dateMatch);  
         List<Matchs> liste =  requete.getResultList();
@@ -152,7 +152,16 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
         return m;
     }
 
-    
+    @Override
+    public Matchs rechercherMatchID(int id) {
+        // pout toi sophie
+        Matchs m ;
+        Query req = em.createQuery("select m from Matchs as m where m.id=:id");
+        req.setParameter("id", id);     
+        m=(Matchs)req.getSingleResult();
+        return m;
+
+    }
 
     
     }

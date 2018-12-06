@@ -10,14 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<<<<<<< sophie-2
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-=======
+
    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listeEquipes" scope="request" class = "java.util.List"> </jsp:useBean>
@@ -62,6 +55,5 @@
             <input type="submit" value="Valider"/>
             <input type="reset" value="Remettre à 0"/>               
         </form>
->>>>>>> master
     </body>
 </html>

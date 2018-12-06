@@ -17,7 +17,12 @@
         out.println(attribut);
         %>
         
-        <a href ="CreerFauteJoueur.jsp"> Créer des fautes Joueur </a>
-        <a href ="ModifierMatch.jsp"> Modifier résultats d'un match </a>
+        <%-- tu dois envoyer en valeur action que tu vas déclaré dans t  servlet<a href ="CreerFauteJoueur.jsp"> Créer des fautes Joueur </a>
+         --%>   <a href ="ModifierMatch.jsp"> Modifier résultats d'un match </a> 
+        <a href ="gestionArb?action=CreerF">  Créer des fautes Joueur </a></br></br>
+        <%-- direction Servlet gestionArb --%>
+        
+
+        
     </body>
 </html>

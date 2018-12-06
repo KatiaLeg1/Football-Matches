@@ -37,26 +37,45 @@ public class gestionArb extends HttpServlet {
     protected void creerFaute(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException           
     {
+        // tu récupérais les paramètre E1 / E2 ils ne sont pas dans le jsp
         //String h = request.getParameter(heure);
-        String E1 = request.getParameter("nomE1");
-        String E2 = request.getParameter("nomE2");
-        String cart = request.getParameter("carton");
-        String pj = request.getParameter("prenomj");
-        String nj = request.getParameter("nomj");
-        String date = request.getParameter("date");
-        Date d = Date.valueOf(date);
+        // String E1 = request.getParameter("nomE1");
+        //String E2 = request.getParameter("nomE2");
+        String cart = request.getParameter("type");
+        String j = request.getParameter("nomPersonne"); // 
+        String m = request.getParameter("Match");
+        
+//        Date d = Date.valueOf(date); attention quand tu met une conversion c'est après le if
  
+       System.out.println("carton" + cart);
+              System.out.println("joueur" + j);
+       System.out.println("m" + m);
+
        
-        String message = "";
-        if (E1.trim().isEmpty() || E2.isEmpty() || cart.isEmpty() || pj.isEmpty() || nj.isEmpty() || date.isEmpty())
-        {   
+        String message ;
+        if (cart.trim().isEmpty() || j.isEmpty() || m.isEmpty() )
+        {    // CreerJoueur --> a changer
         message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerJoueur.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un joueur.";
         }
         else {
-            carton car = carton.valueOf(cart);
-            gestionArbitre.CreerFauteJoueur(car, pj, nj, E1, E2, d);
+         //   carton car = carton.valueOf(cart); --> on ne transforme pas les enums (suivant le cours)
+            //Conversion des 2 IDS
+            long jo = Long.valueOf(j);
+            int ma = Integer.valueOf(m);
+            System.out.println("jo" + jo);
+            System.out.println("ma" + ma);
+            //il faut un If ici
+            if (cart.equals("Rouge"))
+            {
+                gestionArbitre.CreerFauteJoueur(carton.Rouge,jo , ma);
+            }
+            else
+            {
+                gestionArbitre.CreerFauteJoueur(carton.Jaune,jo , ma);
+
+            }
             message= "Faute enregistrée avec succès !";
-            
+         // On retourne plus bas dans la servlet   
         }
         request.setAttribute("message", message);
     }
@@ -88,15 +107,22 @@ public class gestionArb extends HttpServlet {
        //     jspClient = "/MenuArbitre.jsp";
 
        // }
-        else if (act.equals("CreerF"))
+        else if (act.equals("CreerF")) // ça c'est la valeur que tu as récuperer de ta JSP dire que tu dois faire qqchose et après tu redirige via JSP client
         {
-            Collection <Equipe> listee = gestionArbitre.LesEquipes();
+            // Collection <Equipe> listee = gestionArbitre.LesEquipes(); plus besoin des equipes
             Collection <Joueur> listej = gestionArbitre.LesJoueurs();
             Collection <Matchs> listem = gestionArbitre.RechercherTousLesMatchs();
-            request.setAttribute("listeEquipes", listee);
+            //request.setAttribute("listeEquipes", listee);
             request.setAttribute("listeJoueurs", listej);
             request.setAttribute("listeMatchs", listem);
             jspClient="/CreerFauteJoueur.jsp";
+            // Direction CreerFauteJoueur.jsp
+        }
+        // On va chercher à récuperer l'action de la servlet et executer la fonction creerFaute
+        else if (act.equals("CreerFauteJoueur"))
+        {
+            jspClient = "/MenuArbitre.jsp";
+            creerFaute(request,response);
         }
         
         RequestDispatcher Rd;
