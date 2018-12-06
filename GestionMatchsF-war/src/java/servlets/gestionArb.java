@@ -8,7 +8,7 @@ package servlets;
 import entites.Arbitre;
 import entites.Equipe;
 import entites.Joueur;
-import entites.Match;
+import entites.Matchs;
 import entites.carton;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -92,7 +92,7 @@ public class gestionArb extends HttpServlet {
         {
             Collection <Equipe> listee = gestionArbitre.LesEquipes();
             Collection <Joueur> listej = gestionArbitre.LesJoueurs();
-            Collection <Match> listem = gestionArbitre.LesMatchs();
+            Collection <Matchs> listem = gestionArbitre.RechercherTousLesMatchs();
             request.setAttribute("listeEquipes", listee);
             request.setAttribute("listeJoueurs", listej);
             request.setAttribute("listeMatchs", listem);

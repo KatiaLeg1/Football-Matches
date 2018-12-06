@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sosop/Documents/NetBeansProjects/java/GestionMatchsF-war/web/CreerFauteJoueur.jsp</file>
-            <file>file:/C:/Users/sosop/Documents/NetBeansProjects/java/GestionMatchsF-war/web/CreerMatch.jsp</file>
-            <file>file:/C:/Users/sosop/Documents/NetBeansProjects/java/GestionMatchsF-war/src/java/servlets/gestionArb.java</file>
-            <file>file:/C:/Users/sosop/Documents/NetBeansProjects/java/GestionMatchsF-war/src/java/servlets/gestionFed.java</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/gestionFootF/GestionMatchsF-war/web/authFederation.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/gestionFootF/GestionMatchsF-war/web/Affichermatchspourunedate.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/gestionFootF/GestionMatchsF-war/web/AfficheCompositionJoueur.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/gestionFootF/GestionMatchsF-war/web/ModifierMatch.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/gestionFootF/GestionMatchsF-war/web/AfficherJoueurpourUnMatch.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/gestionFootF/GestionMatchsF-war/web/MenuTous.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/gestionFootF/GestionMatchsF-war/web/SaisirEquipeDate.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/gestionFootF/GestionMatchsF-war/web/Afficherdatesetequipe.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/gestionFootF/GestionMatchsF-war/src/java/servlets/GestionTous.java</file>
         </group>
     </open-files>
 </project-private>

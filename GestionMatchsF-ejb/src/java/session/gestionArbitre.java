@@ -8,7 +8,7 @@ package session;
 import entites.Arbitre;
 import entites.Equipe;
 import entites.Joueur;
-import entites.Match;
+import entites.Matchs;
 import entites.carton;
 import facade.EquipesFacadeLocal;
 import facade.FautesFacadeLocal;
@@ -46,7 +46,7 @@ public class gestionArbitre implements gestionArbitreLocal {
     Joueur j = joueursFacade.RechercherJoueur(nomPersonne, prenomPersonne);
     Equipe e1 = equipesFacade.RechercherEquipe(nomEq1);
     Equipe e2 = equipesFacade.RechercherEquipe(nomEq2);
-    Match m = matchFacade.RechercherMatch(e1,e2,date);
+    Matchs m = matchFacade.RechercherMatch(e1,e2,date);
     fautesFacade.CreerFaute(type, j, m);
     
     
@@ -62,7 +62,7 @@ public class gestionArbitre implements gestionArbitreLocal {
     {
         Equipe e1 = equipesFacade.RechercherEquipe(nomEq1);
         Equipe e2 = equipesFacade.RechercherEquipe(nomEq2);
-        Match m = matchFacade.RechercherMatch(e1, e2, date);
+        Matchs m = matchFacade.RechercherMatch(e1, e2, date);
         if (m!=null && m.getArbitre().equals(a))
         {
          matchFacade.ModifierPoint(butEqDeux, butEqDeux, butEqUn);
@@ -84,7 +84,7 @@ public class gestionArbitre implements gestionArbitreLocal {
     }
    
     @Override
-    public Collection<Match> LesMatchs() {
-        return joueursFacade.recupJoueur();
+    public Collection<Matchs> RechercherTousLesMatchs() {
+        return matchFacade.RechercherTousLesMatchs();
     }
 }

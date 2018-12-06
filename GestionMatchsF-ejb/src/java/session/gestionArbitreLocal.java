@@ -7,7 +7,7 @@ package session;
 
 import entites.Equipe;
 import entites.Joueur;
-import entites.Match;
+import entites.Matchs;
 import entites.carton;
 import java.util.Collection;
 import java.util.Date;
@@ -30,7 +30,7 @@ public interface gestionArbitreLocal {
     
     Collection<Joueur> LesJoueurs();
     
-    Collection<Match> LesMatchs();
+    Collection<Matchs> RechercherTousLesMatchs();
     
     
 }
