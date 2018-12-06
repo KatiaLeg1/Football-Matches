@@ -47,4 +47,6 @@ public interface MatchFacadeLocal {
 
     Match RechercherMatch(Equipe nomEq1, Equipe nomEq2, Date date);
     
+    List<Match> LesMatchs();
+    
 }

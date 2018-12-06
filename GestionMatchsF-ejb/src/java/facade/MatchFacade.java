@@ -134,6 +134,13 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
         return m;
     }
 
-    
+       @Override
+    public List<Match> LesMatchs() {
+        String req = "SELECT m from Match as m";
+        Query requete = em.createQuery(req);
+        List<Match> liste = requete.getResultList();
+        return liste;
+    }
     
     }
+

@@ -9,6 +9,7 @@ import entites.Equipe;
 import entites.Faute;
 import entites.Joueur;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -87,7 +88,10 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
                 return j;
         } else {
             return null ;
-        }    
+        } 
+        
+     
+    
 }
     
 
