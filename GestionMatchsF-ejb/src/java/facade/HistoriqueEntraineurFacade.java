@@ -82,4 +82,10 @@ public class HistoriqueEntraineurFacade extends AbstractFacade<HistoriqueEntrain
             return he = liste.get(0);
         else return null;      
     }
+
+    @Override
+    public HistoriqueEntraineur rechercherHistorique(Entraineur entraineur) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
     

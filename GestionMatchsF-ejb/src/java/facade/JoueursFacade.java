@@ -43,12 +43,8 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
     public void CreerJoueur(String nomJ, String prenomJ) {
         Joueur j = new Joueur();
         Date dateInterdiction =null;
-        List historiqueJoueurs = new ArrayList<Joueur>();
-        List fautesListe = new ArrayList<Faute>();        
         j.setNomPersonne(nomJ);
         j.setPrenomPersonne(prenomJ);
-        j.setHistoriqueJoueurs(historiqueJoueurs);
-        j.setFautes(fautesListe);
         j.setDateInterdiction(dateInterdiction);
         em.persist(j);
 
@@ -122,4 +118,13 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
             return null;
         }
     }
+    @Override
+    public List<Joueur> AfficherTousLesJoueurs() {
+        List<Joueur> j;
+        String text ="SELECT j FROM Joueurs AS j";
+        Query req = getEntityManager().createQuery(text);
+        j = req.getResultList();
+        return j;
+    }
+
 }

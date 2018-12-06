@@ -5,6 +5,16 @@
  */
 package session;
 
+import entites.Equipe;
+import entites.Joueur;
+import entites.Matchs;
+import facade.EquipesFacadeLocal;
+import facade.JoueursFacadeLocal;
+import facade.MatchFacadeLocal;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -14,6 +24,45 @@ import javax.ejb.Stateless;
 @Stateless
 public class gestionTout implements gestionToutLocal {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    @EJB
+    private JoueursFacadeLocal joueursFacade;
+
+    @EJB
+    private EquipesFacadeLocal equipesFacade;
+
+    @EJB
+    private MatchFacadeLocal matchFacade;
+    
+    
+    @Override
+    public List<Joueur> AfficherTousLesJoueurs() {
+        return joueursFacade.AfficherTousLesJoueurs();
+    }
+     @Override
+    public Matchs AfficherJoueursMatch(Equipe nomEq1, Equipe nomEq2, Date date) {
+        Matchs m = null;
+        m = matchFacade.RechercherMatch(nomEq1, nomEq2, date);
+        return m;
+    }
+    
+    @Override
+    public Matchs AfficherJoueursMatch(Long ident, Date date) {
+        Matchs m = null;
+        m = matchFacade.MatchEquipedate(ident, date);
+        return m;
+    }
+    
+    @Override
+    public List<Matchs> AfficherTousLesMatchs() {
+        return matchFacade.RechercherTousLesMatchs();
+    }
+     @Override
+    public Collection<Equipe> AfficherToutesLesEquipes() {
+        return equipesFacade.ToutesLesEquipes();
+    }
+    
+    
+    
+    
+    
 }

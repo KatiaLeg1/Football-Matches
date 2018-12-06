@@ -130,7 +130,26 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
         m=(Matchs)req.getSingleResult();
         return m;
     }
-
-    
+    @Override
+     public Matchs MatchEquipedate(Long ident, Date dateMatch) {
+        Matchs m=null;
+        Query requete = em.createQuery("SELECT m from Match as m where (m.equipeUn.id=:equipe OR m.EquipeDeux.id=:equipe) And m.dateMatch=:dateMatch");
+        requete.setParameter("equipe", ident);     
+        requete.setParameter("dateMatch", dateMatch);  
+        List<Matchs> liste =  requete.getResultList();
+        if (!liste.isEmpty())
+        {
+           m=liste.get(0);
+        }
+        return m;    
+    }
+     @Override
+    public List<Matchs> RechercherTousLesMatchs() {
+         List<Matchs> m;
+        String text ="SELECT m FROM Matchs AS m";
+        Query req = getEntityManager().createQuery(text);
+        m = req.getResultList();
+        return m;
+    }
     
     }
