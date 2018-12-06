@@ -37,4 +37,6 @@ public interface EquipesFacadeLocal {
 
     Equipe RechercherEquipe(String nomequipe);
     
+   Equipe RechercherEquipeParEntraineur(String nom);
+    
 }

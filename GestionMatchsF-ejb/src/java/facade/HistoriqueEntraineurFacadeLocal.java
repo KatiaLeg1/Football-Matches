@@ -43,4 +43,6 @@ public interface HistoriqueEntraineurFacadeLocal {
 
     HistoriqueEntraineur HistoActuel(Entraineur entraineur);
     
+    HistoriqueEntraineur rechercherHistorique(Entraineur entraineur);
+    
 }

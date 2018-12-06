@@ -8,6 +8,8 @@ package facade;
 import entites.Entraineur;
 import entites.Equipe;
 import entites.HistoriqueEntraineur;
+import entites.HistoriqueJoueur;
+import entites.Joueur;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -81,6 +83,3 @@ public class HistoriqueEntraineurFacade extends AbstractFacade<HistoriqueEntrain
         else return null;      
     }
     
-    
-    
-    }
