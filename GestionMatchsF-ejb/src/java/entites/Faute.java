@@ -81,26 +81,7 @@ public class Faute implements Serializable {
         this.joueurF = joueur;
     }
 
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateFaute;
-
-    /**
-     * Get the value of dateFaute
-     *
-     * @return the value of dateFaute
-     */
-    public Date getDateFaute() {
-        return dateFaute;
-    }
-
-    /**
-     * Set the value of dateFaute
-     *
-     * @param dateFaute new value of dateFaute
-     */
-    public void setDateFaute(Date dateFaute) {
-        this.dateFaute = dateFaute;
-    }
+  
     
     @Column (nullable = false)
     private carton typeFaute;
