@@ -202,7 +202,7 @@ public class gestionFed extends HttpServlet {
         System.out.println("nom equipe"+ act);
         if(act==null)
         {
-            jspClient = "/MenuFederation.jsp";
+            jspClient = "/Auth.jsp";
             request.setAttribute("message", "pas d'infos");
         }
         else if (act.equals("CreerEquipe") ) /* auth de fédé*/
