@@ -85,7 +85,16 @@ public class HistoriqueEntraineurFacade extends AbstractFacade<HistoriqueEntrain
 
     @Override
     public HistoriqueEntraineur rechercherHistorique(Entraineur entraineur) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+HistoriqueEntraineur h = null;
+        String txt = "SELECT h FROM HistoriqueEntraineur AS h WHERE h.entraineur:=entraineur";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("entraineur", entraineur);
+        h = (HistoriqueEntraineur)req.getSingleResult();
+        if (!(h==null)) 
+        {
+                return h;
+        } else {
+            return null ;
+}}
 }
     
