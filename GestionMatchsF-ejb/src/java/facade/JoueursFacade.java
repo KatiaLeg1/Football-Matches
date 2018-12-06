@@ -11,6 +11,7 @@ import entites.HistoriqueEntraineur;
 import entites.HistoriqueJoueur;
 import entites.Joueur;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -85,7 +86,10 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
                 return j;
         } else {
             return null ;
-        }    
+        } 
+        
+     
+    
 }
     @Override
     public void affecterJoueur(HistoriqueJoueur histo, Equipe eq, Date dateDebut) {

@@ -5,6 +5,12 @@
  */
 package session;
 
+import entites.Equipe;
+import entites.Joueur;
+import entites.Match;
+import entites.carton;
+import java.util.Collection;
+import java.util.Date;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +19,18 @@ import javax.ejb.Local;
  */
 @Local
 public interface gestionArbitreLocal {
+
+   
+
+    void CreerFauteJoueur(carton type, String nomPersonne, String prenomPersonne, String nomEq1, String nomEq2, Date date);
+
+    boolean ModifierMatch(Date date, int butEqUn, int butEqDeux, String nomEq1, String nomEq2);
+
+    Collection<Equipe> LesEquipes();
+    
+    Collection<Joueur> LesJoueurs();
+    
+    Collection<Match> LesMatchs();
+    
     
 }
