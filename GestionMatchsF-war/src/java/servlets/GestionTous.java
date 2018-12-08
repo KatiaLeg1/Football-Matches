@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package servlets;
+import entites.Arbitre;
+import entites.Entraineur;
  import entites.Equipe;
 import entites.Matchs;
 import java.io.IOException;
@@ -73,6 +75,53 @@ public class GestionTous extends HttpServlet {
             jspClient = "/MenuTous.jsp";
             request.setAttribute("message", "pas d'infos");
         }
+        else if (act.equals("authFed")) {
+            String log = request.getParameter("Login");
+            String mdp = request.getParameter("mdp");
+            if (mdp.equals("fede")&&(log.equals("fede"))) {
+                request.setAttribute("message", "Bienvenu Fede");                
+                jspClient = "/MenuFederation.jsp";
+            } else {
+                request.setAttribute("message", "mauvais ID ou MDP");
+                jspClient = "/Auth.jsp";
+            }}
+        else if(act.equals("authEnt"))
+        {
+            String log = request.getParameter("Login");
+            String mdp = request.getParameter("mdp");
+            Entraineur e = gestionTout.AuthEntr(log, mdp);
+            if (e==null)
+            {
+                jspClient = "/Auth.jsp";
+                request.setAttribute("message", "Erreur ID ou MDP");
+                
+            }
+            else
+            {
+                jspClient = "/MenuEntraineur.jsp";
+                request.setAttribute("message", "Bienvenu " + e.getNomPersonne() +" "+ e.getPrenomPersonne());
+
+            }
+        }
+        else if(act.equals("authArb"))
+        {
+            String log = request.getParameter("Login");
+            String mdp = request.getParameter("mdp");
+            Arbitre a = gestionTout.AuthArb(log, mdp);
+            if (a==null)
+            {
+                jspClient = "/Auth.jsp";
+                request.setAttribute("message", "Erreur ID ou MDP");
+                
+            }
+            else
+            {
+                jspClient = "/MenuArbitre.jsp";
+                request.setAttribute("message", "Bienvenu " + a.getNomPersonne() +" "+a.getPrenomPersonne());
+
+            }
+        }    
+                
         else if (act.equals("Afficherdateequipe") ) /* auth de fédé*/
         {
           //  List<Matchs> lm = gestionTout.AfficherTousLesMatchs();

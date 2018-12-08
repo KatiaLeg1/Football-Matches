@@ -80,6 +80,17 @@ public class ArbitreFacade extends AbstractFacade<Arbitre> implements ArbitreFac
             return null ;
         }        
     }
+
+    @Override
+    public Arbitre AuthArbitre(String log, String mdp) {
+        Query requete = em.createQuery("SELECT a from Arbitre as a where a.login=:log and a.mdp=:mdp");
+        requete.setParameter("log", log);
+        requete.setParameter("mdp", mdp);       
+        List<Arbitre> liste =  requete.getResultList();
+        if (!liste.isEmpty())
+            return liste.get(0);
+        else return null;    
+    }
     
 
    

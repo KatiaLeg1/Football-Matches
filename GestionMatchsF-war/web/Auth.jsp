@@ -14,11 +14,14 @@
     <body>
         <h1>Page d'authentification</h1>
         <p>
+             <% String attribut = (String)request.getAttribute("message");
+        out.println(attribut);
+        %>
 
-            <a href ="MenuFederation.jsp"> Menu Fédération </a><br>
-            <a href ="MenuEntraineur.jsp"> Menu Entraineur </a><br>
+            <a href ="AuthFed.jsp"> Menu Fédération </a><br>
+            <a href ="AuthEnt.jsp"> Menu Entraineur </a><br>
             <a href ="MenuTous.jsp"> Menu Tous </a><br>
-            <a href ="MenuArbitre.jsp"> Menu Arbitre </a><br>
+            <a href ="AuthArb.jsp"> Menu Arbitre </a><br>
                 
         </p>
     </body>

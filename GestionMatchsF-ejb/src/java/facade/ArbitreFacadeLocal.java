@@ -40,6 +40,8 @@ public interface ArbitreFacadeLocal {
 
     Arbitre rechercherArbitreId(int ida);
 
+    Arbitre AuthArbitre(String log, String mdp);
+
 
 
     

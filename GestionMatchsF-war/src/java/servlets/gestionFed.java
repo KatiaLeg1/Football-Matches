@@ -192,7 +192,7 @@ public class gestionFed extends HttpServlet {
     {
         String j = request.getParameter("jou");
         System.out.println("joueur" + j);
-        String ti = request.getParameter("dateInt");
+        String ti = request.getParameter("dateIntdateInt");
         System.out.println("t" + ti);
         String message;
         if (j.trim().isEmpty() || ti.isEmpty() )

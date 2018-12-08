@@ -5,6 +5,8 @@
  */
 package session;
 
+import entites.Arbitre;
+import entites.Entraineur;
 import entites.Equipe;
 import entites.Joueur;
 import entites.Matchs;
@@ -24,4 +26,8 @@ public interface gestionToutLocal {
     Matchs AfficherJoueursMatch(Long ident, Date date);
     List<Matchs> AfficherTousLesMatchs();
     Collection<Equipe> AfficherToutesLesEquipes();
+
+    Entraineur AuthEntr(String log, String mdp);
+
+    Arbitre AuthArb(String log, String mdp);
 }

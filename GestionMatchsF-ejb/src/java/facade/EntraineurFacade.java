@@ -82,4 +82,15 @@ public class EntraineurFacade extends AbstractFacade<Entraineur> implements Entr
             return null ;
         }
     }
+
+    @Override
+    public Entraineur AuthEnt(String log, String mdp) {
+        Query requete = em.createQuery("SELECT e from Entraineur as e where e.login=:log and e.mdp=:mdp");
+        requete.setParameter("log", log);
+        requete.setParameter("mdp", mdp);       
+        List<Entraineur> liste =  requete.getResultList();
+        if (!liste.isEmpty())
+            return liste.get(0);
+        else return null;    }
+    
 }

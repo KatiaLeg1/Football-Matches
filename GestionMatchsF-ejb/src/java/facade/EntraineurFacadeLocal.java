@@ -39,6 +39,8 @@ public interface EntraineurFacadeLocal {
    
     Entraineur RechercherEntraineurId(int idE);
 
+    Entraineur AuthEnt(String log, String mdp);
+
 
     
     

@@ -5,9 +5,13 @@
  */
 package session;
 
+import entites.Arbitre;
+import entites.Entraineur;
 import entites.Equipe;
 import entites.Joueur;
 import entites.Matchs;
+import facade.ArbitreFacadeLocal;
+import facade.EntraineurFacadeLocal;
 import facade.EquipesFacadeLocal;
 import facade.JoueursFacadeLocal;
 import facade.MatchFacadeLocal;
@@ -23,6 +27,12 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class gestionTout implements gestionToutLocal {
+
+    @EJB
+    private ArbitreFacadeLocal arbitreFacade;
+
+    @EJB
+    private EntraineurFacadeLocal entraineurFacade;
 
     @EJB
     private JoueursFacadeLocal joueursFacade;
@@ -59,6 +69,16 @@ public class gestionTout implements gestionToutLocal {
      @Override
     public Collection<Equipe> AfficherToutesLesEquipes() {
         return equipesFacade.ToutesLesEquipes();
+    }
+
+    @Override
+    public Entraineur AuthEntr(String log, String mdp) {
+        return entraineurFacade.AuthEnt(log, mdp);
+    }
+
+    @Override
+    public Arbitre AuthArb(String log, String mdp) {
+        return arbitreFacade.AuthArbitre(log, mdp);
     }
     
     
