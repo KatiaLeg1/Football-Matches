@@ -8,10 +8,14 @@ package servlets;
 import entites.Arbitre;
 import entites.Entraineur;
 import entites.Equipe;
+import entites.Faute;
+import entites.Joueur;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.Collection;
+import static java.util.Collections.list;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,6 +23,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import session.gestionFederationLocal;
 
 /**
@@ -181,15 +186,30 @@ public class gestionFed extends HttpServlet {
         }
         request.setAttribute("message", message);  
     }    
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
+        protected void Sanctionner(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException           
+    {
+        String j = request.getParameter("jou");
+        System.out.println("joueur" + j);
+        String ti = request.getParameter("dateInt");
+        System.out.println("t" + ti);
+        String message;
+        if (j.trim().isEmpty() || ti.isEmpty() )
+        {
+            message = "Erreur, vous n'avez pas rempli tous les champs" + "<br><a href=\"CreerA.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'un arbitre";
+        }
+        else {
+            int id = Integer.valueOf(j);
+                    System.out.println("int" + id);
+
+            Date date = Date.valueOf(ti);                     System.out.println("date" + date);
+
+            gestionFederation.Sanctionner(id, date);
+            message = "Sanction créée avec succès !";          
+        }
+        request.setAttribute("message", message);   
+    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //HttpSession sess = request.getSession(true);
@@ -200,7 +220,7 @@ public class gestionFed extends HttpServlet {
                
         String act = request.getParameter("action");
         System.out.println("nom equipe"+ act);
-        if(act==null)
+        if(act==null|| act.equals("vide"))
         {
             jspClient = "/Auth.jsp";
             request.setAttribute("message", "pas d'infos");
@@ -267,7 +287,71 @@ public class gestionFed extends HttpServlet {
             jspClient = "/MenuFederation.jsp";
             Affecter(request,response);
         }
+         else if (act.equals("SaisirDateM"))
+        {
+            HttpSession sess = request.getSession(true);
+            String d = request.getParameter("dateMatch") ;
+            if (!(d.trim().isEmpty()))
+            {
+               Date da = Date.valueOf(d);
+               Collection <Faute> fa = gestionFederation.AfficherFauteDate(da);
+               jspClient = "/AffihcherFautesDate.jsp";
+               sess.setAttribute("listeFa", fa);
+            }
+            else{
+            jspClient = "/MenuFederation.jsp";}
+        }
+        else if (act.equals("AfficherFauteJ"))
+        {
+            Collection <Joueur> listej = gestionFederation.TousLesJoueurs();
+            request.setAttribute("listeJoueur", listej);
+            jspClient="/RechercherJoueur.jsp";
+        }
+         else if (act.equals("afficherFauteJo"))
+        {
+            HttpSession sess = request.getSession(true);
+            String j = request.getParameter("jo") ;
 
+            if (!(j.trim().isEmpty()))
+            {
+                int l = Integer.valueOf(j);
+               Collection <Faute> f = gestionFederation.AfficherFauteJoueur(l);
+               jspClient = "/AfficherFautesJoueur.jsp";
+               sess.setAttribute("listeF", f);
+            }
+        }
+            else if (act.equals("AfficherFauteArb"))
+        {
+            Collection <Arbitre> listea = gestionFederation.LesArbitres();
+            request.setAttribute("listeArbitre", listea);
+            jspClient="/RechercherArbitre.jsp";
+        }
+         else if (act.equals("afficherFauteAr"))
+        {
+           HttpSession sess = request.getSession(true);
+            String a = request.getParameter("arbi") ;
+            if (!(a.trim().isEmpty()))
+            {
+                int l = Integer.valueOf(a);
+               Collection <Faute> f = gestionFederation.AfficherFauteArbitre(l);
+               jspClient = "/AfficherFautesArbitre.jsp";
+               sess.setAttribute("listeFaa", f);
+            }
+        }
+            else if (act.equals("Sanction"))
+        {
+            Collection <Joueur> listej = gestionFederation.TousLesJoueurs();
+            request.setAttribute("listeJoueur", listej);
+            jspClient="/Sanction.jsp";
+        }
+         else if (act.equals("SanctionJo"))
+        {            
+            Sanctionner(request,response);
+            jspClient = "/MenuFederation.jsp";
+        
+        }
+            else{
+            jspClient = "/MenuFederation.jsp";}
         
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);

@@ -8,7 +8,9 @@ package session;
 import entites.Arbitre;
 import entites.Entraineur;
 import entites.Equipe;
+import entites.Faute;
 import entites.HistoriqueEntraineur;
+import entites.Joueur;
 import entites.Matchs;
 import facade.ArbitreFacadeLocal;
 import facade.EntraineurFacadeLocal;
@@ -19,6 +21,7 @@ import facade.JoueursFacadeLocal;
 import facade.MatchFacadeLocal;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -133,5 +136,33 @@ public class gestionFederation implements gestionFederationLocal {
     public Collection<Entraineur> TousLesEntraineurs() {
         return entraineurFacade.TousLesEnt();
     }
+
+    @Override
+    public List<Faute> AfficherFauteDate(Date date) {
+        return fautesFacade.AfficherFauteDate(date);
+    }
+
+    @Override
+    public List<Faute> AfficherFauteJoueur(int id) {
+        return fautesFacade.afficherFauteJoueur(id);
+        }
+
+    @Override
+    public List<Joueur> TousLesJoueurs() {
+        return joueursFacade.AfficherTousLesJoueurs();
+    }
+
+    @Override
+    public List<Faute> AfficherFauteArbitre(int arbitreid) {
+        Arbitre a = arbitreFacade.rechercherArbitreId(arbitreid);
+        return fautesFacade.AfficherFauteArbitre(a);
+    }
+
+    @Override
+    public void Sanctionner(int id, Date datei) {
+        joueursFacade.SanctionJ(id, datei);
+    }
+    
+    
     
 }

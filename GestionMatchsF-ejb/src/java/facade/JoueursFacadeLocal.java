@@ -6,7 +6,6 @@
 package facade;
 
 import entites.Equipe;
-import entites.HistoriqueEntraineur;
 import entites.HistoriqueJoueur;
 import entites.Joueur;
 import java.util.Date;
@@ -47,5 +46,8 @@ public interface JoueursFacadeLocal {
     void transfererJoueur(HistoriqueJoueur histo, Equipe eq, Date dateDebut, Date dateFin);
 
     Joueur rechercherJoueurId(Long id);
+    
     List<Joueur> AfficherTousLesJoueurs();
+
+    void SanctionJ(int id, Date dateI);
 }

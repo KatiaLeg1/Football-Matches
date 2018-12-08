@@ -41,6 +41,6 @@ public interface FautesFacadeLocal {
 
     List<Faute> AfficherFauteArbitre(Arbitre arbitre);
 
-    List<Faute> afficherFauteJoueur(Joueur joueur);
+    List<Faute> afficherFauteJoueur(int joueur);
     
 }

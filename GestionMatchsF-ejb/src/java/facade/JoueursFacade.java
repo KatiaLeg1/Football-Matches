@@ -6,12 +6,8 @@
 package facade;
 
 import entites.Equipe;
-import entites.Faute;
-import entites.HistoriqueEntraineur;
 import entites.HistoriqueJoueur;
 import entites.Joueur;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -125,10 +121,20 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
     @Override
     public List<Joueur> AfficherTousLesJoueurs() {
         List<Joueur> j;
-        String text ="SELECT j FROM Joueurs AS j";
+        String text ="SELECT j FROM Joueur AS j";
         Query req = getEntityManager().createQuery(text);
         j = req.getResultList();
         return j;
+    }
+    @Override
+    public void SanctionJ(int id, Date dateI) {
+        
+        String txt = "SELECT j FROM Joueur AS j WHERE j.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("id", id);
+        Joueur j =(Joueur)req.getSingleResult();
+        j.setDateInterdiction(dateI);
+        em.merge(j);
     }
 
 }

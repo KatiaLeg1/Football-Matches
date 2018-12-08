@@ -8,10 +8,12 @@ package session;
 import entites.Arbitre;
 import entites.Entraineur;
 import entites.Equipe;
-import entites.HistoriqueEntraineur;
+import entites.Faute;
+import entites.Joueur;
 import java.util.Date;
 import javax.ejb.Local;
 import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -40,6 +42,16 @@ public interface gestionFederationLocal {
     void AffecterHisoEntr(Date datehisto, int id, String nomEq);
 
     Collection<Entraineur> TousLesEntraineurs();
+
+    List<Faute> AfficherFauteDate(Date date);
+
+    List<Faute> AfficherFauteJoueur(int id);
+
+    List<Joueur> TousLesJoueurs();
+
+    List<Faute> AfficherFauteArbitre(int arbitreid);
+
+    void Sanctionner(int id, Date datei);
 
     
 }

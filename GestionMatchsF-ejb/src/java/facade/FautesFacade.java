@@ -48,7 +48,7 @@ public class FautesFacade extends AbstractFacade<Faute> implements FautesFacadeL
 
     @Override
     public List<Faute> AfficherFauteDate(Date dateMatch) {
-        String req = "SELECT f from Faute as f where f.match.dateMatch=dateMatch";
+        String req = "SELECT f from Faute as f where f.match.dateMatch=:dateMatch";
         Query requete = em.createQuery(req);
         requete.setParameter("dateMatch",dateMatch);
         List<Faute> liste = requete.getResultList();
@@ -65,8 +65,8 @@ public class FautesFacade extends AbstractFacade<Faute> implements FautesFacadeL
     }
 
     @Override
-    public List<Faute> afficherFauteJoueur(Joueur joueur) {
-        String req = "SELECT f from Faute as f where f.joueur=:joueur ";
+    public List<Faute> afficherFauteJoueur(int joueur) {
+        String req = "SELECT f from Faute as f where f.joueurF.id=:joueur ";
         Query requete = em.createQuery(req);
         requete.setParameter("joueur",joueur);
         List<Faute> liste = requete.getResultList();
