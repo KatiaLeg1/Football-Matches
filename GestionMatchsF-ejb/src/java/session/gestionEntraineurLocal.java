@@ -28,5 +28,7 @@ public interface gestionEntraineurLocal {
     List<Joueur> affichageJoueurs();
 
     Equipe rechercheEquipeParEntraineur(String nom);
+
+    Entraineur AuthEnt(String log, String mdp);
     
 }

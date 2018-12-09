@@ -16,7 +16,7 @@
     <body>
         <h1>Connexion Federation</h1>
 
-        <form method ="get" action="GestionTous">  
+        <form method ="get" action="gestionEntraineur">  
            
             <fieldset>
                  <label for="Login">Login<span class="requis">*</span></label> 

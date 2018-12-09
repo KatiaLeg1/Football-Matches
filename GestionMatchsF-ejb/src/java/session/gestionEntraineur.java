@@ -48,7 +48,7 @@ public class gestionEntraineur implements gestionEntraineurLocal {
     public void affectationJoueur(long id, String nome, String prenome, Date dateDebutHJ) {
         Joueur j = joueursFacade.rechercherJoueurId(id);
         Entraineur en = entraineurFacade.RechercherEntraineur(nome, prenome);
-        HistoriqueEntraineur he = historiqueEntraineurFacade.rechercherHistorique(en);
+        HistoriqueEntraineur he = historiqueEntraineurFacade.HistoActuel(en);
         Equipe e = equipesFacade.RechercherEquipeParEntraineur(nome);
  
         if(j!=null){
@@ -110,6 +110,11 @@ public class gestionEntraineur implements gestionEntraineurLocal {
     @Override
     public List<Joueur> affichageJoueurs() {
         return joueursFacade.recupJoueur();
+    }
+
+    @Override
+    public Entraineur AuthEnt(String log, String mdp) {
+        return entraineurFacade.AuthEnt(log, mdp);
     }
    
     

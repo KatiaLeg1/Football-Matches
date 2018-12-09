@@ -7,6 +7,7 @@ package servlets;
 import entites.Arbitre;
 import entites.Entraineur;
  import entites.Equipe;
+import entites.HistoriqueEntraineur;
 import entites.Matchs;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,6 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import session.gestionToutLocal;
  /**
  *
@@ -85,24 +87,7 @@ public class GestionTous extends HttpServlet {
                 request.setAttribute("message", "mauvais ID ou MDP");
                 jspClient = "/Auth.jsp";
             }}
-        else if(act.equals("authEnt"))
-        {
-            String log = request.getParameter("Login");
-            String mdp = request.getParameter("mdp");
-            Entraineur e = gestionTout.AuthEntr(log, mdp);
-            if (e==null)
-            {
-                jspClient = "/Auth.jsp";
-                request.setAttribute("message", "Erreur ID ou MDP");
-                
-            }
-            else
-            {
-                jspClient = "/MenuEntraineur.jsp";
-                request.setAttribute("message", "Bienvenu " + e.getNomPersonne() +" "+ e.getPrenomPersonne());
-
-            }
-        }
+       
         else if(act.equals("authArb"))
         {
             String log = request.getParameter("Login");
@@ -134,6 +119,34 @@ public class GestionTous extends HttpServlet {
         {
             rechercheMatch(request, response);
             jspClient="/AfficherFrais.jsp";
+        }
+        
+         else if (act.equals("AffEqEnt")) // valeur action que tu récupères de la JSP Menu Tout
+        {
+            // Tu dois d'abord rechercher 1 entraineur précis, pour ça tu fais envoie la liste des entraineurs à la JSP
+            // Comme ça tu auras un liste déroulante dans la JSP
+            // Pour ça tu dois mettre la methode dans le bean session 
+            Collection <Entraineur> listeent = gestionTout.TousLesEntraineurs();
+            request.setAttribute("listeEnt", listeent);
+            // tu rediriges vers la JSP ou tu recherches ton entraineur
+            jspClient="/RechercherEntraineurEq.jsp";
+        }
+         else if (act.equals("HistoEnt"))
+        {
+            HttpSession sess = request.getSession(true);
+            String ent = request.getParameter("ent") ;
+
+            if (!(ent.trim().isEmpty()))
+            {
+                int l = Integer.valueOf(ent);
+                // La tu as récupéré l'ID de ton entraineur, maintenant faut afficher l'historique, 
+                //donc HistoriqueEntraineurFacade  + Session
+               Collection <HistoriqueEntraineur> he = gestionTout.AfficherHistoEnt(l) ;
+               // la tu as ta liste d'historique, donc tu vas l'enregistrer pour l'envoyer à la JSP par "sess"
+               sess.setAttribute("listeHE", he);
+               //Et tu rediriges vers la JSP afficher
+               jspClient = "/AfficherHistoriqueEnt.jsp";
+            }
         }
         RequestDispatcher Rd;
  Rd = getServletContext().getRequestDispatcher(jspClient);

@@ -44,14 +44,35 @@ public class gestionEntraineur extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession sess = request.getSession(true);   
         response.setContentType("text/html;charset=UTF-8");
+                    HttpSession sess = request.getSession(true);   
+
         String jspClient = null;
         String act = request.getParameter("action");
         if((act==null) || (act.equals("vide"))){
             jspClient = "/MenuEntraineur.jsp";
             request.setAttribute("message", "pas d'informations");
         }
+         else if(act.equals("authEnt"))
+        {
+            Entraineur e;
+            String log = request.getParameter("Login");
+            String mdp = request.getParameter("mdp");
+            if(!(log.trim().isEmpty())||!(mdp.trim().isEmpty()))
+            {
+                e = gestionEntraineur.AuthEnt(log, mdp);
+                if (e==null)
+                {
+                    jspClient = "/Auth.jsp";
+                    request.setAttribute("message", "Erreur ID ou MDP");
+                }
+                else
+                {
+                    jspClient = "/MenuEntraineur.jsp";
+                    request.setAttribute("message", "Bienvenu " + e.getNomPersonne() +" "+ e.getPrenomPersonne());
+                    sess.setAttribute("ent", e);
+                }
+        }}
              else if(act.equals("rechercherJ"))
                     {  
                         System.out.println("2");
@@ -61,13 +82,12 @@ public class gestionEntraineur extends HttpServlet {
                     }
              else if(act.equals("affecterJ"))
                     {                     
-                        System.out.println("1");
                         jspClient="/MenuEntraineur.jsp";
                         doActionAffecterJ(request, response);   
                     }
              
             else if(act.equals("afficherJ"))
-                    {
+            {
                     jspClient="/AfficherJoueurs.jsp";
                     List <Joueur> list = gestionEntraineur.affichageJoueurs();
                     request.setAttribute("listejoueurs", list);

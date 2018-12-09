@@ -16,6 +16,7 @@
         <% String attribut = (String)request.getAttribute("message");
         out.println(attribut);
         %>
-        <a href ="GestionTous?action=Afficherdateequipe">Afficherjoueurspourunmatch</a>
+        <a href ="GestionTous?action=Afficherdateequipe">Afficher joueurs pour un match</a></br>
+        <a href ="GestionTous?action=AffEqEnt"> Histo Entraineur </a>
     </body>
 </html>

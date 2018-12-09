@@ -8,6 +8,7 @@ package session;
 import entites.Arbitre;
 import entites.Entraineur;
 import entites.Equipe;
+import entites.HistoriqueEntraineur;
 import entites.Joueur;
 import entites.Matchs;
 import java.util.Collection;
@@ -30,4 +31,8 @@ public interface gestionToutLocal {
     Entraineur AuthEntr(String log, String mdp);
 
     Arbitre AuthArb(String log, String mdp);
+
+    Collection<Entraineur> TousLesEntraineurs();
+
+    List<HistoriqueEntraineur> AfficherHistoEnt(int idE);
 }

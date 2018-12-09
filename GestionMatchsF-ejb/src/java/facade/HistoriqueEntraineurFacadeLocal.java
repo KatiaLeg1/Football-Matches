@@ -35,14 +35,14 @@ public interface HistoriqueEntraineurFacadeLocal {
 
     void CreerHE(Date dateDebutHE, Equipe equipe, Entraineur entraineur);
 
-    List<HistoriqueEntraineur> ListeHistoEqEntraineur(Entraineur ent);
 
     Equipe EqActuelleEnt(Entraineur entraineur);
 
     void ModifHistoEnt(HistoriqueEntraineur historiqueE, Date datefin);
 
     HistoriqueEntraineur HistoActuel(Entraineur entraineur);
+
+    List<HistoriqueEntraineur> HistoEntraineur(int e);
     
-    HistoriqueEntraineur rechercherHistorique(Entraineur entraineur);
     
 }

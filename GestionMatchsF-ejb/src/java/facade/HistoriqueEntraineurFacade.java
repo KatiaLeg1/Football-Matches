@@ -45,14 +45,6 @@ public class HistoriqueEntraineurFacade extends AbstractFacade<HistoriqueEntrain
         em.persist(he);
     }
 
-    @Override
-    public List<HistoriqueEntraineur> ListeHistoEqEntraineur(Entraineur ent) {
-        List<HistoriqueEntraineur> he;
-        String text = "SELECT he FROM HistoriqueEntraineur AS he where he.entraineur=:ent";
-        Query req = getEntityManager().createQuery(text);
-        he = req.getResultList();
-        return he;
-    }
 
     @Override
     public Equipe EqActuelleEnt(Entraineur entraineur) {
@@ -84,17 +76,16 @@ public class HistoriqueEntraineurFacade extends AbstractFacade<HistoriqueEntrain
     }
 
     @Override
-    public HistoriqueEntraineur rechercherHistorique(Entraineur entraineur) {
-HistoriqueEntraineur h = null;
-        String txt = "SELECT h FROM HistoriqueEntraineur AS h WHERE h.entraineur:=entraineur";
-        Query req = getEntityManager().createQuery(txt);
-        req = req.setParameter("entraineur", entraineur);
-        h = (HistoriqueEntraineur)req.getSingleResult();
-        if (!(h==null)) 
-        {
-                return h;
-        } else {
-            return null ;
-}}
+    public List<HistoriqueEntraineur> HistoEntraineur(int e) {
+        // tu recherches la liste des historiques entraineur pour 1 entraineur
+        String req = "SELECT he from HistoriqueEntraineur as he where he.entraineur.id=:e ";
+        Query requete = em.createQuery(req);
+        requete.setParameter("e",e);
+        List<HistoriqueEntraineur> liste = requete.getResultList();
+        return liste;      
+    }
+
+ 
+
 }
     

@@ -8,11 +8,13 @@ package session;
 import entites.Arbitre;
 import entites.Entraineur;
 import entites.Equipe;
+import entites.HistoriqueEntraineur;
 import entites.Joueur;
 import entites.Matchs;
 import facade.ArbitreFacadeLocal;
 import facade.EntraineurFacadeLocal;
 import facade.EquipesFacadeLocal;
+import facade.HistoriqueEntraineurFacadeLocal;
 import facade.JoueursFacadeLocal;
 import facade.MatchFacadeLocal;
 import java.util.Collection;
@@ -27,6 +29,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class gestionTout implements gestionToutLocal {
+
+    @EJB
+    private HistoriqueEntraineurFacadeLocal historiqueEntraineurFacade;
 
     @EJB
     private ArbitreFacadeLocal arbitreFacade;
@@ -80,6 +85,17 @@ public class gestionTout implements gestionToutLocal {
     public Arbitre AuthArb(String log, String mdp) {
         return arbitreFacade.AuthArbitre(log, mdp);
     }
+
+    @Override
+    public Collection<Entraineur> TousLesEntraineurs() {
+        return entraineurFacade.TousLesEnt();
+    }
+
+    @Override
+    public List<HistoriqueEntraineur> AfficherHistoEnt(int idE) { // A la base tu recherches un Id entraineur dans la JSP
+        return historiqueEntraineurFacade.HistoEntraineur(idE);
+        //Retour à la servlet
+        }
     
     
     
