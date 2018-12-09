@@ -11,10 +11,10 @@
    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
-        <title>Connexion Federation</title>
+        <title>Connexion Entraineur</title>
     </head>
     <body>
-        <h1>Connexion Federation</h1>
+        <h1>Connexion Entraineur</h1>
 
         <form method ="get" action="gestionEntraineur">  
            

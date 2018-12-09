@@ -10,6 +10,7 @@ import entites.Entraineur;
 import entites.Equipe;
 import entites.Faute;
 import entites.Joueur;
+import entites.Matchs;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -47,9 +48,7 @@ public class gestionFed extends HttpServlet {
         String message = "";
         if (nomEquipe.trim().isEmpty())
         {
-            message = "Erreur, vous n'avez pas rempli tous les champs pour créer une Equipe"+
-                    "</br> <a href=\"CreerEquipe.jsp\">cliquez ici </a>pour retourner au formulaire";
-        }
+            message = "Erreur, vous n'avez pas rempli tous les champs pour créer une Equipe";        }
         else {
             System.out.println("nom equipe"+nomEquipe);
             gestionFederation.CreerEquipe(nomEquipe);
@@ -148,20 +147,19 @@ public class gestionFed extends HttpServlet {
     protected void ModifierMa(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException           
     {
-        String E1 = request.getParameter("nomEquUn");
-        String E2 = request.getParameter("nomEquDeux");
+        String E1 = request.getParameter("idM");
         String h = request.getParameter("heure");
-        String t = request.getParameter("dateMatch");
         String t1 = request.getParameter("dateM1");
         String message = "";
-        if (E1.trim().isEmpty() || E2.isEmpty() || t.isEmpty() )
+        if (E1.trim().isEmpty() || h.isEmpty() || t1.isEmpty() )
         {
             message = "Erreur, vous n'avez pas rempli tous les champs" + "<br><a href=\"CreerA.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'un arbitre";
         }
         else {
-            Date date = Date.valueOf(t); 
+            int idMa= Integer.valueOf(E1);
             Date date1 = Date.valueOf(t1);
-            gestionFederation.ModifierMatch(E1, E2, date, date1, h);
+            
+            gestionFederation.ModifierMatch(idMa, date1, h);
             message = "Match modifié avec succès !";          
         }
         request.setAttribute("message", message);   
@@ -191,13 +189,11 @@ public class gestionFed extends HttpServlet {
       throws ServletException, IOException           
     {
         String j = request.getParameter("jou");
-        System.out.println("joueur" + j);
-        String ti = request.getParameter("dateIntdateInt");
-        System.out.println("t" + ti);
+        String ti = request.getParameter("dateInt");
         String message;
         if (j.trim().isEmpty() || ti.isEmpty() )
         {
-            message = "Erreur, vous n'avez pas rempli tous les champs" + "<br><a href=\"CreerA.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'un arbitre";
+            message = "Erreur, vous n'avez pas rempli tous les champs" ;
         }
         else {
             int id = Integer.valueOf(j);
@@ -212,38 +208,48 @@ public class gestionFed extends HttpServlet {
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //HttpSession sess = request.getSession(true);
-        //String ident
+            
         response.setContentType("text/html;charset=UTF-8");
         String message="";
         String jspClient = null;
                
         String act = request.getParameter("action");
-        System.out.println("nom equipe"+ act);
+        System.out.println("ACTION : "+ act);
+        
         if(act==null|| act.equals("vide"))
         {
-            jspClient = "/Auth.jsp";
-            request.setAttribute("message", "pas d'infos");
+            jspClient = "/fede/MenuFederation.jsp";
+            request.setAttribute("message", "");
         }
+        else if (act.equals("authFed")) {
+            String log = request.getParameter("Login");
+            String mdp = request.getParameter("mdp");
+            if (mdp.equals("fede")&&(log.equals("fede"))) {
+                request.setAttribute("message", "Bienvenu Fede");                
+                jspClient = "/fede/MenuFederation.jsp";
+            } else {
+                request.setAttribute("message", "mauvais ID ou MDP");
+                jspClient = "/Auth.jsp";
+            }}
         else if (act.equals("CreerEquipe") ) /* auth de fédé*/
         {
             creerEq(request,response);
-            jspClient = "/MenuFederation.jsp";
+            jspClient = "/fede/MenuFederation.jsp";
 
         }
         else if (act.equals("CreerEntraineur") ) /* auth de fédé*/
         {
-            jspClient = "/MenuFederation.jsp";
+            jspClient = "/fede/MenuFederation.jsp";
             creerEnt(request,response);
         }
         else if (act.equals("CreerJoueur") ) /* auth de fédé*/
         {
-            jspClient = "/MenuFederation.jsp";
+            jspClient = "/fede/MenuFederation.jsp";
             creerJ(request,response);
         }
         else if (act.equals("CreerArbitre") ) /* auth de fédé*/
         {
-            jspClient = "/MenuFederation.jsp";
+            jspClient = "/fede/MenuFederation.jsp";
             creerA(request,response);
         }
         else if (act.equals("CreerM"))
@@ -254,24 +260,22 @@ public class gestionFed extends HttpServlet {
             request.setAttribute("listeEquipes", listee);
             request.setAttribute("listeEquipess", listees);
             request.setAttribute("listeArbitres", listea);
-            jspClient="/CreerMatch.jsp";
+            jspClient="/fede/CreerMatch.jsp";
         }
         else if (act.equals("CreerMa"))
         {
-            jspClient = "/MenuFederation.jsp";
+            jspClient = "/fede/MenuFederation.jsp";
             CreerMa(request,response);
         }
         else if (act.equals("ModifierM"))
         {
-            Collection <Equipe> listee = gestionFederation.LesEquipes();
-            Collection <Equipe> listees = gestionFederation.LesEquipes();
-            request.setAttribute("listeEquipes", listee);
-            request.setAttribute("listeEquipess", listees);
-            jspClient="/ModifierMatchDate.jsp";
+            Collection <Matchs> listem = gestionFederation.TousLesMAtchs();
+            request.setAttribute("listeMatch", listem);
+            jspClient="/fede/ModifierMatchDate.jsp";
         }
         else if (act.equals("ModifierMa"))
         {
-            jspClient = "/MenuFederation.jsp";
+            jspClient = "/fede/MenuFederation.jsp";
             ModifierMa(request,response);
         }
         else if (act.equals("AffecterE"))
@@ -280,43 +284,44 @@ public class gestionFed extends HttpServlet {
             Collection <Entraineur> listeent = gestionFederation.TousLesEntraineurs();
             request.setAttribute("listeEquipes", listee);
             request.setAttribute("listeEquipent", listeent);
-            jspClient="/AffecterEntraineur.jsp";
+            jspClient="/fede/AffecterEntraineur.jsp";
         }
         else if (act.equals("AffEnt"))
         {
-            jspClient = "/MenuFederation.jsp";
+            jspClient = "/fede/MenuFederation.jsp";
             Affecter(request,response);
         }
          else if (act.equals("SaisirDateM"))
         {
-            HttpSession sess = request.getSession(true);
             String d = request.getParameter("dateMatch") ;
             if (!(d.trim().isEmpty()))
             {
+               HttpSession sess = request.getSession(true);
                Date da = Date.valueOf(d);
                Collection <Faute> fa = gestionFederation.AfficherFauteDate(da);
-               jspClient = "/AffihcherFautesDate.jsp";
+               jspClient = "/fede/AffihcherFautesDate.jsp";
                sess.setAttribute("listeFa", fa);
             }
             else{
-            jspClient = "/MenuFederation.jsp";}
+            jspClient = "/fede/MenuFederation.jsp";}
+            
         }
         else if (act.equals("AfficherFauteJ"))
         {
             Collection <Joueur> listej = gestionFederation.TousLesJoueurs();
             request.setAttribute("listeJoueur", listej);
-            jspClient="/RechercherJoueur.jsp";
+            jspClient="/fede/RechercherJoueur.jsp";
         }
          else if (act.equals("afficherFauteJo"))
         {
-            HttpSession sess = request.getSession(true);
             String j = request.getParameter("jo") ;
 
             if (!(j.trim().isEmpty()))
             {
+               HttpSession sess = request.getSession(true);
                 int l = Integer.valueOf(j);
                Collection <Faute> f = gestionFederation.AfficherFauteJoueur(l);
-               jspClient = "/AfficherFautesJoueur.jsp";
+               jspClient = "/fede/AfficherFautesJoueur.jsp";
                sess.setAttribute("listeF", f);
             }
         }
@@ -324,17 +329,17 @@ public class gestionFed extends HttpServlet {
         {
             Collection <Arbitre> listea = gestionFederation.LesArbitres();
             request.setAttribute("listeArbitre", listea);
-            jspClient="/RechercherArbitre.jsp";
+            jspClient="/fede/RechercherArbitre.jsp";
         }
          else if (act.equals("afficherFauteAr"))
         {
-           HttpSession sess = request.getSession(true);
             String a = request.getParameter("arbi") ;
             if (!(a.trim().isEmpty()))
             {
+               HttpSession sess = request.getSession(true);                
                 int l = Integer.valueOf(a);
                Collection <Faute> f = gestionFederation.AfficherFauteArbitre(l);
-               jspClient = "/AfficherFautesArbitre.jsp";
+               jspClient = "/fede/AfficherFautesArbitre.jsp";
                sess.setAttribute("listeFaa", f);
             }
         }
@@ -342,12 +347,12 @@ public class gestionFed extends HttpServlet {
         {
             Collection <Joueur> listej = gestionFederation.TousLesJoueurs();
             request.setAttribute("listeJoueur", listej);
-            jspClient="/Sanction.jsp";
+            jspClient="/fede/Sanction.jsp";
         }
          else if (act.equals("SanctionJo"))
         {            
             Sanctionner(request,response);
-            jspClient = "/MenuFederation.jsp";
+            jspClient = "/fede/MenuFederation.jsp";
         
         }
             else{

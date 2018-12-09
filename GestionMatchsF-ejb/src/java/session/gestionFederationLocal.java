@@ -10,6 +10,7 @@ import entites.Entraineur;
 import entites.Equipe;
 import entites.Faute;
 import entites.Joueur;
+import entites.Matchs;
 import java.util.Date;
 import javax.ejb.Local;
 import java.util.Collection;
@@ -37,7 +38,7 @@ public interface gestionFederationLocal {
 
     Collection<Arbitre> LesArbitres();
 
-    void ModifierMatch(String nomEq1, String nomEq2, Date dateMatch,Date dateM1, String heure);
+    void ModifierMatch(int idm, Date dateM1, String heure);
 
     void AffecterHisoEntr(Date datehisto, int id, String nomEq);
 
@@ -52,6 +53,8 @@ public interface gestionFederationLocal {
     List<Faute> AfficherFauteArbitre(int arbitreid);
 
     void Sanctionner(int id, Date datei);
+
+    List<Matchs> TousLesMAtchs();
 
     
 }

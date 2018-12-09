@@ -18,7 +18,7 @@
         out.println(attribut);
         %>
 
-            <a href ="AuthFed.jsp"> Menu Fédération </a><br>
+            <a href ="${pageContext.request.contextPath}/fede/AuthFed.jsp"> Menu Fédération </a><br>
             <a href ="AuthEnt.jsp"> Menu Entraineur </a><br>
             <a href ="MenuTous.jsp"> Menu Tous </a><br>
             <a href ="AuthArb.jsp"> Menu Arbitre </a><br>

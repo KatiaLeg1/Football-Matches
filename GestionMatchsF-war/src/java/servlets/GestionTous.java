@@ -74,20 +74,10 @@ public class GestionTous extends HttpServlet {
         System.out.println("nom equipe"+ act);
         if ((act==null) || (act.equals("retour")))
         {
-            jspClient = "/MenuTous.jsp";
+            jspClient = "/Auth.jsp";
             request.setAttribute("message", "pas d'infos");
         }
-        else if (act.equals("authFed")) {
-            String log = request.getParameter("Login");
-            String mdp = request.getParameter("mdp");
-            if (mdp.equals("fede")&&(log.equals("fede"))) {
-                request.setAttribute("message", "Bienvenu Fede");                
-                jspClient = "/MenuFederation.jsp";
-            } else {
-                request.setAttribute("message", "mauvais ID ou MDP");
-                jspClient = "/Auth.jsp";
-            }}
-       
+        
         else if(act.equals("authArb"))
         {
             String log = request.getParameter("Login");

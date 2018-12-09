@@ -106,11 +106,10 @@ public class gestionFederation implements gestionFederationLocal {
     }
 
     @Override
-    public void ModifierMatch(String nomEq1, String nomEq2, Date dateMatch, Date dateM1, String heure) {
-        Equipe equipeUn = equipesFacade.RechercherEquipe(nomEq1);
-        Equipe equipeDeux = equipesFacade.RechercherEquipe(nomEq2);
+    public void ModifierMatch(int idm, Date dateM1, String heure) {
         
-        Matchs m = matchFacade.RechercherMatch(equipeUn, equipeDeux, dateMatch);
+        
+        Matchs m = matchFacade.rechercherMatchID(idm);
         matchFacade.ModifierMatch(m, dateM1, heure);
     }
 
@@ -161,6 +160,11 @@ public class gestionFederation implements gestionFederationLocal {
     @Override
     public void Sanctionner(int id, Date datei) {
         joueursFacade.SanctionJ(id, datei);
+    }
+
+    @Override
+    public List<Matchs> TousLesMAtchs() {
+        return matchFacade.RechercherTousLesMatchs();
     }
     
     
