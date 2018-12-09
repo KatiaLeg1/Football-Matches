@@ -118,6 +118,25 @@ public class gestionArb extends HttpServlet {
             jspClient="/CreerFauteJoueur.jsp";
             // Direction CreerFauteJoueur.jsp
         }
+        else if(act.equals("authArb"))
+        {
+            String log = request.getParameter("Login");
+            String mdp = request.getParameter("mdp");
+            Arbitre a = gestionArbitre.authArb(log, mdp);
+            if (a==null)
+            {
+                jspClient = "/Auth.jsp";
+                request.setAttribute("message", "Erreur ID ou MDP");
+                
+            }
+            else
+            {
+                jspClient = "/MenuArbitre.jsp";
+                request.setAttribute("message", "Bienvenu " + a.getNomPersonne() +" "+a.getPrenomPersonne());
+
+            }
+        }    
+                
         // On va chercher à récuperer l'action de la servlet et executer la fonction creerFaute
         else if (act.equals("CreerFauteJoueur"))
         {

@@ -10,6 +10,7 @@ import entites.Equipe;
 import entites.Joueur;
 import entites.Matchs;
 import entites.carton;
+import facade.ArbitreFacadeLocal;
 import facade.EquipesFacadeLocal;
 import facade.FautesFacadeLocal;
 import facade.JoueursFacadeLocal;
@@ -25,6 +26,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class gestionArbitre implements gestionArbitreLocal {
+
+    @EJB
+    private ArbitreFacadeLocal arbitreFacade;
 
     @EJB
     private EquipesFacadeLocal equipesFacade;
@@ -98,4 +102,10 @@ public class gestionArbitre implements gestionArbitreLocal {
     public Collection<Matchs> RechercherTousLesMatchs() {
         return matchFacade.RechercherTousLesMatchs();
     }
+
+    @Override
+    public Arbitre authArb(String log, String mdp) {
+        return arbitreFacade.AuthArbitre(log, mdp);
+    }
+    
 }

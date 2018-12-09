@@ -5,6 +5,7 @@
  */
 package session;
 
+import entites.Arbitre;
 import entites.Equipe;
 import entites.Joueur;
 import entites.Matchs;
@@ -31,6 +32,8 @@ public interface gestionArbitreLocal {
     Collection<Joueur> LesJoueurs();
     
     Collection<Matchs> RechercherTousLesMatchs();
+
+    Arbitre authArb(String log, String mdp);
     
     
 }

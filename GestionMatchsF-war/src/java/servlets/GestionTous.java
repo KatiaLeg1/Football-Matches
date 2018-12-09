@@ -78,25 +78,7 @@ public class GestionTous extends HttpServlet {
             request.setAttribute("message", "pas d'infos");
         }
         
-        else if(act.equals("authArb"))
-        {
-            String log = request.getParameter("Login");
-            String mdp = request.getParameter("mdp");
-            Arbitre a = gestionTout.AuthArb(log, mdp);
-            if (a==null)
-            {
-                jspClient = "/Auth.jsp";
-                request.setAttribute("message", "Erreur ID ou MDP");
-                
-            }
-            else
-            {
-                jspClient = "/MenuArbitre.jsp";
-                request.setAttribute("message", "Bienvenu " + a.getNomPersonne() +" "+a.getPrenomPersonne());
-
-            }
-        }    
-                
+        
         else if (act.equals("Afficherdateequipe") ) /* auth de fédé*/
         {
           //  List<Matchs> lm = gestionTout.AfficherTousLesMatchs();
