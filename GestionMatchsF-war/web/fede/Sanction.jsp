@@ -9,6 +9,8 @@
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="${pageContext.request.contextPath}/fede/cssfede.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -18,33 +20,36 @@
         <title>Sanctionner un joueur</title>
     </head>
     <body>
+        
         <h1>Creer un Match</h1>
         <% List<Joueur> lesJoueur = listeJoueur;%>
 
         <form method ="get" action="${pageContext.request.contextPath}/gestionFed">
            
-            <fieldset>
-                 <label for="jou">joueur : <span class="requis"></span></label>
-                <select name="jou">
-                    <% for (Joueur j : lesJoueur ){%>
-                    <option value="<%=j.getId() %>"><%= j.getNomPersonne() %> </option>
-                    <%}%>
-                </select> 
-                 <br><br>
-                <label for="dateInt">Date d'interdiction<span class="requis">*</span></label> 
-                <input type="date" name="dateInt" value="" size="20" maxlength="20"/>
+        <div class="input1">
+        </br>   
+        <div class ='input2'>
+            <label for="jou" class='textinput'>joueur : </label>
+            <select name="jou" class = 'custom-dropdown__select custom-dropdown__select--white'>
+                <% for (Joueur j : lesJoueur ){%>
+                <option value="<%=j.getId() %>"><%= j.getNomPersonne() %> </option>
+                <%}%>
+            </select> 
+        </div>
+        <div class ='input2'>                      
             <br>
-                
-            <br>
-               
-            
-               <br>
-            
+                <label for="dateInt" class='textinput'>Date d'interdiction : </label> 
+                <input type="date" placeholder="date d'interdiction" name="dateInt" class="input"/>
                 <input type ="hidden" name="action" value="SanctionJo">
         
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>     <br>
-                        <a href ="MenuFederation.jsp"> Retour Menu </a>
+        </div></div>    
+            <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>
+            </br>
+            <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
 
         </form>
     </body>

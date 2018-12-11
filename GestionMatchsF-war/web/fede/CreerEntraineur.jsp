@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 <!DOCTYPE html>
 <html>
      <head>
@@ -14,45 +15,22 @@
     <body>
         <h1>Créer un Entraineur</h1>
         <form method ="get" action="../gestionFed">
-            <table>
-                <tr>
-                    <td>            
-                        <label for="nomEntraineur">Nom de l'Entraineur<span class="requis"></span></label> 
-                    </td>
-                    <td>
-                        <input type ="text" name="nomEntraineur" value="" size="20" maxlength="30"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>            
-                        <label for="prenomEntraineur">Prénom de l'Entraineur<span class="requis"></span></label> 
-                    </td>
-                    <td>
-                        <input type ="text" name="prenomEntraineur" value="" size="20" maxlength="30"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>            
-                        <label for="loginEntraineur">Login de l'Entraineur<span class="requis"></span></label> 
-                    </td>
-                    <td>
-                        <input type ="text" name="loginEntraineur" value="" size="20" maxlength="30"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>            
-                        <label for="mdpEntraineur">Mdp de l'Entraineur<span class="requis"></span></label> 
-                    </td>
-                    <td>
-                        <input type ="text" name="mdpEntraineur" value="" size="20" maxlength="30"/>
-                    </td>
-                </tr>
-            </table>
-            <input type ="hidden" name="action" value="CreerEntraineur">
-        
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Reset"/>               
-                                <a href ="MenuFederation.jsp"> Retour Menu </a>
+            <div class="input1">
+            </br>
+                <input type ="text" placeholder='Nom de l entraineur' name="nomEntraineur" class='input'/>
+                <input type ="text" placeholder='Prénom de l entraineur'name="prenomEntraineur" class='input'/>
+                <input type ="text" placeholder='login' name="loginEntraineur" class='input'/>
+                <input type ="text" placeholder='mdp' name="mdpEntraineur" class='input'/>
+                            <input type ="hidden" name="action" value="CreerEntraineur">
+
+            </div>
+            <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>
+            </br>
+            <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
 
         </form>
     </body>

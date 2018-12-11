@@ -15,8 +15,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.Collection;
-import static java.util.Collections.list;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,7 +43,7 @@ public class gestionFed extends HttpServlet {
         String nomEquipe = request.getParameter("nomEquipe");
         System.out.println("nom equipe"+nomEquipe);
         
-        String message = "";
+        String message ;
         if (nomEquipe.trim().isEmpty())
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour créer une Equipe";        }
@@ -69,7 +67,7 @@ public class gestionFed extends HttpServlet {
         System.out.println("nom entraineur"+ nomE +prenomE+ loginE + mdpE);
 
         
-        String message = "";
+        String message ;
         if (nomE.trim().isEmpty()||prenomE.trim().isEmpty()||loginE.trim().isEmpty()||mdpE.trim().isEmpty())
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour creer un Entraineur";
@@ -92,7 +90,7 @@ public class gestionFed extends HttpServlet {
         String loginA = request.getParameter("loginArbitre");
         String mdpA = request.getParameter("mdpArbitre");
         
-        String message = "";
+        String message ;
         if (nomA.trim().isEmpty()||prenomA.trim().isEmpty()||loginA.trim().isEmpty()||mdpA.trim().isEmpty())
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour creer un Entraineur";
@@ -111,7 +109,7 @@ public class gestionFed extends HttpServlet {
         String prenomJ = request.getParameter("prenomJoueur");
         
         
-        String message = "";
+        String message ;
         if (nomJ.trim().isEmpty()||prenomJ.trim().isEmpty())
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour creer un Entraineur";
@@ -131,7 +129,7 @@ public class gestionFed extends HttpServlet {
         String idA = request.getParameter("idA");
         String E2 = request.getParameter("nomEquDeux");
         String t = request.getParameter("dateMatch");
-        String message = "";
+        String message ;
         if (E1.trim().isEmpty() || E2.isEmpty() || t.isEmpty() || idA.isEmpty())
         {
             message = "Erreur, vous n'avez pas rempli tous les champs" + "<br><a href=\"CreerA.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'un arbitre";
@@ -150,7 +148,7 @@ public class gestionFed extends HttpServlet {
         String E1 = request.getParameter("idM");
         String h = request.getParameter("heure");
         String t1 = request.getParameter("dateM1");
-        String message = "";
+        String message ;
         if (E1.trim().isEmpty() || h.isEmpty() || t1.isEmpty() )
         {
             message = "Erreur, vous n'avez pas rempli tous les champs" + "<br><a href=\"CreerA.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'un arbitre";
@@ -170,7 +168,7 @@ public class gestionFed extends HttpServlet {
         String eq = request.getParameter("equipe");
         String t = request.getParameter("dateDebut");
         String ide = request.getParameter("ent");
-        String message = "";
+        String message;
         
         if (ide.isEmpty() || eq.isEmpty() || t.isEmpty() )
         {
@@ -210,7 +208,7 @@ public class gestionFed extends HttpServlet {
             throws ServletException, IOException {
             
         response.setContentType("text/html;charset=UTF-8");
-        String message="";
+        String message;
         String jspClient = null;
                
         String act = request.getParameter("action");

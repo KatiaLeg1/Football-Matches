@@ -8,6 +8,8 @@
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="${pageContext.request.contextPath}/fede/cssfede.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 <html>
 
@@ -22,24 +24,23 @@
         <% List<Matchs> lesM = listeMatch;%>
         <form method ="get" action="${pageContext.request.contextPath}/gestionFed">
            
-            <fieldset>
                 
                 
-                <br>
-                <label for="idM">Equipe Une : <span class="requis"></span></label>
-                <select name="idM">
+            <div class="input1">   
+            <div class ='input2'>
+                <label for="idM" class='textinput'>Equipe Une : </label>
+                <select name="idM"class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Matchs m : lesM ){%>
                     <option value="<%=m.getId()%>">Date : <%= m.getDateMatch().getDay()  %>/<%= m.getDateMatch().getMonth()%>/<%= m.getDateMatch().getYear() %> Equipes :<%=m.getEquipeUn().getNomequipe()  %> VS <%=m.getEquipeDeux().getNomequipe() %>   </option>
                     <%}%>
                 </select> 
-            
-            <br>
-               <br>
-               <label for="dateM1">Date du match à changer <span class="requis"></span></label> 
-                <input type="date" name="dateM1" value="" size="20" maxlength="20"/>
+            </div>
+            <div class ='input2'   >  
+                <label for="dateM1"  class='textinput'>Date du match à changer</label> 
+                <input type="date" placeholder='date à changer' name="dateM1" class='input'/>
                 <br>
                 <label for="heure">Heure du Match<span class="requis"></span></label> 
-                <input type ="text" name="heure" value="" size="20" maxlength="30"/>
+                <input type ="text" name="heure"  class='input'/>
                 <br>
                <br>
             
@@ -47,7 +48,7 @@
         
             <input type="submit" value="Valider"/>
             <input type="reset" value="Remettre à 0"/>               
-            <%--  <a href ="${pageContext.request.contextPath}/fede/MenuFederation"> Retour Menu </a> --%>
+             <a href ="${pageContext.request.contextPath}/fede/MenuFederation"> Retour Menu </a> 
 
         </form>
     </body>

@@ -8,6 +8,8 @@
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="${pageContext.request.contextPath}/fede/cssfede.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -24,42 +26,54 @@
         <% List<Arbitre> LesArbs = listeArbitres;%>
         <form method ="get" action="${pageContext.request.contextPath}/gestionFed">
            
-            <fieldset>
-                <label for="dateMatch">Date du match<span class="requis">*</span></label> 
-                <input type="date" name="dateMatch" value="" size="20" maxlength="20"/>
-            <br>
-                <label for="heure">Heure du Match<span class="requis"></span></label> 
-                <input type ="text" name="heure" value="" size="20" maxlength="30"/>
-            <br>
-                <label for="nomEquUn">Equipe Une : <span class="requis"></span></label>
-                <select name="nomEquUn">
+            <div class="input1">
+            </br>   
+            <div class ='input2'>
+                <label for="dateMatch" class='textinput'> Date du match : </label> 
+                <input type="date" placeholder='Date du Match' name="dateMatch" class='input'/>
+            </div>
+             <div class ='input2'>
+                <label for="heure" class='textinput'> Heure du match : </label> 
+                <input type ="text" placeholder='Heure du Match'name="heure"  class='input'/>
+             </div>
+            <div class ='input2'  >          
+                <label for="nomEquUn"  class='textinput'> Equipe Une : </label>
+                <select name="nomEquUn" class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Equipe e : lesEqs ){%>
                     <option value="<%=e.getNomequipe()%>"><%=e.getNomequipe()%> </option>
                     <%}%>
                 </select> 
-            
+            </div>
+                <div class ='input2'   >                      
             <br>
-               <label for="nomEquDeux">Equipe Deux : <span class="requis"></span></label>
-                <select name="nomEquDeux">
+               <label for="nomEquDeux"  class='textinput'>Equipe Deux : </label>
+                <select name="nomEquDeux" class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Equipe e : lesEqss ){%>
                     <option value="<%=e.getNomequipe()%>"><%=e.getNomequipe()%> </option>
                     <%}%>
                 </select> 
+            </div>
+                <div class ='input2'  >              
                <br>
-               <label for="idA">Arbitre<span class="requis"></span></label>
-               <select name="idA">
+               <label for="idA" class='textinput'>Arbitre : </label>
+               <select name="idA" class='custom-dropdown__select custom-dropdown__select--white'>
                    <% for (Arbitre a : LesArbs){%>
                    <option value="<%=a.getId()%>"><%=a.getNomPersonne()%> <%=a.getPrenomPersonne()%></option>
                    <%}%>
                </select> 
+            </div>
                <br>
             
                 <input type ="hidden" name="action" value="CreerMa">
         
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>     <br>
-                        <a href ="MenuFederation.jsp"> Retour Menu </a>
-
+            </div>
+            <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>
+            </br>
+            <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
         </form>
     </body>
 </html>

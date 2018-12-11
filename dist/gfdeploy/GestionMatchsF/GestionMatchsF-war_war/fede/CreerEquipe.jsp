@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="cssfede.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,16 +16,18 @@
     <body>
         <h1>Créer une Equipe</h1>
         <form method ="get" action="../gestionFed">
-            <fieldset>
-                <label for="nomEquipe">Nom de l'équipe<span class="requis"></span></label> 
-                <input type ="text" name="nomEquipe" value="" size="20" maxlength="20"/>
-                    
+            <div class="input1">
+            </br>                
+            <input type ="text" placeholder="Nom de l'équipe" name="nomEquipe" class='input'/>
             <input type ="hidden" name="action" value="CreerEquipe">
-            </fieldset>
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Reset"/>  
+            </div>
+            <div class='bouton1'>
             </br>
-            <a href ="MenuFederation.jsp"> Retour Menu </a>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>
+            </br>
+            <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
             
         </form>
     </body>
