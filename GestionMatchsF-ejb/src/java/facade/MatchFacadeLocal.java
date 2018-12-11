@@ -52,7 +52,9 @@ public interface MatchFacadeLocal {
     List<Matchs> RechercherTousLesMatchs();
 
     Matchs rechercherMatchID(int id);
+
+    List<Matchs> Matchdate(Date date);
     
-    
+    List<Matchs> MatchdateInt(Date date1,Date date2);
     
 }

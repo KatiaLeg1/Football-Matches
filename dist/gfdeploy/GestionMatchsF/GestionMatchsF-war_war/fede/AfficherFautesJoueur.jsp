@@ -29,7 +29,7 @@
         </tr> 
        <% for(Faute f : listeF){%> 
        <tr> 
-            <td Width =15%><%=f.getMatch().getDateMatch().getDay() %> / <%=f.getMatch().getDateMatch().getMonth() %> / <%=f.getMatch().getDateMatch().getYear() %></td>
+            <td Width =15%><%=f.getMatch().getDateMatch().getDate() %> / <%=f.getMatch().getDateMatch().getMonth() %> / <%=f.getMatch().getDateMatch().getYear()+1900 %></td>
             <td Width =15%><%=f.getMatch().getHeure() %></td>
             <td Width =15%><%=f.getTypeFaute()%></td>
         </tr> <%}%></table>

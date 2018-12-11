@@ -32,6 +32,10 @@
             </div><div class="menubis"><a href ="gestionFed?action=AfficherFauteJ"> Afficher les fautes d'un joueur </a>   
             </div><div class="menubis"><a href ="gestionFed?action=AfficherFauteArb"> Afficher les fautes commises par des joueurs pour un arbitre </a>
             </div><div class="menubis"><a href ="gestionFed?action=Sanction"> Sanctionner les joueurs </a>
+                
+                
+                </div><div class="menubis"><a href ="RecherchermatchsDate.jsp"> Matchs dates </a>
+                
             </div>
         </div></br></br>
 <div class="retour">

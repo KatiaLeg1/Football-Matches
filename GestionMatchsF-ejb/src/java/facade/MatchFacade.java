@@ -162,7 +162,25 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
         return m;
 
     }
+
+    @Override
+    public List<Matchs> Matchdate(Date date) {
+        String tex ="SELECT m from Matchs as m where m.dateMatch=:date";
+                Query req = getEntityManager().createQuery(tex);
+        req.setParameter("date", date);     
+        List<Matchs> liste =  req.getResultList();
+        return liste;
+    }
     
 
-    }
+    @Override
+    public List<Matchs> MatchdateInt(Date date1,Date date2) {
+        String tex ="SELECT m from Matchs as m where m.dateMatch>=:date1 and m.dateMatch<=:date2";
+                Query req = getEntityManager().createQuery(tex);
+        req.setParameter("date1", date1); 
+                req.setParameter("date2", date2);     
 
+        List<Matchs> liste =  req.getResultList();
+        return liste;
+}
+    }

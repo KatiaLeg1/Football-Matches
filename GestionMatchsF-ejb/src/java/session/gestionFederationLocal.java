@@ -56,5 +56,9 @@ public interface gestionFederationLocal {
 
     List<Matchs> TousLesMAtchs();
 
+    List<Matchs> matchDate(Date date);
+
+    List<Matchs> MatchsInt(Date date1, Date date2);
+
     
 }

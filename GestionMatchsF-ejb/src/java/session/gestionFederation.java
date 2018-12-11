@@ -166,6 +166,16 @@ public class gestionFederation implements gestionFederationLocal {
     public List<Matchs> TousLesMAtchs() {
         return matchFacade.RechercherTousLesMatchs();
     }
+
+    @Override
+    public List<Matchs> matchDate(Date date) {
+        return matchFacade.Matchdate(date);
+    }
+
+    @Override
+    public List<Matchs> MatchsInt(Date date1, Date date2) {
+        return matchFacade.MatchdateInt(date1, date2);
+    }
     
     
     

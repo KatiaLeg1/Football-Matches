@@ -33,7 +33,7 @@
                 <label for="idM" class='textinput'>Choisir le Match : </label>
                 <select name="idM"class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Matchs m : lesM ){%>
-                    <option value="<%=m.getId()%>">Date : <%= m.getDateMatch().getDay()  %>/<%= m.getDateMatch().getMonth()%>/<%= m.getDateMatch().getYear() %> Equipes :<%=m.getEquipeUn().getNomequipe()  %> VS <%=m.getEquipeDeux().getNomequipe() %>   </option>
+                    <option value="<%=m.getId()%>">Date : <%= m.getDateMatch().getDate()  %>/<%= m.getDateMatch().getMonth()%>/<%= m.getDateMatch().getYear()+1900 %> Equipes :<%=m.getEquipeUn().getNomequipe()  %> VS <%=m.getEquipeDeux().getNomequipe() %>   </option>
                     <%}%>
                 </select> 
             </div>
