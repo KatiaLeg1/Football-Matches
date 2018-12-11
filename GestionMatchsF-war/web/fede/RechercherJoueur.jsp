@@ -7,6 +7,8 @@
 <%@page import="entites.Joueur"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="${pageContext.request.contextPath}/fede/cssfede.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,19 +24,24 @@
         
                 <% List<Joueur> lesJou = listeJoueur;%>
                 
-                 <fieldset>
-                <label for="jo">Joueur  : <span class="requis"></span></label>
-                <select name="jo">
+                  <div class="input1">
+            </br>   
+            <div class ='input2'>
+                <label for="jo" class='textinput'>Joueur  : <span class="requis"></span></label>
+                <select name="jo" class = 'custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Joueur j : lesJou ){%>
-                    <option value="<%=j.getId()%>"><%=j.getNomPersonne() %><%=j.getPrenomPersonne() %> </option>
+                    <option value="<%=j.getId()%>"><%=j.getNomPersonne() %> <%=j.getPrenomPersonne() %> </option>
                     <%}%>
                 </select> 
-                
-                
-                <input type ="hidden" name="action" value="afficherFauteJo">
+            </div>
+            <input type ="hidden" name="action" value="afficherFauteJo">
         
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>     <br>
-            <a href ="MenuFederation.jsp"> Retour Menu </a>
+            <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>
+            </br>
+            <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
     </body>
 </html>

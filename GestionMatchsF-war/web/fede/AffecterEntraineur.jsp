@@ -8,6 +8,8 @@
 <%@page import="java.util.List"%>
 <%@page import="entites.Equipe"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="${pageContext.request.contextPath}/fede/cssfede.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,40 +20,49 @@
         <title>Affecter Un Entraineur</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Affecter un entraineur</h1>
         <% List<Entraineur> lesEnts = listeEquipent;%>
         <% List<Equipe> lesEqs = listeEquipes;%>
         
         <form method ="get" action="${pageContext.request.contextPath}/gestionFed">
-        <fieldset>
-                <label for="dateDebut">Date début afectation<span class="requis">*</span></label> 
-                <input type="date" name="dateDebut" value="" size="20" maxlength="20"/>
-            <br>
-                
-                <label for="ent">Entraineur : <span class="requis"></span></label>
-                <select name="ent">
+
+            <div class="input1">
+            </br>   
+            <div class ='input2'>
+                <label for="dateDebut" class='textinput' >Date début afectation</label> 
+                <input type="date" placeholder='date début affectation' name="dateDebut" class='input'/>
+            </div>
+            <div class ='input2'>                
+                <label for="ent" class='textinput'>Entraineur : </label>
+                <select name="ent" class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Entraineur ent : lesEnts ){%>
-                    <option value="<%=ent.getId()%>"><%=ent.getNomPersonne()%><%=ent.getPrenomPersonne()%> </option>
+                    <option value="<%=ent.getId()%>"><%=ent.getNomPersonne()%> <%=ent.getPrenomPersonne()%> </option>
                     <%}%>
                 </select> 
-            
-            <br>
-               <label for="equipe">Equipe : <span class="requis"></span></label>
-                <select name="equipe">
+                </br>
+            </div>
+                </br>
+            <div class ='input2'> 
+               <label for="equipe" class='textinput'>Equipe : </label>
+                <select name="equipe" class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Equipe e : lesEqs ){%>
                     <option value="<%=e.getNomequipe()%>"><%=e.getNomequipe()%> </option>
                     <%}%>
                 </select> 
-               <br>
-               
+            </div>               
                <br>
             
                 <input type ="hidden" name="action" value="AffEnt">
+            </div>
         
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>     <br>
-            <a href ="MenuFederation.jsp"> Retour Menu </a>
-
-        </form>
+            <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>
+            </br>
+<div class="retour">
+                <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
+            </div>        </form>
     </body>
 </html>

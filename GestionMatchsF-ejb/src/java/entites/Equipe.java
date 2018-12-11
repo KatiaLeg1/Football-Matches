@@ -152,26 +152,7 @@ public class Equipe implements Serializable {
         this.pointEquipe = pointEquipe;
     }
 
-    @ManyToOne
-        private Entraineur entraineur;
-
-    /**
-     * Get the value of entraineur
-     *
-     * @return the value of entraineur
-     */
-    public Entraineur getEntraineur() {
-        return entraineur;
-    }
-
-    /**
-     * Set the value of entraineur
-     *
-     * @param entraineur new value of entraineur
-     */
-    public void setEntraineur(Entraineur entraineur) {
-        this.entraineur = entraineur;
-    }
+    
 
     
 }

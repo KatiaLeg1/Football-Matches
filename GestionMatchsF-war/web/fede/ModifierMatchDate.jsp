@@ -26,30 +26,40 @@
            
                 
                 
-            <div class="input1">   
+            <div class="input1"> 
+                                </br>
+
             <div class ='input2'>
-                <label for="idM" class='textinput'>Equipe Une : </label>
+                <label for="idM" class='textinput'>Choisir le Match : </label>
                 <select name="idM"class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Matchs m : lesM ){%>
                     <option value="<%=m.getId()%>">Date : <%= m.getDateMatch().getDay()  %>/<%= m.getDateMatch().getMonth()%>/<%= m.getDateMatch().getYear() %> Equipes :<%=m.getEquipeUn().getNomequipe()  %> VS <%=m.getEquipeDeux().getNomequipe() %>   </option>
                     <%}%>
                 </select> 
             </div>
+                                </br>
+
             <div class ='input2'   >  
                 <label for="dateM1"  class='textinput'>Date du match à changer</label> 
                 <input type="date" placeholder='date à changer' name="dateM1" class='input'/>
                 <br>
-                <label for="heure">Heure du Match<span class="requis"></span></label> 
+                <label for="heure" class='textinput'>Heure du Match</label> 
                 <input type ="text" name="heure"  class='input'/>
                 <br>
                <br>
             
                 <input type ="hidden" name="action" value="ModifierMa">
         
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>               
-             <a href ="${pageContext.request.contextPath}/fede/MenuFederation"> Retour Menu </a> 
-
+            <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>
+            </br>
+            <div class="retour">
+            <div class="retour">
+                <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
+            </div>
         </form>
     </body>
 </html>

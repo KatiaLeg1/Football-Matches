@@ -32,7 +32,7 @@
             <label for="jou" class='textinput'>joueur : </label>
             <select name="jou" class = 'custom-dropdown__select custom-dropdown__select--white'>
                 <% for (Joueur j : lesJoueur ){%>
-                <option value="<%=j.getId() %>"><%= j.getNomPersonne() %> </option>
+                <option value="<%=j.getId() %>"><%= j.getNomPersonne() %> <%= j.getPrenomPersonne() %> </option>
                 <%}%>
             </select> 
         </div>
@@ -41,6 +41,7 @@
                 <label for="dateInt" class='textinput'>Date d'interdiction : </label> 
                 <input type="date" placeholder="date d'interdiction" name="dateInt" class="input"/>
                 <input type ="hidden" name="action" value="SanctionJo">
+                
         
         </div></div>    
             <div class='bouton1'>

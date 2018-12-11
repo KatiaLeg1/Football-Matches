@@ -22,7 +22,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import session.gestionFederationLocal;
 
 /**
@@ -41,14 +40,12 @@ public class gestionFed extends HttpServlet {
                 
 
         String nomEquipe = request.getParameter("nomEquipe");
-        System.out.println("nom equipe"+nomEquipe);
         
         String message ;
         if (nomEquipe.trim().isEmpty())
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour créer une Equipe";        }
         else {
-            System.out.println("nom equipe"+nomEquipe);
             gestionFederation.CreerEquipe(nomEquipe);
             message = "Equipe créée";          
         }
@@ -64,17 +61,13 @@ public class gestionFed extends HttpServlet {
         String loginE = request.getParameter("loginEntraineur");
         String mdpE = request.getParameter("mdpEntraineur");
         
-        System.out.println("nom entraineur"+ nomE +prenomE+ loginE + mdpE);
-
         
         String message ;
-        if (nomE.trim().isEmpty()||prenomE.trim().isEmpty()||loginE.trim().isEmpty()||mdpE.trim().isEmpty())
+        if (nomE.trim().trim().isEmpty()||prenomE.trim().isEmpty()||loginE.trim().isEmpty()||mdpE.trim().isEmpty())
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour creer un Entraineur";
         }
         else {
-                    System.out.println("nom 2"+ nomE +prenomE+ loginE + mdpE);
-
             gestionFederation.CreerEntraineur(nomE, prenomE, loginE, mdpE);
             message = "Entraineur créé";          
         }
@@ -93,7 +86,7 @@ public class gestionFed extends HttpServlet {
         String message ;
         if (nomA.trim().isEmpty()||prenomA.trim().isEmpty()||loginA.trim().isEmpty()||mdpA.trim().isEmpty())
         {
-            message = "Erreur, vous n'avez pas rempli tous les champs pour creer un Entraineur";
+            message = "Erreur, vous n'avez pas rempli tous les champs pour creer un Arbitre";
         }
         else {
             gestionFederation.CreerArbitre(nomA, prenomA, loginA, mdpA);
@@ -112,7 +105,7 @@ public class gestionFed extends HttpServlet {
         String message ;
         if (nomJ.trim().isEmpty()||prenomJ.trim().isEmpty())
         {
-            message = "Erreur, vous n'avez pas rempli tous les champs pour creer un Entraineur";
+            message = "Erreur, vous n'avez pas rempli tous les champs pour creer un Joueur";
         }
         else {
             gestionFederation.CreerJoueur(nomJ, prenomJ);
@@ -130,9 +123,9 @@ public class gestionFed extends HttpServlet {
         String E2 = request.getParameter("nomEquDeux");
         String t = request.getParameter("dateMatch");
         String message ;
-        if (E1.trim().isEmpty() || E2.isEmpty() || t.isEmpty() || idA.isEmpty())
+        if (h.trim().isEmpty()||E1.trim().isEmpty() || E2.trim().isEmpty() || t.trim().isEmpty() || idA.trim().isEmpty())
         {
-            message = "Erreur, vous n'avez pas rempli tous les champs" + "<br><a href=\"CreerA.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'un arbitre";
+            message = "Erreur, vous n'avez pas rempli tous les champs pour creer un match";
         }
         else {
             int id = Integer.valueOf(idA);
@@ -149,9 +142,9 @@ public class gestionFed extends HttpServlet {
         String h = request.getParameter("heure");
         String t1 = request.getParameter("dateM1");
         String message ;
-        if (E1.trim().isEmpty() || h.isEmpty() || t1.isEmpty() )
+        if (E1.trim().isEmpty() || h.trim().isEmpty() || t1.trim().isEmpty() )
         {
-            message = "Erreur, vous n'avez pas rempli tous les champs" + "<br><a href=\"CreerA.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'un arbitre";
+            message = "Erreur, vous n'avez pas rempli tous les champs pour modifier le match";
         }
         else {
             int idMa= Integer.valueOf(E1);
@@ -170,9 +163,9 @@ public class gestionFed extends HttpServlet {
         String ide = request.getParameter("ent");
         String message;
         
-        if (ide.isEmpty() || eq.isEmpty() || t.isEmpty() )
+        if (ide.trim().isEmpty() || eq.trim().isEmpty() || t.trim().isEmpty() )
         {
-            message = "Erreur, vous n'avez pas rempli tous les champs" + "<br><a href=\"CreerA.jsp\">Cliquez ici</a> pour accéder au formulaire de création d'un arbitre";
+            message = "Erreur, vous n'avez pas rempli tous les champs pour affecter un entraineur";
         }
         else {
             int id = Integer.valueOf(ide);
@@ -189,16 +182,14 @@ public class gestionFed extends HttpServlet {
         String j = request.getParameter("jou");
         String ti = request.getParameter("dateInt");
         String message;
-        if (j.trim().isEmpty() || ti.isEmpty() )
+        if (j.trim().isEmpty() || ti.trim().isEmpty() )
         {
-            message = "Erreur, vous n'avez pas rempli tous les champs" ;
+            message = "Erreur, vous n'avez pas rempli tous les champs pour sanctionner un joueur" ;
         }
         else {
             int id = Integer.valueOf(j);
-                    System.out.println("int" + id);
 
-            Date date = Date.valueOf(ti);                     System.out.println("date" + date);
-
+            Date date = Date.valueOf(ti);                    
             gestionFederation.Sanctionner(id, date);
             message = "Sanction créée avec succès !";          
         }
@@ -294,11 +285,10 @@ public class gestionFed extends HttpServlet {
             String d = request.getParameter("dateMatch") ;
             if (!(d.trim().isEmpty()))
             {
-               HttpSession sess = request.getSession(true);
                Date da = Date.valueOf(d);
                Collection <Faute> fa = gestionFederation.AfficherFauteDate(da);
                jspClient = "/fede/AffihcherFautesDate.jsp";
-               sess.setAttribute("listeFa", fa);
+               request.setAttribute("listeFa", fa);
             }
             else{
             jspClient = "/fede/MenuFederation.jsp";}
@@ -306,21 +296,23 @@ public class gestionFed extends HttpServlet {
         }
         else if (act.equals("AfficherFauteJ"))
         {
+            System.out.println("1");
             Collection <Joueur> listej = gestionFederation.TousLesJoueurs();
             request.setAttribute("listeJoueur", listej);
             jspClient="/fede/RechercherJoueur.jsp";
         }
          else if (act.equals("afficherFauteJo"))
         {
+                        System.out.println("é");
             String j = request.getParameter("jo") ;
 
             if (!(j.trim().isEmpty()))
             {
-               HttpSession sess = request.getSession(true);
                 int l = Integer.valueOf(j);
                Collection <Faute> f = gestionFederation.AfficherFauteJoueur(l);
                jspClient = "/fede/AfficherFautesJoueur.jsp";
-               sess.setAttribute("listeF", f);
+               request.setAttribute("listeF", f);
+                           System.out.println("3");
             }
         }
             else if (act.equals("AfficherFauteArb"))
@@ -334,11 +326,10 @@ public class gestionFed extends HttpServlet {
             String a = request.getParameter("arbi") ;
             if (!(a.trim().isEmpty()))
             {
-               HttpSession sess = request.getSession(true);                
                 int l = Integer.valueOf(a);
                Collection <Faute> f = gestionFederation.AfficherFauteArbitre(l);
                jspClient = "/fede/AfficherFautesArbitre.jsp";
-               sess.setAttribute("listeFaa", f);
+               request.setAttribute("listeFaa", f);
             }
         }
             else if (act.equals("Sanction"))
