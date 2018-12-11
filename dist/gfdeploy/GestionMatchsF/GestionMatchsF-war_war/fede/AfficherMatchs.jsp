@@ -31,10 +31,10 @@
              </tr>
          <% for(Matchs m : listeMaa){%>
          <tr>   
-            <td Width =15%><%=m.getDateMatch() %></td>
+            <td Width =15%><%=m.getDateMatch().getDate() %>/<%=m.getDateMatch().getMonth() %>/<%=m.getDateMatch().getYear()%></td>
             <td Width =15%><%=m.getHeure() %></td>
-            <td Width =15%><%=m.getEquipeUn() %></td>
-            <td Width =15%><%=m.getEquipeDeux()%></td>
+            <td Width =15%><%=m.getEquipeUn().getNomequipe() %></td>
+            <td Width =15%><%=m.getEquipeDeux().getNomequipe()%></td>
         </tr><%}%> </table>
             
 </div>

@@ -33,8 +33,9 @@
             <input  class='bouton'type="reset" value="Remise à 0"/>       
             </div>
             </br>
-                        <a href ="Auth.jsp"> Retour Authentification </a>
-
+ <div class='retour'>
+            <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
+            </div>
         </form>
     </body>
 </html>

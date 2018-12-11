@@ -17,7 +17,7 @@
         <title>Liste Matchs pour une date</title>
     </head>
     <body>
-        <h1>Liste fautes pour une date</h1>
+        <h1>Liste fautes pour un intervalle de date</h1>
                 <div style="overflow-x:auto;">
 
         <table>
@@ -30,10 +30,10 @@
              </tr>
          <% for(Matchs m : listeMa){%>
          <tr>   
-            <td Width =15%><%=m.getDateMatch() %></td>
+            <td Width =15%><%=m.getDateMatch().getDate() %>/<%=m.getDateMatch().getMonth() %>/<%=m.getDateMatch().getYear()%></td>
             <td Width =15%><%=m.getHeure() %></td>
-            <td Width =15%><%=m.getEquipeUn() %></td>
-            <td Width =15%><%=m.getEquipeDeux()%></td>
+            <td Width =15%><%=m.getEquipeUn().getNomequipe() %></td>
+            <td Width =15%><%=m.getEquipeDeux().getNomequipe()%></td>
         </tr><%}%> </table>
             
 </div>
