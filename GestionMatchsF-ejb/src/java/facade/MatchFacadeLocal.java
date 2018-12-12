@@ -57,4 +57,6 @@ public interface MatchFacadeLocal {
     
     List<Matchs> MatchdateInt(Date date1,Date date2);
     
+    List<Matchs> AfficherMatchsEq(int ide);
+    
 }

@@ -8,6 +8,8 @@ import entites.Arbitre;
 import entites.Entraineur;
  import entites.Equipe;
 import entites.HistoriqueEntraineur;
+import entites.HistoriqueJoueur;
+import entites.Joueur;
 import entites.Matchs;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -79,19 +81,7 @@ public class GestionTous extends HttpServlet {
         }
         
         
-        else if (act.equals("Afficherdateequipe") ) /* auth de fédé*/
-        {
-          //  List<Matchs> lm = gestionTout.AfficherTousLesMatchs();
-           Collection<Equipe> le = gestionTout.AfficherToutesLesEquipes();
-         //   request.setAttribute("listematch", lm);
-            request.setAttribute("listeequipe", le);
-            jspClient = "/saisirEquipeDate.jsp";
-        
-        }else if (act.equals("rechercherdateequip") ) /* auth de fédé*/
-        {
-            rechercheMatch(request, response);
-            jspClient="/AfficherFrais.jsp";
-        }
+       
         
          else if (act.equals("AffEqEnt")) // valeur action que tu récupères de la JSP Menu Tout
         {
@@ -105,7 +95,6 @@ public class GestionTous extends HttpServlet {
         }
          else if (act.equals("HistoEnt"))
         {
-            HttpSession sess = request.getSession(true);
             String ent = request.getParameter("ent") ;
 
             if (!(ent.trim().isEmpty()))
@@ -115,10 +104,114 @@ public class GestionTous extends HttpServlet {
                 //donc HistoriqueEntraineurFacade  + Session
                Collection <HistoriqueEntraineur> he = gestionTout.AfficherHistoEnt(l) ;
                // la tu as ta liste d'historique, donc tu vas l'enregistrer pour l'envoyer à la JSP par "sess"
-               sess.setAttribute("listeHE", he);
+               request.setAttribute("listeHE", he);
                //Et tu rediriges vers la JSP afficher
                jspClient = "/AfficherHistoriqueEnt.jsp";
             }
+            else if (act.equals("AffEqJou")) // valeur action que tu récupères de la JSP Menu Tout
+        {
+            // Tu dois d'abord rechercher 1 entraineur précis, pour ça tu fais envoie la liste des entraineurs à la JSP
+            // Comme ça tu auras un liste déroulante dans la JSP
+            // Pour ça tu dois mettre la methode dans le bean session 
+            List<Joueur> lesJou = gestionTout.TousLesJoueurs();
+            request.setAttribute("listeJou", lesJou);
+            // tu rediriges vers la JSP ou tu recherches ton entraineur
+            jspClient="/RechercherJoueurEq.jsp";
+        }
+        else if (act.equals("HistoJou"))
+        {
+            String jou = request.getParameter("jou") ;
+             if (!(jou.trim().isEmpty()))
+            {
+                int j = Integer.valueOf(jou);
+                // La tu as récupéré l'ID de ton entraineur, maintenant faut afficher l'historique, 
+                //donc HistoriqueEntraineurFacade  + Session
+               List<HistoriqueJoueur>hj = gestionTout.AfficherHistoJou(j);
+               // la tu as ta liste d'historique, donc tu vas l'enregistrer pour l'envoyer à la JSP par "sess"
+               request.setAttribute("listeHJ", hj);
+               //Et tu rediriges vers la JSP afficher
+               jspClient = "/AfficherHistoriqueJoueur.jsp";
+            }
+        }
+        
+         else if (act.equals("AfficherEqJou"))
+        {
+             Collection<Equipe> lesEquipes = gestionTout.AfficherToutesLesEquipes();
+            request.setAttribute("lesEquipes", lesEquipes);
+            jspClient="/RechercherEquipe.jsp";
+         }
+        else if (act.equals("AfficherJou"))
+        {
+            String eq = request.getParameter("eq") ;
+             if (!(eq.trim().isEmpty()))
+            {
+                int j = Integer.valueOf(eq); 
+               List<Joueur> AfficheLesJoueursEq = gestionTout.AfficherTousLesJoueursEq(j);
+               // la tu as ta liste d'historique, donc tu vas l'enregistrer pour l'envoyer à la JSP par "sess"
+               request.setAttribute("lesJoueurs", AfficheLesJoueursEq);
+               //Et tu rediriges vers la JSP afficher
+               jspClient = "/AfficherJoueurPourUneEquipe.jsp";
+            }
+        }
+        
+         else if (act.equals("AfficherClassementEq"))
+        {
+               Collection<Equipe> AfficherClassement= gestionTout.AfficherToutesLesEquipes();
+               // la tu as ta liste d'historique, donc tu vas l'enregistrer pour l'envoyer à la JSP par "sess"
+               request.setAttribute("AfficherClassement", AfficherClassement);
+               //Et tu rediriges vers la JSP afficherC
+               jspClient = "/AfficherClassement.jsp";
+            
+        }
+         else if (act.equals("AfficherMatchsEq"))
+        {
+             Collection<Equipe> lesEquipes = gestionTout.AfficherToutesLesEquipes();
+            request.setAttribute("lesEquipes", lesEquipes);
+            jspClient="/RechercherEquipeMatch.jsp";
+         }
+        
+         else if (act.equals("AfficherEqM"))
+        {
+            
+            String eq = request.getParameter("eq") ;
+             if (!(eq.trim().isEmpty()))
+            {
+                
+                          int ide = Integer.valueOf(eq); 
+               List<Matchs> ListeMatchs= gestionTout.AffiicherMatchEquipe(ide);
+               // la tu as ta liste d'historique, donc tu vas l'enregistrer pour l'envoyer à la JSP par "sess"
+               request.setAttribute("AfficherMatch", ListeMatchs);
+               //Et tu rediriges vers la JSP afficherC
+               jspClient = "/AfficherMatchsEq.jsp";
+            }
+        }
+             else if (act.equals("MatchsDate"))
+         {
+             
+            String d = request.getParameter("date") ;
+            String d1 = request.getParameter("date1") ;
+            if (!(d.trim().isEmpty())&&!(d1.trim().isEmpty()))
+            {
+                 Date da = Date.valueOf(d);
+                 Date da1 = Date.valueOf(d1);
+                 List <Matchs> fa = gestionTout.MatchsInt(da, da1);
+                  jspClient = "/AfficherMatchsInt.jsp";
+               request.setAttribute("listeMa", fa);
+            }
+            else if(!(d.trim().isEmpty()))
+            {
+                Date da = Date.valueOf(d);
+               List <Matchs> fa = gestionTout.matchDate(da);
+               jspClient = "/AfficherMatchs.jsp";
+               request.setAttribute("listeMaa", fa);
+            }
+            else{
+            jspClient = "/MenuTous.jsp";
+         }}
+             else{
+                 jspClient = "MenuTous";
+             }
+            
         }
         RequestDispatcher Rd;
  Rd = getServletContext().getRequestDispatcher(jspClient);

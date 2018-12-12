@@ -345,30 +345,7 @@ public class gestionFed extends HttpServlet {
             jspClient = "/fede/MenuFederation.jsp";
         
         }
-         else if (act.equals("MatchsDate"))
-         {
-             
-            String d = request.getParameter("date") ;
-            String d1 = request.getParameter("date1") ;
-            if (!(d.trim().isEmpty())&&!(d1.trim().isEmpty()))
-            {
-                 Date da = Date.valueOf(d);
-                 Date da1 = Date.valueOf(d1);
-                 List <Matchs> fa = gestionFederation.MatchsInt(da, da1);
-                  jspClient = "/fede/AfficherMatchsInt.jsp";
-               request.setAttribute("listeMa", fa);
-            }
-            else if(!(d.trim().isEmpty()))
-            {
-                Date da = Date.valueOf(d);
-               List <Matchs> fa = gestionFederation.matchDate(da);
-               jspClient = "/fede/AfficherMatchs.jsp";
-               request.setAttribute("listeMaa", fa);
-            }
-            else{
-            jspClient = "/fede/MenuFederation.jsp";
-         }
-         }
+        
             else{
             jspClient = "/fede/MenuFederation.jsp";}
         

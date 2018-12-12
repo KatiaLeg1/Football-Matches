@@ -12,8 +12,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <jsp:useBean id="listeHE" scope="session" class="Collection<HistoriqueEntraineur>"></jsp:useBean> <%-- attention aux noms + Dans scope ça devient Session--%>
-        <title>Historique pour 1 entraineur</title>
+ <jsp:useBean id="listeHE" scope="request" class="Collection<HistoriqueEntraineur>"></jsp:useBean> 
+ <title>Historique pour 1 entraineur</title>
     </head>
     <body>
         <h1>Historique pour 1 entraineur</h1>

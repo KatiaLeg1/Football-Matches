@@ -183,4 +183,15 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
         List<Matchs> liste =  req.getResultList();
         return liste;
 }
+    
+@Override
+    public List<Matchs> AfficherMatchsEq(int ide) {
+        List<Matchs> m;
+        String text ="SELECT m FROM Matchs AS m WHERE m.equipeUn.id=:ide  ";
+        Query req = getEntityManager().createQuery(text);
+        req.setParameter("ide", ide);  
+        m = req.getResultList();
+        return m;
+    }
+    
     }

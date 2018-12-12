@@ -9,6 +9,7 @@ import entites.Arbitre;
 import entites.Entraineur;
 import entites.Equipe;
 import entites.HistoriqueEntraineur;
+import entites.HistoriqueJoueur;
 import entites.Joueur;
 import entites.Matchs;
 import java.util.Collection;
@@ -35,4 +36,15 @@ public interface gestionToutLocal {
     Collection<Entraineur> TousLesEntraineurs();
 
     List<HistoriqueEntraineur> AfficherHistoEnt(int idE);
+    
+    List<Joueur> TousLesJoueurs();
+    
+    List<HistoriqueJoueur> AfficherHistoJou(int idJ);
+    
+    List<Joueur> AfficherTousLesJoueursEq(int ide);
+     
+    List<Matchs> AffiicherMatchEquipe(int ide);
+        List<Matchs> matchDate(Date date);
+
+    List<Matchs> MatchsInt(Date date1, Date date2);
 }

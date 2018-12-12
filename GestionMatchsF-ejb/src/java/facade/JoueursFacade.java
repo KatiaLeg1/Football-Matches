@@ -136,5 +136,23 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
         j.setDateInterdiction(dateI);
         em.merge(j);
     }
+    
+    @Override
+    public List<Joueur> TousLesJou() {
+        List<Joueur> j;
+        String text ="SELECT j FROM Joueur AS j";
+        Query req = getEntityManager().createQuery(text);
+        j = req.getResultList();
+        return j;
+    }
+     @Override
+    public List<Joueur> TousLesJouEq(int eq) {
+ List<Joueur> j;
+        String text ="SELECT j FROM Joueur AS j where j.historiqueJoueurs.equipeJoueur=eq";
+        Query req = getEntityManager().createQuery(text);
+        req = req.setParameter("eq", eq);
+        j = req.getResultList();
+        return j;    }
+
 
 }

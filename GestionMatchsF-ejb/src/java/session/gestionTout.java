@@ -9,12 +9,14 @@ import entites.Arbitre;
 import entites.Entraineur;
 import entites.Equipe;
 import entites.HistoriqueEntraineur;
+import entites.HistoriqueJoueur;
 import entites.Joueur;
 import entites.Matchs;
 import facade.ArbitreFacadeLocal;
 import facade.EntraineurFacadeLocal;
 import facade.EquipesFacadeLocal;
 import facade.HistoriqueEntraineurFacadeLocal;
+import facade.HistoriqueJoueurFacadeLocal;
 import facade.JoueursFacadeLocal;
 import facade.MatchFacadeLocal;
 import java.util.Collection;
@@ -29,6 +31,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class gestionTout implements gestionToutLocal {
+
+    @EJB
+    private HistoriqueJoueurFacadeLocal historiqueJoueurFacade;
 
     @EJB
     private HistoriqueEntraineurFacadeLocal historiqueEntraineurFacade;
@@ -97,8 +102,31 @@ public class gestionTout implements gestionToutLocal {
         //Retour à la servlet
         }
     
+    @Override
+    public List<Joueur> TousLesJoueurs() {
+        return joueursFacade.AfficherTousLesJoueurs();
+    }
+     @Override
+    public List<HistoriqueJoueur> AfficherHistoJou(int idJ) {
+        return historiqueJoueurFacade.HistoJoueur(idJ);
+    }
+     @Override
+    public List<Joueur> AfficherTousLesJoueursEq(int ide) {
+        return joueursFacade.TousLesJouEq(ide);
+    }
+     @Override
+    public List<Matchs> AffiicherMatchEquipe(int ide) {
+        return matchFacade.AfficherMatchsEq(ide);
+    }
     
-    
-    
+    @Override
+    public List<Matchs> matchDate(Date date) {
+        return matchFacade.Matchdate(date);
+    }
+
+    @Override
+    public List<Matchs> MatchsInt(Date date1, Date date2) {
+        return matchFacade.MatchdateInt(date1, date2);
+    }
     
 }

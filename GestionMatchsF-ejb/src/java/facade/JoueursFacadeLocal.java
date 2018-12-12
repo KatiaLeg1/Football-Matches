@@ -50,4 +50,9 @@ public interface JoueursFacadeLocal {
     List<Joueur> AfficherTousLesJoueurs();
 
     void SanctionJ(int id, Date dateI);
+    
+    List TousLesJou();
+    
+    List<Joueur> TousLesJouEq(int eq);
+
 }

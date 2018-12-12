@@ -38,5 +38,5 @@ public interface HistoriqueJoueurFacadeLocal {
     
     HistoriqueJoueur rechercherHistorique(Joueur joueur);
 
-    
+    List<HistoriqueJoueur> HistoJoueur(int j);
 }

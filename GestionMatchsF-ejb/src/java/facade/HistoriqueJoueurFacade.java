@@ -9,6 +9,7 @@ import entites.Equipe;
 import entites.HistoriqueJoueur;
 import entites.Joueur;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -59,6 +60,15 @@ public class HistoriqueJoueurFacade extends AbstractFacade<HistoriqueJoueur> imp
             return null ;
         }    
 }
+    
+    @Override
+    public List<HistoriqueJoueur> HistoJoueur(int j) {
+        String req = "SELECT hj from HistoriqueJoueur as hj where hj.joueur.id=:j ";
+        Query requete = em.createQuery(req);
+        requete.setParameter("j",j);
+        List<HistoriqueJoueur> liste = requete.getResultList();
+        return liste;
+    }
     
     
 }
