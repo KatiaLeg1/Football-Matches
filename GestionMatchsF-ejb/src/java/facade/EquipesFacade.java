@@ -84,7 +84,19 @@ public class EquipesFacade extends AbstractFacade<Equipe> implements EquipesFaca
         } else {
             return null ;
         }    }
-            
+       
+         @Override
+     public Equipe RechercherEquipeid(int idequipe) {
+        Equipe eq;
+        String tx= "SELECT eq from Equipe as eq where eq.id =:idequipe";
+        Query req = getEntityManager().createQuery(tx);
+        req.setParameter("idequipe", idequipe);       
+        eq=(Equipe)req.getSingleResult();
+        if (!(eq==null)) {
+                return eq;
+        } else {
+            return null ;
+        }    }
     
     
 }

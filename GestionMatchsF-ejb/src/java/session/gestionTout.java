@@ -102,17 +102,15 @@ public class gestionTout implements gestionToutLocal {
         //Retour à la servlet
         }
     
-    @Override
-    public List<Joueur> TousLesJoueurs() {
-        return joueursFacade.AfficherTousLesJoueurs();
-    }
+
      @Override
     public List<HistoriqueJoueur> AfficherHistoJou(int idJ) {
         return historiqueJoueurFacade.HistoJoueur(idJ);
     }
      @Override
-    public List<Joueur> AfficherTousLesJoueursEq(int ide) {
-        return joueursFacade.TousLesJouEq(ide);
+    public List<HistoriqueJoueur> AfficherTousLesJoueursEq(int ide) {
+        Equipe e = equipesFacade.RechercherEquipeid(ide);
+        return historiqueJoueurFacade.recupHistoE(e);
     }
      @Override
     public List<Matchs> AffiicherMatchEquipe(int ide) {
@@ -128,5 +126,7 @@ public class gestionTout implements gestionToutLocal {
     public List<Matchs> MatchsInt(Date date1, Date date2) {
         return matchFacade.MatchdateInt(date1, date2);
     }
+    
+    
     
 }

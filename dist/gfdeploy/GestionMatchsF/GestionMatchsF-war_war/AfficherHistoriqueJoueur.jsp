@@ -18,7 +18,6 @@
         
         <table>
            </tr>   
-                <%-- en tête de tes colonnes --%>
             <td Width =15%>Nom equipe</td>
             <td Width =15%>Date début</td>
             <td Width =15%>Date fin</td>
@@ -31,7 +30,7 @@
             <td ><%= hj.getEquipeJoueur().getNomequipe() %></td>
             <td ><%=hj.getDateDebutEq() %></td>
             <td><%=hj.getDateFinEq() %></td>
-         </tr> </table><%}%>
+         </tr> <%}%></table>
         <td>
             </br>
             <TABLE><tr>

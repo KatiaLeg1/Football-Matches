@@ -11,6 +11,16 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/GestionMatchF/GestionMatchsF-war/web/AfficherMatchsEq.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/GestionMatchF/GestionMatchsF-war/web/RechercherEquipeMatch.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/GestionMatchF/GestionMatchsF-war/web/RechercherEquipe.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/GestionMatchF/GestionMatchsF-war/web/RechercherJoueurEq.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/GestionMatchF/GestionMatchsF-war/web/AfficherHistoriqueEnt.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/GestionMatchF/GestionMatchsF-war/src/java/servlets/GestionTous.java</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/GestionMatchF/GestionMatchsF-war/web/MenuTous.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/GestionMatchF/GestionMatchsF-war/web/RechercherEntraineurEq.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/GestionMatchF/GestionMatchsF-war/web/RecherchermatchsDate.jsp</file>
+        </group>
     </open-files>
 </project-private>

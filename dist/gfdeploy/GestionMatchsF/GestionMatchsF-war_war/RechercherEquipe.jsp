@@ -32,6 +32,6 @@
         
             <input type="submit" value="Valider"/>
             <input type="reset" value="Remettre à 0"/>     <br>
-            <a href ="MenuFederation.jsp"> Retour Menu </a>
+            <a href ="MenuTous.jsp"> Retour Menu </a>
     </body>
 </html>

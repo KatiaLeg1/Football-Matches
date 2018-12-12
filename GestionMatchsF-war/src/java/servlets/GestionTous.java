@@ -73,16 +73,12 @@ public class GestionTous extends HttpServlet {
         String jspClient = null;
                
         String act = request.getParameter("action");
-        System.out.println("nom equipe"+ act);
+        System.out.println("Action : "+ act);
         if ((act==null) || (act.equals("retour")))
         {
             jspClient = "/Auth.jsp";
             request.setAttribute("message", "pas d'infos");
         }
-        
-        
-       
-        
          else if (act.equals("AffEqEnt")) // valeur action que tu récupères de la JSP Menu Tout
         {
             // Tu dois d'abord rechercher 1 entraineur précis, pour ça tu fais envoie la liste des entraineurs à la JSP
@@ -108,14 +104,11 @@ public class GestionTous extends HttpServlet {
                //Et tu rediriges vers la JSP afficher
                jspClient = "/AfficherHistoriqueEnt.jsp";
             }
-            else if (act.equals("AffEqJou")) // valeur action que tu récupères de la JSP Menu Tout
+        }
+            else if (act.equals("AffEqJou")) 
         {
-            // Tu dois d'abord rechercher 1 entraineur précis, pour ça tu fais envoie la liste des entraineurs à la JSP
-            // Comme ça tu auras un liste déroulante dans la JSP
-            // Pour ça tu dois mettre la methode dans le bean session 
-            List<Joueur> lesJou = gestionTout.TousLesJoueurs();
+            List<Joueur> lesJou = gestionTout.AfficherTousLesJoueurs();
             request.setAttribute("listeJou", lesJou);
-            // tu rediriges vers la JSP ou tu recherches ton entraineur
             jspClient="/RechercherJoueurEq.jsp";
         }
         else if (act.equals("HistoJou"))
@@ -124,12 +117,8 @@ public class GestionTous extends HttpServlet {
              if (!(jou.trim().isEmpty()))
             {
                 int j = Integer.valueOf(jou);
-                // La tu as récupéré l'ID de ton entraineur, maintenant faut afficher l'historique, 
-                //donc HistoriqueEntraineurFacade  + Session
                List<HistoriqueJoueur>hj = gestionTout.AfficherHistoJou(j);
-               // la tu as ta liste d'historique, donc tu vas l'enregistrer pour l'envoyer à la JSP par "sess"
                request.setAttribute("listeHJ", hj);
-               //Et tu rediriges vers la JSP afficher
                jspClient = "/AfficherHistoriqueJoueur.jsp";
             }
         }
@@ -146,7 +135,7 @@ public class GestionTous extends HttpServlet {
              if (!(eq.trim().isEmpty()))
             {
                 int j = Integer.valueOf(eq); 
-               List<Joueur> AfficheLesJoueursEq = gestionTout.AfficherTousLesJoueursEq(j);
+               List<HistoriqueJoueur> AfficheLesJoueursEq = gestionTout.AfficherTousLesJoueursEq(j);
                // la tu as ta liste d'historique, donc tu vas l'enregistrer pour l'envoyer à la JSP par "sess"
                request.setAttribute("lesJoueurs", AfficheLesJoueursEq);
                //Et tu rediriges vers la JSP afficher
@@ -212,7 +201,7 @@ public class GestionTous extends HttpServlet {
                  jspClient = "MenuTous";
              }
             
-        }
+        
         RequestDispatcher Rd;
  Rd = getServletContext().getRequestDispatcher(jspClient);
 Rd.forward(request, response);

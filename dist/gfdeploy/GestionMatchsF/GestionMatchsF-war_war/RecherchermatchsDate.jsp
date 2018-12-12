@@ -16,7 +16,7 @@
     <body>
         <h1>Saisir une date pour afficher tous les matchs</h1>
        
-        <form method ="get" action="${pageContext.request.contextPath}/gestionFed">
+        <form method ="get" action="GestionTous">
            
            <div class="input1">
             </br>   
@@ -42,7 +42,7 @@
             <input  class='bouton'type="reset" value="Remise à 0"/>       
             </div>
             </br>
-            <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
+            <a href ="MenuTous.jsp"> Retour Menu </a>
 
         </form>
     </body>

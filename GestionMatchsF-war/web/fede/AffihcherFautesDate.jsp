@@ -31,8 +31,8 @@
          <tr>   
             <td Width =15%><%=f.getJoueur().getNomPersonne() %></td>
             <td Width =15%><%=f.getJoueur().getPrenomPersonne() %></td>
-            <%--<td Width =15%><%=f.getJoueur().getHistoriqueJoueurs().get(0).getEquipeJoueur().getNomequipe() %></td> --%>
-            <td width=15%>Equipe</td>
+            <td Width =15%><%=f.getJoueur().getHistoriqueJoueurs().get(listeFa.size()-1).getEquipeJoueur().getNomequipe() %></td> 
+<%--            <td width=15%>Equipe</td> --%>
             <td width=15%><%= f.getTypeFaute()%></td>
         </tr><%}%> </table>
             

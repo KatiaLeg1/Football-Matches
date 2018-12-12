@@ -26,15 +26,15 @@
                 <label for="ent">Entraineur  : <span class="requis"></span></label>
                 <select name="ent">
                     <% for (Entraineur e : lesEnt ){%>
-                    <option value="<%=e.getId()%>"><%=e.getNomPersonne() %><%=e.getPrenomPersonne() %> </option>
+                    <option value="<%=e.getId()%>"><%=e.getNomPersonne() %> <%=e.getPrenomPersonne() %> </option>
                     <%}%><%-- le premier value est ce que tu récupères les 2 autres ce que tu affiches --%>
                 </select> 
                 
-                
-                <input type ="hidden" name="action" value="HistoEnt"> ><%-- action que tu renvoies à la JSP --%>
+                </br>
+                <input type ="hidden" name="action" value="HistoEnt"> <%-- action que tu renvoies à la JSP --%>
         
             <input type="submit" value="Valider"/>
             <input type="reset" value="Remettre à 0"/>     <br>
-            <a href ="MenuFederation.jsp"> Retour Menu </a>
+            <a href ="MenuTous.jsp"> Retour Menu </a>
     </body>
 </html>

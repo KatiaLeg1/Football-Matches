@@ -35,7 +35,7 @@
             <td ><%=he.getDateDebutEnt() %></td>
             <td><%=he.getDateFinEnt() %></td>
 
-        </tr> </table><%}%>
+        </tr> <%}%></table>
         <td>
             </br>
             <TABLE><tr>

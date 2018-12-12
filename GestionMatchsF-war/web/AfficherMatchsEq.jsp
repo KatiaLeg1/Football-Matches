@@ -23,12 +23,15 @@
          <table border width="50%">
             <tr> <td>Nom equipe</td>
                  <td>Nom adversaire</td>
-                 <td>Date Match</td>
+                 <td>point Eq 1</td>
+                 <td>point Eq 2</td>
                  <% List <Matchs> lesMatchs = AfficherMatch;
                  for(Matchs ma : lesMatchs ){%>
-            <tr> <td Width=15%><%=ma.getEquipeUn()%></td>
-                 <td Width=15%><%=ma.getEquipeDeux()%></td>
-                 <td Width=15%><%=ma.getDateMatch()%></td>
+            <tr> <td Width=15%><%=ma.getEquipeUn().getNomequipe() %></td>
+                 <td Width=15%><%=ma.getEquipeDeux().getNomequipe()  %></td>
+                 <td Width=15%><%=ma.getButEquipeUn() %></td>
+                 <td Width=15%><%=ma.getButEquipeDeux() %></td>
+                 
             </tr><%}%>
         </table></hr>
     </body>

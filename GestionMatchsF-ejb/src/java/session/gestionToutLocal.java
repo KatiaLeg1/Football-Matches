@@ -37,11 +37,10 @@ public interface gestionToutLocal {
 
     List<HistoriqueEntraineur> AfficherHistoEnt(int idE);
     
-    List<Joueur> TousLesJoueurs();
     
     List<HistoriqueJoueur> AfficherHistoJou(int idJ);
     
-    List<Joueur> AfficherTousLesJoueursEq(int ide);
+    List<HistoriqueJoueur> AfficherTousLesJoueursEq(int ide);
      
     List<Matchs> AffiicherMatchEquipe(int ide);
         List<Matchs> matchDate(Date date);

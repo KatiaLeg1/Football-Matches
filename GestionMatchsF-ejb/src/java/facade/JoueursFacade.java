@@ -147,12 +147,12 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
     }
      @Override
     public List<Joueur> TousLesJouEq(int eq) {
- List<Joueur> j;
-        String text ="SELECT j FROM Joueur AS j where j.historiqueJoueurs.equipeJoueur=eq";
-        Query req = getEntityManager().createQuery(text);
-        req = req.setParameter("eq", eq);
-        j = req.getResultList();
-        return j;    }
+        String req = "SELECT j from Joueur as j where j.historiqueJoueurs.equipeJoueur.id=:eq ";
+        Query requete = em.createQuery(req);
+        requete.setParameter("eq",eq);
+        List<Joueur> liste = requete.getResultList();
+        return liste; 
+            }
 
 
 }

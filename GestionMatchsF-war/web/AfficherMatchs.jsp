@@ -41,7 +41,6 @@
         </br>
         </br>
         <div class='retour'>
-            <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
         </div>
 
     </body>

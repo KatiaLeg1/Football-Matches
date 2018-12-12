@@ -3,14 +3,15 @@
     Created on : Dec 11, 2018, 2:52:11 PM
     Author     : domitille
 --%>
- <%@page import="java.util.List"%>
+ <%@page import="entites.HistoriqueJoueur"%>
+<%@page import="java.util.List"%>
 <%@page import="entites.Joueur"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <jsp:useBean id="lesJoueurs" scope="request" class="List<Joueur>"></jsp:useBean> <%-- attention aux noms + Dans scope ça devient Session--%>
+        <jsp:useBean id="lesJoueurs" scope="request" class="List<HistoriqueJoueur>"></jsp:useBean> <%-- attention aux noms + Dans scope ça devient Session--%>
          <title>Afficher la liste des joueurs d'une équipe</title>
     </head>
     <body>
@@ -20,17 +21,20 @@
            </tr>   
                 <%-- en tête de tes colonnes --%>
             <td Width =15%>Nom equipe</td>
-            <td Width =15%>Date début</td>
-            <td Width =15%>Date fin</td>
+            <td Width =15%>Nom joueur</td>
+            <td Width =15%>Prénom Joueur</td>
          </tr> 
        <%  
-           for(Joueur j : lesJoueurs){%> <%--tu parcours la liste--%>
+           for(HistoriqueJoueur j : lesJoueurs){%> <%--tu parcours la liste--%>
         
            
     </tr>   
-            <td ><%= j.getNomPersonne() %></td>
-            <td ><%=j.getPrenomPersonne() %></td>
-         </tr> </table><%}%>
+    
+            <td ><%= j.getEquipeJoueur().getNomequipe() %></td>
+            <td ><%=j.getJoueur().getNomPersonne() %></td>
+            <td ><%=j.getJoueur().getPrenomPersonne()%></td>
+
+         </tr> <%}%></table>
         <td>
             </br>
             <TABLE><tr>
