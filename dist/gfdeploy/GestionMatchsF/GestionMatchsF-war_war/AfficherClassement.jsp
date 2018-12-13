@@ -21,8 +21,8 @@
     
         <table>
             <tr>
-                <th Width =15%>Nom equipe</th>
-                <th Width =15%>Point Equipe</t>
+                <th Width =15%>Nom de l'équipe</th>
+                <th Width =15%>Points </t>
             </tr>  
             <tr>    <% Collection<Equipe> lesEquipes = AfficherClassement;
                  for(Equipe eq : lesEquipes){%>        
