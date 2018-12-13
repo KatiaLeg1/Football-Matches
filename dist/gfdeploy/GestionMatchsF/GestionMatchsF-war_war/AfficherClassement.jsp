@@ -19,7 +19,8 @@
             %>
         </p>
     
-            <table>
+        <div class="input1">    
+        <table>
                  <tr>
                     <th Width =15%>Nom de l'équipe</th>
                     <th Width =15%>Points </t>
@@ -29,7 +30,7 @@
                     <td><%=eq.getNomequipe() %></td>
                     <td ><%=eq.getPointEquipe() %></td>
                   </tr><%}%>
-            </table>
+        </table></div>
             <TABLE>
                   <tr>
                     <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
