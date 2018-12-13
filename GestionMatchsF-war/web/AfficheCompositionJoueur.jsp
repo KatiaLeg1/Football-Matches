@@ -5,7 +5,7 @@
 --%>
  <%@page import="entites.Joueur"%>
 <%@page import="java.util.List"%>
-<%@page import="entites.Match"%>
+<%@page import="entites.Matchs"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
