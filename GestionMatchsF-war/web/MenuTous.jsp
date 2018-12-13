@@ -4,6 +4,8 @@
     Author     : domitille
 --%>
  <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,17 +13,17 @@
         <title>Menu pour tous</title>
     </head>
     <body>
-        <h1>Menu pour tous</h1> //Freedom for Slumdog
+        <div id="entete">Menu pour tous</div>
         <p> 
         <% String attribut = (String)request.getAttribute("message");
         out.println(attribut);
         %>
-        <a href ="GestionTous?action=AffEqEnt"> Histo Entraineur </a></br>
-        <a href ="GestionTous?action=AffEqJou"> Histo Joueur </a></br>
-        <a href ="GestionTous?action=AfficherEqJou"> Histo Afficher les joueurs d'une équipe </a></br>
+         
+        <a href ="GestionTous?action=AffEqEnt"> Historique de l'entraineur </a></br>
+        <a href ="GestionTous?action=AffEqJou"> Historique du joueur </a></br>
+        <a href ="GestionTous?action=AfficherEqJou"> Afficher les joueurs d'une équipe </a></br>
         <a href ="GestionTous?action=AfficherClassementEq"> Afficher le classement des équipes </a></br>
         <a href ="GestionTous?action=AfficherMatchsEq"> Afficher les matchs d'une equipe avec les resultats</a></br>
-        <a href ="RecherchermatchsDate.jsp"> Matchs dates </a></br>
-        
+        <a href ="RecherchermatchsDate.jsp"> Afficher les dates de matchs  </a></br>
     </body>
 </html>

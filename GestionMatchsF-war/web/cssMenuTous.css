@@ -28,3 +28,23 @@ a
   display: block;
   text-align:center;
 }
+
+table
+{
+    border-collapse: collapse;
+    text-align:center;
+}
+td, th
+{
+    border: 1px solid black;
+}
+
+
+a.bouton1 {
+padding: 10px 30px; 
+background: blue; 
+color: white; 
+}
+a.bouton1:hover {
+background: red; 
+}
