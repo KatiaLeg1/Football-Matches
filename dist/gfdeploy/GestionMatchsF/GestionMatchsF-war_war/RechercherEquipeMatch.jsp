@@ -15,11 +15,8 @@
     </head>
      <body>
         <h1>Rechercher une équipe</h1>
-                <form method ="get" action="GestionTous">  
-         
-                <% Collection<Equipe> lesEq = lesEquipes;%>
-                
-                 <fieldset>
+                <form method ="get" action="GestionTous">
+                <% Collection<Equipe> lesEq = lesEquipes;%><fieldset>
                 <label for="eq">Equipe : <span class="requis"></span></label>
                 <select name="eq">
                     <% for (Equipe e : lesEq ){%>
@@ -32,6 +29,7 @@
         
             <input type="submit" value="Valider"/>
             <input type="reset" value="Remettre à 0"/>     <br>
+            
             <a href ="MenuTous.jsp"> Retour Menu </a>
     </body>
 </html>

@@ -4,6 +4,7 @@
     Author     : domitille
 --%>
  <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
 <!DOCTYPE html>
 <html>
     <head>

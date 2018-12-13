@@ -6,6 +6,7 @@
  <%@page import="java.util.Collection"%>
 <%@page import="entites.Equipe"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,12 +15,9 @@
          <title>Rechercher une équipe</title>
     </head>
     <body>
-        <h1>Rechercher une équipe</h1>
-                <form method ="get" action="GestionTous">  
-         
-                <% Collection<Equipe> lesEq = lesEquipes;%>
-                
-                 <fieldset>
+        <div id="entete">Rechercher une équipe</div>
+                <form method ="get" action="GestionTous"> <% Collection<Equipe> lesEq = lesEquipes;%>
+                     
                 <label for="eq">Equipe : <span class="requis"></span></label>
                 <select name="eq">
                     <% for (Equipe e : lesEq ){%>
@@ -28,10 +26,15 @@
                 </select> 
                 
                 
-                <input type ="hidden" name="action" value="AfficherJou"> ><%-- action que tu renvoies à la JSP --%>
+            <input type ="hidden" name="action" value="AfficherJou"> ><%-- action que tu renvoies à la JSP --%>
         
             <input type="submit" value="Valider"/>
             <input type="reset" value="Remettre à 0"/>     <br>
-            <a href ="MenuTous.jsp"> Retour Menu </a>
+            <TABLE>
+            
+            <tr>
+            <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
+            </tr>
+            </table>
     </body>
 </html>

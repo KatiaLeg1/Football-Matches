@@ -33,6 +33,7 @@ table
 {
     border-collapse: collapse;
     text-align:center;
+    margin:auto;
 }
 td, th
 {
@@ -41,7 +42,7 @@ td, th
 
 
 a.bouton1 {
-padding: 10px 30px; 
+padding: 10px 30px;
 background: blue; 
 color: white; 
 }

@@ -19,22 +19,21 @@
             %>
         </p>
     
-        <table>
-            <tr>
-                <th Width =15%>Nom de l'équipe</th>
-                <th Width =15%>Points </t>
-            </tr>  
-            <tr>    <% Collection<Equipe> lesEquipes = AfficherClassement;
+            <table>
+                 <tr>
+                    <th Width =15%>Nom de l'équipe</th>
+                    <th Width =15%>Points </t>
+                  </tr>  
+                  <tr>    <% Collection<Equipe> lesEquipes = AfficherClassement;
                  for(Equipe eq : lesEquipes){%>        
-                <td><%=eq.getNomequipe() %></td>
-                <td ><%=eq.getPointEquipe() %></td>
-            </tr><%}%>
-        </table>
-            </br>
+                    <td><%=eq.getNomequipe() %></td>
+                    <td ><%=eq.getPointEquipe() %></td>
+                  </tr><%}%>
+            </table>
             <TABLE>
-                <tr>
-                <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-                </tr>
+                  <tr>
+                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
+                  </tr>
             </TABLE>
      </body>
     </body>
