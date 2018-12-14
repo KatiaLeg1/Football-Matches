@@ -21,15 +21,18 @@
                 <label for="eq">Equipe : <span class="requis"></span></label>
                 <select name="eq">
                     <% for (Equipe e : lesEq ){%>
-                    <option value="<%=e.getId()%>"><%=e.getNomequipe() %></option><%-- je récupère l'id, j'affiche le nom d'équipe --%>
-                    <%}%><%-- le premier value est ce que tu récupères les 2 autres ce que tu affiches --%>
+                    <option value="<%=e.getId()%>"><%=e.getNomequipe() %></option>
+                        <%}%>
                 </select> 
                 
                 
-            <input type ="hidden" name="action" value="AfficherJou"> ><%-- action que tu renvoies à la JSP --%>
+            <input type ="hidden" name="action" value="AfficherJou"> <%-- action que tu renvoies à la JSP --%>
         
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>     <br>
+           <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>      <br>
             <TABLE>
             
             <tr>
