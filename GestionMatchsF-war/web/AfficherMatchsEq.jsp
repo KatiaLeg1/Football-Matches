@@ -16,11 +16,11 @@
     </head>
     <body>
         <div id="entete">Afficher les matchs d'une équipe avec les résultats</div>
-         <p><%
+         <!--<p><p><%
             String attribut = (String) request.getAttribute("message");
             out.println(attribut);
             %>
-        </p>
+        </p>-->
          <table>
             <tr> <th>Nom de l'équipe</th>
                  <th>Nom de l'adversaire</th>

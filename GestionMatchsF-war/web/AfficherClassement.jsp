@@ -13,11 +13,12 @@
     </head>
     <body>
         <div id="entete">Afficher le classement des équipes</div>
-         <p><%
+        <!--<p><%
             String attribut = (String) request.getAttribute("message");
             out.println(attribut);
             %>
-        </p>
+        </p>-->
+        
     
         <div class="input1">    
         <table>
