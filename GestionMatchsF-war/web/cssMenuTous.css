@@ -34,6 +34,7 @@ table
     border-collapse: collapse;
     text-align:center;
     margin:auto;
+    margin-bottom:2em;
 }
 td, th
 {
@@ -66,4 +67,5 @@ background: red;
     align-items: center;
     justify-content: center;
     background: none;
+
 }
