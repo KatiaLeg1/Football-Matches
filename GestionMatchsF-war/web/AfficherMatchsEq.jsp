@@ -15,25 +15,31 @@
          <title>Afficher les matchs d'une equipe avec les resultats</title>
     </head>
     <body>
-        <h1>Afficher les matchs d'une equipe avec les resultats</h1>
+        <div id="entete">Afficher les matchs d'une équipe avec les résultats</div>
          <p><%
             String attribut = (String) request.getAttribute("message");
             out.println(attribut);
             %>
         </p>
-         <table border width="50%">
-            <tr> <td>Nom equipe</td>
-                 <td>Nom adversaire</td>
-                 <td>point Eq 1</td>
-                 <td>point Eq 2</td>
+         <table>
+            <tr> <th>Nom de l'équipe</th>
+                 <th>Nom de l'adversaire</th>
+                 <th>Points de l'équipe 1</th>
+                 <th>Points de l'équipe 2</th>
+            </tr>
                  <% List <Matchs> lesMatchs = AfficherMatch;
                  for(Matchs ma : lesMatchs ){%>
-            <tr> <td Width=15%><%=ma.getEquipeUn().getNomequipe() %></td>
-                 <td Width=15%><%=ma.getEquipeDeux().getNomequipe()  %></td>
-                 <td Width=15%><%=ma.getButEquipeUn() %></td>
-                 <td Width=15%><%=ma.getButEquipeDeux() %></td>
+            <tr> <td><%=ma.getEquipeUn().getNomequipe() %></td>
+                 <td><%=ma.getEquipeDeux().getNomequipe()  %></td>
+                 <td><%=ma.getButEquipeUn() %></td>
+                 <td><%=ma.getButEquipeDeux() %></td>
                  
             </tr><%}%>
-        </table></hr>
+        </table>
+         <TABLE>
+                  <tr>
+                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
+                  </tr>
+            </TABLE>
     </body>
 </html>
