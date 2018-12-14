@@ -15,7 +15,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <jsp:useBean id="listeHE" scope="request" class="Collection<HistoriqueEntraineur>"></jsp:useBean> 
- <title>Historique pour 1 entraineur</title>
+ <title>Historique de l'entraineur</title>
     </head>
     <body>
         <div id="entete">Historique de l'entraineur</div>
