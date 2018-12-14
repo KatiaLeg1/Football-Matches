@@ -7,6 +7,8 @@
 <%@page import="entites.Entraineur"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,13 +18,13 @@
         <title>Choisir l'entraineur pour afficher Historique de ses eq</title>
     </head>
     <body>
-        <h1>Choisir l'entraineur pour afficher Historique de ses eq</h1>
+        <div id="entete">Choisir l'entraineur pour afficher l'historique de ses équipes</div>
                 <form method ="get" action="GestionTous">  
 
         
                 <% List<Entraineur> lesEnt = listeEnt;%>
                 
-                 <fieldset>
+                
                 <label for="ent">Entraineur  : <span class="requis"></span></label>
                 <select name="ent">
                     <% for (Entraineur e : lesEnt ){%>
@@ -33,8 +35,16 @@
                 </br>
                 <input type ="hidden" name="action" value="HistoEnt"> <%-- action que tu renvoies à la JSP --%>
         
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>     <br>
-            <a href ="MenuTous.jsp"> Retour Menu </a>
+            <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>
+                </br>
+           <TABLE>
+                  <tr>
+                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
+                  </tr>
+            </TABLE>
     </body>
 </html>
