@@ -23,7 +23,7 @@
         <table>
                  <tr>
                     <th Width =15%>Nom de l'équipe</th>
-                    <th Width =15%>Points </t>
+                    <th Width =15%>Points </th>
                   </tr>  
                   <tr><% Collection<Equipe> lesEquipes = AfficherClassement;
                  for(Equipe eq : lesEquipes){%>        

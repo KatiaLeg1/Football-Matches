@@ -6,6 +6,8 @@
  <%@page import="java.util.List"%>
 <%@page import="entites.Joueur"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,12 +16,12 @@
          <title>Choisir le joueur pour afficher historique de ses equipes</title>
     </head>
     <body>
-        <h1>Choisir le joueur pour afficher historique de ses equipes</h1>
+        <div id="entete">Choisir le joueur pour afficher l'historique de ses équipes</div>
                 <form method ="get" action="GestionTous">  
          
                 <% List<Joueur> lesJou = listeJou;%>
                 
-                 <fieldset>
+                
                 <label for="jou">Joueur : <span class="requis"></span></label>
                 <select name="jou">
                     <% for (Joueur j : lesJou ){%>
@@ -30,8 +32,15 @@
                 
                 <input type ="hidden" name="action" value="HistoJou"> 
         
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>     <br>
-            <a href ="MenuTous.jsp"> Retour Menu </a>
+            <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>    <br>
+            <TABLE>
+                  <tr>
+                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
+                  </tr>
+            </TABLE>
     </body>
 </html>
