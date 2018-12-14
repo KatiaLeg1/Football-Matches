@@ -26,7 +26,7 @@
             
             </div>
            <div class ='input2'>
-                <label for="date1" class='textinput'>Date des matchs (pas obligatoire)</label> 
+                <label for="date1" class='textinput'>Date des matchs (facultatif)</label> 
                 <input type="date" placeholder='date 1' id="dateMatch" name="date1" class='input'/>
             
             </div>
