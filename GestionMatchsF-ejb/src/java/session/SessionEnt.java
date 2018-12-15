@@ -26,7 +26,7 @@ import javax.ejb.EJB;
  * @author katia
  */
 @Stateless
-public class gestionEntraineur implements gestionEntraineurLocal {
+public class SessionEnt implements gestionEntraineurLocal {
 
     @EJB
     private HistoriqueEntraineurFacadeLocal historiqueEntraineurFacade;
@@ -45,23 +45,23 @@ public class gestionEntraineur implements gestionEntraineurLocal {
     
     
     @Override
-    public void affectationJoueur(long id, String nome, String prenome, Date dateDebutHJ) {
+    public void affectationJoueur(long id, Entraineur e, Date dateDebutHJ) {
         Joueur j = joueursFacade.rechercherJoueurId(id);
-        Entraineur en = entraineurFacade.RechercherEntraineur(nome, prenome);
-        HistoriqueEntraineur he = historiqueEntraineurFacade.HistoActuel(en);
-        Equipe e = equipesFacade.RechercherEquipeParEntraineur(nome);
- 
+        HistoriqueJoueur hj = historiqueJoueurFacade.rechercherHistorique(j);
+        Equipe eq = historiqueEntraineurFacade.EqActuelleEnt(e);
         if(j!=null){
         HistoriqueJoueur h = historiqueJoueurFacade.rechercherHistorique(j);
-            if(h==null){
-                historiqueJoueurFacade.creerHJoueur(dateDebutHJ, j, e);   
+            if(h!=null){
+                historiqueJoueurFacade.ModifHistoJ(hj, dateDebutHJ);
+                historiqueJoueurFacade.creerHJoueur(dateDebutHJ, j, eq);   
+            }
+            else
+            {
+                historiqueJoueurFacade.creerHJoueur(dateDebutHJ, j, eq);   
             }
         }
-        
         else{
-            
             System.out.println("Joueur sous contrat");
-                 
                 }
         /*if(h!=null){
                 Equipe eq;
@@ -74,7 +74,7 @@ public class gestionEntraineur implements gestionEntraineurLocal {
     }
 
     @Override
-    public Equipe rechercheEquipeParEntraineur(String nom) {
+    public Equipe rechercheEquipeParEntraineur(Entraineur e) {
         return null;
     }
         

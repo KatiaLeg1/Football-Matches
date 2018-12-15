@@ -19,7 +19,7 @@ import javax.ejb.Local;
 @Local
 public interface gestionEntraineurLocal {
 
-    void affectationJoueur(long id, String nome, String prenome, Date dateDebutHJ);
+    void affectationJoueur(long id, Entraineur e,  Date dateDebutHJ);
 
     void transfertJoueur(String nom, String prenom);
 
@@ -27,7 +27,7 @@ public interface gestionEntraineurLocal {
 
     List<Joueur> affichageJoueurs();
 
-    Equipe rechercheEquipeParEntraineur(String nom);
+    Equipe rechercheEquipeParEntraineur(Entraineur e);
 
     Entraineur AuthEnt(String log, String mdp);
     

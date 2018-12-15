@@ -29,8 +29,9 @@ import session.gestionEntraineurLocal;
 public class gestionEntraineur extends HttpServlet {
 
     @EJB
-    private gestionEntraineurLocal gestionEntraineur;
-    
+    private gestionEntraineurLocal sessionEnt;
+
+
     
 
     /**
@@ -45,7 +46,7 @@ public class gestionEntraineur extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-                    HttpSession sess = request.getSession(true);   
+        HttpSession sess = request.getSession(true);   
 
         String jspClient = null;
         String act = request.getParameter("action");
@@ -55,13 +56,12 @@ public class gestionEntraineur extends HttpServlet {
         }
          else if(act.equals("authEnt"))
         {
-            Entraineur e;
             String log = request.getParameter("Login");
             String mdp = request.getParameter("mdp");
             if(!(log.trim().isEmpty())||!(mdp.trim().isEmpty()))
             {
-                e = gestionEntraineur.AuthEnt(log, mdp);
-                if (e==null)
+                Entraineur ent = sessionEnt.AuthEnt(log, mdp);
+                if (ent ==null)
                 {
                     jspClient = "/Auth.jsp";
                     request.setAttribute("message", "Erreur ID ou MDP");
@@ -69,36 +69,49 @@ public class gestionEntraineur extends HttpServlet {
                 else
                 {
                     jspClient = "/MenuEntraineur.jsp";
-                    request.setAttribute("message", "Bienvenu " + e.getNomPersonne() +" "+ e.getPrenomPersonne());
-                    sess.setAttribute("ent", e);
+                    request.setAttribute("message", "Bienvenu " + ent.getNomPersonne() +" "+ ent.getPrenomPersonne());
+                    sess.setAttribute("ent", ent);
                 }
         }}
-             else if(act.equals("rechercherJ"))
-                    {  
-                        System.out.println("2");
-                       List<Joueur> liste = gestionEntraineur.affichageJoueurs();
-                       request.setAttribute("listejoueurs", liste);
-                       jspClient="/AffecterJoueur.jsp";
-                    }
-             else if(act.equals("affecterJ"))
-                    {                     
-                        jspClient="/MenuEntraineur.jsp";
-                        doActionAffecterJ(request, response);   
-                    }
-             
-            else if(act.equals("afficherJ"))
-            {
-                    jspClient="/AfficherJoueurs.jsp";
-                    List <Joueur> list = gestionEntraineur.affichageJoueurs();
-                    request.setAttribute("listejoueurs", list);
-                    request.setAttribute("message", "Liste des joueurs existants");
-                    } 
-            
-            
-                    
-            RequestDispatcher Rd;
-            Rd = getServletContext().getRequestDispatcher(jspClient);
-            Rd.forward(request, response); 
+        else if(act.equals("rechercherJ")&& !(sess== null))
+        {  
+            Entraineur entr = (Entraineur)sess.getAttribute("ent");
+            System.out.println("sess"+sess.getId());
+            System.out.println("ent" + entr.getNomPersonne());
+            List<Joueur> liste = sessionEnt.affichageJoueurs();
+            request.setAttribute("entr", entr);                       
+            request.setAttribute("listejoueurs", liste);
+            jspClient="/AffecterJoueur.jsp";
+        }
+        else if(act.equals("affecterJ"))
+        {                     
+            String idj = request.getParameter("Joueurs");
+            String t = request.getParameter("dateDebutHJ");                    
+            String message ;
+            if(idj.isEmpty() || t.isEmpty() ){
+                message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires.";
+            } 
+            else {
+                Entraineur entr = (Entraineur)sess.getAttribute("ent");
+                Date dateDHJ = Date.valueOf(t);
+                long id = Long.valueOf(idj);
+                sessionEnt.affectationJoueur(id, entr, dateDHJ);
+                message = "Joueur affecté à l'équipe !"; 
+            } 
+            request.setAttribute("message", message);
+            jspClient="/MenuEntraineur.jsp";
+        }    
+        else if(act.equals("afficherJ"))
+        {
+            jspClient="/AfficherJoueurs.jsp";
+            List <Joueur> list = sessionEnt.affichageJoueurs();
+            request.setAttribute("listejoueurs", list);
+            request.setAttribute("message", "Liste des joueurs existants");
+        } 
+        
+        RequestDispatcher Rd;
+        Rd = getServletContext().getRequestDispatcher(jspClient);
+        Rd.forward(request, response); 
 
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -124,36 +137,7 @@ public class gestionEntraineur extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
-    protected void doActionAffecterJ(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        System.out.println("3");
-        String identifiant = request.getParameter("Joueurs");
-                System.out.println("3" + identifiant);
-
-        String nom = request.getParameter("nome");
-                System.out.println("3" + nom);
-        String prenom = request.getParameter("prenome");
-        String t = request.getParameter("dateDebutHJ");
-                System.out.println("3" + t);
-                    
-        String message                 ;
-        if(identifiant.isEmpty() || t.isEmpty()  || nom.isEmpty()){
-                    System.out.println("4");
-
-            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires."
-                         + "<br /><a href=\"MenuEntraineur.jsp\"> Cliquez ici </a> pour revenir au menu";            
-        } 
-        else {
-                                System.out.println("5");
-
-        Date dateDHJ = Date.valueOf(t);
-        long id = Long.valueOf(identifiant);
-        gestionEntraineur.affectationJoueur(id, nom, prenom, dateDHJ);
-        message = "<h2>Joueur affecté à l'équipe !<h2>"; 
-        } 
-        request.setAttribute("message", message);
-        
-            }
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

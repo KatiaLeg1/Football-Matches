@@ -13,7 +13,10 @@
     </head>
     <body>
         <h1>Menu Entraineur</h1>
-        
+        <% String attribut = (String)request.getAttribute("message");
+        out.println(attribut);
+        %>
+        </br>
           <a href ="gestionEntraineur?action=rechercherJ"> Affecter un joueur à l'équipe </a><br/>
           <a href ="gestionEntraineur?action=afficherJ"> Afficher tous les joueurs </a><br/>
     </body>

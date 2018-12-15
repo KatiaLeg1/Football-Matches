@@ -3,3 +3,7 @@
 /GestionMatchsF-ejb/dist/
 /GestionMatchsF-war/dist/
 /build/
+/nbproject/private/
+/dist/
+/GestionMatchsF-ejb/nbproject/private/
+/GestionMatchsF-war/nbproject/private/

@@ -116,17 +116,15 @@ public class gestionFederation implements gestionFederationLocal {
     @Override
     public void AffecterHisoEntr(Date datehisto, int id, String nomEq) {
         Entraineur e = entraineurFacade.RechercherEntraineurId(id);
-        
+        Equipe eq = equipesFacade.RechercherEquipe(nomEq);
         HistoriqueEntraineur he = historiqueEntraineurFacade.HistoActuel(e);
         if (he != null)
         {
             historiqueEntraineurFacade.ModifHistoEnt(he, datehisto);
-            Equipe eq = equipesFacade.RechercherEquipe(nomEq);
             historiqueEntraineurFacade.CreerHE(datehisto, eq, e);
         }
         else
         {
-            Equipe eq = equipesFacade.RechercherEquipe(nomEq);
             historiqueEntraineurFacade.CreerHE(datehisto, eq, e);
         }    
     }

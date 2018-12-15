@@ -5,6 +5,7 @@
  */
 package facade;
 
+import entites.Entraineur;
 import entites.Equipe;
 import java.util.Collection;
 import java.util.List;
@@ -37,7 +38,6 @@ public interface EquipesFacadeLocal {
 
     Equipe RechercherEquipe(String nomequipe);
     
-    Equipe RechercherEquipeParEntraineur(String nom);
     
     Equipe RechercherEquipeid(int idequipe);
 }

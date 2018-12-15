@@ -4,6 +4,7 @@
     Author     : Utilisateur
 --%>
 
+<%@page import="entites.Entraineur"%>
 <%@page import="entites.Joueur"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,6 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Recherche d'un joueur</title>
         <jsp:useBean id="listejoueurs" scope="request" class="java.util.List"></jsp:useBean>
+
     </head>
     <body>
     <h1>Rechercher joueur</h1>
@@ -28,13 +30,10 @@
         <br/>
         <label for="dateDebutHJ">Date de début du contrat : <span class="requis"></span></label> 
         <input type ="date" name="dateDebutHJ" value="" size="20" maxlength="20"/><br/>
-        <label for="nome">Nom entraineur : <span class="requis"></span></label> 
-        <input type ="text" name="nome" value="" size="20" maxlength="20"/><br/>
-         <label for="prenome">Prenom entraineur : <span class="requis"></span></label> 
-        <input type ="text" name="prenome" value="" size="20" maxlength="20"/><br/>
+        <input type ="hidden" name="action" value="affecterJ">
+
            </fieldset>
         <br/>
-         <input type="hidden" name ="action" value="affecterJ">
          <input type="submit" value="Valider">
      </div>
         </form>

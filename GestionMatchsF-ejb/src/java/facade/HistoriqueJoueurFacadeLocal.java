@@ -41,4 +41,6 @@ public interface HistoriqueJoueurFacadeLocal {
     List<HistoriqueJoueur> HistoJoueur(int j);
 
     List<HistoriqueJoueur> recupHistoE(Equipe eq);
+
+    void ModifHistoJ(HistoriqueJoueur histoJ, Date date);
 }
