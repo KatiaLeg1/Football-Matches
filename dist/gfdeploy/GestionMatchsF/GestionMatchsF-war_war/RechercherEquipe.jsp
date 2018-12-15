@@ -17,6 +17,10 @@
     <body>
         <div id="entete">Rechercher une équipe</div>
                 <form method ="get" action="GestionTous"> <% Collection<Equipe> lesEq = lesEquipes;%>
+            
+            <div class="input1">
+            </br>   
+            <div class ='input2'>
                      
                 <label for="eq">Equipe : <span class="requis"></span></label>
                 <select name="eq">
@@ -28,6 +32,8 @@
                 
             <input type ="hidden" name="action" value="AfficherJou"> <%-- action que tu renvoies à la JSP --%>
         
+            </div></div>
+            
            <div class='bouton1'>
             </br>
             <input  class='bouton' type="submit" value="Valider"/>

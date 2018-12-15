@@ -21,7 +21,9 @@
          
                 <% List<Joueur> lesJou = listeJou;%>
                 
-                
+                 <div class="input1">
+            </br>   
+            <div class ='input2'>
                 <label for="jou">Joueur : <span class="requis"></span></label>
                 <select name="jou">
                     <% for (Joueur j : lesJou ){%>
@@ -31,7 +33,7 @@
                 
                 
                 <input type ="hidden" name="action" value="HistoJou"> 
-        
+        </div></div>
             <div class='bouton1'>
             </br>
             <input  class='bouton' type="submit" value="Valider"/>

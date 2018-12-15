@@ -9,14 +9,22 @@ and open the template in the editor.
 */
 
 body {
-    background-color: #e6ecff;
+    background-color: #cccccc;
 }
 
 
 #entete {
- font-family: Impact, Charcoal, sans-serif;
- font-size: 75px;
-text-align:center;
+ color: black;
+  text-align: center;
+  font-family: white ;
+  font-size: 20px;
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
 }
 
 a
@@ -47,28 +55,59 @@ td, th
 
 
 a.bouton1 {
-padding: 10px 30px;
-background: blue; 
-color: white;
-
+    max-width: 70%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 24px;
+    text-decoration: none;
+    display: block;
+    background: #ccccff;
+    box-shadow : white;
+    box-shadow:blue;
 }
-a.bouton1:hover {
-background: red; 
-}
-
-
-.input1
-{
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .bouton1
 {
     display: flex;
     align-items: center;
     justify-content: center;
     background: none;
+}
 
+.bouton
+{
+    cursor: pointer;
+    background: grey;
+    align-self: flex-end;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 2.5em;
+    
+}
+
+.textinput {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.input2 {
+    margin: 0 auto;
+  background: white;
+  margin-bottom: 1em;
+  line-height: 3em;
+  font-size: 2 em;
+  border-bottom: 1px solid grey;
+}
+
+.input1
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+}
+
+.textinput {
+    font-size: 20px;
+    font-weight: bold;
 }

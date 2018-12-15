@@ -24,7 +24,9 @@
         
                 <% List<Entraineur> lesEnt = listeEnt;%>
                 
-                
+                <div class="input1">
+            </br>   
+            <div class ='input2'>
                 <label for="ent">Entraineur  : <span class="requis"></span></label>
                 <select name="ent">
                     <% for (Entraineur e : lesEnt ){%>
@@ -34,7 +36,7 @@
                 
                 </br>
                 <input type ="hidden" name="action" value="HistoEnt"> <%-- action que tu renvoies à la JSP --%>
-        
+         </div></div>
             <div class='bouton1'>
             </br>
             <input  class='bouton' type="submit" value="Valider"/>
