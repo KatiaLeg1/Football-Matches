@@ -198,6 +198,7 @@ public class GestionTous extends HttpServlet {
             jspClient = "/MenuTous.jsp";
          }}
              else{
+            request.setAttribute("message", "Bienvenue");                 
                  jspClient = "MenuTous";
              }
             
