@@ -58,7 +58,15 @@ public class EquipesFacade extends AbstractFacade<Equipe> implements EquipesFaca
         e = req.getResultList();
         return e;
     }
-
+    
+    @Override
+    public Collection<Equipe> Classement() {
+        
+        String text ="SELECT e FROM Equipe AS e ORDER BY e.pointEquipe ASC";
+        Query req = getEntityManager().createQuery(text);
+        List<Equipe> eq = req.getResultList();
+        return eq;
+    }
     @Override
     public Equipe RechercherEquipe(String nomequipe) {
         Equipe eq;

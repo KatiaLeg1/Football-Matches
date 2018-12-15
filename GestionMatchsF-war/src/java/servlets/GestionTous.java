@@ -145,7 +145,7 @@ public class GestionTous extends HttpServlet {
         
          else if (act.equals("AfficherClassementEq"))
         {
-               Collection<Equipe> AfficherClassement= gestionTout.AfficherToutesLesEquipes();
+               Collection<Equipe> AfficherClassement= gestionTout.classement();
                // la tu as ta liste d'historique, donc tu vas l'enregistrer pour l'envoyer à la JSP par "sess"
                request.setAttribute("AfficherClassement", AfficherClassement);
                //Et tu rediriges vers la JSP afficherC

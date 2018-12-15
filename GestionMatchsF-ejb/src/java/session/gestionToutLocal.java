@@ -46,4 +46,6 @@ public interface gestionToutLocal {
         List<Matchs> matchDate(Date date);
 
     List<Matchs> MatchsInt(Date date1, Date date2);
+
+    Collection<Equipe> classement();
 }

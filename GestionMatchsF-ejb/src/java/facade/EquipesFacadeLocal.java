@@ -38,6 +38,7 @@ public interface EquipesFacadeLocal {
 
     Equipe RechercherEquipe(String nomequipe);
     
-    
+    Collection<Equipe> Classement();
+            
     Equipe RechercherEquipeid(int idequipe);
 }

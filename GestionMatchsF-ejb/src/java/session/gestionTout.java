@@ -126,6 +126,11 @@ public class gestionTout implements gestionToutLocal {
     public List<Matchs> MatchsInt(Date date1, Date date2) {
         return matchFacade.MatchdateInt(date1, date2);
     }
+
+    @Override
+    public Collection<Equipe> classement() {
+        return equipesFacade.Classement();
+    }
     
     
     
