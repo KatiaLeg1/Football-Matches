@@ -15,9 +15,9 @@
     <body>
         <div id="entete">Menu pour tous</div>
         <p> 
-        <% String attribut = (String)request.getAttribute("message");
+        <!--<p><% String attribut = (String)request.getAttribute("message");
         out.println(attribut);
-        %>
+        %>-->
          
         <a href ="GestionTous?action=AffEqEnt"> Historique de l'entraineur </a></br>
         <a href ="GestionTous?action=AffEqJou"> Historique du joueur </a></br>

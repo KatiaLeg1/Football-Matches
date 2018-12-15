@@ -8,26 +8,27 @@
 <%@page import="java.util.Collection"%>
 <%@page import="java.util.List"%>
 <%@page import="entites.Faute"%>
-<link href="${pageContext.request.contextPath}/fede/cssfede.css" rel="stylesheet" type="text/css">
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listeMaa" scope="request" class="List<Matchs>"></jsp:useBean>
-        <title>Liste Matchs pour une date</title>
+        <title>Liste des matchs pour une date</title>
     </head>
     <body>
-        <h1>Liste fautes pour une date</h1>
+        <div id="entete">Liste des matchs pour une date</div>
                 <div style="overflow-x:auto;">
 
         <table>
              <tr>   
 
-                 <td Width =15%>date</td>
-                 <td Width =15%>heure</td>
-                 <td Width =15%>Equipe 1</td>
-                 <td Width =15%>Equipe 2</td>
+                 <th Width =15%>Date du match</th>
+                 <th Width =15%>Heure</th>
+                 <th Width =15%>Equipe 1</th>
+                 <th Width =15%>Equipe 2</th>
              </tr>
          <% for(Matchs m : listeMaa){%>
          <tr>   
@@ -40,8 +41,11 @@
 </div>
         </br>
         </br>
-        <div class='retour'>
-        </div>
+           <TABLE>
+            <tr>
+                 <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
+            </tr>
+                    </TABLE>
 
     </body>
 </html>

@@ -7,6 +7,7 @@
 <%@page import="java.util.List"%>
 <%@page import="entites.Joueur"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,14 +16,13 @@
          <title>Afficher la liste des joueurs d'une équipe</title>
     </head>
     <body>
-        <h1>Afficher la liste des joueurs d'une équipe</h1>
+        <div id="entete">Afficher la liste des joueurs d'une équipe</div>
          
         <table>
            </tr>   
-                <%-- en tête de tes colonnes --%>
-            <td Width =15%>Nom equipe</td>
-            <td Width =15%>Nom joueur</td>
-            <td Width =15%>Prénom Joueur</td>
+            <th Width =15%>Nom  de l'équipe</th>
+            <th Width =15%>Nom  du joueur</th>
+            <th Width =15%>Prénom du joueur</th>
          </tr> 
        <%  
            for(HistoriqueJoueur j : lesJoueurs){%> <%--tu parcours la liste--%>
@@ -37,8 +37,10 @@
          </tr> <%}%></table>
         <td>
             </br>
-            <TABLE><tr>
-                <a href="MenuTous.jsp"> Retour Menu</a></tr>
+            <TABLE>
+                  <tr>
+                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
+                  </tr>
             </TABLE>
     </body>
 </html>

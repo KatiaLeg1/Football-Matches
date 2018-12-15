@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 body {
-    background-color: #b3cce6;
+    background-color: #e6ecff;
 }
 
 
@@ -27,12 +27,18 @@ a
   text-decoration: none;
   display: block;
   text-align:center;
+  font-family: "Gill Sans", sans-serif;
 }
 
 table
 {
     border-collapse: collapse;
     text-align:center;
+    margin:auto;
+    margin-bottom:2em;
+    margin-top:2em;
+    font-family: sans-serif;
+   
 }
 td, th
 {
@@ -41,10 +47,28 @@ td, th
 
 
 a.bouton1 {
-padding: 10px 30px; 
+padding: 10px 30px;
 background: blue; 
-color: white; 
+color: white;
+
 }
 a.bouton1:hover {
 background: red; 
+}
+
+
+.input1
+{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bouton1
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+
 }

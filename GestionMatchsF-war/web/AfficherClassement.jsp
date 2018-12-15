@@ -12,29 +12,30 @@
         <title>Afficher le classement des equipes</title>
     </head>
     <body>
-        <div id="entete">Afficher le classement des equipes</div>
-         <p><%
+        <div id="entete">Afficher le classement des équipes</div>
+        <!--<p><%
             String attribut = (String) request.getAttribute("message");
             out.println(attribut);
             %>
-        </p>
+        </p>-->
+        
     
+        <div class="input1">    
         <table>
-            <tr>
-                <th Width =15%>Nom equipe</th>
-                <th Width =15%>Point Equipe</t>
-            </tr>  
-            <tr>    <% Collection<Equipe> lesEquipes = AfficherClassement;
+                 <tr>
+                    <th Width =15%>Nom de l'équipe</th>
+                    <th Width =15%>Points </th>
+                  </tr>  
+                  <tr><% Collection<Equipe> lesEquipes = AfficherClassement;
                  for(Equipe eq : lesEquipes){%>        
-                <td><%=eq.getNomequipe() %></td>
-                <td ><%=eq.getPointEquipe() %></td>
-            </tr><%}%>
-        </table>
-            </br>
+                    <td><%=eq.getNomequipe() %></td>
+                    <td ><%=eq.getPointEquipe() %></td>
+                  </tr><%}%>
+        </table></div>
             <TABLE>
-                <tr>
-                <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-                </tr>
+                  <tr>
+                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
+                  </tr>
             </TABLE>
      </body>
     </body>

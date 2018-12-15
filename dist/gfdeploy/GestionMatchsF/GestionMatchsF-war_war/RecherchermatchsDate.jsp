@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link href="${pageContext.request.contextPath}/fede/cssfede.css" rel="stylesheet" type="text/css">
+ <link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
 
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@
            <title>Saisir une date </title>
     </head>
     <body>
-        <h1>Saisir une date pour afficher tous les matchs</h1>
+        <div id="entete">Saisir une date pour afficher tous les matchs</div>
        
         <form method ="get" action="GestionTous">
            
@@ -26,7 +26,7 @@
             
             </div>
            <div class ='input2'>
-                <label for="date1" class='textinput'>Date des matchs (pas obligatoire)</label> 
+                <label for="date1" class='textinput'>Date des matchs (facultatif)</label> 
                 <input type="date" placeholder='date 1' id="dateMatch" name="date1" class='input'/>
             
             </div>
@@ -42,7 +42,11 @@
             <input  class='bouton'type="reset" value="Remise à 0"/>       
             </div>
             </br>
-            <a href ="MenuTous.jsp"> Retour Menu </a>
+            <TABLE>
+                  <tr>
+                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
+                  </tr>
+            </TABLE>
 
         </form>
     </body>
