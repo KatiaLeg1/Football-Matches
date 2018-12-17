@@ -35,9 +35,8 @@ public interface MatchFacadeLocal {
 
     void CreerMatch(Date date, String heure, Equipe equipeUn, Equipe equipeDeux, Arbitre aribtre);
 
-    void ModifierPoint(int butEquipeUn, int butEquipeDeux, long idMatch);
+    void ModifierPoint(int butEquipeUn, int butEquipeDeux, Matchs m);
 
-    List<Matchs> MatchsArbitre(Arbitre arbitre);
 
     boolean ArbitreLibre(Arbitre arbitre, Date dateMatch);
 
@@ -58,5 +57,7 @@ public interface MatchFacadeLocal {
     List<Matchs> MatchdateInt(Date date1,Date date2);
     
     List<Matchs> AfficherMatchsEq(int ide);
+    
+    List<Matchs> Matcharb(Arbitre a);
     
 }

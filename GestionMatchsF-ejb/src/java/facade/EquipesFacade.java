@@ -94,6 +94,12 @@ public class EquipesFacade extends AbstractFacade<Equipe> implements EquipesFaca
         } else {
             return null ;
         }    }
+
+    @Override
+    public void AjoutPt(Equipe e, int pt) {
+        e.setPointEquipe(e.getPointEquipe()+pt);
+        em.merge(e);
+    }
     
     
 }

@@ -56,24 +56,10 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     }
 
     @Override
-    public void ModifierPoint(int butEquipeUn, int butEquipeDeux, long idMatch) {
-         
-        Matchs m  = null;
-        String txt = "SELECT m FROM Matchs AS m WHERE m.idMatch=:idMatch";
-        Query req = getEntityManager().createQuery(txt);
-        req = req.setParameter("idMatch", idMatch);
-        m =(Matchs)req.getSingleResult();
+    public void ModifierPoint(int butEquipeUn, int butEquipeDeux, Matchs m) {
         m.setButEquipeUn(butEquipeUn);
         m.setButEquipeDeux(butEquipeDeux);
         em.merge(m);
-    }
-
-    @Override
-    public List<Matchs> MatchsArbitre(Arbitre arbitre) {
-        Query requete = em.createQuery("SELECT m from Matchs as m where m.arbitre=:arb");
-        requete.setParameter("arb", arbitre);     
-        List<Matchs> liste =  requete.getResultList();
-        return liste;    
     }
 
     @Override
@@ -156,10 +142,13 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     public Matchs rechercherMatchID(int id) {
         // pout toi sophie
         Matchs m ;
-        Query req = em.createQuery("select m from Matchs as m where m.id=:id");
+        String tx= "select m from Matchs as m where m.id=:id";
+        Query req = getEntityManager().createQuery(tx);
         req.setParameter("id", id);     
-        m=(Matchs)req.getSingleResult();
-        return m;
+        List<Matchs> liste =  req.getResultList();
+        if (!liste.isEmpty())
+            return liste.get(0);
+        else return null;    
 
     }
 
@@ -193,5 +182,12 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
         m = req.getResultList();
         return m;
     }
-    
+    @Override
+     public List<Matchs> Matcharb(Arbitre a) {
+        String tex ="SELECT m from Matchs as m where m.arbitre=:a";
+        Query req = getEntityManager().createQuery(tex);
+        req.setParameter("a", a);     
+        List<Matchs> liste =  req.getResultList();
+        return liste;
+    }
     }

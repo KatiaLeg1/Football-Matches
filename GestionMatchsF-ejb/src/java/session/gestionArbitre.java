@@ -17,6 +17,7 @@ import facade.JoueursFacadeLocal;
 import facade.MatchFacadeLocal;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -48,44 +49,24 @@ public class gestionArbitre implements gestionArbitreLocal {
     @Override
     public void CreerFauteJoueur(carton type, long id, int idM) {
     Joueur j = joueursFacade.rechercherJoueurId(id);
-     
-    //Equipe e1 = equipesFacade.RechercherEquipe(nomEq1);
-    //Equipe e2 = equipesFacade.RechercherEquipe(nomEq2);
-    //Matchs m = matchFacade.RechercherMatch(e1,e2,date); --> celle la sert pour moi car elle est demandé précisemment
-    // Tu te compliques, il faut créer un fonction "rechercherMatch id", dans ton JSP comme ça tu as 1 liste déroulante ou tu récupère ID,
-    //et tu peux afficher par contre "Equipe 1 VS Equipe 2"
-    // Pareil pour joueur, quand tu fais une liste déroulante il est plus facile d'afficher nom / Prénom pour séléctionner mais de récuperer que l'id
-    //CreerFauteJoueur(carton type, String nomPersonne, String prenomPersonne, String nomEq1, String nomEq2, Date date)
-    // a changé en (voir dessus)
-    
-    // je t'ai créé rechercherMatchID dans matchFacade --> à voir
-    
     Matchs m= matchFacade.rechercherMatchID(idM) ;
-    fautesFacade.CreerFaute(type, j, m);
-    
-    
-   
+    fautesFacade.CreerFaute(type, j, m); 
     }
 
     @Override
-    public boolean ModifierMatch(Date date, int butEqUn, int butEqDeux, String nomEq1, String nomEq2) {
+    public boolean ModifierMatch(int butEqUn, int butEqDeux, int idm) {
     boolean b = false;
-    Arbitre a = null;
-    
-    if (a!=null)
-    {
-        // Pareil Ici --> Match selon ID
-        Equipe e1 = equipesFacade.RechercherEquipe(nomEq1);
-        Equipe e2 = equipesFacade.RechercherEquipe(nomEq2);
-        Matchs m = matchFacade.RechercherMatch(e1, e2, date);
-        if (m!=null && m.getArbitre().equals(a))
+        Matchs m = matchFacade.rechercherMatchID(idm);
+        if (m!=null)
         {
-         matchFacade.ModifierPoint(butEqDeux, butEqDeux, butEqUn);
-         b=true;
+            Equipe e1 = m.getEquipeUn();
+            Equipe e2 = m.getEquipeDeux();   
+            matchFacade.ModifierPoint(butEqUn, butEqDeux, m);
+            b=true;
+            equipesFacade.AjoutPt(e1, butEqUn);
+            equipesFacade.AjoutPt(e2, butEqDeux);
         }
-    }
-    else System.out.println("Arbitre inexistant");
-    return b;
+        return b;
     }
     
      @Override
@@ -106,6 +87,21 @@ public class gestionArbitre implements gestionArbitreLocal {
     @Override
     public Arbitre authArb(String log, String mdp) {
         return arbitreFacade.AuthArbitre(log, mdp);
+    }
+
+    @Override
+    public Collection<Matchs> TousLesMaArb(Arbitre a) {
+        return matchFacade.Matcharb(a);
+    }
+
+    @Override
+    public Matchs matchID(int idm) {
+        return matchFacade.rechercherMatchID(idm);
+    }
+
+    @Override
+    public List<Joueur> joueurMa(Matchs m) {
+        return joueursFacade.joueurMatch(m);
     }
     
 }

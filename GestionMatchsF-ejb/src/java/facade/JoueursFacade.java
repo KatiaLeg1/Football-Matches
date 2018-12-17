@@ -8,6 +8,7 @@ package facade;
 import entites.Equipe;
 import entites.HistoriqueJoueur;
 import entites.Joueur;
+import entites.Matchs;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -153,6 +154,18 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
         List<Joueur> liste = requete.getResultList();
         return liste; 
             }
+
+    @Override
+    public List<Joueur> joueurMatch(Matchs m) {
+        String requ= " SELECT j from Joueur as j where j.matchsJoueur1=:m UNION SELECT j from Joueur as j where j.matchsJoueur2=:m ";
+        Query req = em.createQuery(requ);
+        req.setParameter("m",m);
+        List<Joueur> liste = req.getResultList();
+        return liste;
+    }
+
+
+   
 
 
 }

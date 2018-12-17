@@ -41,4 +41,6 @@ public interface EquipesFacadeLocal {
     Collection<Equipe> Classement();
             
     Equipe RechercherEquipeid(int idequipe);
+
+    void AjoutPt(Equipe e, int pt);
 }

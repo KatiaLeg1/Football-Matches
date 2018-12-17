@@ -18,10 +18,11 @@
         %>
         
         <%-- tu dois envoyer en valeur action que tu vas déclaré dans t  servlet<a href ="CreerFauteJoueur.jsp"> Créer des fautes Joueur </a>
-         --%>   <a href ="ModifierMatch.jsp"> Modifier résultats d'un match </a> 
-        <a href ="gestionArb?action=CreerF">  Créer des fautes Joueur </a></br></br>
+         --%>   <a href ="gestionArb?action=ModifM"> Modifier résultats d'un match </a> 
+        <a href ="gestionArb?action=CF">  Créer des fautes Joueur </a></br></br>
         <%-- direction Servlet gestionArb --%>
         
+        <a href ="Auth.jsp"> Retour Auth </a></div>
 
         
     </body>

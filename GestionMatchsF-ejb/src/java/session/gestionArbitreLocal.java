@@ -12,6 +12,7 @@ import entites.Matchs;
 import entites.carton;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -25,7 +26,7 @@ public interface gestionArbitreLocal {
 
     void CreerFauteJoueur(carton type, long id, int idM);
 
-    boolean ModifierMatch(Date date, int butEqUn, int butEqDeux, String nomEq1, String nomEq2);
+    boolean ModifierMatch(int butEqUn, int butEqDeux, int idm);
 
     Collection<Equipe> LesEquipes();
     
@@ -34,6 +35,12 @@ public interface gestionArbitreLocal {
     Collection<Matchs> RechercherTousLesMatchs();
 
     Arbitre authArb(String log, String mdp);
+
+    Collection<Matchs> TousLesMaArb(Arbitre a);
+
+    Matchs matchID(int idm);
+
+    List<Joueur> joueurMa(Matchs m);
     
     
 }

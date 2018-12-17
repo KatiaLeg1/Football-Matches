@@ -21,6 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import session.gestionArbitreLocal;
 
 
@@ -37,34 +38,19 @@ public class gestionArb extends HttpServlet {
     protected void creerFaute(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException           
     {
-        // tu récupérais les paramètre E1 / E2 ils ne sont pas dans le jsp
-        //String h = request.getParameter(heure);
-        // String E1 = request.getParameter("nomE1");
-        //String E2 = request.getParameter("nomE2");
+       
         String cart = request.getParameter("type");
         String j = request.getParameter("nomPersonne"); // 
         String m = request.getParameter("Match");
         
-//        Date d = Date.valueOf(date); attention quand tu met une conversion c'est après le if
- 
-       System.out.println("carton" + cart);
-              System.out.println("joueur" + j);
-       System.out.println("m" + m);
-
-       
         String message ;
         if (cart.trim().isEmpty() || j.isEmpty() || m.isEmpty() )
-        {    // CreerJoueur --> a changer
-        message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerJoueur.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un joueur.";
+        {    
+        message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." ;
         }
         else {
-         //   carton car = carton.valueOf(cart); --> on ne transforme pas les enums (suivant le cours)
-            //Conversion des 2 IDS
             long jo = Long.valueOf(j);
             int ma = Integer.valueOf(m);
-            System.out.println("jo" + jo);
-            System.out.println("ma" + ma);
-            //il faut un If ici
             if (cart.equals("Rouge"))
             {
                 gestionArbitre.CreerFauteJoueur(carton.Rouge,jo , ma);
@@ -72,11 +58,30 @@ public class gestionArb extends HttpServlet {
             else
             {
                 gestionArbitre.CreerFauteJoueur(carton.Jaune,jo , ma);
-
             }
             message= "Faute enregistrée avec succès !";
-         // On retourne plus bas dans la servlet   
         }
+        request.setAttribute("message", message);
+    }
+    protected void ModifPt(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException           
+    {
+        String ma = request.getParameter("Match");
+        String p1 = request.getParameter("pteq1"); 
+        String p2 = request.getParameter("pteq2");
+        String message ;
+        if (ma.trim().isEmpty() || p1.trim().isEmpty() || p2.trim().isEmpty() )
+        {    
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." ;
+        }
+        else {
+            int pUn = Integer.valueOf(p1);
+            int pD = Integer.valueOf(p2);
+            int mat = Integer.valueOf(ma);
+            gestionArbitre.ModifierMatch(pUn, pD, mat);
+            
+            message= "sCORE enregistré avec succès !";
+            }
         request.setAttribute("message", message);
     }
     /**
@@ -93,30 +98,14 @@ public class gestionArb extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String message="";
         String jspClient = null;
+        HttpSession sess = request.getSession(true);   
                
         String act = request.getParameter("action");
-        System.out.println("nom arbitre"+ act);
+        System.out.println("action : "+ act);
         if(act==null)
         {
             jspClient = "/MenuArbitre.jsp";
             request.setAttribute("message", "pas d'infos");
-        }
-    //    else if (act.equals("ModifierMatch") ) /* auth de fédé*/
-     //   {
-     //       ModifierMatch(request,response);
-       //     jspClient = "/MenuArbitre.jsp";
-
-       // }
-        else if (act.equals("CreerF")) // ça c'est la valeur que tu as récuperer de ta JSP dire que tu dois faire qqchose et après tu redirige via JSP client
-        {
-            // Collection <Equipe> listee = gestionArbitre.LesEquipes(); plus besoin des equipes
-            Collection <Joueur> listej = gestionArbitre.LesJoueurs();
-            Collection <Matchs> listem = gestionArbitre.RechercherTousLesMatchs();
-            //request.setAttribute("listeEquipes", listee);
-            request.setAttribute("listeJoueurs", listej);
-            request.setAttribute("listeMatchs", listem);
-            jspClient="/CreerFauteJoueur.jsp";
-            // Direction CreerFauteJoueur.jsp
         }
         else if(act.equals("authArb"))
         {
@@ -127,22 +116,53 @@ public class gestionArb extends HttpServlet {
             {
                 jspClient = "/Auth.jsp";
                 request.setAttribute("message", "Erreur ID ou MDP");
-                
             }
             else
             {
                 jspClient = "/MenuArbitre.jsp";
                 request.setAttribute("message", "Bienvenu " + a.getNomPersonne() +" "+a.getPrenomPersonne());
+                sess.setAttribute("a", a);
 
             }
         }    
-                
-        // On va chercher à récuperer l'action de la servlet et executer la fonction creerFaute
+        else if (act.equals("CreerF")) // ça c'est la valeur que tu as récuperer de ta JSP dire que tu dois faire qqchose et après tu redirige via JSP client
+        {
+            String ma = request.getParameter("Match");
+            if (!(ma.trim().isEmpty()))
+            {
+                int mat= Integer.valueOf(ma);
+                Matchs match = gestionArbitre.matchID(mat);
+                Collection <Joueur> listej = gestionArbitre.joueurMa(match);
+                request.setAttribute("listeJoueurs", listej);
+                jspClient="/CreerFauteJoueur.jsp";
+            }   
+        }
+        else if(act.equals("CF"))
+        {
+            Arbitre a= (Arbitre)sess.getAttribute("a"); // recupère l'arbitre de sess
+            Collection <Matchs> listem = gestionArbitre.TousLesMaArb(a);
+            request.setAttribute("listeMatchs", listem);
+            jspClient="/CreerFRecherche.jsp";
+        }
         else if (act.equals("CreerFauteJoueur"))
         {
             jspClient = "/MenuArbitre.jsp";
             creerFaute(request,response);
         }
+        else if (act.equals("ModifM"))
+        {
+            Arbitre a= (Arbitre)sess.getAttribute("a"); 
+            Collection <Matchs> listem = gestionArbitre.TousLesMaArb(a);
+            request.setAttribute("listeMatchs", listem);
+            jspClient="/ModifierMatch.jsp";
+        }
+        else if (act.equals("ModifierMa"))
+        {
+            jspClient="/MenuArbitre.jsp";
+            ModifPt(request,response);
+        }
+        else{
+            jspClient = "/MenuArbitre.jsp";}
         
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);

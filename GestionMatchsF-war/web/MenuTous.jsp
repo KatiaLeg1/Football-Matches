@@ -25,5 +25,6 @@
         <a href ="GestionTous?action=AfficherClassementEq"> Afficher le classement des équipes </a></br>
         <a href ="GestionTous?action=AfficherMatchsEq"> Afficher les matchs d'une equipe avec les resultats</a></br>
         <a href ="RecherchermatchsDate.jsp"> Afficher les dates de matchs  </a></br>
+        <a href ="Auth.jsp"> Retour Auth </a></div>
     </body>
 </html>

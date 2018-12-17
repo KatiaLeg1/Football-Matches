@@ -20,14 +20,17 @@
         </p>-->
         
     
+   <% int i =0 ;%>
         <div class="input1">    
         <table>
                  <tr>
+                     <th Width =15%>Classement </th>
                     <th Width =15%>Nom de l'équipe</th>
                     <th Width =15%>Points </th>
                   </tr>  
                   <tr><% Collection<Equipe> lesEquipes = AfficherClassement;
-                 for(Equipe eq : lesEquipes){%>        
+                 for(Equipe eq : lesEquipes){%>    <% i++;%>
+                 <td> <%=i%>     
                     <td><%=eq.getNomequipe() %></td>
                     <td ><%=eq.getPointEquipe() %></td>
                   </tr><%}%>

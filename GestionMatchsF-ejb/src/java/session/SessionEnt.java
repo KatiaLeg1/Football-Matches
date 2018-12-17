@@ -7,7 +7,6 @@ package session;
 
 import entites.Entraineur;
 import entites.Equipe;
-import entites.HistoriqueEntraineur;
 import entites.HistoriqueJoueur;
 import entites.Joueur;
 import facade.EntraineurFacadeLocal;

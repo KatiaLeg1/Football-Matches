@@ -19,5 +19,9 @@
         </br>
           <a href ="gestionEntraineur?action=rechercherJ"> Affecter un joueur à l'équipe </a><br/>
           <a href ="gestionEntraineur?action=afficherJ"> Afficher tous les joueurs </a><br/>
+          
+          
+                  <a href ="Auth.jsp"> Retour Auth </a></div>
+
     </body>
 </html>

@@ -106,9 +106,17 @@ public class gestionEntraineur extends HttpServlet {
             jspClient="/AfficherJoueurs.jsp";
             List <Joueur> list = sessionEnt.affichageJoueurs();
             request.setAttribute("listejoueurs", list);
-            request.setAttribute("message", "Liste des joueurs existants");
         } 
-        
+        else if (act.equals("SJ"))
+        {
+            jspClient="/RechercherSupp.jsp";
+            List <Joueur> list = sessionEnt.affichageJoueurs();
+            request.setAttribute("listejoueurs", list);            
+        }
+        else if (act.equals("SuppJ"))
+        {
+            
+        }
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
         Rd.forward(request, response); 
@@ -127,7 +135,8 @@ public class gestionEntraineur extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

@@ -8,6 +8,7 @@ package facade;
 import entites.Equipe;
 import entites.HistoriqueJoueur;
 import entites.Joueur;
+import entites.Matchs;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
@@ -54,5 +55,8 @@ public interface JoueursFacadeLocal {
     List TousLesJou();
     
     List<Joueur> TousLesJouEq(int eq);
+
+    List<Joueur> joueurMatch(Matchs m);
+
 
 }
