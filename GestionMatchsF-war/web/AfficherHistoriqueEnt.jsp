@@ -22,9 +22,9 @@
             <tr>
                 <div class="input1"> 
                     <table>
-                        <th Width =15%>Nom de l'équipe</th>
-                        <th Width =15%>Date de début</th>
-                        <th Width =15%>Date de fin</th>
+                        <td>Nom de l'équipe</td>
+                        <td>Date de début</td>
+                        <td>Date de fin</td>
             </tr> 
             <%for(HistoriqueEntraineur he : listeHE){%>
             </tr>   

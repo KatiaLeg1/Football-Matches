@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <link href="${pageContext.request.contextPath}/cssAccueil.css" rel="stylesheet" type="text/css">
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 
 <!DOCTYPE html>
 <html>
@@ -15,16 +15,18 @@
     </head>
     <body>
         <h1>Page d'authentification</h1>
-        <p>
-             <% String attribut = (String)request.getAttribute("message");
+        
+        <div class="message"><% String attribut = (String)request.getAttribute("message");
         out.println(attribut);
-        %>
-
-            <a href ="${pageContext.request.contextPath}/fede/AuthFed.jsp"> Menu Fédération </a><br>
-            <a href ="AuthEnt.jsp"> Menu Entraineur </a><br>
-            <a href ="MenuTous.jsp"> Menu Tous </a><br>
-            <a href ="AuthArb.jsp"> Menu Arbitre </a><br>
+        %></div>
+        </br></br> 
+        <div clas='menu'>  
+            <div class="menubis">
+            </div><div class="menubis"><a href ="${pageContext.request.contextPath}/fede/AuthFed.jsp"> Menu Fédération </a>
+            </div><div class="menubis"><a href ="AuthEnt.jsp"> Menu Entraineur </a>
+            </div><div class="menubis"><a href ="MenuTous.jsp"> Menu Tous </a>
+            </div><div class="menubis"><a href ="AuthArb.jsp"> Menu Arbitre </a>
+            </div></div>
                 
-        </p>
     </body>
 </html>

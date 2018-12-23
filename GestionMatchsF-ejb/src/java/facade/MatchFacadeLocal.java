@@ -7,6 +7,7 @@ package facade;
 
 import entites.Arbitre;
 import entites.Equipe;
+import entites.Joueur;
 import entites.Matchs;
 import java.util.Date;
 import java.util.List;
@@ -60,4 +61,7 @@ public interface MatchFacadeLocal {
     
     List<Matchs> Matcharb(Arbitre a);
     
+    void CreerComposition1(Matchs ma, Equipe eq, List<Joueur> jou);
+    
+    List<Matchs> AfficherMatchsEQj(Equipe eq) ;
 }

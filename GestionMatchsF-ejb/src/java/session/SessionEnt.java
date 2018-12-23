@@ -9,6 +9,7 @@ import entites.Entraineur;
 import entites.Equipe;
 import entites.HistoriqueJoueur;
 import entites.Joueur;
+import entites.Matchs;
 import facade.EntraineurFacadeLocal;
 import facade.EquipesFacadeLocal;
 import facade.HistoriqueEntraineurFacadeLocal;
@@ -16,6 +17,7 @@ import facade.HistoriqueJoueurFacadeLocal;
 import javax.ejb.Stateless;
 import facade.JoueursFacade;
 import facade.JoueursFacadeLocal;
+import facade.MatchFacadeLocal;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -26,6 +28,10 @@ import javax.ejb.EJB;
  */
 @Stateless
 public class SessionEnt implements gestionEntraineurLocal {
+
+     
+    @EJB
+    private MatchFacadeLocal matchFacade;
 
     @EJB
     private HistoriqueEntraineurFacadeLocal historiqueEntraineurFacade;
@@ -61,15 +67,7 @@ public class SessionEnt implements gestionEntraineurLocal {
         }
         else{
             System.out.println("Joueur sous contrat");
-                }
-        /*if(h!=null){
-                Equipe eq;
-                eq = h.getEquipeJoueur();
-                Date dateDebut;
-                dateDebut = h.getDateDebutEq();
-                joueursFacade.affecterJoueur(h, eq, dateDebut);
-            
-        }*/   
+        } 
     }
 
     @Override
@@ -115,7 +113,26 @@ public class SessionEnt implements gestionEntraineurLocal {
     public Entraineur AuthEnt(String log, String mdp) {
         return entraineurFacade.AuthEnt(log, mdp);
     }
-   
+
+    @Override
+    public void CreerCompo(Entraineur ent, List<Joueur> jou, int ma) {
+        Matchs m = matchFacade.rechercherMatchID(ma);
+        Equipe e = historiqueEntraineurFacade.EqActuelleEnt(ent);
+        matchFacade.CreerComposition1(m, e, jou);
+    }
     
+    
+    @Override
+    public List<HistoriqueJoueur> listeJouEnt(Entraineur ent) {
+        Equipe e = historiqueEntraineurFacade.EqActuelleEnt(ent) ;
+        return historiqueJoueurFacade.recupHistoE(e);
+    }   
+
+    @Override
+    public List<Matchs> listeMEq(Entraineur ent) {
+        Equipe e = historiqueEntraineurFacade.EqActuelleEnt(ent) ;
+        return matchFacade.AfficherMatchsEQj(e);
+        
+    }   
    
 }

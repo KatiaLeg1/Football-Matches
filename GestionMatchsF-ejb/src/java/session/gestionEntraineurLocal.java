@@ -7,7 +7,9 @@ package session;
 
 import entites.Entraineur;
 import entites.Equipe;
+import entites.HistoriqueJoueur;
 import entites.Joueur;
+import entites.Matchs;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
@@ -30,5 +32,11 @@ public interface gestionEntraineurLocal {
     Equipe rechercheEquipeParEntraineur(Entraineur e);
 
     Entraineur AuthEnt(String log, String mdp);
+
+    void CreerCompo(Entraineur ent, List<Joueur> jou, int ma);
     
+    List<HistoriqueJoueur> listeJouEnt(Entraineur ent);
+
+    List<Matchs> listeMEq(Entraineur ent);
 }
+

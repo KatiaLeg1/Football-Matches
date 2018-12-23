@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <jsp:useBean id="match" scope="request" class="Match"></jsp:useBean>
+        <jsp:useBean id="match" scope="request" class="Matchs"></jsp:useBean>
          <title>Un Match</title>
     </head>
     <body>

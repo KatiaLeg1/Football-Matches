@@ -190,4 +190,31 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
         List<Matchs> liste =  req.getResultList();
         return liste;
     }
+     
+         @Override
+    public void CreerComposition1(Matchs ma, Equipe eq, List<Joueur> jou) {
+        Equipe eq1 = ma.getEquipeUn();
+        Equipe eq2 = ma.getEquipeDeux();
+        
+        if (eq1==eq)
+        {
+            ma.setComposition1(jou);
+            em.merge(ma);        
+        }
+        else if (eq2==eq)
+        {
+            ma.setComposition2(jou);
+            em.merge(ma);  
+        }
+    }
+    @Override
+    public List<Matchs> AfficherMatchsEQj(Equipe eq) {
+        List<Matchs> m;
+        String text ="SELECT m FROM Matchs AS m WHERE m.equipeUn=:eq union SELECT m FROM Matchs AS m WHERE m.EquipeDeux=:eq";
+        Query req = getEntityManager().createQuery(text);
+        req.setParameter("eq", eq);  
+        m = req.getResultList();
+        return m;
+    }
+    
     }

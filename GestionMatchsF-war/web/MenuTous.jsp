@@ -4,7 +4,7 @@
     Author     : domitille
 --%>
  <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 
 <!DOCTYPE html>
 <html>
@@ -13,18 +13,25 @@
         <title>Menu pour tous</title>
     </head>
     <body>
-        <div id="entete">Menu pour tous</div>
+        <h1>Menu pour tous</h1>
         <p> 
-        <% String attribut = (String)request.getAttribute("message");
+        <div class="message"><% String attribut = (String)request.getAttribute("message");
         out.println(attribut);
-        %>
-         
-        <a href ="GestionTous?action=AffEqEnt"> Historique de l'entraineur </a></br>
-        <a href ="GestionTous?action=AffEqJou"> Historique du joueur </a></br>
-        <a href ="GestionTous?action=AfficherEqJou"> Afficher les joueurs d'une équipe </a></br>
-        <a href ="GestionTous?action=AfficherClassementEq"> Afficher le classement des équipes </a></br>
-        <a href ="GestionTous?action=AfficherMatchsEq"> Afficher les matchs d'une equipe avec les resultats</a></br>
-        <a href ="RecherchermatchsDate.jsp"> Afficher les dates de matchs  </a></br>
-        <a href ="Auth.jsp"> Retour Auth </a></div>
+        %></div>
+        </br></br> 
+        <div clas='menu'>  
+            <div class="menubis">  <a href ="GestionTous?action=AffEqEnt"> Historique de l'entraineur </a></br>
+            </div><div class="menubis"><a href ="GestionTous?action=AffEqJou"> Historique du joueur </a></br>
+            </div><div class="menubis"><a href ="GestionTous?action=AfficherEqJou"> Afficher les joueurs d'une équipe </a></br>
+            </div><div class="menubis"><a href ="GestionTous?action=AfficherClassementEq"> Afficher le classement des équipes </a></br>
+            </div><div class="menubis"><a href ="GestionTous?action=AfficherMatchsEq"> Afficher les matchs d'une equipe avec les resultats</a></br>
+            </div><div class="menubis"><a href ="RecherchermatchsDate.jsp"> Afficher les dates de matchs  </a></br>
+            </div><div class="menubis"><a href ="Auth.jsp"> Retour Auth </a></div>
+            </div>
+        </div></br></br>
+        <div class="retour">
+            <a href ="${pageContext.request.contextPath}/Auth.jsp"> Retour Auth </a>
+        </div>
+        
     </body>
 </html>

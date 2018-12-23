@@ -165,7 +165,5 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
     }
 
 
-   
-
 
 }

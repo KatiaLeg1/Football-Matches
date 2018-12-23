@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="cssfede.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 
 <html>
@@ -18,24 +20,26 @@
 
         <form method ="get" action="gestionArb">  
            
-            <fieldset>
-                 <label for="Login">Login<span class="requis">*</span></label> 
-                <input type="text" name="Login" value="" size="20" maxlength="20"/>
-                 <br><br>
-                <label for="mdp">Mdp<span class="requis">*</span></label> 
-                <input type="password" name="mdp" value="" size="20" maxlength="20"/>
+        <div class="input1">
+            </br>
+                <input type="text" placeholder='Login' name="Login" class='input'/>
+                <input type="password" placeholder='mdp' name="mdp" class='input'/>
+            <br>  
             <br>
-                
             <br>
-               
+        </div>
             
-               <br>
             
                 <input type ="hidden" name="action" value="authArb">
-        
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>     <br>
-                        <a href ="Auth.jsp"> Retour Authentification </a>
+            <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>
+            </br>
+            <div class='retour'>
+                <a href ="Auth.jsp"> Retour Authentification </a>
+            </div>
 
         </form>
     </body>

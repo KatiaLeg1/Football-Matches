@@ -6,10 +6,13 @@
 package servlets;
 
 import entites.Entraineur;
+import entites.HistoriqueJoueur;
 import entites.Joueur;
+import entites.Matchs;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -76,8 +79,6 @@ public class gestionEntraineur extends HttpServlet {
         else if(act.equals("rechercherJ")&& !(sess== null))
         {  
             Entraineur entr = (Entraineur)sess.getAttribute("ent");
-            System.out.println("sess"+sess.getId());
-            System.out.println("ent" + entr.getNomPersonne());
             List<Joueur> liste = sessionEnt.affichageJoueurs();
             request.setAttribute("entr", entr);                       
             request.setAttribute("listejoueurs", liste);
@@ -116,6 +117,45 @@ public class gestionEntraineur extends HttpServlet {
         else if (act.equals("SuppJ"))
         {
             
+        }
+        else if (act.equals("choisirM"))
+        {
+            Entraineur entr = (Entraineur)sess.getAttribute("ent");
+            List<Matchs> listm = sessionEnt.listeMEq(entr);
+            List<HistoriqueJoueur> listehe = sessionEnt.listeJouEnt(entr);
+            request.setAttribute("listehe", listehe);
+            request.setAttribute("listm", listm);
+            jspClient="/RechercheMAffJ.jsp";            
+        }
+        else if (act.equals("affJMatch"))
+        {
+            String message;
+            Entraineur entr = (Entraineur)sess.getAttribute("ent");
+            String match = request.getParameter("Match");
+            String[] compo = request.getParameterValues("compo");
+            if (match.trim().isEmpty()|| compo.length==0)
+            {
+                message = "Vous n'avez pas rempli tous les champs";
+            }
+            if (match.trim().isEmpty()|| compo.length==11)
+            {
+                List<Joueur> jou = new ArrayList<>();
+                for (String joue : compo){
+                    Long jouu = Long.valueOf(joue);
+                    Joueur jo = sessionEnt.rechercherJoueurId(jouu);
+                    jou.add(jo);                    
+                }
+                int ma = Integer.valueOf(match);
+                sessionEnt.CreerCompo(entr, jou, ma);
+                message = "composition créée";
+            }
+            else
+            {
+                message = "Vous n'avez pas sélectionné le bon nombre de joueurs";
+            }
+            
+            
+
         }
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
