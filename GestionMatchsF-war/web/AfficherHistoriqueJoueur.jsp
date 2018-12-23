@@ -6,8 +6,7 @@
  <%@page import="java.util.List"%>
 <%@page import="entites.HistoriqueJoueur"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
-
+<link href="/cssfede.css" rel="stylesheet" type="text/css">
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,8 +15,10 @@
          <title>JSP Page</title>
     </head>
     <body>
-        <div id="entete">Historique pour un joueur</div>
+        <h1>Historique pour un joueur</h1>
         
+                <div style="overflow-x:auto;">       
+
         <table>
            </tr>   
             <th Width =15%>Nom de l'équipe</th>

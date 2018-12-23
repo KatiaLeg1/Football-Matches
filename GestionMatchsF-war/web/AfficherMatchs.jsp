@@ -9,7 +9,7 @@
 <%@page import="java.util.List"%>
 <%@page import="entites.Faute"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
+<link href="/cssfede.css" rel="stylesheet" type="text/css">
 
 <!DOCTYPE html>
 <html>
@@ -19,12 +19,11 @@
         <title>Liste des matchs pour une date</title>
     </head>
     <body>
-        <div id="entete">Liste des matchs pour une date</div>
-                <div style="overflow-x:auto;">
-
+        <h1>Liste des matchs pour une date</h1>
+               
+        <div style="overflow-x:auto;">
         <table>
              <tr>   
-
                  <th Width =15%>Date du match</th>
                  <th Width =15%>Heure</th>
                  <th Width =15%>Equipe 1</th>
@@ -37,15 +36,12 @@
             <td Width =15%><%=m.getEquipeUn().getNomequipe() %></td>
             <td Width =15%><%=m.getEquipeDeux().getNomequipe()%></td>
         </tr><%}%> </table>
-            
-</div>
+            </div>
         </br>
         </br>
-           <TABLE>
-            <tr>
-                 <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-            </tr>
-                    </TABLE>
+        <div class='retour'>
+            <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
+        </div>  
 
     </body>
 </html>

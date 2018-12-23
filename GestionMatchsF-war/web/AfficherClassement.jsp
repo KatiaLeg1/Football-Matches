@@ -12,34 +12,28 @@
         <title>Afficher le classement des equipes</title>
     </head>
     <body>
-        <div id="entete">Afficher le classement des équipes</div>
-        <!--<p><%
-            String attribut = (String) request.getAttribute("message");
-            out.println(attribut);
-            %>
-        </p>-->
-        
+        <h1>Afficher le classement des équipes</h1>       
     
    <% int i =0 ;%>
-        <div class="input1">    
+        <div style="overflow-x:auto;">
         <table>
-                 <tr>
-                     <th Width =15%>Classement </th>
-                    <th Width =15%>Nom de l'équipe</th>
-                    <th Width =15%>Points </th>
-                  </tr>  
-                  <tr><% Collection<Equipe> lesEquipes = AfficherClassement;
-                 for(Equipe eq : lesEquipes){%>    <% i++;%>
-                 <td> <%=i%>     
+                <tr>
+                    <td>Classement </td>
+                    <td>Nom de l'équipe</td>
+                    <td>Points </td>
+                </tr>  
+                <tr><% Collection<Equipe> lesEquipes = AfficherClassement;
+                for(Equipe eq : lesEquipes){%>    <% i++;%>
+                    <td> <%=i%>     
                     <td><%=eq.getNomequipe() %></td>
                     <td ><%=eq.getPointEquipe() %></td>
-                  </tr><%}%>
-        </table></div>
-            <TABLE>
-                  <tr>
-                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-                  </tr>
-            </TABLE>
+                </tr><%}%>
+        </table>
+        
+        </div>
+        <div class ='retour'>
+            <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
+        </div>
      </body>
     </body>
 </html>

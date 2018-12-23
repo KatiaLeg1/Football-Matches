@@ -7,6 +7,8 @@
 <%@page import="entites.Joueur"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="cssfede.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,22 +20,26 @@
        <h1>Rechercher joueur A SUPPRIMER</h1>
     <% List<Joueur> lesJoueurs=listejoueurs; %>
     <form method="get" action="gestionEntraineur">
-    <div>
-    <fieldset>
-        <select name="Joueurs">
-            <% for(Joueur j:lesJoueurs) {%>
-            <option value="<%=j.getId()%>"><%=j.getPrenomPersonne()%> <%=j.getNomPersonne()%></option>
-            <%}%>
-        </select>   
-        <br/>
+    <div class="input1">
+            </br>   
+            <div class ='input2'>
+                <label for="Joueurs" class='textinput'>Joueur à supprimer : </label>
+                <select name="Joueurs" class = 'custom-dropdown__select custom-dropdown__select--white'>
+                    <% for(Joueur j:lesJoueurs) {%>
+                    <option value="<%=j.getId()%>"><%=j.getPrenomPersonne()%> <%=j.getNomPersonne()%></option>
+                    <%}%>
+                </select>   
+            </div>
+    </div>
+    <input type ="hidden" name="action" value="SuppJ">
 
-        <input type ="hidden" name="action" value="SuppJ">
-
-           </fieldset>
-        <br/>
-         <input type="submit" value="Valider">
-     </div>
-        </form>
+    <input  class='bouton' type="submit" value="Valider"/>
+        <input  class='bouton'type="reset" value="Remise à 0"/>       
+        </div>
+        </br>   
+     <div class='retour'>
+                <a href ="MenuEntraineur.jsp"> Retour Menu </a>
+        </div> 
     </body>
 
 </html>

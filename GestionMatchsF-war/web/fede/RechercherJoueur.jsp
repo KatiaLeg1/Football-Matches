@@ -20,14 +20,11 @@
     <body>
         <h1>Choisir le joueur pour afficher les fautes</h1>
         <form method ="get" action="${pageContext.request.contextPath}/gestionFed">
-
-        
                 <% List<Joueur> lesJou = listeJoueur;%>
-                
-                  <div class="input1">
+            <div class="input1">
             </br>   
             <div class ='input2'>
-                <label for="jo" class='textinput'>Joueur  : <span class="requis"></span></label>
+                <label for="jo" class='textinput'>Joueur  : </label>
                 <select name="jo" class = 'custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Joueur j : lesJou ){%>
                     <option value="<%=j.getId()%>"><%=j.getNomPersonne() %> <%=j.getPrenomPersonne() %> </option>

@@ -7,7 +7,7 @@
 <%@page import="entites.Entraineur"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 
 <!DOCTYPE html>
 <html>
@@ -43,10 +43,8 @@
             <input  class='bouton'type="reset" value="Remise à 0"/>       
             </div>
                 </br>
-           <TABLE>
-                  <tr>
+           
                     <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-                  </tr>
-            </TABLE>
+            
     </body>
 </html>

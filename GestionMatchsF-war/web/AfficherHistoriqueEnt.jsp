@@ -8,7 +8,7 @@
 <%@page import="java.util.Collection"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
+<link href="/cssfede.css" rel="stylesheet" type="text/css">
 
 <!DOCTYPE html>
 <html>
@@ -18,30 +18,26 @@
  <title>Historique de l'entraineur</title>
     </head>
     <body>
-        <div id="entete">Historique de l'entraineur</div>
+        <h1>Historique de l'entraineur</h1>
+       
+        <div style="overflow-x:auto;">
+            <table>
             <tr>
-                <div class="input1"> 
-                    <table>
-                        <td>Nom de l'équipe</td>
-                        <td>Date de début</td>
-                        <td>Date de fin</td>
+                <td>Nom de l'équipe</td>
+                <td>Date de début</td>
+                <td>Date de fin</td>
             </tr> 
             <%for(HistoriqueEntraineur he : listeHE){%>
             </tr>   
-                        <td ><%= he.getEquipeEntraineur().getNomequipe() %></td>
-                        <td ><%=he.getDateDebutEnt() %></td>
-                        <td><%=he.getDateFinEnt() %></td>
-
+                <td ><%= he.getEquipeEntraineur().getNomequipe() %></td>
+                <td ><%=he.getDateDebutEnt().getDate()%> / <%= he.getDateDebutEnt().getMonth() %> / <%= he.getDateDebutEnt().getYear()%></td>
+                <td><%=he.getDateFinEnt().getDate()%> / <%= he.getDateFinEnt().getMonth() %> / <%= he.getDateFinEnt().getYear()%>  </td>
             </tr> <%}%>
-                    </table>
-                </div>
-                           <td>
-                            </br>
-                     <TABLE>
-            <tr>
-                 <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-            </tr>
-                    </TABLE>
+            </table>
+        </div>
+        <div class='retour'>
+            <a href ="MenuTous.jsp"> Retour Menu </a>
+        </div>
     </body>
 </html>
 

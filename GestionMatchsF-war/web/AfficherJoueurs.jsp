@@ -7,6 +7,8 @@
 <%@page import="entites.Joueur"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="/cssfede.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,11 +18,8 @@
     </head>
     <body>
         <h1>Afficher joueurs</h1>
-        <p><%
-            String attribut = (String) request.getAttribute("message");
-            out.println(attribut);
-            %>
-        </p>
+        
+        <div style="overflow-x:auto;">       
         <table border width="50%">
             <tr> <td>Numéro</td>
                  <td>Nom</td>
@@ -32,8 +31,10 @@
                  <td Width=15%><%=jo.getPrenomPersonne()%></td>
             </tr><%}%>
         </table></hr>
-    <td Width=25%><a href="gestionEntraineur?action=vide">Retour Menu</a></td>
-    <hr>
+        <div class='retour'>
+            <a href ="MenuEntraineur.jsp"> Retour Menu </a>
+        </div>
+
     </body>
 </html>
 

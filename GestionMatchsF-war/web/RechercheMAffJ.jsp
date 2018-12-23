@@ -8,6 +8,8 @@
 <%@page import="java.util.List"%>
 <%@page import="entites.Matchs"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="cssfede.css" rel="stylesheet" type="text/css">
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,14 +23,19 @@
         <% List<Matchs> leMat = listm;
         List <HistoriqueJoueur> He = listehe;%>
         <form method ="get" action="gestionEntraineur">  
-           
+           <div class="input1">
+            </br>   
+            <div class ='input2'>
             <label for="Match">Choisir Match: <span class="requis"></span></label>
                 <select name="Match">
                     <% for (Matchs m : leMat ){%>
                     <option value="<%=m.getId()%>"><%=m.getEquipeUn().getNomequipe() %> VS <%=m.getEquipeDeux().getNomequipe()%> </option>
                     <%}%>
                 </select> 
-            <label for="compo">Composition de l'équipe :</label>
+            </div> 
+            <label for="compo" class='textinput'> Composition de l'équipe :</label>
+                    <div style="overflow-x:auto;">
+
             <table>
                 <tr>
                     <td> Joueur numéro </td>
@@ -45,11 +52,17 @@
                 </tr>
                 <%}%>
             </table>
+            </div>
              
                 <input type ="hidden" name="action" value="affJMatch">
         
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>               
+                <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>
+            </br>
+            <div class='retour'>
+              <a href ="MenuEntraineur.jsp"> Retour Menu </a>
+            </div>
         </form>
     </body>
 </html>

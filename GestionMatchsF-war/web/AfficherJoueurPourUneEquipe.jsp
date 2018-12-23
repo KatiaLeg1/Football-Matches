@@ -7,7 +7,7 @@
 <%@page import="java.util.List"%>
 <%@page import="entites.Joueur"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
+<link href="/cssfede.css" rel="stylesheet" type="text/css">
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,31 +16,24 @@
          <title>Afficher la liste des joueurs d'une équipe</title>
     </head>
     <body>
-        <div id="entete">Afficher la liste des joueurs d'une équipe</div>
+        <h1>Afficher la liste des joueurs d'une équipe</h1>
          
+        <div style="overflow-x:auto;">               
         <table>
            </tr>   
             <th Width =15%>Nom  de l'équipe</th>
             <th Width =15%>Nom  du joueur</th>
             <th Width =15%>Prénom du joueur</th>
-         </tr> 
-       <%  
-           for(HistoriqueJoueur j : lesJoueurs){%> <%--tu parcours la liste--%>
-        
-           
-    </tr>   
-    
+        </tr> 
+        <% for(HistoriqueJoueur j : lesJoueurs){%>       
+        </tr>   
             <td ><%= j.getEquipeJoueur().getNomequipe() %></td>
             <td ><%=j.getJoueur().getNomPersonne() %></td>
             <td ><%=j.getJoueur().getPrenomPersonne()%></td>
-
-         </tr> <%}%></table>
-        <td>
-            </br>
-            <TABLE>
-                  <tr>
-                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-                  </tr>
-            </TABLE>
+         </tr> <%}%>
+        </table>
+        <div class='retour'>
+            <a href="MenuTous.jsp"> Retour Menu</a>
+        </div>
     </body>
 </html>

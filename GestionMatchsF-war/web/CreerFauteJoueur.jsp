@@ -24,32 +24,36 @@
     <body>
         <h1>Creer fautes joueurs:</h1>
         <% List<Joueur> LesJoue = listeJoueurs;%>
-           <form method ="get" action="gestionArb">  
+        <form method ="get" action="gestionArb">  
+        <div class="input1">
+        </br>   
+        <div class ='input2'>             
 
-            <fieldset>
-             
-              
-                <label for="nomPersonne"> Selectionner Joueur : <span class="requis"></span></label>
-                <select name="nomPersonne">
-                 
+                <label for="nomPersonne"class='textinput'> Selectionner Joueur : </label>
+                <select name="nomPersonne"  class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Joueur j : LesJoue ){%>
                     <option value="<%=j.getId()%>"><%=j.getNomPersonne()%><%=j.getPrenomPersonne()%>  </option>
                     <%}%>
                 </select> 
             <br>
-              
-               
             <br>
                 
-                <tr><td> Type de carton:</td><td><SELECT size="1" name="type">
-                            <option value="Rouge"> Rouge </option>
-                            <option value="Jaune"> Jaune </option>
-                        </select></td></tr>
+            <label for="nomPersonne" class='textinput'>Type de carton:</label>
+                <SELECT name="type" class='custom-dropdown__select custom-dropdown__select--white'>
+                    <option value="Rouge"> Rouge </option>
+                    <option value="Jaune"> Jaune </option>
+                </select>
             
                 <input type ="hidden" name="action" value="CreerFauteJoueur">
-                <%-- retour servlet --%>
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>               
+        <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+        </div>
+        <div class='retour'>
+            <a href ="/MenuArbitre.jsp"> Retour Menu </a>
+            </div>       
+            </form>      
         </form>
     </body>
 </html>

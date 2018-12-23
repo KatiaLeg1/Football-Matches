@@ -6,7 +6,7 @@
  <%@page import="java.util.List"%>
 <%@page import="entites.Matchs"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
+<link href="/cssfede.css" rel="stylesheet" type="text/css">
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,12 +16,9 @@
     </head>
     <body>
         <div id="entete">Afficher les matchs d'une équipe avec les résultats</div>
-         <!--<p><p><%
-            String attribut = (String) request.getAttribute("message");
-            out.println(attribut);
-            %>
-        </p>-->
-         <table>
+         
+        <div style="overflow-x:auto;">
+        <table>
             <tr> <th>Nom de l'équipe</th>
                  <th>Nom de l'adversaire</th>
                  <th>Points de l'équipe 1</th>
@@ -29,17 +26,15 @@
             </tr>
                  <% List <Matchs> lesMatchs = AfficherMatch;
                  for(Matchs ma : lesMatchs ){%>
-            <tr> <td><%=ma.getEquipeUn().getNomequipe() %></td>
-                 <td><%=ma.getEquipeDeux().getNomequipe()  %></td>
-                 <td><%=ma.getButEquipeUn() %></td>
-                 <td><%=ma.getButEquipeDeux() %></td>
-                 
+            <tr> 
+                <td><%=ma.getEquipeUn().getNomequipe() %></td>
+                <td><%=ma.getEquipeDeux().getNomequipe()  %></td>
+                <td><%=ma.getButEquipeUn() %></td>
+                <td><%=ma.getButEquipeDeux() %></td>
             </tr><%}%>
         </table>
-         <TABLE>
-                  <tr>
-                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-                  </tr>
-            </TABLE>
+        <div class ='retour'>
+           <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
+        </div>
     </body>
 </html>

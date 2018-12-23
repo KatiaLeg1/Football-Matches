@@ -8,6 +8,7 @@
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 <!DOCTYPE html>
 <html>
 
@@ -21,24 +22,35 @@
         <% List<Matchs> leMat = listeMatchs;%>
         <form method ="get" action="gestionArb">  
            
-            <label for="Match">Choisir Match: <span class="requis"></span></label>
-                <select name="Match">
+            <div class="input1">
+            </br>   
+            <div class ='input2'>  
+            <label for="Match" class='textinput'>Choisir Match : </label>
+                <select name="Match" class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Matchs m : leMat ){%>
                     <option value="<%=m.getId()%>"><%=m.getEquipeUn().getNomequipe() %> VS <%=m.getEquipeDeux().getNomequipe()%> </option>
                     <%}%>
                 </select> 
-            
-                <label for="pteq1">Point équipe 1<span class="requis"></span></label> 
-                <input type="text" name="pteq1" value="" size="20" maxlength="20"/>
-                <br>
-                 <label for="pteq2">Point équipe 2<span class="requis"></span></label> 
-                <input type="text" name="pteq2" value="" size="20" maxlength="20"/>
+            </div>
+            <div class ='input2'>  
+                <label for="pteq1">Point équipe 1</label> 
+                <input type="text" placeholder='Point équipe 1' name="pteq1" class='input'/>
+            </div>
+            <div class ='input2'>                   
+                <label for="pteq2">Point équipe 2</label> 
+                <input type="text" placeholder='Point équipe 2' name="pteq2" class='input'/>
                 <br>
                 
                 <input type ="hidden" name="action" value="ModifierMa">
-        
-            <input type="submit" value="Valider"/>
-            <input type="reset" value="Remettre à 0"/>               
+       
+                <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+        </div>
+        <div class='retour'>
+            <a href ="/MenuArbitre.jsp"> Retour Menu </a>
+            </div>              
         </form>
     </body>
 </html>

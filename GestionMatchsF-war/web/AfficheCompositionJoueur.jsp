@@ -16,7 +16,8 @@
     </head>
     <body>
         <h1>Afficher Fournisseur</h1>
-	
+	        <div style="overflow-x:auto;">
+                <table>
 		<tr> 
 			<td Width=15%><%=match.getId()%></td>
 			<td Width=30%><%=match.getDateMatch()%></td>
@@ -43,9 +44,10 @@
 			
                         </br>
 		</tr><%}%>
-        <hr>
-        <TABLE><tr>
-	<td Width=25%><A HREF="GestionTous?action=retour">Retour Menu</A></td>
+                </table>
+        <div class ='retour'>
+            <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
+        </div>
 	
 </tr></TABLE>
     </body>

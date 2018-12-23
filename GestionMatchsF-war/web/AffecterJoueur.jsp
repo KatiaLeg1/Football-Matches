@@ -22,22 +22,32 @@
     <h1>Rechercher joueur</h1>
     <% List<Joueur> lesJoueurs=listejoueurs; %>
     <form method="get" action="gestionEntraineur">
-    <div>
-    <fieldset>
-        <select name="Joueurs">
-            <% for(Joueur j:lesJoueurs) {%>
-            <option value="<%=j.getId()%>"><%=j.getPrenomPersonne()%> <%=j.getNomPersonne()%></option>
-            <%}%>
-        </select>   
+        <div class="input1">
+            </br>   
+            <div class ='input2'>     
+                <label for="Joueurs"  class='textinput'> Equipe Une : </label>                
+                <select name="Joueurs"  class='custom-dropdown__select custom-dropdown__select--white'>
+                    <% for(Joueur j:lesJoueurs) {%>
+                    <option value="<%=j.getId()%>"><%=j.getPrenomPersonne()%> <%=j.getNomPersonne()%></option>
+                    <%}%>
+                </select>   
         <br/>
-        <label for="dateDebutHJ">Date de début du contrat : <span class="requis"></span></label> 
-        <input type ="date" name="dateDebutHJ" value="" size="20" maxlength="20"/><br/>
-        <input type ="hidden" name="action" value="affecterJ">
-
-           </fieldset>
-        <br/>
-         <input type="submit" value="Valider">
-     </div>
-        </form>
+            </div>
+            <div class ='input2'>     
+                <label for="dateDebutHJ" class='textinput'>Date de début du contrat : </label> 
+                <input type ="date" placeholder ="Date de début du contrat" name="dateDebutHJ" class='input'/>
+        </div>
+        </div>
+            <input type ="hidden" name="action" value="affecterJ"/>
+       
+        <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+        </div>
+        <div class='retour'>
+            <a href ="/MenuArbitre.jsp"> Retour Menu </a>
+            </div>  
+    </form>
     </body>
 </html>

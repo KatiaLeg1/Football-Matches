@@ -6,7 +6,7 @@
  <%@page import="java.util.List"%>
 <%@page import="entites.Joueur"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 
 <!DOCTYPE html>
 <html>
@@ -21,28 +21,26 @@
          
                 <% List<Joueur> lesJou = listeJou;%>
                 
-                 <div class="input1">
+            <div class="input1">
             </br>   
             <div class ='input2'>
-                <label for="jou">Joueur : <span class="requis"></span></label>
-                <select name="jou">
+                <label for="jou" class='textinput'>Joueur : </label>
+                <select name="jou" class ='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Joueur j : lesJou ){%>
                     <option value="<%=j.getId()%>"><%=j.getNomPersonne() %> <%=j.getPrenomPersonne() %> </option>
                     <%}%>
                 </select> 
-                
+            </div>
+            </div>                
                 
                 <input type ="hidden" name="action" value="HistoJou"> 
-        </div></div>
             <div class='bouton1'>
             </br>
             <input  class='bouton' type="submit" value="Valider"/>
             <input  class='bouton'type="reset" value="Remise à 0"/>       
             </div>    <br>
-            <TABLE>
-                  <tr>
+            
                     <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-                  </tr>
-            </TABLE>
+                  
     </body>
 </html>

@@ -6,7 +6,7 @@
  <%@page import="java.util.Collection"%>
 <%@page import="entites.Equipe"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,15 +22,13 @@
             </br>   
             <div class ='input2'>
                      
-                <label for="eq">Equipe : <span class="requis"></span></label>
-                <select name="eq">
+                <label for="eq" class='textinput'>Equipe : <span class="requis"></span></label>
+                <select name="eq" class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Equipe e : lesEq ){%>
-                    <option value="<%=e.getId()%>"><%=e.getNomequipe() %></option>
-                        <%}%>
+                        <option value="<%=e.getId()%>"><%=e.getNomequipe() %></option>
+                    <%}%>
                 </select> 
-                
-                
-            <input type ="hidden" name="action" value="AfficherJou"> <%-- action que tu renvoies à la JSP --%>
+            <input type ="hidden" name="action" value="AfficherJou"> 
         
             </div></div>
             
@@ -39,11 +37,8 @@
             <input  class='bouton' type="submit" value="Valider"/>
             <input  class='bouton'type="reset" value="Remise à 0"/>       
             </div>      <br>
-            <TABLE>
-            
-            <tr>
+           
             <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-            </tr>
-            </table>
+            
     </body>
 </html>

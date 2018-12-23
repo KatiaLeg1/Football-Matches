@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <link href="${pageContext.request.contextPath}/cssMenuTous.css" rel="stylesheet" type="text/css">
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +27,7 @@
             </div>
            <div class ='input2'>
                 <label for="date1" class='textinput'>Date des matchs (facultatif)</label> 
-                <input type="date" placeholder='date 1' id="dateMatch" name="date1" class='input'/>
+                <input type="date" placeholder='date période fin' id="dateMatch" name="date1" class='input'/>
             
             </div>
            </div>
