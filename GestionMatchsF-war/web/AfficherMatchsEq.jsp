@@ -6,7 +6,7 @@
  <%@page import="java.util.List"%>
 <%@page import="entites.Matchs"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link href="/cssfede.css" rel="stylesheet" type="text/css">
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,8 +15,7 @@
          <title>Afficher les matchs d'une equipe avec les resultats</title>
     </head>
     <body>
-        <div id="entete">Afficher les matchs d'une équipe avec les résultats</div>
-         
+        <h1>Afficher les matchs d'une équipe avec les résultats</h1>
         <div style="overflow-x:auto;">
         <table>
             <tr> <th>Nom de l'équipe</th>

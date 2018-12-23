@@ -9,7 +9,7 @@
 <%@page import="java.util.List"%>
 <%@page import="entites.Faute"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link href="/cssfede.css" rel="stylesheet" type="text/css">
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 
 <!DOCTYPE html>
 <html>
