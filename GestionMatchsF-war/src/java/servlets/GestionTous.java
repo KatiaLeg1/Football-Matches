@@ -92,8 +92,8 @@ public class GestionTous extends HttpServlet {
             if (!(ent.trim().isEmpty()))
             {
                 int l = Integer.valueOf(ent);
-                Collection <HistoriqueEntraineur> he = gestionTout.AfficherHistoEnt(l) ;
-                request.setAttribute("listeHE", he);
+                Collection <HistoriqueEntraineur> listeHE = gestionTout.AfficherHistoEnt(l) ;
+                request.setAttribute("listeHE", listeHE);
                jspClient = "/AfficherHistoriqueEnt.jsp";
             }
         }

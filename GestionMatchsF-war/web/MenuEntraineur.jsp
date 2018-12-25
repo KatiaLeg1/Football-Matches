@@ -31,7 +31,6 @@
         </div>
         
           
-                  <a href ="Auth.jsp"> Retour Auth </a></div>
 
     </body>
 </html>

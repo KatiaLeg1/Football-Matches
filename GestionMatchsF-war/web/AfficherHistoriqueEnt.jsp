@@ -9,7 +9,6 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link href="cssfede.css" rel="stylesheet" type="text/css">
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +18,6 @@
     </head>
     <body>
         <h1>Historique de l'entraineur</h1>
-       
         <div style="overflow-x:auto;">
             <table>
             <tr>
@@ -30,8 +28,9 @@
             <%for(HistoriqueEntraineur he : listeHE){%>
             </tr>   
                 <td ><%= he.getEquipeEntraineur().getNomequipe() %></td>
-                <td ><%=he.getDateDebutEnt().getDate()%> / <%= he.getDateDebutEnt().getMonth() %> / <%= he.getDateDebutEnt().getYear()%></td>
-                <td><%=he.getDateFinEnt().getDate()%> / <%= he.getDateFinEnt().getMonth() %> / <%= he.getDateFinEnt().getYear()%>  </td>
+               <td ><%=he.getDateDebutEnt().getDate()%> / <%= he.getDateDebutEnt().getMonth() %> / <%= he.getDateDebutEnt().getYear()+1900 %></td>
+                 <td><% if(he.getDateFinEnt()==null){%> <%} 
+                else {%><%=he.getDateFinEnt().getDate() %> / <%= he.getDateFinEnt().getMonth() %> / <%= he.getDateFinEnt().getYear() + 1900 %> <%} %>
             </tr> <%}%>
             </table>
         </div>
