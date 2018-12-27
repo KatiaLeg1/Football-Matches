@@ -48,4 +48,6 @@ public interface gestionToutLocal {
     List<Matchs> MatchsInt(Date date1, Date date2);
 
     Collection<Equipe> classement();
+
+    List AfficherTousHistoJou();
 }

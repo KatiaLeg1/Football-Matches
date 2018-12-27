@@ -38,5 +38,8 @@ public interface gestionEntraineurLocal {
     List<HistoriqueJoueur> listeJouEnt(Entraineur ent);
 
     List<Matchs> listeMEq(Entraineur ent);
+
+    void suppressionJoueur(long id);
+
 }
 

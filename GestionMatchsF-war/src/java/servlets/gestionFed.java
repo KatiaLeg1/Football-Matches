@@ -212,10 +212,9 @@ public class gestionFed extends HttpServlet {
             request.setAttribute("message", "");
         }
         else if (act.equals("authFed")) {
-            String log = request.getParameter("Login");
             String mdp = request.getParameter("mdp");
-            if (mdp.equals("fede")&&(log.equals("fede"))) {
-                request.setAttribute("message", "Bienvenu Fede");                
+            if (mdp.equals("fede")) {
+                request.setAttribute("message", "Bienvenue Fede");                
                 jspClient = "/fede/MenuFederation.jsp";
             } else {
                 request.setAttribute("message", "mauvais ID ou MDP");

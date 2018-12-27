@@ -78,11 +78,12 @@ public class HistoriqueEntraineurFacade extends AbstractFacade<HistoriqueEntrain
     @Override
     public List<HistoriqueEntraineur> HistoEntraineur(int e) {
         // tu recherches la liste des historiques entraineur pour 1 entraineur
-        String req = "SELECT he from HistoriqueEntraineur as he where he.entraineur.id=:e ";
+        List<HistoriqueEntraineur> he;
+        String req = "SELECT he from HistoriqueEntraineur as he where he.entraineur.id=:e";
         Query requete = em.createQuery(req);
         requete.setParameter("e",e);
-        List<HistoriqueEntraineur> liste = requete.getResultList();
-        return liste;      
+        he = requete.getResultList();
+        return he;      
     }
 
  

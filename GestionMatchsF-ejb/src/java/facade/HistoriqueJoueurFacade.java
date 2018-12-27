@@ -66,7 +66,15 @@ public class HistoriqueJoueurFacade extends AbstractFacade<HistoriqueJoueur> imp
         List<HistoriqueJoueur> liste = requete.getResultList();
         return liste;
     }
-
+    
+        @Override
+    public List<HistoriqueJoueur> TousHistoJoueurs() {
+        String req = "SELECT hj from HistoriqueJoueur as hj";
+        Query requete = em.createQuery(req);
+        List<HistoriqueJoueur> liste = requete.getResultList();
+        return liste;
+    }
+    
     @Override
     public List<HistoriqueJoueur> recupHistoE(Equipe eq) {
         String req = "SELECT hj from HistoriqueJoueur as hj where hj.equipeJoueur=:eq and hj.dateFinEq is null";
@@ -81,6 +89,8 @@ public class HistoriqueJoueurFacade extends AbstractFacade<HistoriqueJoueur> imp
         histoJ.setDateFinEq(date);
         em.merge(histoJ);
     }
+
+
     
     
     

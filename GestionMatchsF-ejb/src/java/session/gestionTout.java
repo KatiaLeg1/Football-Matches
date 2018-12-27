@@ -107,6 +107,12 @@ public class gestionTout implements gestionToutLocal {
     public List<HistoriqueJoueur> AfficherHistoJou(int idJ) {
         return historiqueJoueurFacade.HistoJoueur(idJ);
     }
+    
+      @Override
+    public List AfficherTousHistoJou() {
+        return historiqueJoueurFacade.TousHistoJoueurs();
+    }
+    
      @Override
     public List<HistoriqueJoueur> AfficherTousLesJoueursEq(int ide) {
         Equipe e = equipesFacade.RechercherEquipeid(ide);
@@ -131,6 +137,8 @@ public class gestionTout implements gestionToutLocal {
     public Collection<Equipe> classement() {
         return equipesFacade.Classement();
     }
+
+  
     
     
     

@@ -108,6 +108,7 @@ public class SessionEnt implements gestionEntraineurLocal {
     public List<Joueur> affichageJoueurs() {
         return joueursFacade.recupJoueur();
     }
+    
 
     @Override
     public Entraineur AuthEnt(String log, String mdp) {
@@ -134,5 +135,11 @@ public class SessionEnt implements gestionEntraineurLocal {
         return matchFacade.AfficherMatchsEQj(e);
         
     }   
-   
+
+    @Override
+    public void suppressionJoueur(long id) {
+        Joueur j = joueursFacade.SupprimerJoueur(id);
+      
+        }
+  
 }

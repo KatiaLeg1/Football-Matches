@@ -26,13 +26,12 @@
             <th Width =15%>Date de fin</th>
          </tr> 
        <%  
-           for(HistoriqueJoueur hj : listeHJ){%> <%--tu parcours la liste--%>
-        
-           
+           for(HistoriqueJoueur hj : listeHJ){%> <%--tu parcours la liste--%>   
     </tr>   
             <td ><%= hj.getEquipeJoueur().getNomequipe() %></td>
-            <td ><%=hj.getDateDebutEq() %></td>
-            <td><%=hj.getDateFinEq() %></td>
+            <td ><%=hj.getDateDebutEq().getDate()%> / <%= hj.getDateDebutEq().getMonth()%> / <%= hj.getDateDebutEq().getYear()+1900%></td>
+            <td><% if(hj.getDateFinEq()==null){%><%} else {%>
+                <%=hj.getDateFinEq().getDate()%> / <%=hj.getDateFinEq().getMonth()%> / <%=hj.getDateDebutEq().getYear()+1900%></td><%}%>
          </tr> <%}%></table>
         <td>
             </br>

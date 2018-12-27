@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import session.gestionEntraineurLocal;
+import session.gestionToutLocal;
 
 /**
  *
@@ -30,6 +31,9 @@ import session.gestionEntraineurLocal;
  */
 @WebServlet(name = "gestionEntraineur", urlPatterns = {"/gestionEntraineur"})
 public class gestionEntraineur extends HttpServlet {
+
+    @EJB
+    private gestionToutLocal gestionTout;
 
     @EJB
     private gestionEntraineurLocal sessionEnt;
@@ -72,7 +76,7 @@ public class gestionEntraineur extends HttpServlet {
                 else
                 {
                     jspClient = "/MenuEntraineur.jsp";
-                    request.setAttribute("message", "Bienvenu " + ent.getNomPersonne() +" "+ ent.getPrenomPersonne());
+                    request.setAttribute("message", "Bienvenue " + ent.getNomPersonne() +" "+ ent.getPrenomPersonne());
                     sess.setAttribute("ent", ent);
                 }
         }}
@@ -84,6 +88,16 @@ public class gestionEntraineur extends HttpServlet {
             request.setAttribute("listejoueurs", liste);
             jspClient="/AffecterJoueur.jsp";
         }
+        
+        else if(act.equals("rechercherSuppJ")&& !(sess== null))
+        {  
+            Entraineur entr = (Entraineur)sess.getAttribute("ent");
+            List<Joueur> liste = sessionEnt.affichageJoueurs();
+            request.setAttribute("entr", entr);                       
+            request.setAttribute("listejoueurs", liste);
+            jspClient="/SupprimerJoueur.jsp";
+        }
+        
         else if(act.equals("affecterJ"))
         {                     
             String idj = request.getParameter("Joueurs");
@@ -102,11 +116,31 @@ public class gestionEntraineur extends HttpServlet {
             request.setAttribute("message", message);
             jspClient="/MenuEntraineur.jsp";
         }    
+        
+         else if(act.equals("supprimerJ"))
+        {                     
+            String idj = request.getParameter("Joueurs");                 
+            String message ;
+            if(idj.isEmpty()){
+                message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires.";
+            } 
+            else {
+                Entraineur entr = (Entraineur)sess.getAttribute("ent");
+                long id = Long.valueOf(idj);
+                sessionEnt.suppressionJoueur(id);
+                message = "Joueur supprimé avec succès !"; 
+            } 
+            request.setAttribute("message", message);
+            jspClient="/MenuEntraineur.jsp";
+        }    
+        
         else if(act.equals("afficherJ"))
         {
             jspClient="/AfficherJoueurs.jsp";
             List <Joueur> list = sessionEnt.affichageJoueurs();
+            List <HistoriqueJoueur> list2 = gestionTout.AfficherTousHistoJou();
             request.setAttribute("listejoueurs", list);
+            request.setAttribute("histojoueur", list2);
         } 
         else if (act.equals("SJ"))
         {

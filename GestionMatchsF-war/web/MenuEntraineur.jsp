@@ -23,6 +23,7 @@
             <div class="menubis"> 
             </div><div class="menubis"><a href ="gestionEntraineur?action=rechercherJ"> Affecter un joueur à l'équipe </a>
             </div><div class="menubis"><a href ="gestionEntraineur?action=afficherJ"> Afficher tous les joueurs </a>
+            </div><div class="menubis"><a href="gestionEntraineur?action=rechercherSuppJ"> Supprimer un joueur </a>    
             </div><div class="menubis"><a href="gestionEntraineur?action=choisirM"> Composition de l'équipe- choix du match </a>
           </div>
         </div></br></br>

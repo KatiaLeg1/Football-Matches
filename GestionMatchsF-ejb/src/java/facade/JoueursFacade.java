@@ -49,17 +49,18 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
     }
 
     @Override
-    public void SupprimerJoueur(String nom) {
-        Joueur j = null;        
-        String txt = "SELECT j FROM Joueur AS j WHERE ing.nomJ=:no";
+    public Joueur SupprimerJoueur(long id) {
+        Joueur j = null;
+        String txt = "SELECT jo FROM Joueur AS jo WHERE jo.id=:id";
         Query req = getEntityManager().createQuery(txt);
-        req = req.setParameter("no", nom);        
+        req = req.setParameter("id", id);        
         List<Joueur> res = req.getResultList();
         if (res.size() >= 1)
         {
               j = (Joueur) res.get(0); 
               em.remove(j);
         }
+        return j;
     }
 
     @Override
@@ -69,6 +70,7 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
         List<Joueur> liste = requete.getResultList();
         return liste;
     }
+
 
     @Override
     public Joueur RechercherJoueur(String nomPersonne, String prenomPersonne) {
@@ -84,9 +86,7 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
         } else {
             return null ;
         } 
-        
-     
-    
+         
 }
     @Override
     public void affecterJoueur(HistoriqueJoueur histo, Equipe eq, Date dateDebut) {
@@ -163,6 +163,7 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
         List<Joueur> liste = req.getResultList();
         return liste;
     }
+
 
 
 

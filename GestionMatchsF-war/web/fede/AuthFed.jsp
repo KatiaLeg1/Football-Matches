@@ -21,7 +21,6 @@
            
            <div class="input1">
             </br>
-                <input type="text" placeholder='login' name="Login" class='input'/>
                 <input type="password" placeholder='Mdp' name="mdp" class='input'/>
 
                 <input type ="hidden" name="action" value="authFed">

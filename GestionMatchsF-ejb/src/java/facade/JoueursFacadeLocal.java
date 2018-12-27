@@ -36,7 +36,7 @@ public interface JoueursFacadeLocal {
 
     void CreerJoueur(String nomJ, String prenomJ);
 
-    void SupprimerJoueur(String nom);
+    Joueur SupprimerJoueur(long id);
 
     List recupJoueur();    
 
@@ -57,6 +57,5 @@ public interface JoueursFacadeLocal {
     List<Joueur> TousLesJouEq(int eq);
 
     List<Joueur> joueurMatch(Matchs m);
-
 
 }
