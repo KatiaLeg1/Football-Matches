@@ -154,6 +154,14 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
         List<Joueur> liste = requete.getResultList();
         return liste; 
             }
+    
+     @Override
+    public List<Joueur> TousLesJouLibres() {
+        String req = "select j from Joueur as j where not exists (select hj from HistoriqueJoueur hj where j.id = hj.joueur.id)";
+        Query requete = em.createQuery(req);
+        List<Joueur> liste = requete.getResultList();
+        return liste; 
+    }
 
     @Override
     public List<Joueur> joueurMatch(Matchs m) {
@@ -163,6 +171,8 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
         List<Joueur> liste = req.getResultList();
         return liste;
     }
+
+   
 
 
 

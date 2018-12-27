@@ -6,6 +6,7 @@
 package facade;
 
 import entites.Equipe;
+import entites.HistoriqueEntraineur;
 import entites.HistoriqueJoueur;
 import entites.Joueur;
 import java.util.Date;
@@ -35,7 +36,6 @@ public class HistoriqueJoueurFacade extends AbstractFacade<HistoriqueJoueur> imp
     }
 
     
-    
 
     @Override
     public void creerHJoueur(Date dateDebutHJ, Joueur joueur, Equipe equipe) {
@@ -58,6 +58,7 @@ public class HistoriqueJoueurFacade extends AbstractFacade<HistoriqueJoueur> imp
         else return null;   
 }
     
+    
     @Override
     public List<HistoriqueJoueur> HistoJoueur(int j) {
         String req = "SELECT hj from HistoriqueJoueur as hj where hj.joueur.id=:j ";
@@ -69,6 +70,7 @@ public class HistoriqueJoueurFacade extends AbstractFacade<HistoriqueJoueur> imp
     
         @Override
     public List<HistoriqueJoueur> TousHistoJoueurs() {
+        List<HistoriqueJoueur> h = null;
         String req = "SELECT hj from HistoriqueJoueur as hj";
         Query requete = em.createQuery(req);
         List<HistoriqueJoueur> liste = requete.getResultList();
@@ -83,6 +85,23 @@ public class HistoriqueJoueurFacade extends AbstractFacade<HistoriqueJoueur> imp
         List<HistoriqueJoueur> liste = requete.getResultList();
         return liste;
     }
+    
+     @Override
+    public List<HistoriqueJoueur> recupHistoAutreE(Equipe eq) {
+        String req = "SELECT hj from HistoriqueJoueur as hj where hj.equipeJoueur!=:eq and hj.dateFinEq is null";
+        Query requete = em.createQuery(req);
+        requete.setParameter("eq",eq);
+        List<HistoriqueJoueur> liste = requete.getResultList();
+        return liste;
+    }
+        
+    @Override
+    public List<HistoriqueJoueur> recupHistoJoueur() {
+        String req = "SELECT hj from HistoriqueJoueur as hj UNION select j from Joueur as j where not exists (select hj from HistoriqueJoueur hj where j.id = hj.joueur.id)";
+        Query requete = em.createQuery(req);
+        List<HistoriqueJoueur> liste =  requete.getResultList();
+        return liste;
+    }
 
     @Override
     public void ModifHistoJ(HistoriqueJoueur histoJ, Date date) {
@@ -90,8 +109,21 @@ public class HistoriqueJoueurFacade extends AbstractFacade<HistoriqueJoueur> imp
         em.merge(histoJ);
     }
 
+    @Override
+    public HistoriqueJoueur supprimerHistoJ(long id) {
+        HistoriqueJoueur hj = null;
+        String txt = "SELECT hj FROM HistoriqueJoueur AS hj WHERE hj.joueur.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("id", id);        
+        List<HistoriqueJoueur> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              hj = (HistoriqueJoueur) res.get(0); 
+              em.remove(hj);
+        }
+        return hj;
+ 
+    }
 
-    
-    
-    
+
 }

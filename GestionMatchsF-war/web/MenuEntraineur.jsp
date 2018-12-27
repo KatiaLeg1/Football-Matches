@@ -21,10 +21,12 @@
         </br></br> 
         <div clas='menu'>  
             <div class="menubis"> 
-            </div><div class="menubis"><a href ="gestionEntraineur?action=rechercherJ"> Affecter un joueur à l'équipe </a>
-            </div><div class="menubis"><a href ="gestionEntraineur?action=afficherJ"> Afficher tous les joueurs </a>
+            </div><div class="menubis"><a href ="gestionEntraineur?action=rechercherJ"> Transférer un joueur </a>
+            </div><div class="menubis"><a href ="gestionEntraineur?action=rechercherJL"> Recruter un joueur libre </a>    
+            </div><div class="menubis"><a href ="gestionEntraineur?action=afficherJ"> Afficher les joueurs de l'équipe </a>
+            </div><div class="menubis"><a href ="gestionEntraineur?action=afficherTJ"> Afficher tous les joueurs </a>
             </div><div class="menubis"><a href="gestionEntraineur?action=rechercherSuppJ"> Supprimer un joueur </a>    
-            </div><div class="menubis"><a href="gestionEntraineur?action=choisirM"> Composition de l'équipe- choix du match </a>
+            </div><div class="menubis"><a href="gestionEntraineur?action=choisirM"> Composition de l'équipe </a>
           </div>
         </div></br></br>
         <div class="retour">

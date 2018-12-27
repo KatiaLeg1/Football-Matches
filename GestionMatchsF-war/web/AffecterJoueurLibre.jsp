@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AffecterJoueur
-    Created on : 4 déc. 2018, 10:52:10
+    Document   : AffecterJoueurLibre
+    Created on : 27 déc. 2018, 15:58:50
     Author     : Utilisateur
 --%>
 
@@ -21,15 +21,15 @@
     </head>
     <body>
     <h1>Rechercher joueur</h1>
-    <% List<HistoriqueJoueur> lesJoueurs=listejoueurs; %>
+    <% List<Joueur> lesJoueurs=listejoueurs; %>
     <form method="get" action="gestionEntraineur">
         <div class="input1">
             </br>   
             <div class ='input2'>     
                 <label for="Joueurs"  class='textinput'> Joueur à affecter à l'équipe : </label>                
                 <select name="Joueurs"  class='custom-dropdown__select custom-dropdown__select--white'>
-                    <% for(HistoriqueJoueur hj: lesJoueurs) {%>
-                    <option value="<%=hj.getId()%>"><%=hj.getJoueur().getPrenomPersonne()%> <%=hj.getJoueur().getNomPersonne()%></option>
+                    <% for(Joueur j: lesJoueurs) {%>
+                    <option value="<%=j.getId()%>"><%=j.getPrenomPersonne()%> <%=j.getNomPersonne()%></option>
                     <%}%>
                 </select>   
         <br/>

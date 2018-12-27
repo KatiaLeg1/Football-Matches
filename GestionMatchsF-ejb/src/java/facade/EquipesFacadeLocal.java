@@ -7,6 +7,7 @@ package facade;
 
 import entites.Entraineur;
 import entites.Equipe;
+import entites.Joueur;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
@@ -43,4 +44,6 @@ public interface EquipesFacadeLocal {
     Equipe RechercherEquipeid(int idequipe);
 
     void AjoutPt(Equipe e, int pt);
+
+    Equipe rechercherEquipeJoueur(Joueur joueur);
 }

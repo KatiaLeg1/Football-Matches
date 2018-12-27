@@ -58,4 +58,6 @@ public interface JoueursFacadeLocal {
 
     List<Joueur> joueurMatch(Matchs m);
 
+    List<Joueur> TousLesJouLibres();
+
 }

@@ -7,6 +7,7 @@ package facade;
 
 import entites.Entraineur;
 import entites.Equipe;
+import entites.HistoriqueJoueur;
 import entites.Joueur;
 import entites.Matchs;
 import java.util.ArrayList;
@@ -100,6 +101,20 @@ public class EquipesFacade extends AbstractFacade<Equipe> implements EquipesFaca
         e.setPointEquipe(e.getPointEquipe()+pt);
         em.merge(e);
     }
-    
+
+    @Override
+    public Equipe rechercherEquipeJoueur(Joueur joueur) {
+        Equipe e;
+        String text = "SELECT hj FROM HistoriqueJoueur AS hj WHERE hj.joueur=:joueur AND hj.dateFinEq IS NULL";
+        Query requete = em.createQuery(text);
+        requete.setParameter("joueur", joueur);
+        List<HistoriqueJoueur> liste = requete.getResultList();
+        if(!liste.isEmpty()){
+            return e = liste.get(0).getEquipeJoueur();
+        }
+        else{
+        return null;
+    }
+    }
     
 }

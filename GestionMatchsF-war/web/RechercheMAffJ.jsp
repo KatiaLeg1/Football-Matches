@@ -19,7 +19,7 @@
         <title>Modifier un Match</title>
     </head>
     <body>
-        <h1>Modifier un Match</h1>
+        <h1>Composition de l'équipe</h1>
         <% List<Matchs> leMat = listm;
         List <HistoriqueJoueur> He = listehe;%>
         <form method ="get" action="gestionEntraineur">  
@@ -29,7 +29,9 @@
             <label for="Match">Choisir Match: <span class="requis"></span></label>
                 <select name="Match">
                     <% for (Matchs m : leMat ){%>
-                    <option value="<%=m.getId()%>"><%=m.getEquipeUn().getNomequipe() %> VS <%=m.getEquipeDeux().getNomequipe()%> </option>
+                    <option value="<%=m.getId()%>"><%=m.getEquipeUn().getNomequipe() %> VS <%=m.getEquipeDeux().getNomequipe()%>
+                                   <%/*=m.getDateMatch()*/%>
+                    </option>
                     <%}%>
                 </select> 
             </div> 
@@ -38,14 +40,12 @@
 
             <table>
                 <tr>
-                    <td> Joueur numéro </td>
                     <td> Nom </td>
-                    <td> prénom</td>
-                    <td> check </td>                        
+                    <td> Prénom </td>
+                    <td> Ajouter </td>                        
                 </tr>
                 <% for (HistoriqueJoueur h : He ) { %>
                 <tr>
-                    <td> <%= h.getJoueur().getId()%> </td>
                     <td>  <%= h.getJoueur().getNomPersonne()%> </td>
                     <td>  <%= h.getJoueur().getPrenomPersonne()%></td>
                     <td> <input type="checkbox" name="compo" value="<%= h.getJoueur().getId()%>" </td>                        
@@ -53,9 +53,7 @@
                 <%}%>
             </table>
             </div>
-             
-                <input type ="hidden" name="action" value="affJMatch">
-        
+                <input type ="hidden" name="action" value="affJMatch">        
                 <input  class='bouton' type="submit" value="Valider"/>
             <input  class='bouton'type="reset" value="Remise à 0"/>       
             </div>

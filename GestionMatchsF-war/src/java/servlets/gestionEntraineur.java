@@ -76,17 +76,30 @@ public class gestionEntraineur extends HttpServlet {
                 else
                 {
                     jspClient = "/MenuEntraineur.jsp";
-                    request.setAttribute("message", "Bienvenue " + ent.getNomPersonne() +" "+ ent.getPrenomPersonne());
+                    request.setAttribute("message", "Bienvenue " + ent.getPrenomPersonne() +" "+ent.getNomPersonne());
                     sess.setAttribute("ent", ent);
                 }
         }}
         else if(act.equals("rechercherJ")&& !(sess== null))
         {  
             Entraineur entr = (Entraineur)sess.getAttribute("ent");
-            List<Joueur> liste = sessionEnt.affichageJoueurs();
+            List<HistoriqueJoueur> liste = sessionEnt.listeJouAutreEnt(entr);
+            /* J'aimerais afficher uniquemenent les joueurs qui ne sont pas dans l'equipe de l'entraineur connecté avec
+            la méthode sessionEnt.listeJAutreEq() mais ça ne fonctionne pas, pb requête SQL */
             request.setAttribute("entr", entr);                       
             request.setAttribute("listejoueurs", liste);
             jspClient="/AffecterJoueur.jsp";
+        }
+        
+        else if(act.equals("rechercherJL")&& !(sess== null))
+        {  
+            Entraineur entr = (Entraineur)sess.getAttribute("ent");
+            List<Joueur> liste = sessionEnt.listeJLibres();
+            /* J'aimerais afficher uniquemenent les joueurs qui ne sont pas dans l'equipe de l'entraineur connecté avec
+            la méthode sessionEnt.listeJAutreEq() mais ça ne fonctionne pas, pb requête SQL */
+            request.setAttribute("entr", entr);                       
+            request.setAttribute("listejoueurs", liste);
+            jspClient="/AffecterJoueurLibre.jsp";
         }
         
         else if(act.equals("rechercherSuppJ")&& !(sess== null))
@@ -136,11 +149,19 @@ public class gestionEntraineur extends HttpServlet {
         
         else if(act.equals("afficherJ"))
         {
+            Entraineur ent = (Entraineur)sess.getAttribute("ent");
             jspClient="/AfficherJoueurs.jsp";
-            List <Joueur> list = sessionEnt.affichageJoueurs();
-            List <HistoriqueJoueur> list2 = gestionTout.AfficherTousHistoJou();
+            List <HistoriqueJoueur> list = sessionEnt.listeJouEnt(ent);
             request.setAttribute("listejoueurs", list);
-            request.setAttribute("histojoueur", list2);
+        } 
+        
+         else if(act.equals("afficherTJ"))
+        {
+            jspClient="/AfficherTousJoueurs.jsp";
+            List <Joueur> list = sessionEnt.affichageJoueurs();
+            /*List <HistoriqueJoueur> list2 = sessionEnt.listeHistoTousJoueurs();*/
+            request.setAttribute("listejoueurs", list);
+            /*request.setAttribute("histojoueurs", list2);*/
         } 
         else if (act.equals("SJ"))
         {
@@ -171,11 +192,12 @@ public class gestionEntraineur extends HttpServlet {
             {
                 message = "Vous n'avez pas rempli tous les champs";
             }
-            if (match.trim().isEmpty()|| compo.length==11)
+            /*if (!match.trim().isEmpty()&& compo.length==11)*/
+            else
             {
                 List<Joueur> jou = new ArrayList<>();
                 for (String joue : compo){
-                    Long jouu = Long.valueOf(joue);
+                    long jouu = Long.valueOf(joue);
                     Joueur jo = sessionEnt.rechercherJoueurId(jouu);
                     jou.add(jo);                    
                 }
@@ -183,10 +205,10 @@ public class gestionEntraineur extends HttpServlet {
                 sessionEnt.CreerCompo(entr, jou, ma);
                 message = "composition créée";
             }
-            else
+            /*else
             {
                 message = "Vous n'avez pas sélectionné le bon nombre de joueurs";
-            }
+            }*/
             
             
 

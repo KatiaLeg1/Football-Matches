@@ -128,7 +128,18 @@ public class SessionEnt implements gestionEntraineurLocal {
         Equipe e = historiqueEntraineurFacade.EqActuelleEnt(ent) ;
         return historiqueJoueurFacade.recupHistoE(e);
     }   
-
+    
+    @Override
+    public List<HistoriqueJoueur> listeJouAutreEnt(Entraineur ent) {
+        Equipe e = historiqueEntraineurFacade.EqActuelleEnt(ent) ;
+        return historiqueJoueurFacade.recupHistoAutreE(e);
+    }   
+    
+    public List<HistoriqueJoueur> listeHistoTousJoueurs(){
+        return historiqueJoueurFacade.TousHistoJoueurs();
+    }
+    
+    
     @Override
     public List<Matchs> listeMEq(Entraineur ent) {
         Equipe e = historiqueEntraineurFacade.EqActuelleEnt(ent) ;
@@ -138,8 +149,14 @@ public class SessionEnt implements gestionEntraineurLocal {
 
     @Override
     public void suppressionJoueur(long id) {
-        Joueur j = joueursFacade.SupprimerJoueur(id);
-      
-        }
-  
+        HistoriqueJoueur hj = historiqueJoueurFacade.supprimerHistoJ(id);
+        Joueur j = joueursFacade.SupprimerJoueur(id); 
+    }
+
+    @Override
+    public List<Joueur> listeJLibres() {
+        return joueursFacade.TousLesJouLibres();
+    }
+   
+    
 }

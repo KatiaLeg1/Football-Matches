@@ -20,15 +20,15 @@
     <body>
         <h1>Modifier un Match</h1>
         <% List<Matchs> leMat = listeMatchs;%>
-        <form method ="get" action="gestionArb">  
-           
+        <form method ="get" action="gestionArb">      
             <div class="input1">
             </br>   
             <div class ='input2'>  
-            <label for="Match" class='textinput'>Choisir Match : </label>
+            <label for="Match" class='textinput'> Match : </label>
                 <select name="Match" class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Matchs m : leMat ){%>
-                    <option value="<%=m.getId()%>"><%=m.getEquipeUn().getNomequipe() %> VS <%=m.getEquipeDeux().getNomequipe()%> </option>
+                    <option value="<%=m.getId()%>"><%=m.getEquipeUn().getNomequipe() %> VS <%=m.getEquipeDeux().getNomequipe()%>          
+                    </option>
                     <%}%>
                 </select> 
             </div>

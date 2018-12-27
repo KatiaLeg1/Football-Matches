@@ -11,10 +11,10 @@
 <html>
    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Créer Un Entraineur</title>
+        <title>Créer un joueur</title>
     </head>
     <body>
-        <h1>Créer un Entraineur</h1>
+        <h1>Créer un joueur</h1>
         <form method ="get" action="../gestionFed">
             <div class="input1">
                 </br>

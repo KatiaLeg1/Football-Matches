@@ -40,6 +40,12 @@ public interface gestionEntraineurLocal {
     List<Matchs> listeMEq(Entraineur ent);
 
     void suppressionJoueur(long id);
+    
+    List<HistoriqueJoueur> listeJouAutreEnt(Entraineur ent);
+    
+    List<Joueur> listeJLibres();
+
+    public List<HistoriqueJoueur> listeHistoTousJoueurs();
 
 }
 
