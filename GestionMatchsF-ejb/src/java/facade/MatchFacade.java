@@ -65,38 +65,48 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public boolean ArbitreLibre(Arbitre arbitre, Date dateMatch) {
         boolean b=false;
-        Query requete = em.createQuery("SELECT m from Matchs as m where m.arbitre=:arb And m.dateMatch=:dateMatch");
+        Query requete = em.createQuery("SELECT m from Matchs as m where m.arbitre=:arb");
         requete.setParameter("arb", arbitre);     
         requete.setParameter("dateMatch", dateMatch);  
         List<Matchs> liste =  requete.getResultList();
-        if (liste.isEmpty())
+        if (!(liste.isEmpty()))
         {
-            b = true;
+            for (Matchs m : liste)
+            {
+                if (m.getDateMatch().equals(dateMatch))
+                {
+                  b=  false;
+                }
+                else b=false;
+            }
         }
         else
-        {
-            b=false;                   
-        }
+            b= true;
         return b;
     }
 
     @Override
     public boolean EquipeLibre(Equipe equipe, Date dateMatch) {
-        boolean b=false;
-        Query requete = em.createQuery("SELECT m from Matchs as m where m.equipeUn=:equipe And m.dateMatch=:dateMatch");
-                //+ "UNION SELECT m from Matchs as m where m.EquipeDeux=:equipe And m.dateMatch=:dateMatch");
-        requete.setParameter("equipe", equipe);     
-        requete.setParameter("dateMatch", dateMatch);  
-        List<Matchs> liste =  requete.getResultList();
-        if (liste.isEmpty())
+        boolean b = false;
+        String text ="SELECT m from Matchs as m where m.equipeUn=:equipe union SELECT m from Matchs as m where m.EquipeDeux=:equipe ";
+        Query req = getEntityManager().createQuery(text);
+        req.setParameter("equipe", equipe);     
+        List<Matchs> liste =  req.getResultList();
+        if (!(liste.isEmpty()))
         {
-            b = true;
+            for (Matchs m : liste)
+            {
+                if (m.getDateMatch().equals(dateMatch))
+                {
+                  b=  false;
+                }
+                else b=false;
+            }
         }
         else
-        {
-            b=false;                   
-        }
-        return b;  
+         b= true;
+        return b;
+        
     }
 
     @Override

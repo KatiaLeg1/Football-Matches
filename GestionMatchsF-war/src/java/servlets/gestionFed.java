@@ -131,8 +131,15 @@ public class gestionFed extends HttpServlet {
         else {
             int id = Integer.valueOf(idA);
             Date date = Date.valueOf(t); 
-            gestionFederation.CreerMAtch(date, h, E1, E2, id);            
+            boolean d =gestionFederation.CreerMAtch(date, h, E1, E2, id);            
+            if (d==true)
+            {
             message = "Match créé avec succès !";          
+            }
+            else 
+            {
+             message = "Une équipe ou arbitre n'est pas libre ";          
+            }
         }
         request.setAttribute("message", message);   
     }
@@ -217,7 +224,7 @@ public class gestionFed extends HttpServlet {
                 request.setAttribute("message", "Bienvenue Fede");                
                 jspClient = "/fede/MenuFederation.jsp";
             } else {
-                request.setAttribute("message", "mauvais ID ou MDP");
+                request.setAttribute("message", "mauvais MDP");
                 jspClient = "/Auth.jsp";
             }}
         else if (act.equals("CreerEquipe") ) /* auth de fédé*/

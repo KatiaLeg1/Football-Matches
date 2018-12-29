@@ -32,7 +32,7 @@ public interface gestionFederationLocal {
 
     void CreerJoueur(String nom, String prenom);
 
-    void CreerMAtch(Date dateMatch, String heure, String nomequipeUn, String nomequipeDeux,int ida);
+    boolean CreerMAtch(Date dateMatch, String heure, String nomequipeUn, String nomequipeDeux,int ida);
 
     Collection<Equipe> LesEquipes();
 
