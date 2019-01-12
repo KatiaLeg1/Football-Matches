@@ -123,8 +123,14 @@ public class gestionEntraineur extends HttpServlet {
                 Entraineur entr = (Entraineur)sess.getAttribute("ent");
                 Date dateDHJ = Date.valueOf(t);
                 long id = Long.valueOf(idj);
-                sessionEnt.affectationJoueur(id, entr, dateDHJ);
-                message = "Joueur affecté à l'équipe !"; 
+                boolean a = sessionEnt.affectationJoueur(id, entr, dateDHJ);
+                if (a==true)
+                {
+                message = "Joueur affecté à l'équipe !"; }
+                else
+                {
+                   message = "Entraineur sans équipe !"; 
+                }
             } 
             request.setAttribute("message", message);
             jspClient="/MenuEntraineur.jsp";

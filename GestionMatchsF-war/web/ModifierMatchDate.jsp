@@ -8,7 +8,7 @@
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link href="${pageContext.request.contextPath}/fede/cssfede.css" rel="stylesheet" type="text/css">
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 
 <!DOCTYPE html>
 <html>
@@ -22,7 +22,7 @@
     <body>
         <h1>Modifier un Match</h1>
         <% List<Matchs> lesM = listeMatch;%>
-        <form method ="get" action="${pageContext.request.contextPath}/gestionFed">
+        <form method ="get" action="gestionFed">
            
                 
                 
@@ -58,7 +58,7 @@
             </br>
             <div class="retour">
             <div class="retour">
-                <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
+                <a href ="MenuFederation.jsp"> Retour Menu </a>
             </div>
         </form>
     </body>

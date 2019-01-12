@@ -73,20 +73,21 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
 
 
     @Override
-    public Joueur RechercherJoueur(String nomPersonne, String prenomPersonne) {
+    public boolean RechercherJoueur(String nomPersonne, String prenomPersonne) {
         Joueur j = null;
-        String txt = "SELECT j FROM Joueur AS j WHERE j.nomPersonne=:no and j.prenomPersonne=:preno";
+        boolean a ;
+        String txt = "SELECT j FROM Joueur AS j WHERE j.nomPersonne=:nomPersonne and j.prenomPersonne=:prenomPersonne";
         Query req = getEntityManager().createQuery(txt);
-        req = req.setParameter("no", nomPersonne);
-        req = req.setParameter("preno", prenomPersonne);
+        req = req.setParameter("nomPersonne", nomPersonne);
+        req = req.setParameter("prenomPersonne", prenomPersonne);
         j=(Joueur)req.getSingleResult();
         if (!(j==null)) 
         {
-                return j;
+            a = true;
         } else {
-            return null ;
+            a=false;
         } 
-         
+         return a;
 }
     @Override
     public void affecterJoueur(HistoriqueJoueur histo, Equipe eq, Date dateDebut) {

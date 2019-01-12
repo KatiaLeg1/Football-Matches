@@ -22,7 +22,7 @@
         </br></br> 
         <div clas='menu'>  
             <div class="menubis">
-            </div><div class="menubis"><a href ="${pageContext.request.contextPath}/fede/AuthFed.jsp"> Menu Fédération </a>
+            </div><div class="menubis"><a href ="AuthFed.jsp"> Menu Fédération </a>
             </div><div class="menubis"><a href ="AuthEnt.jsp"> Menu Entraineur </a>
             </div><div class="menubis"><a href ="MenuTous.jsp"> Menu Tous </a>
             </div><div class="menubis"><a href ="AuthArb.jsp"> Menu Arbitre </a>

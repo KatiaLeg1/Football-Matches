@@ -8,7 +8,7 @@
 <%@page import="java.util.List"%>
 <%@page import="entites.Equipe"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link href="${pageContext.request.contextPath}/fede/cssfede.css" rel="stylesheet" type="text/css">
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@
         <% List<Entraineur> lesEnts = listeEquipent;%>
         <% List<Equipe> lesEqs = listeEquipes;%>
         
-        <form method ="get" action="${pageContext.request.contextPath}/gestionFed">
+        <form method ="get" action="gestionFed">
 
             <div class="input1">
             </br>   
@@ -61,8 +61,8 @@
             <input  class='bouton'type="reset" value="Remise à 0"/>       
             </div>
             </br>
-<div class="retour">
-                <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
+            <div class="retour">
+                <a href ="MenuFederation.jsp"> Retour Menu </a>
             </div>        </form>
     </body>
 </html>

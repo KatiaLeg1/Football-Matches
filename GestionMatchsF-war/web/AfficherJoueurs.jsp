@@ -36,7 +36,7 @@
               <%}%>
         </table></hr>
         <div class='retour'>
-            <a href ="${pageContext.request.contextPath}/MenuEntraineur.jsp"> Retour Menu </a>
+            <a href ="MenuEntraineur.jsp"> Retour Menu </a>
         </div>
     </body>
 </html>

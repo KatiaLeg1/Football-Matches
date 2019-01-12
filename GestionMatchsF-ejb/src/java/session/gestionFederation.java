@@ -71,7 +71,10 @@ public class gestionFederation implements gestionFederationLocal {
 
     @Override
     public void CreerJoueur(String nom, String prenom) {
-        joueursFacade.CreerJoueur(nom, prenom);
+        
+            joueursFacade.CreerJoueur(nom, prenom);
+        
+        
     }
 
     @Override

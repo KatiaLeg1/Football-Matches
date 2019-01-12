@@ -9,7 +9,7 @@
 <%@page import="java.util.List"%>
 <%@page import="entites.Faute"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link href="${pageContext.request.contextPath}/fede/cssfede.css" rel="stylesheet" type="text/css">
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 
 <!DOCTYPE html>
 <html>
@@ -44,7 +44,7 @@
         
         </br>
         <div class='retour'>
-            <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
+            <a href ="MenuFederation.jsp"> Retour Menu </a>
         </div>
 
     </body>

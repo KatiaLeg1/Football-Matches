@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>Créer un Entraineur</h1>
-        <form method ="get" action="../gestionFed">
+        <form method ="get" action="gestionFed">
             <div class="input1">
             </br>
                 <input type ="text" placeholder='Nom de l entraineur' name="nomEntraineur" class='input'/>
@@ -31,7 +31,7 @@
             </div>
             </br>
             <div class='retour'>
-            <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
+            <a href ="MenuFederation.jsp"> Retour Menu </a>
             </div>
             
         </form>

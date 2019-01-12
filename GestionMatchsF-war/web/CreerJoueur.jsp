@@ -1,6 +1,6 @@
 <%-- 
-    Document   : CreerEquipe
-    Created on : 30 nov. 2018, 01:36:09
+    Document   : CreerJoueur
+    Created on : 1 déc. 2018, 17:57:51
     Author     : katia
 --%>
 
@@ -9,18 +9,20 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
+   <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Créer Une Equipe</title>
+        <title>Créer un joueur</title>
     </head>
     <body>
-        <h1>Créer une Equipe</h1>
-        <form method ="get" action="../gestionFed">
+        <h1>Créer un joueur</h1>
+        <form method ="get" action="gestionFed">
             <div class="input1">
-            </br>                
-            <input type ="text" placeholder="Nom de l'équipe" name="nomEquipe" class='input'/>
-            <input type ="hidden" name="action" value="CreerEquipe">
+                </br>
+                <input type ="text" placeholder='Nom du Joueur' name="nomJoueur" class='input'/>
+                <input type ="text" placeholder='Préom du Joueur'name="prenomJoueur"  class='input'/>
+                <input type ="hidden" name="action" value="CreerJoueur">
             </div>
+        
             <div class='bouton1'>
             </br>
             <input  class='bouton' type="submit" value="Valider"/>
@@ -28,7 +30,7 @@
             </div>
             </br>
  <div class='retour'>
-            <a href ="${pageContext.request.contextPath}/fede/MenuFederation.jsp"> Retour Menu </a>
+            <a href ="MenuFederation.jsp"> Retour Menu </a>
             </div>            
         </form>
     </body>

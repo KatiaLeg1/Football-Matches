@@ -40,7 +40,7 @@ public interface JoueursFacadeLocal {
 
     List recupJoueur();    
 
-    Joueur RechercherJoueur(String nomPersonne, String prenomPersonne);
+    boolean RechercherJoueur(String nomPersonne, String prenomPersonne);
     
     void affecterJoueur(HistoriqueJoueur histo, Equipe eq, Date dateDebut);
 

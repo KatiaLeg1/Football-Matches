@@ -21,7 +21,7 @@ import javax.ejb.Local;
 @Local
 public interface gestionEntraineurLocal {
 
-    void affectationJoueur(long id, Entraineur e,  Date dateDebutHJ);
+    boolean affectationJoueur(long id, Entraineur e,  Date dateDebutHJ);
 
     void transfertJoueur(String nom, String prenom);
 

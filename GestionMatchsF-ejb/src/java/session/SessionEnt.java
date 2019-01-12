@@ -50,24 +50,38 @@ public class SessionEnt implements gestionEntraineurLocal {
     
     
     @Override
-    public void affectationJoueur(long id, Entraineur e, Date dateDebutHJ) {
+    public boolean affectationJoueur(long id, Entraineur e, Date dateDebutHJ) {
+        boolean a;
         Joueur j = joueursFacade.rechercherJoueurId(id);
         HistoriqueJoueur hj = historiqueJoueurFacade.rechercherHistorique(j);
         Equipe eq = historiqueEntraineurFacade.EqActuelleEnt(e);
+                    System.out.println("Equipe " + eq.getId());
+
+        if (!(eq==null)){
         if(j!=null){
         HistoriqueJoueur h = historiqueJoueurFacade.rechercherHistorique(j);
             if(h!=null){
                 historiqueJoueurFacade.ModifHistoJ(hj, dateDebutHJ);
                 historiqueJoueurFacade.creerHJoueur(dateDebutHJ, j, eq);   
+                a=true;
             }
             else
             {
                 historiqueJoueurFacade.creerHJoueur(dateDebutHJ, j, eq);   
+                a=true;
             }
         }
         else{
             System.out.println("Joueur sous contrat");
+            a = false;
         } 
+        }
+        else{
+            System.out.println("Pas d'équipe pour l'entraineur");
+            a = false;
+        } 
+        return a;
+            
     }
 
     @Override

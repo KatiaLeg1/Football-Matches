@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link href="${pageContext.request.contextPath}/fede/cssfede.css" rel="stylesheet" type="text/css">
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
     <body>
         <h1>Saisir une date pour afficher tous les matchs</h1>
        
-        <form method ="get" action="${pageContext.request.contextPath}/gestionFed">
+        <form method ="get" action="gestionFed">
            
            <div class="input1">
             </br>   
@@ -34,7 +34,7 @@
             </div>
             </br>
  <div class='retour'>
-            <a href ="/MenuTous.jsp"> Retour Menu </a>
+            <a href ="MenuTous.jsp"> Retour Menu </a>
             </div>
         </form>
     </body>

@@ -17,7 +17,7 @@
     <body>
         <h1>Connexion Federation</h1>
 
-        <form method ="get" action="${pageContext.request.contextPath}/gestionFed">
+        <form method ="get" action="gestionFed">
            
            <div class="input1">
             </br>
@@ -33,7 +33,7 @@
             </div>
             </br>
             <div class='retour'>
-            <a href ="${pageContext.request.contextPath}/Auth.jsp"> Retour Menu </a>
+            <a href ="Auth.jsp"> Retour Menu </a>
             </div>
         </form>
     </body>
