@@ -30,7 +30,6 @@
                 <select name="Match">
                     <% for (Matchs m : leMat ){%>
                     <option value="<%=m.getId()%>"><%=m.getEquipeUn().getNomequipe() %> VS <%=m.getEquipeDeux().getNomequipe()%>
-                                   <%/*=m.getDateMatch()*/%>
                     </option>
                     <%}%>
                 </select> 

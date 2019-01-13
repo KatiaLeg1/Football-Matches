@@ -80,7 +80,7 @@ public class gestionArb extends HttpServlet {
             int mat = Integer.valueOf(ma);
             gestionArbitre.ModifierMatch(pUn, pD, mat);
             
-            message= "sCORE enregistré avec succès !";
+            message= "Score enregistré avec succès !";
             }
         request.setAttribute("message", message);
     }

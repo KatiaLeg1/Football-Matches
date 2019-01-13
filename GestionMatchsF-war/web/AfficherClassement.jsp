@@ -31,6 +31,7 @@
         </table>
         
         </div>
+        </br>
         <div class ='retour'>
             <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
         </div>

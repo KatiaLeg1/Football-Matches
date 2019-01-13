@@ -7,7 +7,7 @@
 <%@page import="java.util.Collection"%>
 <%@page import="java.util.List"%>
 <%@page import="entites.Faute"%>
-<link href="/cssfede.css" rel="stylesheet" type="text/css">
+<link href="cssfede.css" rel="stylesheet" type="text/css">
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
         <title>Liste des matchs pour une date</title>
     </head>
     <body>
-        <div id="entete">Liste des matchs pour une date</div>
+        <h1>Liste des matchs pour une date</h1>
                 <div style="overflow-x:auto;">
 
         <table>
@@ -31,21 +31,17 @@
              </tr>
          <% for(Matchs m : listeMa){%>
          <tr>   
-            <td Width =15%><%=m.getDateMatch().getDate() %>/<%=m.getDateMatch().getMonth() %>/<%=m.getDateMatch().getYear()+1900%></td>
+            <td Width =15%><%=m.getDateMatch().getDate() %>/<%=m.getDateMatch().getMonth()+1 %>/<%=m.getDateMatch().getYear()+1900%></td>
             <td Width =15%><%=m.getHeure() %></td>
             <td Width =15%><%=m.getEquipeUn().getNomequipe() %></td>
             <td Width =15%><%=m.getEquipeDeux().getNomequipe()%></td>
         </tr><%}%> </table>
             
 </div>
-        </br>
-        </br>
-          <TABLE>
-            <tr>
-                 <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-            </tr>
-                    </TABLE>
-
+        </br>            
+        <div class='retour'>
+            <a href ="MenuTous.jsp"> Retour Menu </a>
+        </div>
     </body>
 </html>
 

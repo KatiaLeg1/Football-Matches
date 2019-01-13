@@ -20,6 +20,8 @@ import javax.ejb.Local;
 public interface EquipesFacadeLocal {
 
     void create(Equipe equipes);
+    
+    boolean RechercherEquipeB(String nomequipe);
 
     void edit(Equipe equipes);
 

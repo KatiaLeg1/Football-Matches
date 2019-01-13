@@ -14,7 +14,7 @@
            <title>Saisir une date </title>
     </head>
     <body>
-        <div id="entete">Saisir une date pour afficher tous les matchs</div>
+        <h1>Saisir une date pour afficher tous les matchs</h1>
        
         <form method ="get" action="GestionTous">
            
@@ -31,22 +31,17 @@
             
             </div>
            </div>
-            
-            
-            
-                            <input type ="hidden" name="action" value="MatchsDate">
+            <input type ="hidden" name="action" value="MatchsDate">
 
             <div class='bouton1'>
             </br>
             <input  class='bouton' type="submit" value="Valider"/>
             <input  class='bouton'type="reset" value="Remise à 0"/>       
             </div>
-            </br>
-            <TABLE>
-                  <tr>
-                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-                  </tr>
-            </TABLE>
+            </br>            
+        <div class='retour'>
+            <a href ="MenuTous.jsp"> Retour Menu </a>
+        </div>
 
         </form>
     </body>

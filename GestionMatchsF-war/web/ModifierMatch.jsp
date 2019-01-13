@@ -32,22 +32,27 @@
                     <%}%>
                 </select> 
             </div>
-            <div class ='input2'>  
-                <label for="pteq1">Point équipe 1</label> 
+                </br>
+            <div class ='input2' >  
+                <label for="pteq1" class='textinput'>Point équipe 1 : </label> 
                 <input type="text" placeholder='Point équipe 1' name="pteq1" class='input'/>
             </div>
-            <div class ='input2'>                   
-                <label for="pteq2">Point équipe 2</label> 
+            <div class ='input2' >                   
+                <label for="pteq2" class='textinput'>Point équipe 2 : </label> 
                 <input type="text" placeholder='Point équipe 2' name="pteq2" class='input'/>
                 <br>
                 
                 <input type ="hidden" name="action" value="ModifierMa">
-       
+            </div>
+            </div>
+                </br>
                 <div class='bouton1'>
             </br>
             <input  class='bouton' type="submit" value="Valider"/>
             <input  class='bouton'type="reset" value="Remise à 0"/>       
         </div>
+                </br>
+                
         <div class='retour'>
             <a href ="/MenuArbitre.jsp"> Retour Menu </a>
             </div>              

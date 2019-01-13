@@ -16,16 +16,15 @@
          <title>Rechercher une équipe</title>
     </head>
      <body>
-         <div id="entete">Rechercher une équipe</div>
+         <h1>Rechercher une équipe</h1>
                 <form method ="get" action="GestionTous">
                 <% Collection<Equipe> lesEq = lesEquipes;%>
                
                 <div class="input1">
             </br>   
             <div class ='input2'>
-                
-                <label for="eq">Equipe : <span class="requis"></span></label>
-                <select name="eq">
+                <label for="eq"class='textinput'>Equipe : </label>
+                <select name="eq" class ='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Equipe e : lesEq ){%>
                     <option value="<%=e.getId()%>"><%=e.getNomequipe() %></option>
                     <%}%>
@@ -34,18 +33,19 @@
                 
                 <input type ="hidden" name="action" value="AfficherEqM">
         
-                  </div></div>
+                  </div>
+                </br>
+                </div>
+                </br>
                 
             <div class='bouton1'>
             </br>
             <input  class='bouton' type="submit" value="Valider"/>
             <input  class='bouton'type="reset" value="Remise à 0"/>       
-            </div>     <br>
-            
-            <TABLE>
-                  <tr>
-                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-                  </tr>
-            </TABLE>
-    </body>
+            </div>     
+                </br>
+        <div class='retour'>
+            <a href ="MenuTous.jsp"> Retour Menu </a>
+        </div>
+        </body>
 </html>

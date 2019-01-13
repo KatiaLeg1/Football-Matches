@@ -65,9 +65,8 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public boolean ArbitreLibre(Arbitre arbitre, Date dateMatch) {
         boolean b=false;
-        Query requete = em.createQuery("SELECT m from Matchs as m where m.arbitre=:arb");
-        requete.setParameter("arb", arbitre);     
-        requete.setParameter("dateMatch", dateMatch);  
+        Query requete = em.createQuery("SELECT m from Matchs as m where m.arbitre=:arbitre");
+        requete.setParameter("arbitre", arbitre);     
         List<Matchs> liste =  requete.getResultList();
         if (!(liste.isEmpty()))
         {
@@ -75,9 +74,9 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
             {
                 if (m.getDateMatch().equals(dateMatch))
                 {
-                  b=  false;
+                    b=  false;
                 }
-                else b=false;
+                else b=true;
             }
         }
         else
@@ -100,7 +99,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
                 {
                   b=  false;
                 }
-                else b=false;
+                else b=true;
             }
         }
         else

@@ -29,7 +29,7 @@
                 <label for="Joueurs"  class='textinput'> Joueur à affecter à l'équipe : </label>                
                 <select name="Joueurs"  class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for(HistoriqueJoueur hj: lesJoueurs) {%>
-                    <option value="<%=hj.getJoueur() %>"><%=hj.getJoueur().getPrenomPersonne()%> <%=hj.getJoueur().getNomPersonne()%></option>
+                    <option value="<%=hj.getJoueur().getId() %>"><%=hj.getJoueur().getPrenomPersonne()%> <%=hj.getJoueur().getNomPersonne()%></option>
                     <%}%>
                 </select>   
         <br/>

@@ -25,8 +25,7 @@
                 <input type="text" placeholder='Login' name="Login" class='input'/>
                 <input type="password" placeholder='mdp' name="mdp" class='input'/>
             <br>  
-            <br>
-            <br>
+            
         </div>
             
             

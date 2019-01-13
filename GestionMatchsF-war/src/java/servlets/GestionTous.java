@@ -160,16 +160,15 @@ public class GestionTous extends HttpServlet {
             }
         }
              else if (act.equals("MatchsDate"))
-         {
-             
+         {             
             String d = request.getParameter("date") ;
             String d1 = request.getParameter("date1") ;
             if (!(d.trim().isEmpty())&&!(d1.trim().isEmpty()))
             {
-                 Date da = Date.valueOf(d);
-                 Date da1 = Date.valueOf(d1);
-                 List <Matchs> fa = gestionTout.MatchsInt(da, da1);
-                  jspClient = "/AfficherMatchsInt.jsp";
+                Date da = Date.valueOf(d);
+                Date da1 = Date.valueOf(d1);
+                List <Matchs> fa = gestionTout.MatchsInt(da, da1);
+                jspClient = "/AfficherMatchsInt.jsp";
                request.setAttribute("listeMa", fa);
             }
             else if(!(d.trim().isEmpty()))

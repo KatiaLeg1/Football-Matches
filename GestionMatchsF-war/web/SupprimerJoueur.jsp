@@ -4,6 +4,7 @@
     Author     : Utilisateur
 --%>
 
+<%@page import="entites.HistoriqueJoueur"%>
 <%@page import="java.util.List"%>
 <%@page import="entites.Joueur"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,15 +18,15 @@
     </head>
     <body>
     <h1>Supprimer un joueur </h1>
-    <% List<Joueur> lesJoueurs=listejoueurs; %>
-    <form method="get" action="gestionEntraineur">
+<% List <HistoriqueJoueur> lesJoueurs = listejoueurs;%>  
+<form method="get" action="gestionEntraineur">
         <div class="input1">
             </br>   
             <div class ='input2'>     
                 <label for="Joueurs"  class='textinput'> Joueur à supprimer : </label>                
                 <select name="Joueurs"  class='custom-dropdown__select custom-dropdown__select--white'>
-                    <% for(Joueur j:lesJoueurs) {%>
-                    <option value="<%=j.getId()%>"><%=j.getPrenomPersonne()%> <%=j.getNomPersonne()%></option>
+                    <%  for(HistoriqueJoueur j : lesJoueurs){%>
+                    <option value="<%=j.getJoueur().getId() %>"><%=j.getJoueur().getPrenomPersonne() %> <%=j.getJoueur().getNomPersonne()%></option>
                     <%}%>
                 </select>   
             </br>

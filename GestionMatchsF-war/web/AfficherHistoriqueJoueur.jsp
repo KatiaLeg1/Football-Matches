@@ -25,20 +25,18 @@
             <th Width =15%>Date de début</th>
             <th Width =15%>Date de fin</th>
          </tr> 
-       <%  
-           for(HistoriqueJoueur hj : listeHJ){%> <%--tu parcours la liste--%>   
-    </tr>   
+       <%  for(HistoriqueJoueur hj : listeHJ){%> 
+    <tr>
             <td ><%= hj.getEquipeJoueur().getNomequipe() %></td>
-            <td ><%=hj.getDateDebutEq().getDate()%> / <%= hj.getDateDebutEq().getMonth()%> / <%= hj.getDateDebutEq().getYear()+1900%></td>
+            <td ><%=hj.getDateDebutEq().getDate()%> / <%= hj.getDateDebutEq().getMonth()+1%> / <%= hj.getDateDebutEq().getYear()+1900%></td>
             <td><% if(hj.getDateFinEq()==null){%><%} else {%>
-                <%=hj.getDateFinEq().getDate()%> / <%=hj.getDateFinEq().getMonth()%> / <%=hj.getDateDebutEq().getYear()+1900%></td><%}%>
-         </tr> <%}%></table>
-        <td>
+                <%=hj.getDateFinEq().getDate()%> / <%=hj.getDateFinEq().getMonth()+1 %> / <%=hj.getDateDebutEq().getYear()+1900%></td><%}%>
+         </tr> 
+         <%}%></table>
+        
             </br>
-            <TABLE>
-                  <tr>
-                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-                  </tr>
-            </TABLE>
+        <div class='retour'>
+            <a href ="MenuTous.jsp"> Retour Menu </a>
+        </div>
      </body>
 </html>

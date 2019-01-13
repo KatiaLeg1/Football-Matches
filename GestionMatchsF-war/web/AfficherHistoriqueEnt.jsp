@@ -28,12 +28,13 @@
             <%for(HistoriqueEntraineur he : listeHE){%>
             </tr>   
                 <td ><%= he.getEquipeEntraineur().getNomequipe() %></td>
-               <td ><%=he.getDateDebutEnt().getDate()%> / <%= he.getDateDebutEnt().getMonth() %> / <%= he.getDateDebutEnt().getYear()+1900 %></td>
+               <td ><%=he.getDateDebutEnt().getDate()%> / <%= he.getDateDebutEnt().getMonth()+1 %> / <%= he.getDateDebutEnt().getYear()+1900 %></td>
                  <td><% if(he.getDateFinEnt()==null){%> <%} 
-                else {%><%=he.getDateFinEnt().getDate() %> / <%= he.getDateFinEnt().getMonth() %> / <%= he.getDateFinEnt().getYear() + 1900 %> <%} %>
+                else {%><%=he.getDateFinEnt().getDate()%> / <%= he.getDateFinEnt().getMonth()+1 %> / <%= he.getDateFinEnt().getYear() + 1900 %> <%} %>
             </tr> <%}%>
             </table>
         </div>
+            </br>            
         <div class='retour'>
             <a href ="MenuTous.jsp"> Retour Menu </a>
         </div>

@@ -19,17 +19,17 @@
    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listeJoueurs" scope="request" class = "java.util.List"> </jsp:useBean> 
-        <title>Creer fautes joueurs</title>
+        <title>Créer un faute</title>
     </head>
     <body>
-        <h1>Creer fautes joueurs:</h1>
+        <h1>Créer une faute : </h1>
         <% List<Joueur> LesJoue = listeJoueurs;%>
         <form method ="get" action="gestionArb">  
         <div class="input1">
         </br>   
         <div class ='input2'>             
 
-                <label for="nomPersonne"class='textinput'> Selectionner Joueur : </label>
+                <label for="nomPersonne"class='textinput'> Selectionner un Joueur : </label>
                 <select name="nomPersonne"  class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Joueur j : LesJoue ){%>
                     <option value="<%=j.getId()%>"><%=j.getNomPersonne()%><%=j.getPrenomPersonne()%>  </option>
@@ -43,6 +43,9 @@
                     <option value="Rouge"> Rouge </option>
                     <option value="Jaune"> Jaune </option>
                 </select>
+        </div>
+        </div>
+                </br>
             
                 <input type ="hidden" name="action" value="CreerFauteJoueur">
         <div class='bouton1'>
@@ -50,6 +53,7 @@
             <input  class='bouton' type="submit" value="Valider"/>
             <input  class='bouton'type="reset" value="Remise à 0"/>       
         </div>
+                </br>
         <div class='retour'>
             <a href ="/MenuArbitre.jsp"> Retour Menu </a>
             </div>       

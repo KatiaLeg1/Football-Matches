@@ -24,7 +24,7 @@ import java.util.List;
 @Local
 public interface gestionFederationLocal {
 
-    void CreerEquipe(String nomE);
+    boolean CreerEquipe(String nomE);
 
     void CreerArbitre(String nom, String prenom, String login, String mdp);
 

@@ -37,18 +37,21 @@ public class gestionFed extends HttpServlet {
 
     protected void creerEq(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException           
-    {
-                
-
-        String nomEquipe = request.getParameter("nomEquipe");
-        
+    {             
+        String nomEquipe = request.getParameter("nomEquipe");        
         String message ;
         if (nomEquipe.trim().isEmpty())
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour créer une Equipe";        }
         else {
-            gestionFederation.CreerEquipe(nomEquipe);
-            message = "Equipe créée";          
+            boolean a = gestionFederation.CreerEquipe(nomEquipe);
+            if (a==true){
+                message = "Equipe créée";   
+            }
+            else {
+                message = "Equipe déjà existante";
+            }   
+
         }
         request.setAttribute("message", message);
         
@@ -212,7 +215,7 @@ public class gestionFed extends HttpServlet {
         String jspClient = null;
                
         String act = request.getParameter("action");
-        System.out.println("ACTION : "+ act);
+        System.out.println("ACTION fed : "+ act);
         
         if(act==null|| act.equals("vide"))
         {

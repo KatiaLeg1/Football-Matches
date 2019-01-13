@@ -55,8 +55,19 @@ public class gestionFederation implements gestionFederationLocal {
 
     
     @Override
-    public void CreerEquipe(String nomE) {
-        equipesFacade.CreerEquipe(nomE);
+    public boolean CreerEquipe(String nomE) {
+        boolean b = equipesFacade.RechercherEquipeB(nomE);
+        boolean a;
+        if (b==false)
+        {
+         a=false;         
+        }
+        else 
+        {
+            equipesFacade.CreerEquipe(nomE);
+            a=true;  
+        }
+        return a;
     }
 
     @Override
@@ -79,7 +90,7 @@ public class gestionFederation implements gestionFederationLocal {
 
     @Override
     public boolean CreerMAtch(Date dateMatch, String heure, String nomequipeUn, String nomequipeDeux, int ida) {
-       boolean d;
+        boolean d;
         Equipe equipeUn = equipesFacade.RechercherEquipe(nomequipeUn);
         Equipe equipeDeux = equipesFacade.RechercherEquipe(nomequipeDeux);
         Arbitre arbitre = arbitreFacade.rechercherArbitreId(ida);
@@ -87,6 +98,11 @@ public class gestionFederation implements gestionFederationLocal {
         boolean a = matchFacade.ArbitreLibre(arbitre, dateMatch);
         boolean b = matchFacade.EquipeLibre(equipeUn, dateMatch);
         boolean c = matchFacade.EquipeLibre(equipeDeux, dateMatch);
+                System.out.println("A : "+ a);
+                System.out.println("B : "+ b);
+                System.out.println("c : "+ c);
+                
+
         if (a==true && b==true && c==true)
         {
             matchFacade.CreerMatch(dateMatch, heure, equipeUn, equipeDeux, arbitre);

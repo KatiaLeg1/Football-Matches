@@ -16,7 +16,7 @@
          <title>Choisir le joueur pour afficher historique de ses equipes</title>
     </head>
     <body>
-        <div id="entete">Choisir le joueur pour afficher l'historique de ses équipes</div>
+        <h1>Choisir le joueur pour afficher l'historique de ses équipes</h1>
                 <form method ="get" action="GestionTous">  
          
                 <% List<Joueur> lesJou = listeJou;%>
@@ -38,9 +38,10 @@
             </br>
             <input  class='bouton' type="submit" value="Valider"/>
             <input  class='bouton'type="reset" value="Remise à 0"/>       
-            </div>    <br>
-            
-                    <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-                  
+            </div>    
+                </br>
+        <div class='retour'>
+            <a href ="MenuTous.jsp"> Retour Menu </a>
+        </div>
     </body>
 </html>

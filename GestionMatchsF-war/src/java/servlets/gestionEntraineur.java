@@ -57,6 +57,7 @@ public class gestionEntraineur extends HttpServlet {
 
         String jspClient = null;
         String act = request.getParameter("action");
+        System.out.println("ACTION ent : "+ act);
         if((act==null) || (act.equals("vide"))){
             jspClient = "/MenuEntraineur.jsp";
             request.setAttribute("message", "pas d'informations");
@@ -84,8 +85,6 @@ public class gestionEntraineur extends HttpServlet {
         {  
             Entraineur entr = (Entraineur)sess.getAttribute("ent");
             List<HistoriqueJoueur> liste = sessionEnt.listeJouAutreEnt(entr);
-            /* J'aimerais afficher uniquemenent les joueurs qui ne sont pas dans l'equipe de l'entraineur connecté avec
-            la méthode sessionEnt.listeJAutreEq() mais ça ne fonctionne pas, pb requête SQL */
             request.setAttribute("entr", entr);                       
             request.setAttribute("listejoueurs", liste);
             jspClient="/AffecterJoueur.jsp";
@@ -95,8 +94,6 @@ public class gestionEntraineur extends HttpServlet {
         {  
             Entraineur entr = (Entraineur)sess.getAttribute("ent");
             List<Joueur> liste = sessionEnt.listeJLibres();
-            /* J'aimerais afficher uniquemenent les joueurs qui ne sont pas dans l'equipe de l'entraineur connecté avec
-            la méthode sessionEnt.listeJAutreEq() mais ça ne fonctionne pas, pb requête SQL */
             request.setAttribute("entr", entr);                       
             request.setAttribute("listejoueurs", liste);
             jspClient="/AffecterJoueurLibre.jsp";
@@ -105,8 +102,7 @@ public class gestionEntraineur extends HttpServlet {
         else if(act.equals("rechercherSuppJ")&& !(sess== null))
         {  
             Entraineur entr = (Entraineur)sess.getAttribute("ent");
-            List<Joueur> liste = sessionEnt.affichageJoueurs();
-            request.setAttribute("entr", entr);                       
+            List <HistoriqueJoueur> liste = sessionEnt.listeJouEnt(entr);
             request.setAttribute("listejoueurs", liste);
             jspClient="/SupprimerJoueur.jsp";
         }
@@ -114,15 +110,19 @@ public class gestionEntraineur extends HttpServlet {
         else if(act.equals("affecterJ"))
         {                     
             String idj = request.getParameter("Joueurs");
-            String t = request.getParameter("dateDebutHJ");                    
+            String t = request.getParameter("dateDebutHJ");                  
+            System.out.println("idj " + idj + " t " + t);  
             String message ;
             if(idj.isEmpty() || t.isEmpty() ){
                 message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires.";
             } 
             else {
-                Entraineur entr = (Entraineur)sess.getAttribute("ent");
-                Date dateDHJ = Date.valueOf(t);
-                long id = Long.valueOf(idj);
+                Entraineur entr = (Entraineur)sess.getAttribute("ent");                System.out.println("1");
+
+                Date dateDHJ = Date.valueOf(t);                System.out.println("2");
+
+                long id = Long.valueOf(idj); System.out.println("3");
+                System.out.println("okokok");
                 boolean a = sessionEnt.affectationJoueur(id, entr, dateDHJ);
                 if (a==true)
                 {

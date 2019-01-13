@@ -22,22 +22,22 @@
 
         <table>
              <tr>   
-                 <td Width =15%>Nom</td>
-                 <td Width =15%>Prenom</td>
-                 <td Width =15%>Equipe</td>
-                 <td Width =15%>Type de faute</td>
+                 <td>Nom</td>
+                 <td>Prenom</td>
+                 <td>Equipe</td>
+                 <td>Type de faute</td>
+                 <td>Date de la faute </td>
              </tr>
          <% for(Faute f : listeFa){%>
          <tr>   
-            <td Width =15%><%=f.getJoueur().getNomPersonne() %></td>
-            <td Width =15%><%=f.getJoueur().getPrenomPersonne() %></td>
-            <td Width =15%><%=f.getJoueur().getHistoriqueJoueurs().get(listeFa.size()-1).getEquipeJoueur().getNomequipe() %></td> 
-<%--            <td width=15%>Equipe</td> --%>
-            <td width=15%><%= f.getTypeFaute()%></td>
+            <td><%=f.getJoueur().getNomPersonne() %></td>
+            <td><%=f.getJoueur().getPrenomPersonne() %></td>
+            <td><%=f.getJoueur().getHistoriqueJoueurs().get(listeFa.size()-1).getEquipeJoueur().getNomequipe() %></td> 
+            <td><%= f.getTypeFaute()%></td>
+            <td><%= f.getMatch().getDateMatch().getDate()%> / <%= f.getMatch().getDateMatch().getMonth() +1%> / <%= f.getMatch().getDateMatch().getYear()+1900%> </td>
         </tr><%}%> </table>
             
 </div>
-        </br>
         </br>
         <div class='retour'>
             <a href ="MenuFederation.jsp"> Retour Menu </a>
