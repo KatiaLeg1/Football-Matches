@@ -40,8 +40,8 @@ public class gestionArb extends HttpServlet {
     {
        
         String cart = request.getParameter("type");
-        String j = request.getParameter("nomPersonne"); // 
-        String m = request.getParameter("Match");
+        String j = request.getParameter("nomPersonne"); 
+        String m = request.getParameter("ma");
         
         String message ;
         if (cart.trim().isEmpty() || j.isEmpty() || m.isEmpty() )
@@ -125,7 +125,7 @@ public class gestionArb extends HttpServlet {
 
             }
         }    
-        else if (act.equals("CreerF")) // ça c'est la valeur que tu as récuperer de ta JSP dire que tu dois faire qqchose et après tu redirige via JSP client
+        else if (act.equals("CreerF"))
         {
             String ma = request.getParameter("Match");
             if (!(ma.trim().isEmpty()))
@@ -134,6 +134,7 @@ public class gestionArb extends HttpServlet {
                 Matchs match = gestionArbitre.matchID(mat);
                 Collection <Joueur> listej = gestionArbitre.joueurMa(match);
                 request.setAttribute("listeJoueurs", listej);
+                request.setAttribute("match", match);
                 jspClient="/CreerFauteJoueur.jsp";
             }   
         }

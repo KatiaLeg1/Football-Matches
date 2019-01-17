@@ -26,17 +26,18 @@
            <div class="input1">
             </br>   
             <div class ='input2'>
-            <label for="Match">Choisir Match: <span class="requis"></span></label>
-                <select name="Match">
+            <label for="Match" class='textinput'>Choisir Match:</label>
+                <select name="Match" class='custom-dropdown__select custom-dropdown__select--white'>
                     <% for (Matchs m : leMat ){%>
                     <option value="<%=m.getId()%>"><%=m.getEquipeUn().getNomequipe() %> VS <%=m.getEquipeDeux().getNomequipe()%>
                     </option>
                     <%}%>
                 </select> 
-            </div> 
+            </div>
+                </br>
+                <div claqq='input2'>
             <label for="compo" class='textinput'> Composition de l'équipe :</label>
-                    <div style="overflow-x:auto;">
-
+            <div style="overflow-x:auto;">
             <table>
                 <tr>
                     <td> Nom </td>
@@ -52,12 +53,20 @@
                 <%}%>
             </table>
             </div>
-                <input type ="hidden" name="action" value="affJMatch">        
-                <input  class='bouton' type="submit" value="Valider"/>
-            <input  class='bouton'type="reset" value="Remise à 0"/>       
+                </div> 
             </div>
+           
+            <input type ="hidden" name="action" value="affJMatch">            
+            
             </br>
+                <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>      <br>
+           
             <div class='retour'>
+           
               <a href ="MenuEntraineur.jsp"> Retour Menu </a>
             </div>
         </form>

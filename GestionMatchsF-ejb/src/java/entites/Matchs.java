@@ -241,26 +241,7 @@ public class Matchs implements Serializable {
         this.Composition1 = Composition1;
     }
 
-    @ManyToMany
-    private List<Joueur> composition2;
-
-    /**
-     * Get the value of composition2
-     *
-     * @return the value of composition2
-     */
-    public List<Joueur> getComposition2() {
-        return composition2;
-    }
-
-    /**
-     * Set the value of composition2
-     *
-     * @param composition2 new value of composition2
-     */
-    public void setComposition2(List<Joueur> composition2) {
-        this.composition2 = composition2;
-    }
+    
 
 
 }

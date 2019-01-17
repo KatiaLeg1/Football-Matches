@@ -38,7 +38,8 @@
             <input  class='bouton'type="reset" value="Remise à 0"/>       
             </div>      <br>
            
-            <a href="MenuTous.jsp"  class="bouton1"> Retour Menu</a>
-            
+<div class='retour'>
+            <a href ="MenuTous.jsp"> Retour Menu </a>
+        </div>            
     </body>
 </html>

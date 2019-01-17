@@ -166,7 +166,7 @@ public class JoueursFacade extends AbstractFacade<Joueur> implements JoueursFaca
 
     @Override
     public List<Joueur> joueurMatch(Matchs m) {
-        String requ= " SELECT j from Joueur as j where j.matchsJoueur1=:m UNION SELECT j from Joueur as j where j.matchsJoueur2=:m ";
+        String requ= " SELECT j from Joueur as j where j.matchsJoueur1=:m ";
         Query req = em.createQuery(requ);
         req.setParameter("m",m);
         List<Joueur> liste = req.getResultList();

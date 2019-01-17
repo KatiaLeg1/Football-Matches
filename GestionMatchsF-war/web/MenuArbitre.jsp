@@ -25,7 +25,7 @@
         </div>
         </div></br></br>
     <div class="retour">
-        <a href ="${pageContext.request.contextPath}/Auth.jsp"> Retour Auth </a>
+        <a href ="/Auth.jsp"> Retour Auth </a>
     </div>
         
     </body>

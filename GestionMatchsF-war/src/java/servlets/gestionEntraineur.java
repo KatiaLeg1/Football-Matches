@@ -194,27 +194,32 @@ public class gestionEntraineur extends HttpServlet {
             Entraineur entr = (Entraineur)sess.getAttribute("ent");
             String match = request.getParameter("Match");
             String[] compo = request.getParameterValues("compo");
-            if (match.trim().isEmpty()|| compo.length==0)
-            {
-                message = "Vous n'avez pas rempli tous les champs";
-            }
-            /*if (!match.trim().isEmpty()&& compo.length==11)*/
-            else
+                    System.out.println("compo "+ compo.length);
+            
+            if (!match.trim().isEmpty()&& compo.length==11)            
             {
                 List<Joueur> jou = new ArrayList<>();
                 for (String joue : compo){
                     long jouu = Long.valueOf(joue);
                     Joueur jo = sessionEnt.rechercherJoueurId(jouu);
                     jou.add(jo);                    
+                    System.out.println("jouu: "+ jouu);
                 }
+                System.out.println("jou "+ jou);
                 int ma = Integer.valueOf(match);
+                System.out.println("ma "+ ma);
+                System.out.println("entr "+ entr);
+                                System.out.println("on est ici ");
+
                 sessionEnt.CreerCompo(entr, jou, ma);
                 message = "composition créée";
             }
-            /*else
+            else
             {
                 message = "Vous n'avez pas sélectionné le bon nombre de joueurs";
-            }*/
+            }
+            request.setAttribute("message", message);
+            jspClient="/MenuEntraineur.jsp";
             
             
 

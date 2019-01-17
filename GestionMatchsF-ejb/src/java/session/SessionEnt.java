@@ -123,9 +123,17 @@ public class SessionEnt implements gestionEntraineurLocal {
 
     @Override
     public void CreerCompo(Entraineur ent, List<Joueur> jou, int ma) {
+                System.out.println("creer compo sess 1");
+        
         Matchs m = matchFacade.rechercherMatchID(ma);
+                        System.out.println("creer compo sess 2" +m);
+
         Equipe e = historiqueEntraineurFacade.EqActuelleEnt(ent);
+                                System.out.println("creer compo sess 3" +e);
+
         matchFacade.CreerComposition1(m, e, jou);
+                                        System.out.println("compo créée");
+
     }
     
     

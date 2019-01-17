@@ -204,17 +204,14 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     public void CreerComposition1(Matchs ma, Equipe eq, List<Joueur> jou) {
         Equipe eq1 = ma.getEquipeUn();
         Equipe eq2 = ma.getEquipeDeux();
-        
-        if (eq1==eq)
+        int i =0;
+        Joueur x = null;
+        if (eq1==eq || eq2==eq)
         {
             ma.setComposition1(jou);
-            em.merge(ma);        
-        }
-        else if (eq2==eq)
-        {
-            ma.setComposition2(jou);
             em.merge(ma);  
         }
+        
     }
     @Override
     public List<Matchs> AfficherMatchsEQj(Equipe eq) {

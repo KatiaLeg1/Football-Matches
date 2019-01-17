@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -45,16 +46,7 @@ public class Joueur extends SuperPersonne implements Serializable {
         this.fautes = fautes;
     }
 
-    @ManyToMany(mappedBy = "composition2")
-    private List<Matchs> matchsJoueur2;
-
-    public List<Matchs> getMatchsJoueur2() {
-        return matchsJoueur2;
-    }
-
-    public void setMatchsJoueur2(List<Matchs> matchsJoueur2) {
-        this.matchsJoueur2 = matchsJoueur2;
-    }
+    
 
     public List<Matchs> getMatchsJoueur1() {
         return matchsJoueur1;
@@ -105,11 +97,7 @@ public class Joueur extends SuperPersonne implements Serializable {
         return "entites.Joueurs[ id=" + id + " ]";
     }
     
-    
-    
-
-
-    
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateInterdiction;
 
     /**
