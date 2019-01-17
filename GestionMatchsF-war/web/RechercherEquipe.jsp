@@ -15,7 +15,7 @@
          <title>Rechercher une équipe</title>
     </head>
     <body>
-        <div id="entete">Rechercher une équipe</div>
+        <h1>Rechercher une équipe</h1>
                 <form method ="get" action="GestionTous"> <% Collection<Equipe> lesEq = lesEquipes;%>
             
             <div class="input1">

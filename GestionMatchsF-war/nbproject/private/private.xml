@@ -14,7 +14,11 @@
         <group>
             <file>file:/C:/Users/katia/Documents/NetBeansProjects/java/GestionMatchsF-war/web/RechercheMAffJ.jsp</file>
             <file>file:/C:/Users/katia/Documents/NetBeansProjects/java/GestionMatchsF-war/web/RechercherEquipeMatch.jsp</file>
-            <file>file:/C:/Users/katia/Documents/NetBeansProjects/java/GestionMatchsF-war/src/java/servlets/gestionEntraineur.java</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/java/GestionMatchsF-war/web/CreerFauteJoueur.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/java/GestionMatchsF-war/web/MenuArbitre.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/java/GestionMatchsF-war/web/RechercherEquipe.jsp</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/java/GestionMatchsF-war/src/java/servlets/GestionTous.java</file>
+            <file>file:/C:/Users/katia/Documents/NetBeansProjects/java/GestionMatchsF-war/web/MenuTous.jsp</file>
         </group>
     </open-files>
 </project-private>
